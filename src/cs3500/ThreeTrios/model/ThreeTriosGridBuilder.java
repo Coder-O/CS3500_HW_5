@@ -1,3 +1,5 @@
+package cs3500.ThreeTrios.model;
+
 /**
 * Builder for ThreeTriosGrid
 * The setCell method will be called for every non-card cell in the grid.
@@ -11,7 +13,7 @@ interface ThreeTriosGridBuilder {
      * @param column of the cell we want to change.
      * @param cell that will be placed.
      */
-    public setCell(int row, int column, ThreeTriosCell cell);
+    public void setCell(int row, int column, ThreeTriosCell cell);
     
     /**
      * Returns the Grid created by this builder.

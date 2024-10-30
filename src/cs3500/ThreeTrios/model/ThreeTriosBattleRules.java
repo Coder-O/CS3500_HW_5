@@ -1,11 +1,15 @@
+package cs3500.ThreeTrios.model;
+
 /**
  * Represents the rules of battle for a game of ThreeTrios.
  */
-interface BattleRules {
+interface ThreeTriosBattleRules {
 
     /**
-     * Compares the attacker to the defender, and returns which one wins.
-     * Also flips the provided cards, according to rules that vary depending upon the implmentation.
+     * Handles the battling and flipping of cards after a card has been played.
+     * Details of interactions vary depending upon the implementation.
+     * @param cardPlayed The card that was played this turn.
+     * @param grid The grid the card is in.
      */
-    public ThreeTriosCard compare(ThreeTriosCard attacker, ThreeTriosCard defender, Direction direction);
+    public void battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid);
 }

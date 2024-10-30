@@ -1,3 +1,7 @@
+package cs3500.ThreeTrios.model;
+
+import java.util.Map;
+
 /**
 * Represents the Grid of the ThreeTrios Game.
 * Invariant: there is always an odd number of cells.
@@ -29,26 +33,34 @@ public interface ThreeTriosGrid {
     * @param card whose North neighbor we want.
     * @return a Card.
     */
-    public ThreeTriosCard getNorthNeighbor(Card card);
+    public ThreeTriosCard getNorthNeighbor(ThreeTriosCard card);
 
     /**
     * Returns the South neighbor of a specified Card.
     * @param card whose South neighbor we want.
     * @return a Card.
     */
-    public ThreeTriosCard getSouthNeighbor(Card card);
+    public ThreeTriosCard getSouthNeighbor(ThreeTriosCard card);
 
     /**
     * Returns the East neighbor of a specified Card.
     * @param card whose East neighbor we want.
     * @return a Card.
     */
-    public ThreeTriosCard getEastNeighbor(Card card);
+    public ThreeTriosCard getEastNeighbor(ThreeTriosCard card);
 
     /**
     * Returns the West neighbor of a specified Card.
     * @param card whose West neighbor we want.
     * @return a Card.
     */
-    public ThreeTriosCard getWestNeighbor(Card card);
+    public ThreeTriosCard getWestNeighbor(ThreeTriosCard card);
+
+    /**
+     * Returns a map containing all neighbors of this card.
+     * @param card The card to find the neighbors for.
+     * @return A map containing the neighbors of this card. If a neighbor is missing,
+     *        this map does not include an entry or key for it.
+     */
+    public Map<ThreeTriosDirection, ThreeTriosCard> getNeighbors(ThreeTriosCard card);
 }

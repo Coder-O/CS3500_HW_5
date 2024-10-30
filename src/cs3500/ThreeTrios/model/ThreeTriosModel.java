@@ -1,3 +1,7 @@
+package cs3500.ThreeTrios.model;
+
+import java.util.List;
+
 /**
 * Represents the model for the ThreeTrios Game.
 * Model provides methods to perform game actions and retrieve the game state.
@@ -53,11 +57,5 @@ public interface ThreeTriosModel {
     * @param p whose hand we want. 
     */
     public int getHand(ThreeTriosPlayer p);
-
-    /**
-    * Returns the list of flipped Cards. 
-    * @return the list of flipped Cards.
-    */
-    public List<ThreeTriosCard> flippedThisTurn();
 
 }

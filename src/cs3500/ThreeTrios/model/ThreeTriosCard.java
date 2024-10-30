@@ -1,3 +1,5 @@
+package cs3500.ThreeTrios.model;
+
 /**
 * Represents a Card in the ThreeTrios Game.
 */
@@ -37,4 +39,10 @@ public interface ThreeTriosCard {
     * Flips the Card's Player to the other one.
     */
     public void changePlayer();
+
+    /**
+     * Gets the attack value for the corresponding direction.
+     * @return The attack value for the corresponding direction.
+     */
+    public ThreeTriosAttackValue getAttackValue(ThreeTriosDirection direction);
 }

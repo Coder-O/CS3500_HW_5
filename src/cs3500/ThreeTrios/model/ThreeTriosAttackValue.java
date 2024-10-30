@@ -3,7 +3,7 @@ package cs3500.ThreeTrios.model;
 /**
 * Possible Attack Values for a ThreeTrios Card.
 */
-public enum ThreeTriosAttackValues {
+public enum ThreeTriosAttackValue {
     ONE("1", 1),
     TWO("2", 2),
     THREE("3", 3),
@@ -18,7 +18,7 @@ public enum ThreeTriosAttackValues {
     private final String symbol;
     private final int value;
 
-    ThreeTriosAttackValues(String symbol, int value) {
+    ThreeTriosAttackValue(String symbol, int value) {
         this.symbol = symbol;
         this.value = value;
     }

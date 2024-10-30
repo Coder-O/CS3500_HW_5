@@ -10,7 +10,7 @@ public enum ThreeTriosPlayer {
 
     private final String symbol;
 
-    ThreeTriosAttackValues(String symbol) {
+    ThreeTriosPlayer(String symbol) {
         this.symbol = symbol;
     }
 
