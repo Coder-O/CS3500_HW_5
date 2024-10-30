@@ -30,34 +30,6 @@ public interface ThreeTriosGrid {
     public int getNumColumns();
 
     /**
-    * Returns the North neighbor of a specified Card.
-    * @param card whose North neighbor we want.
-    * @return a Card.
-    */
-    public ThreeTriosCard getNorthNeighbor(ThreeTriosCard card);
-
-    /**
-    * Returns the South neighbor of a specified Card.
-    * @param card whose South neighbor we want.
-    * @return a Card.
-    */
-    public ThreeTriosCard getSouthNeighbor(ThreeTriosCard card);
-
-    /**
-    * Returns the East neighbor of a specified Card.
-    * @param card whose East neighbor we want.
-    * @return a Card.
-    */
-    public ThreeTriosCard getEastNeighbor(ThreeTriosCard card);
-
-    /**
-    * Returns the West neighbor of a specified Card.
-    * @param card whose West neighbor we want.
-    * @return a Card.
-    */
-    public ThreeTriosCard getWestNeighbor(ThreeTriosCard card);
-
-    /**
      * Returns a map containing all neighbors of this card.
      * @param card The card to find the neighbors for.
      * @return A map containing the neighbors of this card. If a neighbor is missing,

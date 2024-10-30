@@ -79,9 +79,9 @@ public class TestSimpleRules {
     );;
 
     // Specific grids:
-    allLooseGrid = new SimpleGridBuilder().buildGrid();
-    oneLoosesGrid =  new SimpleGridBuilder().buildGrid();
-    holeGrid = new SimpleGridBuilder().buildGrid();
+    allLooseGrid = new GridBuilder().buildGrid();
+    oneLoosesGrid =  new GridBuilder().buildGrid();
+    holeGrid = new GridBuilder().buildGrid();
   }
 
   @Test
