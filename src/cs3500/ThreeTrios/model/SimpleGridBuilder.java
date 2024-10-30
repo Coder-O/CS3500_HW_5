@@ -1,5 +1,8 @@
 package cs3500.ThreeTrios.model;
 
+/**
+ * Builds the grid that will be used to play a game.
+ */
 public class SimpleGridBuilder implements ThreeTriosGridBuilder<Grid> {
   /**
    * Sets the cell at the specified position to the given cell.

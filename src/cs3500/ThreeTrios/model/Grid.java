@@ -2,7 +2,11 @@ package cs3500.ThreeTrios.model;
 
 import java.util.Map;
 
+/**
+ * Represents the playing grid of the ThreeTriosGame.
+ */
 public class Grid implements ThreeTriosGrid {
+  
   /**
    * Gets a reference to the cell at the specified row and index.
    *
