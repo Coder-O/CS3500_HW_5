@@ -1,0 +1,6 @@
+For a future Player Interface, a player should be able to:
+-Start the game 
+-View the grid and hands
+-Play to the grid
+-View the current status of the game, and if the game was won or tied
+-Optionally, a player could also choose to quit the game

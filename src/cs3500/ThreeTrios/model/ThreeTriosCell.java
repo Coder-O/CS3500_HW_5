@@ -3,6 +3,7 @@ package cs3500.ThreeTrios.model;
 /**
  * Represents a cell in a game of ThreeTrios.
  * Each cell can be a hole or hold a card.
+ * Class Invariant: game must have an odd number of cells.
  */
 interface ThreeTriosCell {
 

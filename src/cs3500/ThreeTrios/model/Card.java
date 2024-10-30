@@ -116,13 +116,13 @@ public class Card implements ThreeTriosCard {
     }
 
     /**
-    * Prints the values of the card.
-    * Ex: 7 3 9 A
-    * @return a four character representation of the card
+    * Prints the card.
+    * Ex: card1 7 3 9 A
+    * @return a textual representation of the card
     */
     @Override
     public String toString() {
-        return this.north.getSymbol() + this.east.getSymbol() + this.west.getSymbol() + this.south.getSymbol();
+        return this.getName() + this.north.getSymbol() + this.east.getSymbol() + this.west.getSymbol() + this.south.getSymbol();
     }
 
     /*

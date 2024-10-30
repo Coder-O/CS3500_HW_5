@@ -3,6 +3,9 @@ package cs3500.ThreeTrios.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents the playing grid of the ThreeTriosGame.
+ */
 public class Grid implements ThreeTriosGrid {
 
   private final ThreeTriosCell[][] grid;
