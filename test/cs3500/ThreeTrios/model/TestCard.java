@@ -136,7 +136,7 @@ public class TestCard {
         ThreeTriosPlayer.ONE, 
         "card2");
         
-        assertTrue(card.equals(card1));
-        assertFalse(card.equals(card2));
+        Assert.assertTrue(card.equals(card1));
+        Assert.assertFalse(card.equals(card2));
     }
 }

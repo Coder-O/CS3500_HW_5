@@ -127,7 +127,7 @@ public class Grid implements ThreeTriosGrid {
       }
     }
 
-    if (row < rows) {
+    if (row + 1 < rows) {
       currentCell = grid[row + 1][column];
       if (!currentCell.isHole() && currentCell.getCard() != null) {
         toReturn.put(ThreeTriosDirection.SOUTH, currentCell.getCard());
@@ -141,7 +141,7 @@ public class Grid implements ThreeTriosGrid {
       }
     }
 
-    if (column < columns) {
+    if (column + 1 < columns) {
       currentCell = grid[row][column + 1];
       if (!currentCell.isHole() && currentCell.getCard() != null) {
         toReturn.put(ThreeTriosDirection.EAST, currentCell.getCard());

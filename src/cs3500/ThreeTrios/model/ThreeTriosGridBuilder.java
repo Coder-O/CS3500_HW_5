@@ -9,11 +9,13 @@ interface ThreeTriosGridBuilder <T extends ThreeTriosGrid> {
 
     /**
      * Sets the cell at the specified position to the given cell.
-     * @param row of the cell we want to change.
+     *
+     * @param row    of the cell we want to change.
      * @param column of the cell we want to change.
-     * @param cell that will be placed.
+     * @param cell   that will be placed.
+     * @return
      */
-    public void setCell(int row, int column, ThreeTriosCell cell);
+    public GridBuilder setCell(int row, int column, ThreeTriosCell cell);
     
     /**
      * Returns the Grid created by this builder.

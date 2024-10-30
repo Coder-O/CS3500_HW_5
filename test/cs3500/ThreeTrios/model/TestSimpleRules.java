@@ -79,9 +79,78 @@ public class TestSimpleRules {
     );;
 
     // Specific grids:
-    allLooseGrid = new GridBuilder(3, 3).buildGrid();
+    allLooseGrid = new GridBuilder(3, 3)
+            .setCell(0, 0, new Cell(false, new Card(
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 0,0"
+            )))
+            .setCell(0, 1, new Cell(false, new Card(
+                    ThreeTriosAttackValue.SEVEN,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.SEVEN,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 0,1"
+            )))
+            .setCell(0, 2, new Cell(false, new Card(
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 0,2"
+            )))
+            .setCell(1, 0, new Cell(false, new Card(
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 1,0"
+            )))
+            .setCell(1, 1, new Cell(false, aceCard))
+            .setCell(1, 2, new Cell(false, new Card(
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 1,2"
+            )))
+            .setCell(2, 0, new Cell(false, new Card(
+                    ThreeTriosAttackValue.FOUR,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 2,0"
+            )))
+            .setCell(2, 1, new Cell(false, new Card(
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 2,1"
+            )))
+            .setCell(2, 2, new Cell(false, new Card(
+                    ThreeTriosAttackValue.FIVE,
+                    ThreeTriosAttackValue.SEVEN,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.EIGHT,
+                    ThreeTriosPlayer.TWO,
+                    "allLooseGrid 2,2"
+            )))
+            .buildGrid();
     oneLoosesGrid =  new GridBuilder(1, 2).buildGrid();
-    holeGrid = new GridBuilder(3, 3).buildGrid();
+    holeGrid = new GridBuilder(3, 3)
+            .setCell(1, 1, new Cell(true))
+            .setCell(2, 1, new Cell(true))
+            .buildGrid();
   }
 
   @Test
