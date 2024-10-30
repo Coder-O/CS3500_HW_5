@@ -45,7 +45,7 @@ public class Grid implements ThreeTriosGrid {
               row + " is an invalid row value!!! Valid indices are: 0-" + rows
       );
     }
-    if (row > rows || row < 0) {
+    if (column > columns || column < 0) {
       throw new IllegalArgumentException(
               column + " is an invalid column value!!! Valid indices are: 0-" + columns
       );
