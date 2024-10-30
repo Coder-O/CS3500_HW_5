@@ -36,6 +36,12 @@ public interface ThreeTriosCard {
     public ThreeTriosPlayer getPlayer();
 
     /**
+    * Returns the Card's Name.
+    * @return the player of the Card.
+    */
+    public String getName();
+
+    /**
     * Flips the Card's Player to the other one.
     */
     public void changePlayer();

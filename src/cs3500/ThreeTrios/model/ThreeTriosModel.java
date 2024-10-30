@@ -1,5 +1,6 @@
 package cs3500.ThreeTrios.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public interface ThreeTriosModel {
     * Returns the current deck.
     * @return the current deck.
     */
-    public List<ThreeTriosCard> getDeck();
+    public List<Card> getDeck();
     
     /**
     * Returns the Grid in its current state.
@@ -56,6 +57,6 @@ public interface ThreeTriosModel {
     * @return a copy of the hand of the specified Player p.
     * @param p whose hand we want. 
     */
-    public int getHand(ThreeTriosPlayer p);
+    public ArrayList<Card> getHand(ThreeTriosPlayer p);
 
 }

@@ -29,21 +29,17 @@ public enum ThreeTriosDirection {
      */
     public ThreeTriosDirection getOpposite() {
         switch (this) {
-          case NORTH -> {
-              return SOUTH;
-          }
-          case EAST -> {
-              return WEST;
-          }
-          case SOUTH -> {
-              return NORTH;
-          }
-          case WEST -> {
-              return EAST;
-          }
+            case NORTH:
+                return SOUTH;
+            case EAST:
+                return WEST;
+            case SOUTH:
+                return NORTH;
+            case WEST:
+                return EAST;
+            default:
+                throw new IllegalStateException(
+                    "Somehow, a ThreeTriosDirection was not one of its enumerated possibilities.");
         }
-        throw new IllegalStateException(
-                "Somehow, a ThreeTriosDirection was not one of its enumerated possibilities."
-        );
     }
 }

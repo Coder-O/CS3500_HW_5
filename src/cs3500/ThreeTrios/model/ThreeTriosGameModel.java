@@ -14,9 +14,10 @@ import cs3500.ThreeTrios.model.Card;
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
     private List<Card> deck;
-    private Grid grid;
+    private SimpleGrid grid;
     private Map<ThreeTriosPlayer, List<Card>> hand;
-    private ThreeTriosPlayer currentPlayer;
+    private ThreeTriosPlayer playerOne;
+    private ThreeTriosPlayer playerTwo;
     
     /**
      * Constructor for ThreeTrios Model.
@@ -31,9 +32,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         //from the list. 
         //Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
         this.deck = new ArrayList<>();
-        this.grid = new Grid();
+        this.grid = new SimpleGrid();
         this.hand = new Map<ThreeTriosPlayer, List<Card>>();
-        this.currentPlayer = new ThreeTriosPlayer();
+        this.playerOne = ThreeTriosPlayer.ONE;
+        this.playerOne = ThreeTriosPlayer.TWO;
     }
 
     /**
@@ -100,18 +102,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * @param p whose hand we want. 
     * @throws IllegalArgumentException if player p does not exist or is null
     */
-    public List<Card> getHand(ThreeTriosPlayer p) {
+    public ArrayList<Card> getHand(ThreeTriosPlayer p) {
         if (p == null || !hand.containsKey(p)) {
             throw new IllegalArgumentException("Invalid player.");
         }
         return new ArrayList<Card>(hand.get(p));
-    }
-
-    /**
-    * Returns the list of flipped Cards. 
-    * @return the list of flipped Cards.
-    */
-    public List<Card> flippedThisTurn() {
-        //todo
     }
 }
