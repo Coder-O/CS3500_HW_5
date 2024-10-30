@@ -65,9 +65,6 @@ public class Card implements ThreeTriosCard {
               return this.west;
           }
         }
-        throw new IllegalArgumentException(
-                "Somehow, the direction parameter is not one of the enum values..."
-        );
     }
 
     /**
@@ -96,11 +93,11 @@ public class Card implements ThreeTriosCard {
     public boolean equals(Object obj) {
       if (obj instanceof Card) {
         Card otherCard = (Card) obj;
-//        return this.north == otherCard.getNorth()
-//        && this.east == otherCard.getEast()
-//        && this.west == otherCard.getWest()
-//        && this.south == otherCard.getSouth()
-//        && this.player == otherCard.getPlayer();
+        return this.north == otherCard.getNorth()
+        && this.east == otherCard.getEast()
+        && this.west == otherCard.getWest()
+        && this.south == otherCard.getSouth()
+        && this.player == otherCard.getPlayer();
       }
       return false;
     }
