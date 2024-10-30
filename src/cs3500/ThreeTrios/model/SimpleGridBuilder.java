@@ -1,6 +1,6 @@
 package cs3500.ThreeTrios.model;
 
-public class SimpleGridBuilder implements ThreeTriosGridBuilder<SimpleGrid> {
+public class SimpleGridBuilder implements ThreeTriosGridBuilder<Grid> {
   /**
    * Sets the cell at the specified position to the given cell.
    *
@@ -19,7 +19,7 @@ public class SimpleGridBuilder implements ThreeTriosGridBuilder<SimpleGrid> {
    * @return The grid created by this builder.
    */
   @Override
-  public SimpleGrid buildGrid() {
+  public Grid buildGrid() {
     return null;
   }
 }

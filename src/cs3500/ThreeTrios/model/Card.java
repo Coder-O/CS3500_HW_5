@@ -14,11 +14,12 @@ public class Card implements ThreeTriosCard {
     /**
      * Card constructor.
      */
-    public Card(ThreeTriosAttackValue north, 
-    ThreeTriosAttackValue east, 
-    ThreeTriosAttackValue west, 
-    ThreeTriosAttackValue south, 
-    ThreeTriosPlayer player, String name) {
+    public Card(ThreeTriosAttackValue north,
+    ThreeTriosAttackValue east,
+    ThreeTriosAttackValue west,
+    ThreeTriosAttackValue south,
+    ThreeTriosPlayer player,
+    String name) {
         this.north = north;
         this.east = east;
         this.west = west;
@@ -93,6 +94,28 @@ public class Card implements ThreeTriosCard {
     }
 
     /**
+     * Gets the attack value for the corresponding direction
+     * @param direction The direction to get the attack value for.
+     * @return The attack value for the corresponding direction.
+     */
+    @Override
+    public ThreeTriosAttackValue getAttackValue(ThreeTriosDirection direction) {
+        switch (direction) {
+          case NORTH:
+              return this.north;
+          case EAST:
+              return this.east;
+          case SOUTH:
+              return this.south;
+          case WEST:
+              return this.west;
+        default:
+            throw new IllegalStateException(
+                "Somehow, a ThreeTriosDirection was not one of its enumerated possibilities.");
+        }
+    }
+
+    /**
     * Prints the values of the card.
     * Ex: 7 3 9 A
     * @return a four character representation of the card
@@ -118,7 +141,7 @@ public class Card implements ThreeTriosCard {
     public boolean equals(Object obj) {
       if (obj instanceof Card) {
         Card otherCard = (Card) obj;
-        return this.north == otherCard.getNorth() 
+        return this.north == otherCard.getNorth()
         && this.east == otherCard.getEast()
         && this.west == otherCard.getWest() 
         && this.south == otherCard.getSouth() 
@@ -126,25 +149,6 @@ public class Card implements ThreeTriosCard {
         && this.name == otherCard.getName();
       }
       return false;
-    }
-
-    /**
-     * Gets the attack value for the corresponding direction.
-     * @return The attack value for the corresponding direction.
-     */
-    public ThreeTriosAttackValue getAttackValue(ThreeTriosDirection direction) {
-        if (direction.getName() == "north") {
-            return this.getNorth();
-        }
-        if (direction.getName() == "east") {
-            return this.getEast();
-        }
-        if (direction.getName() == "west") {
-            return this.getWest();
-        }
-        else {
-            return this.getSouth();
-        }
     }
     
 }

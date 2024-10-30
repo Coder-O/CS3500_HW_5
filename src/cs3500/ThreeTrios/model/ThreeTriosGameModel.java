@@ -2,9 +2,9 @@
 package cs3500.ThreeTrios.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import cs3500.ThreeTrios.model.Card;
 
 /**
 * Represents the model for the ThreeTrios Game.
@@ -18,6 +18,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     private Map<ThreeTriosPlayer, List<Card>> hand;
     private ThreeTriosPlayer playerOne;
     private ThreeTriosPlayer playerTwo;
+    private ThreeTriosBattleRules battleRules;
     
     /**
      * Constructor for ThreeTrios Model.
@@ -44,7 +45,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     public boolean isGameOver() {
         //TODO
-        //The game ends when all empty card cells are filled. 
+        //The game ends when all empty card cells are filled.
+        return false;
     }
 
     /**
@@ -55,21 +57,45 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         //todo
         //The winner is determined by counting the number of cards each player owns both on the grid and in their hands. 
         //The player with the most owned cards wins. If no such player exists, the game is a tie.
+        return false;
     }
 
     /**
      * Plays a card from the cardIdxInHand position of the given player's hand to the specified row and collumn of the grid.
-     * All indicies are zero indexed.
-     * @param player The player who's hand the card is being played from.
-     * @param cardIdxInHand The index in the spcified habd to play the card from.
-     * @param row The row in the grid to play the card to.
-     * @param column The column in the grid to play the card to.
-     * @throws IllegalStateException If it is not the specified player's turn
+     * All indices are zero indexed.
+     *
+     * @param player        The player who's hand the card is being played from.
+     * @param cardIdxInHand The index in the specified hand to play the card from.
+     * @param row           The row in the grid to play the card to.
+     * @param column        The column in the grid to play the card to.
+     * @throws IllegalStateException    If it is not the specified player's turn
      * @throws IllegalArgumentException If the cardIdxInHand, row, or column parameters are out-of-bounds.
      * @throws IllegalArgumentException If the specified move is invalid (such as playing to a hole or a filled Card Cell)
      */
+    @Override
     public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IllegalArgumentException {
-        //todo
+        if (!player.equals(getCurrentPlayer())) {
+            throw new IllegalStateException(
+                    player.name() + " cannot play, it is " + getCurrentPlayer() +"'s turn."
+            );
+        }
+
+        ThreeTriosCard playerCard = playerHands.get(player).get(cardIdxInHand);
+
+        // getCell inherently throws an IllegalArgumentException if there is no cell there.
+        ThreeTriosCell cell = grid.getCell(row, column);
+
+        if (cell.isHole()) {
+            throw new IllegalArgumentException("Cannot play to a hole!!!");
+        }
+        if (cell.getCard() != null) {
+            throw new IllegalArgumentException("Cannot play where a card has already been played!");
+        }
+
+        cell.setCard(playerCard);
+
+        // Mutation is desired, so wwe use grid as opposed to getGrid();
+        battleRules.battle(playerCard, grid);
     }
 
     /**
@@ -84,7 +110,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * Returns the Grid in its current state.
     * @return Current Grid.
     */
-    public ThreeTriosGrid getGrid() {
+    public SimpleGrid getGrid() {
         return this.grid;
     }
     
@@ -94,6 +120,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     */
     public ThreeTriosPlayer getCurrentPlayer() {
         //todo
+        return currentPlayer;
     }
     
     /**
