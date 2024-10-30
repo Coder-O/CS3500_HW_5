@@ -52,10 +52,11 @@ public interface ThreeTriosModel {
     public ThreeTriosPlayer getCurrentPlayer();
     
     /**
-    * Returns a copy of the hand of the specified Player.
-    * @return a copy of the hand of the specified Player p.
-    * @param p whose hand we want. 
-    */
-    public int getHand(ThreeTriosPlayer p);
+     * Returns a copy of the hand of the specified Player.
+     *
+     * @param p whose hand we want.
+     * @return a copy of the hand of the specified Player p.
+     */
+    public List<ThreeTriosCard> getHand(ThreeTriosPlayer p);
 
 }
