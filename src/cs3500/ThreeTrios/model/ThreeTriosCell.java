@@ -21,9 +21,10 @@ interface ThreeTriosCell {
   ThreeTriosCard getCard();
 
   /**
-   * Adds the specified card to this cell, if it isn't a hole.
-   * This will overwrite whatever card might have been there before.
+   * Adds the specified card to this cell, if it isn't a hole and there isn't already a card here.
+   * @param card The card to place in the cell.
    * @throws IllegalStateException If the cell is a hole.
+   * @throws IllegalStateException If this cell already holds a card.
    */
-  ThreeTriosCard setCard(ThreeTriosCard card);
+   void setCard(ThreeTriosCard card) throws IllegalStateException;
 }

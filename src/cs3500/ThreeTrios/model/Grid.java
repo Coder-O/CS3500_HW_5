@@ -116,17 +116,36 @@ public class Grid implements ThreeTriosGrid {
   private Map<ThreeTriosDirection, ThreeTriosCard> helpGetNeighbors(int row, int column) {
     Map<ThreeTriosDirection, ThreeTriosCard> toReturn = new HashMap<>();
 
-    if (row > 0 && !grid[row - 1][column].isHole()) {
-      toReturn.put(ThreeTriosDirection.NORTH, grid[row - 1][column].getCard());
+    ThreeTriosCell currentCell;
+
+    // check each direction and add the card int that direction to the map if appropriate.
+
+    if (row > 0) {
+      currentCell = grid[row - 1][column];
+      if (!currentCell.isHole() && currentCell.getCard() != null) {
+        toReturn.put(ThreeTriosDirection.NORTH, currentCell.getCard());
+      }
     }
-    if (row < rows && !grid[row + 1][column].isHole()) {
-      toReturn.put(ThreeTriosDirection.SOUTH, grid[row + 1][column].getCard());
+
+    if (row < rows) {
+      currentCell = grid[row + 1][column];
+      if (!currentCell.isHole() && currentCell.getCard() != null) {
+        toReturn.put(ThreeTriosDirection.SOUTH, currentCell.getCard());
+      }
     }
-    if (column > 0 && !grid[row][column - 1].isHole()) {
-      toReturn.put(ThreeTriosDirection.WEST, grid[row][column - 1].getCard());
+
+    if (column > 0) {
+      currentCell = grid[row][column - 1];
+      if (!currentCell.isHole() && currentCell.getCard() != null) {
+        toReturn.put(ThreeTriosDirection.WEST, currentCell.getCard());
+      }
     }
-    if (column < columns && !grid[row][column + 1].isHole()) {
-      toReturn.put(ThreeTriosDirection.EAST, grid[row][column + 1].getCard());
+
+    if (column < columns) {
+      currentCell = grid[row][column + 1];
+      if (!currentCell.isHole() && currentCell.getCard() != null) {
+        toReturn.put(ThreeTriosDirection.EAST, currentCell.getCard());
+      }
     }
 
     return toReturn;
