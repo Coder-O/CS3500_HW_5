@@ -5,7 +5,7 @@ package cs3500.ThreeTrios.model;
 * The setCell method will be called for every non-card cell in the grid.
 * Cells not initialized using the setCell method will be initialized to empty CardCells.
 */
-interface ThreeTriosGridBuilder {
+interface ThreeTriosGridBuilder <T extends ThreeTriosGrid> {
 
     /**
      * Sets the cell at the specified position to the given cell.
@@ -19,6 +19,6 @@ interface ThreeTriosGridBuilder {
      * Returns the Grid created by this builder.
      * @return The grid created by this builder.
      */
-    public ThreeTriosGrid buildGrid();
+    public T buildGrid();
 }
 

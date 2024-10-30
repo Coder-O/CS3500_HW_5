@@ -1,13 +1,21 @@
 package cs3500.ThreeTrios.model;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
+import java.util.Map;
 
 public class SimpleModel implements ThreeTriosModel {
+
+  private ThreeTriosGrid grid;
+  private Map<ThreeTriosPlayer, List<ThreeTriosCard>> playerHands;
+  private ThreeTriosBattleRules battleRules;
 
 
   public SimpleModel() {
 
+    grid = new SimpleGridBuilder().buildGrid();
+    playerHands = new HashMap<>();
+    battleRules = new SimpleRules();
   }
 
   /**
@@ -44,7 +52,19 @@ public class SimpleModel implements ThreeTriosModel {
    */
   @Override
   public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IllegalArgumentException {
+    ThreeTriosCard playerCard = playerHands.get(player).get(cardIdxInHand);
 
+    // GetCell inherently throws an illegalArgumentException if there is no cell there.
+    ThreeTriosCell cell = grid.getCell(row, column);
+
+    if (cell.isHole()) {
+      throw new IllegalArgumentException("Cannot play to a hole!!!");
+    }
+
+    cell.setCard(playerCard);
+
+    // Mutation is desired, so wwe use grid as opposed to getGrid();
+    battleRules.battle(playerCard, grid);
   }
 
   /**

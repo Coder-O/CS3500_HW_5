@@ -13,8 +13,9 @@ public interface ThreeTriosGrid {
      * @param row The row to get the cell from.
      * @param column The collumn to get the cell from.
      * @return The cell at the specified position. NOTE: Allows for mutation.
+     * @throws IllegalArgumentException If the specified position is not in the grid.
      */
-    public ThreeTriosCell getCell(int row, int column);
+    public ThreeTriosCell getCell(int row, int column) throws IllegalArgumentException;
 
     /**
     * Returns the number of rows in the Grid.
