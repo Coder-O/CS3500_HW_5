@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class Card implements ThreeTriosCard {
 
-    private final ThreeTriosAttackValues north;
-    private final ThreeTriosAttackValues east;
-    private final ThreeTriosAttackValues south;
-    private final ThreeTriosAttackValues west;
+    private final ThreeTriosAttackValue north;
+    private final ThreeTriosAttackValue east;
+    private final ThreeTriosAttackValue south;
+    private final ThreeTriosAttackValue west;
     private ThreeTriosPlayer player;
 
     /**
      * Card constructor.
      */
-    public Card(ThreeTriosAttackValues north, 
-    ThreeTriosAttackValues east, 
-    ThreeTriosAttackValues west, 
-    ThreeTriosAttackValues south, 
+    public Card(ThreeTriosAttackValue north,
+    ThreeTriosAttackValue east,
+    ThreeTriosAttackValue west,
+    ThreeTriosAttackValue south,
     ThreeTriosPlayer player) {
         this.north = north;
         this.east = east;
@@ -25,41 +25,7 @@ public class Card implements ThreeTriosCard {
         this.player = player;
     }
 
-    /**
-     * Gets the northward facing attackValue of this card.
-     * @return The northward facing attackValue of this card.
-     */
-    @Override
-    public ThreeTriosAttackValues getNorth() {
-        return this.north;
-    }
-    
-    /**
-     * Gets the eastward facing attackValue of this card.
-     * @return The eastward facing attackValue of this card
-     */
-    @Override
-    public ThreeTriosAttackValues getEast() {
-        return this.east;
-    }
 
-    /**
-     * Gets the southward facing attackValue of this card.
-     * @return The southward facing attackValue of this card.
-     */
-    @Override
-    public ThreeTriosAttackValues getSouth() {
-        return this.south;
-    }
-
-    /**
-     * Gets the westward facing attackValue of this card.
-     * @return The westward facing attackValue of this card.
-     */
-    @Override
-    public ThreeTriosAttackValues getWest() {
-        return this.west;
-    }
 
     /**
     * Returns the Card's Player.
@@ -76,6 +42,29 @@ public class Card implements ThreeTriosCard {
     @Override
     public void changePlayer() {
         //todo
+    }
+
+    /**
+     * Gets the attack value for the corresponding direction
+     * @param direction The direction to get the attack value for.
+     * @return The attack value for the corresponding direction.
+     */
+    @Override
+    public ThreeTriosAttackValue getAttackValue(ThreeTriosDirection direction) {
+        switch (direction) {
+          case NORTH -> {
+              return this.north;
+          }
+          case EAST -> {
+              return this.east;
+          }
+          case SOUTH -> {
+              return this.south;
+          }
+          case WEST -> {
+              return this.west;
+          }
+        }
     }
 
     /**
@@ -104,10 +93,10 @@ public class Card implements ThreeTriosCard {
     public boolean equals(Object obj) {
       if (obj instanceof Card) {
         Card otherCard = (Card) obj;
-        return this.north == otherCard.getNorth() 
+        return this.north == otherCard.getNorth()
         && this.east == otherCard.getEast()
-        && this.west == otherCard.getWest() 
-        && this.south == otherCard.getSouth() 
+        && this.west == otherCard.getWest()
+        && this.south == otherCard.getSouth()
         && this.player == otherCard.getPlayer();
       }
       return false;

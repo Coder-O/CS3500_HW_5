@@ -2,7 +2,7 @@ package cs3500.ThreeTrios.model;
 
 import java.util.Map;
 
-public class SimpleGrid implements ThreeTriosGrid {
+public class Grid implements ThreeTriosGrid {
   /**
    * Gets a reference to the cell at the specified row and index.
    *

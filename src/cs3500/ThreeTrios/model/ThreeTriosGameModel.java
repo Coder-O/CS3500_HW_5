@@ -2,6 +2,7 @@
 package cs3500.ThreeTrios.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +13,9 @@ import java.util.Map;
 */
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
-    private List<Card> deck;
+    private List<ThreeTriosCard> deck;
     private ThreeTriosGrid grid;
-    private Map<ThreeTriosPlayer, List<Card>> hand;
+    private Map<ThreeTriosPlayer, List<Card>> playerHands;
     private ThreeTriosPlayer currentPlayer;
     private ThreeTriosBattleRules battleRules;
     
@@ -32,8 +33,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         //Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
         this.deck = new ArrayList<>();
         this.grid = new Grid();
-        this.hand = new Map<ThreeTriosPlayer, List<Card>>();
-        this.currentPlayer = new ThreeTriosPlayer();
+        this.playerHands = new HashMap<ThreeTriosPlayer, List<Card>>();
+        this.currentPlayer = ThreeTriosPlayer.ONE;
         this.battleRules = new SimpleRules();
 
     }
@@ -44,7 +45,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     public boolean isGameOver() {
         //TODO
-        //The game ends when all empty card cells are filled. 
+        //The game ends when all empty card cells are filled.
+        return false;
     }
 
     /**
@@ -55,6 +57,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         //todo
         //The winner is determined by counting the number of cards each player owns both on the grid and in their hands. 
         //The player with the most owned cards wins. If no such player exists, the game is a tie.
+        return false;
     }
 
     /**
@@ -117,6 +120,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     */
     public ThreeTriosPlayer getCurrentPlayer() {
         //todo
+        return currentPlayer;
     }
     
     /**
@@ -128,17 +132,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     @Override
     public List<ThreeTriosCard> getHand(ThreeTriosPlayer p) {
-        if (p == null || !hand.containsKey(p)) {
+        if (p == null || !playerHands.containsKey(p)) {
             throw new IllegalArgumentException("Invalid player.");
         }
-        return new ArrayList<ThreeTriosCard>(hand.get(p));
-    }
-
-    /**
-    * Returns the list of flipped Cards. 
-    * @return the list of flipped Cards.
-    */
-    public List<Card> flippedThisTurn() {
-        //todo
+        return new ArrayList<ThreeTriosCard>(playerHands.get(p));
     }
 }

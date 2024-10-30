@@ -21,60 +21,6 @@ public class SimpleRules implements ThreeTriosBattleRules{
   }
 
   /**
-   * Compares the attacker to the defender, and returns which one wins.
-   * An attacker wins a battle if it's attack value in the direction of its opponent is greater than
-   * that of its opponent's in its direction. Otherwise, the defender wins.
-   *
-   * <p>If the attacker wins, then the defender is flipped.</p>
-   *
-   * @param attacker The attacking card.
-   * @param defender The defending card.
-   * @param direction The direction of the defender in relation to the attacker.
-   */
-  public ThreeTriosCard compare(
-          ThreeTriosCard attacker,
-          ThreeTriosCard defender,
-          ThreeTriosDirection direction
-  ) {
-    ThreeTriosCard winingCard = null;
-    switch (direction) {
-      case NORTH -> {
-        if (attacker.getNorth().getValue() > defender.getSouth().getValue()) {
-          winingCard = attacker;
-          defender.changePlayer();
-          break;
-        }
-        winingCard = defender;
-      }
-      case EAST -> {
-        if (attacker.getEast().getValue() > defender.getWest().getValue()) {
-          winingCard = attacker;
-          defender.changePlayer();
-          break;
-        }
-        winingCard = defender;
-      }
-      case SOUTH -> {
-        if (attacker.getSouth().getValue() > defender.getNorth().getValue()) {
-          winingCard = attacker;
-          defender.changePlayer();
-          break;
-        }
-        winingCard = defender;
-      }
-      case WEST -> {
-        if (attacker.getWest().getValue() > defender.getEast().getValue()) {
-          winingCard = attacker;
-          defender.changePlayer();
-          break;
-        }
-        winingCard = defender;
-      }
-    }
-    return winingCard;
-  }
-
-  /**
    * Handles the battling and flipping of cards after a card has been played.
    * Details of interactions vary depending upon the implementation.
    *

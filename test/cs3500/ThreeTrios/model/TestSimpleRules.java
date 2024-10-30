@@ -52,7 +52,7 @@ public class TestSimpleRules {
 //   |--5--| |--_--| |--5--|
 //   |A 2 A| |_ H _| |1 2 7|
 //   |__A__| |__-__| |__8__|
-  private ThreeTriosGrid holeGrid
+  private ThreeTriosGrid holeGrid;
 
 
   @Before
@@ -61,8 +61,20 @@ public class TestSimpleRules {
     attackingPlayer = ThreeTriosPlayer.ONE;
 
     // Specific cards:
-    aceCard = new ;
-    worstCard = new ;
+    aceCard = new Card(
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            attackingPlayer
+    );
+    worstCard = new Card(
+            ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.ONE,
+            attackingPlayer
+    );;
 
     // Specific grids:
     allLooseGrid = new SimpleGridBuilder().buildGrid();
