@@ -14,11 +14,12 @@ import java.util.Map;
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
     private List<Card> deck;
-    private SimpleGrid grid;
+    private Grid grid;
     private Map<ThreeTriosPlayer, List<Card>> hand;
     private ThreeTriosPlayer playerOne;
     private ThreeTriosPlayer playerTwo;
     private ThreeTriosBattleRules battleRules;
+    private ThreeTriosPlayer currentPlayer;
     
     /**
      * Constructor for ThreeTrios Model.
@@ -33,10 +34,11 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         //from the list. 
         //Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
         this.deck = new ArrayList<>();
-        this.grid = new SimpleGrid();
-        this.hand = new Map<ThreeTriosPlayer, List<Card>>();
+        this.grid = new Grid();
+        this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
         this.playerOne = ThreeTriosPlayer.ONE;
-        this.playerOne = ThreeTriosPlayer.TWO;
+        this.playerTwo = ThreeTriosPlayer.TWO;
+        this.currentPlayer = playerOne;
     }
 
     /**
@@ -80,7 +82,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             );
         }
 
-        ThreeTriosCard playerCard = playerHands.get(player).get(cardIdxInHand);
+        ThreeTriosCard playerCard = hand.get(player).get(cardIdxInHand);
 
         // getCell inherently throws an IllegalArgumentException if there is no cell there.
         ThreeTriosCell cell = grid.getCell(row, column);
@@ -110,7 +112,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * Returns the Grid in its current state.
     * @return Current Grid.
     */
-    public SimpleGrid getGrid() {
+    public Grid getGrid() {
         return this.grid;
     }
     

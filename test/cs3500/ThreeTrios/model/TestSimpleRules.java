@@ -49,8 +49,8 @@ public class TestSimpleRules {
 //   |9 2 9| |_ H _| |9 2 9|
 //   |__4__| |__-__| |__9__|
 //
-//   |--5--| |--_--| |--5--|
-//   |A 2 A| |_ H _| |1 2 7|
+//   |--A--| |--_--| |--5--|
+//   |A 1 A| |_ H _| |1 2 7|
 //   |__A__| |__-__| |__8__|
   private ThreeTriosGrid holeGrid;
 
@@ -66,19 +66,22 @@ public class TestSimpleRules {
             ThreeTriosAttackValue.A,
             ThreeTriosAttackValue.A,
             ThreeTriosAttackValue.A,
-            attackingPlayer
+            attackingPlayer,
+            "Ace"
     );
     worstCard = new Card(
             ThreeTriosAttackValue.ONE,
             ThreeTriosAttackValue.ONE,
             ThreeTriosAttackValue.ONE,
             ThreeTriosAttackValue.ONE,
-            attackingPlayer
+            attackingPlayer,
+            "Worst"
     );;
 
     // Specific grids:
     allLooseGrid = new SimpleGridBuilder().buildGrid();
     oneLoosesGrid =  new SimpleGridBuilder().buildGrid();
+    holeGrid = new SimpleGridBuilder().buildGrid();
   }
 
   @Test
@@ -131,25 +134,39 @@ public class TestSimpleRules {
     );
   }
 
-  // Gained by AttackerNotFlipped
-  @Test
-  public void testBattleOnEdge() {
-
-  }
 
   @Test
   public void testBattleNextToHole() {
-
+    battleRules.battle(aceCard, holeGrid);
+    Assert.assertEquals(
+            "The attacker should have won",
+            holeGrid.getCell(2,1).getCard(),
+            null
+    );
   }
 
   @Test
-  public void testBattleLoss() {
-
+  public void testBattleLossDoesntFlip() {
+    battleRules.battle(worstCard, oneLoosesGrid);
+    Assert.assertEquals(
+            "The attacker should not have flipped",
+            oneLoosesGrid.getCell(0,1).getCard().getPlayer(),
+            ThreeTriosPlayer.TWO
+    );
   }
 
   @Test
   public void testBattleComboAll() {
-
+    battleRules.battle(aceCard, holeGrid);
+    for (int row = 0; row < 3; row++) {
+      for (int col = 0; col < 3; col++) {
+        Assert.assertEquals(
+                "All cards should be flipped to the attacking player.",
+                holeGrid.getCell(row, col).getCard().getPlayer(),
+                attackingPlayer
+        );
+      }
+    }
   }
 
   @Test
