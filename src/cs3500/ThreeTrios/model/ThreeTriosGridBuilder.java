@@ -15,12 +15,12 @@ interface ThreeTriosGridBuilder <T extends ThreeTriosGrid> {
      * @param cell   that will be placed.
      * @return
      */
-    public GridBuilder setCell(int row, int column, ThreeTriosCell cell);
+    GridBuilder setCell(int row, int column, ThreeTriosCell cell);
     
     /**
      * Returns the Grid created by this builder.
      * @return The grid created by this builder.
      */
-    public T buildGrid();
+    T buildGrid();
 }
 

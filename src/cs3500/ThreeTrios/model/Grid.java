@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Represents the playing grid of the ThreeTriosGame.
  */
-public class Grid implements ThreeTriosGrid {
+class Grid implements ThreeTriosGrid {
 
   private final ThreeTriosCell[][] grid;
   private final int rows;
