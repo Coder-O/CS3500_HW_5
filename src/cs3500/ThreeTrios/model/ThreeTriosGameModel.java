@@ -48,13 +48,12 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             ThreeTriosBattleRules battleRules,
             ThreeTriosPlayer startingPlayer
     ) throws IllegalArgumentException {
-        if (deck.size() != grid.getNumCardCells() + 1 ) {
+        if (!(deck.size() > grid.getNumCardCells())) {
             throw new IllegalArgumentException(
                     "There are "
                             + deck.size()
-                            + " cards in the deck when there should be "
+                            + " cards in the deck when there should be at least "
                             + (grid.getNumCardCells() + 1)
-                            + " instead."
             );
         }
         if (grid.getNumCards() != 0) {
@@ -66,10 +65,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         this.playerRed = ThreeTriosPlayer.RED;
         this.playerBlue = ThreeTriosPlayer.RED;
         this.currentPlayer = startingPlayer;
-
-        this.deck = new ArrayList<>();
+        this.battleRules = battleRules;
 
         // Initializing deck.
+        this.deck = new ArrayList<>();
         Set<String> uniqueNames = new HashSet<String>();
         for (ThreeTriosCard card : deck) {
             if (uniqueNames.contains(card.getName())) {
@@ -83,14 +82,20 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             deck.add(card);
         }
 
-        this.battleRules = battleRules;
+        // Initialize hands
         this.playerHands = new HashMap<ThreeTriosPlayer, List<ThreeTriosCard>>();
+        for (ThreeTriosPlayer player : ThreeTriosPlayer.values()) {
+            List<ThreeTriosCard> playerCards = new ArrayList<>();
+            for (int i = 0; i < (grid.getNumCardCells() + 1) / 2; ++i) {
+                playerCards.add(deck.remove(0));
+            }
+            playerHands.put(player, playerCards);
+        }
+
         this.currentPlayer = startingPlayer;
 
         //todo random 
         //todo intialize deck (random)
-        //todo intialize hands
-        //todo intialize grid
 
     }
 
