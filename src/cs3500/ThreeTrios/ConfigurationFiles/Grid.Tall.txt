@@ -1,6 +1,4 @@
-7 3
-CCC
-CCC
+3 3
 CCC
 CCC
 CCC

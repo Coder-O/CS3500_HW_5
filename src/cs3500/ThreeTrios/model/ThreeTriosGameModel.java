@@ -12,7 +12,7 @@ import java.util.Set;
 /**
 * Represents the model for the ThreeTrios Game.
 * Model provides methods to perform game actions and retrieve the game state.
-* The game is setup and started in the constructor.
+* The game is set up and started in the constructor.
 */
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
@@ -129,7 +129,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             return true;
         }
         if (isGameOver()
-        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
+        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size()
         < this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
             return true;
         }
@@ -158,7 +158,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * Plays a card from the cardIdxInHand position of the given player's hand to the specified row and collumn of the grid.
      * All indices are zero indexed.
      *
-     * @param player        The player who's hand the card is being played from.
+     * @param player        The player whose hand the card is being played from.
      * @param cardIdxInHand The index in the specified hand to play the card from.
      * @param row           The row in the grid to play the card to.
      * @param column        The column in the grid to play the card to.

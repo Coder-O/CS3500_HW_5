@@ -9,6 +9,11 @@ import static org.junit.Assert.assertEquals;
  * Tests for the Model.
  */
 public class TestThreeTriosGameModel {
+
+    @Test
+    public void testConfigurationError() {
+
+    }
     
     @Test(expected = IllegalStateException.class)
     public void testConstructorExc() {
