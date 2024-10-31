@@ -9,6 +9,7 @@ import cs3500.ThreeTrios.model.SimpleRules;
 import cs3500.ThreeTrios.model.ThreeTriosAttackValue;
 import cs3500.ThreeTrios.model.ThreeTriosBattleRules;
 import cs3500.ThreeTrios.model.ThreeTriosCard;
+import cs3500.ThreeTrios.model.ThreeTriosCell;
 import cs3500.ThreeTrios.model.ThreeTriosGameModel;
 import cs3500.ThreeTrios.model.ThreeTriosGrid;
 import cs3500.ThreeTrios.model.ThreeTriosModel;
@@ -40,7 +41,7 @@ public class TestThreeTriosGameModel {
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
         );
 
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+        model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
 
     @Test
@@ -197,6 +198,9 @@ public class TestThreeTriosGameModel {
     @Test
     public void testGetGrid() {
         this.setUp();
+
+        int rows = model.getGrid().getNumRows();
+        int columns = model.getGrid().getNumColumns();
 
         ThreeTriosGrid expectedGrid = new Grid(new ThreeTriosCell[rows][columns]);
 

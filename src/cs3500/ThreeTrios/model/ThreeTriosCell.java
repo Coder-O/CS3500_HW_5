@@ -5,7 +5,7 @@ package cs3500.ThreeTrios.model;
  * Each cell can be a hole or hold a card.
  * Class Invariant: game must have an odd number of cells.
  */
-interface ThreeTriosCell {
+public interface ThreeTriosCell {
 
   /**
    * Returns whether or not this card is a hole.
