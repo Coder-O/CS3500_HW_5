@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import cs3500.ThreeTrios.model.Card;
 import cs3500.ThreeTrios.model.ConfigurationReader;
-import cs3500.ThreeTrios.model.Grid;
 import cs3500.ThreeTrios.model.SimpleRules;
 import cs3500.ThreeTrios.model.ThreeTriosAttackValue;
 import cs3500.ThreeTrios.model.ThreeTriosBattleRules;
@@ -49,15 +48,31 @@ public class TestThreeTriosGameModel {
         //todo
     }
     
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testConstructorExc1() {
-    //     //todo
-    // }
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructorExc1() {
+        ThreeTriosGrid grid = ConfigurationReader.readGrid(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Fail.txt"
+        );
+        ThreeTriosBattleRules battleRules = new SimpleRules();
+        List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+        );
 
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testConstructorExc2() {
-    //     //todo
-    // }
+        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructorExc2() {
+        ThreeTriosGrid grid = ConfigurationReader.readGrid(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.PlayedToGrid.txt"
+        );
+        ThreeTriosBattleRules battleRules = new SimpleRules();
+        List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+        );
+
+        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorExc3() {
@@ -124,7 +139,11 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testPlayToGrid() {
-        //todo
+        this.setUp();
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+
+        assertEquals(9, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
+        assertEquals(1, model.getGrid().getNumCards()); 
     }
 
     @Test
@@ -199,10 +218,9 @@ public class TestThreeTriosGameModel {
     public void testGetGrid() {
         this.setUp();
 
-        int rows = model.getGrid().getNumRows();
-        int columns = model.getGrid().getNumColumns();
-
-        ThreeTriosGrid expectedGrid = new Grid(new ThreeTriosCell[rows][columns]);
+        ThreeTriosGrid expectedGrid = ConfigurationReader.readGrid(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+        );
 
         assertEquals(expectedGrid, model.getGrid());
     }
