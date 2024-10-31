@@ -23,8 +23,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     
     /**
      * Constructor for ThreeTrios Model.
+     *
+     * @param grid The grid to use, given by a configuration class.
      */
-    public ThreeTriosGameModel() {
+    public ThreeTriosGameModel(Grid grid) {
         //todo
         //To start the game, there must be enough cards to fill both players’ hands and fill every card cell. 
         //Therefore, if N is the number of card cells on the grid, 
@@ -34,7 +36,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         //from the list. 
         //Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
         this.deck = new ArrayList<>();
-        this.grid = new Grid();
+        this.grid = grid;
         this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
         this.playerOne = ThreeTriosPlayer.ONE;
         this.playerTwo = ThreeTriosPlayer.TWO;
