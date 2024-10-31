@@ -27,14 +27,18 @@ import static org.junit.Assert.assertFalse;
 public class TestThreeTriosGameModel {
 
     private ThreeTriosGameModel model;
-    
+
     /**
      * Set up an example game.
      */
     protected void setUp() {
-        ThreeTriosGrid grid = ConfigurationReader.readGrid("Grid.Tall");
+        ThreeTriosGrid grid = ConfigurationReader.readGrid(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+        );
         ThreeTriosBattleRules battleRules = new SimpleRules();
-        List<ThreeTriosCard> deck = ConfigurationReader.readDeck("Card.10Cards");
+        List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+        );
 
         ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
@@ -81,7 +85,7 @@ public class TestThreeTriosGameModel {
     @Test
     public void testIsGameOverFalse() {
         this.setUp();
-    
+
         assertFalse(model.isGameOver());
     }
 

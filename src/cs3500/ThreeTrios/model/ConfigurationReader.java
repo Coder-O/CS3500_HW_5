@@ -1,5 +1,6 @@
 package cs3500.ThreeTrios.model;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +15,28 @@ public class ConfigurationReader {
    * Reads a grid configuration from the provided file.
    * @param filePath The file to read.
    * @return The grid read from the file.
+   * @throws IllegalArgumentException if the file could not be opened.
    * @throws IllegalStateException if the file is not structured correctly
    */
 
-  public static Grid readGrid(String filePath) {
-    Scanner scanner = new Scanner(filePath);
+  public static ThreeTriosGrid readGrid(String filePath) {
+    File file = new File(filePath);
+    Scanner scanner;
+    try {
+      scanner = new Scanner(file);
+    } catch (FileNotFoundException exception) {
+      throw new IllegalArgumentException(
+              "The file '" + filePath + "' could not be found!!!",
+              exception
+      );
+    }
     int rows;
     int columns;
 
     if (scanner.hasNextInt()) {
       rows = scanner.nextInt();
     } else {
+      System.out.println("Hi " + scanner.nextLine());
       throw new IllegalStateException("The provided file could not be read!!!");
     }
     if (scanner.hasNextInt()) {
@@ -35,7 +47,8 @@ public class ConfigurationReader {
 
     GridBuilder builder = new GridBuilder(rows, columns);
 
-    String line;
+    // Leaves the current line, moving on to line 2
+    String line = scanner.nextLine();
     for (int row = 0; row < rows; row++) {
       if (!scanner.hasNextLine()) {
         throw new IllegalStateException(
@@ -72,10 +85,21 @@ public class ConfigurationReader {
    * Reads a card configuration from the provided file.
    * @param filePath The file to read.
    * @return The card read from the file.
+   * @throws IllegalArgumentException if the file could not be opened.
    * @throws IllegalStateException if the file is not structured correctly
    */
   public static List<ThreeTriosCard> readDeck(String filePath) {
-    Scanner scanner = new Scanner(filePath);
+    File file = new File(filePath);
+    Scanner scanner;
+    try {
+      scanner = new Scanner(file);
+    } catch (FileNotFoundException exception) {
+      throw new IllegalArgumentException(
+              "The file '" + filePath + "' could not be found!!!",
+              exception
+      );
+    }
+
     List<ThreeTriosCard> deck = new ArrayList<>();
 
     while(scanner.hasNextLine()) {

@@ -1,0 +1,15 @@
+5 10
+CCCXXXCCCC
+CCCCXXXCCC
+CCCCCXXCCC
+CCCXXXCCCX
+CCCXCXCCCX
+
+The rest should be ignored
+haksfvhpiwhvodihfvbowrgihvboreighw
+wipejvnfbpwirejgvbnpirwhgbnvpirwhgn
+CCCXXXCCCC
+CCCXXXXCCC
+CCCXCCCCCC
+CCCXCXXCCC
+CCCXCCCCCC
