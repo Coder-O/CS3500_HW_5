@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import cs3500.ThreeTrios.model.Card;
 import cs3500.ThreeTrios.model.ConfigurationReader;
+import cs3500.ThreeTrios.model.Grid;
 import cs3500.ThreeTrios.model.SimpleRules;
 import cs3500.ThreeTrios.model.ThreeTriosAttackValue;
 import cs3500.ThreeTrios.model.ThreeTriosBattleRules;
@@ -191,33 +192,41 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testGetGrid() {
-        //todo
+        this.setUp();
+
+        ThreeTriosGrid expectedGrid = new Grid(new ThreeTriosCell[rows][columns]);
+
+        assertEquals(expectedGrid, model.getGrid());
     }
 
     @Test
     public void testGetCurrentPlayerInitial() {
-        //todo
+        this.setUp();
+
+        assertEquals(ThreeTriosPlayer.RED, model.getCurrentPlayer());
     }
 
     @Test
     public void testGetCurrentPlayerAfterOneMove() {
         //todo
+        this.setUp();
+
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+
+        assertEquals(ThreeTriosPlayer.BLUE, model.getCurrentPlayer());
+
     }
 
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testGetHandExc() {
-    //     //todo
-    // }
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetHandExc() {
+        this.setUp();
+
+        model.getHand(null);
+    }
 
     @Test
     public void testGetHand() {
         //todo
     }
-
-    @Test
-    public void testEndTurn() {
-        //todo
-    }
-
     
 }

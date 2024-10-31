@@ -60,9 +60,4 @@ public interface ThreeTriosModel {
      */
     public ArrayList<ThreeTriosCard> getHand(ThreeTriosPlayer p);
 
-    /**
-    * Ends the current player's turn.
-    */
-    public void endTurn();
-
 }

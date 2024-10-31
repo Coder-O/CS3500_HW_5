@@ -222,7 +222,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     /**
     * Ends the current player's turn.
     */
-    public void endTurn() {
+    private void endTurn() {
         if (this.currentPlayer == playerRed) {
             this.currentPlayer = playerBlue;
         }
