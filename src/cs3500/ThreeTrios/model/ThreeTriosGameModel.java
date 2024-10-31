@@ -76,7 +76,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
                                 + " which violates an invariant!!!"
                 );
             }
-
             uniqueNames.add(card.getName());
             deck.add(card);
         }
