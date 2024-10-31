@@ -20,48 +20,97 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     private ThreeTriosPlayer playerTwo;
     private ThreeTriosBattleRules battleRules;
     private ThreeTriosPlayer currentPlayer;
+    private int numCardCells;
+    private int numDeck;
     
     /**
      * Constructor for ThreeTrios Model.
+     * 
+     * To start the game, there must be enough cards to fill both players’ hands and fill every card cell. 
+     * Therefore, if N is the number of card cells on the grid, 
+     * there must be at least N+1 cards available in the game to split between the players.
+     * With a valid grid and list of cards to play with, each player is dealt their cards at random 
+     * from the list. 
+     * Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
      *
      * @param grid The grid to use, given by a configuration class.
+     * @param numCardCells The number of cells.
+     * @param numDeck the number of cards in the deck.
      */
-    public ThreeTriosGameModel(Grid grid) {
-        //todo
-        //To start the game, there must be enough cards to fill both players’ hands and fill every card cell. 
-        //Therefore, if N is the number of card cells on the grid, 
-        //there must be at least N+1 cards available in the game to split between the players.
-
-        //With a valid grid and list of cards to play with, each player is dealt their cards at random 
-        //from the list. 
-        //Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
+    public ThreeTriosGameModel(Grid grid, int numCardCells, int numDeck) {
+        if (numDeck + 1 < numCardCells ) {
+            throw new IllegalStateException("Not enough cards in the deck.");
+        }
+        this.numCardCells = numCardCells;
+        this.numDeck = numDeck;
         this.deck = new ArrayList<>();
         this.grid = grid;
         this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
         this.playerOne = ThreeTriosPlayer.ONE;
         this.playerTwo = ThreeTriosPlayer.TWO;
         this.currentPlayer = playerOne;
+
+        //todo random 
+        //todo intialize deck (random)
+        //todo intialize hands
+        //todo intialize grid
+
     }
 
     /**
      * Checks if the game is over.
+     * The game ends when all empty card cells are filled.
      * @return true if the game is over, false otherwise
      */
     public boolean isGameOver() {
-        //TODO
-        //The game ends when all empty card cells are filled.
-        return false;
+        for (int row = 0; row < grid.getNumRows(); row++) {
+            for (int column = 0; column < grid.getNumColumns(); column++) {
+                ThreeTriosCell cell = grid.getCell(row, column);
+                // If the cell is a card cell (not a hole) and is empty, the game isn't over
+                if (!cell.isHole() && cell.getCard() == null) {
+                    return false;
+                }
+            }
+        }
+        return true; //if no non-empty cell was found, the game is over
     }
 
     /**
      * Checks if the game has been won.
+     * The winner is determined by counting the number of cards each player owns both on the grid and in their hands. 
+     * The player with the most owned cards wins. If no such player exists, the game is a tie.
      * @return true if the game has been won, false otherwise
      */
     public boolean isGameWon() {
-        //todo
-        //The winner is determined by counting the number of cards each player owns both on the grid and in their hands. 
-        //The player with the most owned cards wins. If no such player exists, the game is a tie.
+        if (isGameOver()
+        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size() 
+        > this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
+            return true;
+        }
+        if (isGameOver()
+        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size() 
+        < this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
+            return true;
+        }
         return false;
+    }
+
+    /**
+     * Count the number of cards each player owns on the grid.
+     * @param p a player
+     * @return the number of cards.
+     */
+    private int getNumOwnedCards(ThreeTriosPlayer player) {
+        int count = 0;
+        for (int row = 0; row < grid.getNumRows(); row++) {
+            for (int column = 0; column < grid.getNumColumns(); column++) {
+                ThreeTriosCell cell = grid.getCell(row, column);
+                if (!cell.isHole() && cell.getCard() != null && cell.getCard().getPlayer() == player) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     /**
