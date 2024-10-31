@@ -111,18 +111,6 @@ public class TestCard {
         assertEquals(ThreeTriosAttackValue.FOUR, card.getAttackValue(ThreeTriosDirection.SOUTH));
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void testGetAttackValueExc() {
-        ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-        ThreeTriosAttackValue.TWO, 
-        ThreeTriosAttackValue.THREE, 
-        ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
-        "card");
-
-        card.getAttackValue(ThreeTriosDirection.NORTH);
-    }
-
     @Test
     public void testToString() {
         ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 

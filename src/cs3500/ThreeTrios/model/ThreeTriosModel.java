@@ -16,7 +16,7 @@ public interface ThreeTriosModel {
     public boolean isGameOver();
 
     /**
-     * Checks if the gae has been won.
+     * Checks if the game has been won.
      * @return true if the game has been won, false otherwise
      */
     public boolean isGameWon();

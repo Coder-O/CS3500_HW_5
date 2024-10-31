@@ -80,7 +80,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IllegalArgumentException {
         if (!player.equals(getCurrentPlayer())) {
             throw new IllegalStateException(
-                    player.name() + " cannot play, it is " + getCurrentPlayer() +"'s turn."
+                    player.name() + " cannot play, it is " + getCurrentPlayer() + "'s turn."
             );
         }
 

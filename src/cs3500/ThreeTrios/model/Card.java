@@ -122,7 +122,11 @@ public class Card implements ThreeTriosCard {
     */
     @Override
     public String toString() {
-        return this.getName() + this.north.getSymbol() + this.east.getSymbol() + this.west.getSymbol() + this.south.getSymbol();
+        return this.getName() + " " 
+        + this.north.getSymbol() + " " 
+        + this.east.getSymbol() + " "
+        + this.west.getSymbol()  + " "
+        + this.south.getSymbol();
     }
 
     /*
