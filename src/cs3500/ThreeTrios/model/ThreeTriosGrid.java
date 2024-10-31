@@ -42,4 +42,16 @@ public interface ThreeTriosGrid {
      *        this map does not include an entry or key for it.
      */
     public Map<ThreeTriosDirection, ThreeTriosCard> getNeighbors(ThreeTriosCard card);
+
+    /**
+    * Prints the grid using _ for empty cells and ' ' for hole cells.
+    * Ex: 
+    BB   _
+    _B   _
+    _ R  _
+    _  _ _
+    _   _R
+    * @return a textual representation of the grid
+    */
+    public String toString();
 }

@@ -18,7 +18,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     private List<ThreeTriosCard> deck;
     /* INVARIANT: Every card in the game has a unique name */
     private Grid grid;
-    private Map<ThreeTriosPlayer, List<Card>> playerHands;
+    private Map<ThreeTriosPlayer, List<Card>> hand;
+    private ThreeTriosPlayer playerRed;
+    private ThreeTriosPlayer playerBlue;
     private ThreeTriosBattleRules battleRules;
     private final ThreeTriosPlayer playerOne;
     private final ThreeTriosPlayer playerTwo;
@@ -58,6 +60,11 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             );
         }
         this.grid = grid;
+        this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
+        this.playerRed = ThreeTriosPlayer.RED;
+        this.playerBlue = ThreeTriosPlayer.RED;
+        this.currentPlayer = playerRed;
+
         this.deck = new ArrayList<>();
 
         // Initializing deck.
@@ -113,13 +120,13 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     public boolean isGameWon() {
         if (isGameOver()
-        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size()
-        > this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
+        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
+        > this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
             return true;
         }
         if (isGameOver()
-        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size() 
-        < this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
+        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
+        < this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
             return true;
         }
         return false;
@@ -224,11 +231,11 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * Ends the current player's turn.
     */
     public void endTurn() {
-        if (this.currentPlayer == playerOne) {
-            this.currentPlayer = playerTwo;
+        if (this.currentPlayer == playerRed) {
+            this.currentPlayer = playerBlue;
         }
-        else if (this.currentPlayer == playerTwo) {
-            this.currentPlayer = playerOne;
+        else if (this.currentPlayer == playerBlue) {
+            this.currentPlayer = playerRed;
         }
     }
 }

@@ -52,4 +52,11 @@ public interface ThreeTriosCard {
      * @return The attack value for the corresponding direction.
      */
     public ThreeTriosAttackValue getAttackValue(ThreeTriosDirection direction);
+
+    /**
+    * Prints the card.
+    * Ex: card1 7 3 9 A
+    * @return a textual representation of the card
+    */
+    public String toString();
 }

@@ -86,10 +86,10 @@ public class Card implements ThreeTriosCard {
     */
     @Override
     public void changePlayer() {
-        if (this.player == ThreeTriosPlayer.ONE) {
-            this.player = ThreeTriosPlayer.TWO;
+        if (this.player == ThreeTriosPlayer.RED) {
+            this.player = ThreeTriosPlayer.BLUE;
         } else {
-            this.player = ThreeTriosPlayer.ONE;
+            this.player = ThreeTriosPlayer.RED;
         }
     }
 

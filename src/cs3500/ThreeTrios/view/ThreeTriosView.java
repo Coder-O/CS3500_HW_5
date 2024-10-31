@@ -45,20 +45,34 @@ public class ThreeTriosView {
 
     /**
      * Displays the Game.
+     * Example:
+     * Player: BLUE
+     * BB   _
+     * _B   _
+     * _ R  _
+     * _  _ _
+     * _   _R
+     * Hand:
+     * CorruptKing 7 3 9 A
+     * AngryDragon 2 8 9 9
+     * WindBird 7 2 5 3
+     * HeroKnight A 2 4 4
+     * WorldDragon 8 3 5 7
+     * SkyWhale 4 5 9 9
      */
     @Override
     public String toString() {
         StringBuilder gameState = new StringBuilder();
 
         //display the Player
-        String currentPlayer = model.getCurrentPlayer().toString();
+        String currentPlayer = model.getCurrentPlayer().getSymbol();
         gameState.append("Player: ").append(currentPlayer).append("\n");
         
         //display the grid
         String grid = model.getGrid().toString();
         gameState.append(grid).append("\n");
 
-        //display the hand
+        //display the current player's hand
         ArrayList<Card> hand = model.getHand(model.getCurrentPlayer());
         gameState.append("Hand:\n");
         for (Card card : hand) {

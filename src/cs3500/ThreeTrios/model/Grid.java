@@ -186,4 +186,36 @@ public class Grid implements ThreeTriosGrid {
 
     return toReturn;
   }
+
+    /**
+    * Prints the grid using _ for empty cells and ' ' for hole cells.
+    * Ex: 
+    BB   _
+    _B   _
+    _ R  _
+    _  _ _
+    _   _R
+    * @return a textual representation of the grid
+    */
+    @Override
+    public String toString() {
+      StringBuilder gridView = new StringBuilder();
+      for (int row = 0; row < rows; row++) {
+          for (int column = 0; column < columns; column++) {
+              ThreeTriosCell cell = grid[row][column];
+              if (cell.isHole()) {
+                gridView.append(" ");
+              } else if (cell.getCard() == null) {
+                gridView.append("_");
+              } else {
+                gridView.append(cell.getCard().getPlayer().getSymbol());
+              }
+              if (column < columns - 1) {
+                gridView.append(" ");
+              }
+          }
+          gridView.append("\n");
+      }
+      return gridView.toString();
+    }
 }
