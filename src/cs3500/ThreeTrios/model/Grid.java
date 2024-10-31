@@ -93,6 +93,8 @@ public class Grid implements ThreeTriosGrid {
       );
     }
 
+    ++numCards;
+
     grid[row][column].setCard(card);
   }
 

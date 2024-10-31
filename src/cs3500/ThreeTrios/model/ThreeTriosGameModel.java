@@ -170,7 +170,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             );
         }
 
-        ThreeTriosCard playerCard = playerHands.get(player).get(cardIdxInHand);
+        ThreeTriosCard playerCard = playerHands.get(player).remove(cardIdxInHand);
 
         grid.playToCell(row, column, playerCard);
 

@@ -25,7 +25,6 @@ import static org.junit.Assert.assertFalse;
  * Tests for the Model.
  */
 public class TestThreeTriosGameModel {
-
     private ThreeTriosGameModel model;
 
     /**
@@ -51,7 +50,7 @@ public class TestThreeTriosGameModel {
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorExc1() {
         ThreeTriosGrid grid = ConfigurationReader.readGrid(
-                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Fail.txt"
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Split.txt"
         );
         ThreeTriosBattleRules battleRules = new SimpleRules();
         List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
@@ -70,7 +69,7 @@ public class TestThreeTriosGameModel {
         List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
         );
-
+        grid.playToCell(1, 1, deck.remove(0));
         ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
 
@@ -142,7 +141,7 @@ public class TestThreeTriosGameModel {
         this.setUp();
         model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
 
-        assertEquals(9, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
+        assertEquals(4, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
         assertEquals(1, model.getGrid().getNumCards()); 
     }
 
@@ -222,7 +221,7 @@ public class TestThreeTriosGameModel {
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
         );
 
-        assertEquals(expectedGrid, model.getGrid());
+        assertEquals(expectedGrid.toString(), model.getGrid().toString());
     }
 
     @Test
