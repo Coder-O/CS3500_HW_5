@@ -78,7 +78,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             }
 
             uniqueNames.add(card.getName());
-            deck.add(card);
+            this.deck.add(card);
         }
 
         // Initialize hands
