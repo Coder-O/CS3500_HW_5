@@ -1,4 +1,4 @@
-package cs3500.ThreeTrios.model;
+package cs3500.ThreeTrios;
 
 import org.junit.Test;
 import org.junit.Assert;
