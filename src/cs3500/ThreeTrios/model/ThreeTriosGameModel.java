@@ -39,6 +39,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      *             To preserve the integrity of the game state, this should not have any cards
      *             played to it yet.
      * @param deck The deck of cards to use.
+     * @param battleRules The rules to use in battles.
+     * @param shuffle Whether the hands should be randomized.
      * @throws IllegalArgumentException if the number of cards is not exactly N+1, where N is the number of card cells.
      * @throws IllegalArgumentException if the provided grid has been played to already.
      * @throws IllegalArgumentException if the provided cards are not unique.
@@ -46,7 +48,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     public ThreeTriosGameModel(
             ThreeTriosGrid grid,
             List<ThreeTriosCard> deck,
-            ThreeTriosBattleRules battleRules) throws IllegalArgumentException {
+            ThreeTriosBattleRules battleRules,
+            boolean shuffle
+    ) throws IllegalArgumentException {
         if (!(deck.size() > grid.getNumCardCells())) {
             throw new IllegalArgumentException(
                     "There are "
@@ -86,11 +90,44 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         for (ThreeTriosPlayer player : ThreeTriosPlayer.values()) {
             List<ThreeTriosCard> playerCards = new ArrayList<>();
             for (int i = 0; i < (grid.getNumCardCells() + 1) / 2; ++i) {
-                playerCards.add(deck.remove(random.nextInt(deck.size())));
+                int index = 0;
+                if (shuffle) {
+                    index = random.nextInt(deck.size());
+                }
+                playerCards.add(deck.remove(index));
             }
             playerHands.put(player, playerCards);
         }
     }
+
+
+    /**
+     * Constructor for ThreeTriosGameModel.
+     *
+     * To start the game, there must be enough cards to fill both players’ hands and fill every card cell.
+     * Therefore, if N is the number of card cells on the grid,
+     * there must be at least N+1 cards available in the game to split between the players.
+     * With a valid grid and list of cards to play with, each player is dealt their cards at random
+     * from the list.
+     * Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
+     *
+     * @param grid The grid to use, given by a configuration class.
+     *             To preserve the integrity of the game state, this should not have any cards
+     *             played to it yet.
+     * @param deck The deck of cards to use.
+     * @param battleRules The rules to use in battles.
+     * @throws IllegalArgumentException if the number of cards is not exactly N+1, where N is the number of card cells.
+     * @throws IllegalArgumentException if the provided grid has been played to already.
+     * @throws IllegalArgumentException if the provided cards are not unique.
+     */
+    public ThreeTriosGameModel(
+            ThreeTriosGrid grid,
+            List<ThreeTriosCard> deck,
+            ThreeTriosBattleRules battleRules
+    ) throws IllegalArgumentException {
+        this(grid, deck, battleRules, true);
+    }
+
 
     /**
      * Checks if the game is over.
