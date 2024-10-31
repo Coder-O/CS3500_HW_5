@@ -96,8 +96,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
 
         cell.setCard(playerCard);
 
-        // Mutation is desired, so wwe use grid as opposed to getGrid();
+        // Mutation is desired, so we use grid as opposed to getGrid();
         battleRules.battle(playerCard, grid);
+
+        endTurn();
     }
 
     /**
@@ -121,7 +123,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * @return Player who needs to play.
     */
     public ThreeTriosPlayer getCurrentPlayer() {
-        //todo
         return currentPlayer;
     }
     
@@ -136,5 +137,17 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             throw new IllegalArgumentException("Invalid player.");
         }
         return new ArrayList<Card>(hand.get(p));
+    }
+
+    /**
+    * Ends the current player's turn.
+    */
+    public void endTurn() {
+        if (this.currentPlayer == playerOne) {
+            this.currentPlayer = playerTwo;
+        }
+        else if (this.currentPlayer == playerTwo) {
+            this.currentPlayer = playerOne;
+        }
     }
 }
