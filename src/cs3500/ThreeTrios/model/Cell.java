@@ -34,6 +34,16 @@ class Cell implements ThreeTriosCell {
     this.card = null;
   }
 
+  /**
+   * Creates a new card cell.
+   * @param isHole Whether this cell is a hole.
+   * @param card The card to place in the cell.
+   */
+  private Cell(boolean isHole, ThreeTriosCard card) {
+    this.isHole = isHole;
+    this.card = card;
+  }
+
 
   /**
    * Returns whether or not this card is a hole.
@@ -42,7 +52,7 @@ class Cell implements ThreeTriosCell {
    */
   @Override
   public boolean isHole() {
-    return isHole;
+    return this.isHole;
   }
 
   /**
@@ -71,5 +81,18 @@ class Cell implements ThreeTriosCell {
     }
 
     this.card = card;
+  }
+
+  /**
+   * Returns a copy of this cell.
+   *
+   * @return A copy of this cell.
+   */
+  @Override
+  public ThreeTriosCell copy() {
+    return new Cell(
+            isHole,
+            card
+    );
   }
 }

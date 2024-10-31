@@ -15,7 +15,16 @@ public interface ThreeTriosGrid {
      * @return The cell at the specified position. NOTE: Allows for mutation.
      * @throws IllegalArgumentException If the specified position is not in the grid.
      */
-    public ThreeTriosCell getCell(int row, int column) throws IllegalArgumentException;
+    ThreeTriosCell getCell(int row, int column) throws IllegalArgumentException;
+
+    /**
+     * Plays the given card to the specified row and index of the grid.
+     * @param row the row to play the card to.
+     * @param column the column to play the card to.
+     * @param card the card to play
+     * @throws IllegalArgumentException if the row or column are not in the grid
+     */
+    void playToCell(int row, int column, ThreeTriosCard card);
 
     /**
     * Returns the number of rows in the Grid.

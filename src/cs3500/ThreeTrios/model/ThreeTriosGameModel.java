@@ -159,8 +159,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * @param row           The row in the grid to play the card to.
      * @param column        The column in the grid to play the card to.
      * @throws IllegalStateException    If it is not the specified player's turn
-     * @throws IllegalArgumentException If the cardIdxInHand, row, or column parameters are out-of-bounds.
-     * @throws IllegalArgumentException If the specified move is invalid (such as playing to a hole or a filled Card Cell)
+     * @throws IllegalArgumentException If the cardIdxInHand, row, or column parameters are
+     *                                  out-of-bounds.
+     * @throws IllegalStateException If the specified move is invalid
+     *                              (such as playing to a hole or a filled Card Cell)
      */
     @Override
     public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IllegalArgumentException {
@@ -172,17 +174,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
 
         ThreeTriosCard playerCard = playerHands.get(player).get(cardIdxInHand);
 
-        // getCell inherently throws an IllegalArgumentException if there is no cell there.
-        ThreeTriosCell cell = grid.getCell(row, column);
-
-        if (cell.isHole()) {
-            throw new IllegalArgumentException("Cannot play to a hole!!!");
-        }
-        if (cell.getCard() != null) {
-            throw new IllegalArgumentException("Cannot play where a card has already been played!");
-        }
-
-        cell.setCard(playerCard);
+        grid.playToCell(row, column, playerCard);
 
         // Mutation is desired, so we use grid as opposed to getGrid();
         battleRules.battle(playerCard, grid);

@@ -27,4 +27,10 @@ interface ThreeTriosCell {
    * @throws IllegalStateException If this cell already holds a card.
    */
    void setCard(ThreeTriosCard card) throws IllegalStateException;
+
+  /**
+   * Returns a copy of this cell.
+   * @return A copy of this cell.
+   */
+  ThreeTriosCell copy();
 }
