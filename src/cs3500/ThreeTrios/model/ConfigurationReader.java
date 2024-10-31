@@ -1,6 +1,7 @@
 package cs3500.ThreeTrios.model;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -9,10 +10,11 @@ import java.util.Scanner;
 public class ConfigurationReader {
 
   /**
-   *
-   * @param filePath
-   * @return
-   * @throws FileNotFoundException
+   * Reads a grid configuration from the provided file.
+   * @param filePath The file to read.
+   * @return The grid read from the file.
+   * @throws FileNotFoundException If the file isn't found
+   * @throws IllegalStateException if the file is not structured correctly
    */
   public static Grid readGrid(String filePath) throws FileNotFoundException {
     Scanner scanner = new Scanner(filePath);
@@ -63,6 +65,27 @@ public class ConfigurationReader {
     }
 
     return builder.buildGrid();
+  }
+
+  /**
+   * Reads a card configuration from the provided file.
+   * @param filePath The file to read.
+   * @return The card read from the file.
+   * @throws FileNotFoundException If the file isn't found
+   * @throws IllegalStateException if the file is not structured correctly
+   */
+  public static List<ThreeTriosCard> readDeck(String filePath) throws FileNotFoundException {
+    Scanner scanner = new Scanner(filePath);
+
+    String name;
+    String northValue;
+    String southValue;
+    while(scanner.hasNextLine()) {
+      name = scanner.next();
+
+    }
+
+    return null;
   }
 
 }

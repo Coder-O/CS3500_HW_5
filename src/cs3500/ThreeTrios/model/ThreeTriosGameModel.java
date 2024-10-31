@@ -13,7 +13,7 @@ import java.util.Map;
 */
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
-    private List<Card> deck;
+    private List<ThreeTriosCard> deck;
     private Grid grid;
     private Map<ThreeTriosPlayer, List<Card>> hand;
     private ThreeTriosPlayer playerOne;
@@ -157,7 +157,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * Returns the current deck.
     * @return the current deck.
     */
-    public List<Card> getDeck() {
+    public List<ThreeTriosCard> getDeck() {
         return this.deck;
     }
     
