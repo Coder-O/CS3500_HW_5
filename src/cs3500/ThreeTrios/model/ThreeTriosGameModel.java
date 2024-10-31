@@ -16,8 +16,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     private List<Card> deck;
     private Grid grid;
     private Map<ThreeTriosPlayer, List<Card>> hand;
-    private ThreeTriosPlayer playerOne;
-    private ThreeTriosPlayer playerTwo;
+    private ThreeTriosPlayer playerRed;
+    private ThreeTriosPlayer playerBlue;
     private ThreeTriosBattleRules battleRules;
     private ThreeTriosPlayer currentPlayer;
     private int numCardCells;
@@ -38,7 +38,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * @param numDeck the number of cards in the deck.
      */
     public ThreeTriosGameModel(Grid grid, int numCardCells, int numDeck) {
-        if (numDeck + 1 < numCardCells ) {
+        if (numDeck + 1 < numCardCells) {
             throw new IllegalStateException("Not enough cards in the deck.");
         }
         this.numCardCells = numCardCells;
@@ -46,9 +46,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         this.deck = new ArrayList<>();
         this.grid = grid;
         this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
-        this.playerOne = ThreeTriosPlayer.ONE;
-        this.playerTwo = ThreeTriosPlayer.TWO;
-        this.currentPlayer = playerOne;
+        this.playerRed = ThreeTriosPlayer.RED;
+        this.playerBlue = ThreeTriosPlayer.RED;
+        this.currentPlayer = playerRed;
 
         //todo random 
         //todo intialize deck (random)
@@ -83,13 +83,13 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     public boolean isGameWon() {
         if (isGameOver()
-        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size() 
-        > this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
+        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
+        > this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
             return true;
         }
         if (isGameOver()
-        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size() 
-        < this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
+        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
+        < this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
             return true;
         }
         return false;
@@ -194,11 +194,11 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * Ends the current player's turn.
     */
     public void endTurn() {
-        if (this.currentPlayer == playerOne) {
-            this.currentPlayer = playerTwo;
+        if (this.currentPlayer == playerRed) {
+            this.currentPlayer = playerBlue;
         }
-        else if (this.currentPlayer == playerTwo) {
-            this.currentPlayer = playerOne;
+        else if (this.currentPlayer == playerBlue) {
+            this.currentPlayer = playerRed;
         }
     }
 }

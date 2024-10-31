@@ -5,8 +5,8 @@ package cs3500.ThreeTrios.model;
 */
 public enum ThreeTriosPlayer {
 
-    ONE("1"),
-    TWO("2");
+    RED("R"),
+    BLUE("B");
 
     private final String symbol;
 

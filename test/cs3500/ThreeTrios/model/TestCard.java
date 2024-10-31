@@ -16,7 +16,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         assertEquals(ThreeTriosAttackValue.ONE, card.getNorth());
@@ -28,7 +28,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         assertEquals(ThreeTriosAttackValue.TWO, card.getEast());
@@ -40,7 +40,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         assertEquals(ThreeTriosAttackValue.THREE, card.getWest());
@@ -52,7 +52,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         assertEquals(ThreeTriosAttackValue.FOUR, card.getSouth());
@@ -64,10 +64,10 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
         
-        assertEquals(ThreeTriosPlayer.ONE, card.getPlayer());
+        assertEquals(ThreeTriosPlayer.RED, card.getPlayer());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
         
         assertEquals("card", card.getName());
@@ -88,12 +88,12 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         card.changePlayer();
 
-        assertEquals(ThreeTriosPlayer.TWO, card.getPlayer());
+        assertEquals(ThreeTriosPlayer.RED, card.getPlayer());
     }
 
     @Test
@@ -102,7 +102,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         assertEquals(ThreeTriosAttackValue.ONE, card.getAttackValue(ThreeTriosDirection.NORTH));
@@ -117,7 +117,7 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         assertEquals("card 1 2 3 4", card.toString());
@@ -129,21 +129,21 @@ public class TestCard {
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         ThreeTriosCard card1 = new Card(ThreeTriosAttackValue.ONE, 
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card");
 
         ThreeTriosCard card2 = new Card(ThreeTriosAttackValue.ONE, 
         ThreeTriosAttackValue.TWO, 
         ThreeTriosAttackValue.THREE, 
         ThreeTriosAttackValue.FOUR, 
-        ThreeTriosPlayer.ONE, 
+        ThreeTriosPlayer.RED, 
         "card2");
         
         Assert.assertTrue(card.equals(card1));
