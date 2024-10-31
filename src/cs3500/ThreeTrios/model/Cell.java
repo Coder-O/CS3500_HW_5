@@ -9,11 +9,11 @@ class Cell implements ThreeTriosCell {
   private ThreeTriosCard card;
 
   /**
-   * Creates a new cell.
-   * @param isHole Whether the cell is a hole.
+   * Creates a new card cell.
+   * @param card The card to place in the cell.
    */
-  Cell(boolean isHole, ThreeTriosCard card) {
-    this.isHole = isHole;
+  Cell(ThreeTriosCard card) {
+    this.isHole = false;
     this.card = card;
   }
 
