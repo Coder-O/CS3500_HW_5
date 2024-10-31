@@ -15,6 +15,10 @@ public class GridBuilder implements ThreeTriosGridBuilder<Grid> {
    * @param columns the number of columns the grid should be.
    */
   public GridBuilder(int rows, int columns) {
+    if (rows < 0 || columns < 0) {
+      throw new IllegalArgumentException("Must have a positive number of rows and columns!!!!");
+    }
+
     grid = new ThreeTriosCell[rows][columns];
     this.rows = rows;
     this.columns = columns;
