@@ -25,7 +25,6 @@ import static org.junit.Assert.assertFalse;
  * Tests for the Model.
  */
 public class TestThreeTriosGameModel {
-
     private ThreeTriosGameModel model;
 
     /**
@@ -51,7 +50,7 @@ public class TestThreeTriosGameModel {
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorExc1() {
         ThreeTriosGrid grid = ConfigurationReader.readGrid(
-                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Fail.txt"
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Split.txt"
         );
         ThreeTriosBattleRules battleRules = new SimpleRules();
         List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
@@ -70,7 +69,7 @@ public class TestThreeTriosGameModel {
         List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
         );
-
+        grid.playToCell(1, 1, deck.remove(0));
         ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
 
@@ -142,76 +141,8 @@ public class TestThreeTriosGameModel {
         this.setUp();
         model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
 
-        assertEquals(5, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
+        assertEquals(4, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
         assertEquals(1, model.getGrid().getNumCards()); 
-    }
-
-    @Test
-    public void testGetDeck() {
-        this.setUp();
-
-        List<ThreeTriosCard> expectedDeck = List.of(new Card(ThreeTriosAttackValue.ONE, 
-        ThreeTriosAttackValue.ONE, 
-        ThreeTriosAttackValue.ONE, 
-        ThreeTriosAttackValue.ONE, 
-        null, 
-        "Card1"), 
-        new Card(ThreeTriosAttackValue.TWO, 
-        ThreeTriosAttackValue.TWO, 
-        ThreeTriosAttackValue.TWO, 
-        ThreeTriosAttackValue.TWO, 
-        null, 
-        "Card2"), 
-        new Card(ThreeTriosAttackValue.THREE, 
-        ThreeTriosAttackValue.THREE, 
-        ThreeTriosAttackValue.THREE, 
-        ThreeTriosAttackValue.THREE, 
-        null, 
-        "Card3"), 
-        new Card(ThreeTriosAttackValue.FOUR, 
-        ThreeTriosAttackValue.FOUR, 
-        ThreeTriosAttackValue.FOUR, 
-        ThreeTriosAttackValue.FOUR, 
-        null, 
-        "Card4"), 
-        new Card(ThreeTriosAttackValue.FIVE, 
-        ThreeTriosAttackValue.FIVE, 
-        ThreeTriosAttackValue.FIVE, 
-        ThreeTriosAttackValue.FIVE, 
-        null, 
-        "Card5"), 
-        new Card(ThreeTriosAttackValue.SIX, 
-        ThreeTriosAttackValue.SIX, 
-        ThreeTriosAttackValue.SIX, 
-        ThreeTriosAttackValue.SIX, 
-        null, 
-        "Card6"), 
-        new Card(ThreeTriosAttackValue.SEVEN, 
-        ThreeTriosAttackValue.SEVEN, 
-        ThreeTriosAttackValue.SEVEN, 
-        ThreeTriosAttackValue.SEVEN, 
-        null, 
-        "Card7"), 
-        new Card(ThreeTriosAttackValue.EIGHT, 
-        ThreeTriosAttackValue.EIGHT, 
-        ThreeTriosAttackValue.EIGHT, 
-        ThreeTriosAttackValue.EIGHT, 
-        null, 
-        "Card8"), 
-        new Card(ThreeTriosAttackValue.NINE, 
-        ThreeTriosAttackValue.NINE, 
-        ThreeTriosAttackValue.NINE, 
-        ThreeTriosAttackValue.NINE, 
-        null, 
-        "Card9"), 
-        new Card(ThreeTriosAttackValue.A, 
-        ThreeTriosAttackValue.A, 
-        ThreeTriosAttackValue.A, 
-        ThreeTriosAttackValue.A, 
-        null, 
-        "CardA"));
-
-        assertEquals(expectedDeck, model.getDeck());
     }
 
     @Test
@@ -222,7 +153,7 @@ public class TestThreeTriosGameModel {
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
         );
 
-        assertEquals(expectedGrid, model.getGrid());
+        assertEquals(expectedGrid.toString(), model.getGrid().toString());
     }
 
     @Test

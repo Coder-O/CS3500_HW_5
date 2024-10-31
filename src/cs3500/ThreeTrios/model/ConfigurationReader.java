@@ -52,7 +52,7 @@ public class ConfigurationReader {
     for (int row = 0; row < rows; row++) {
       if (!scanner.hasNextLine()) {
         throw new IllegalStateException(
-                "The file doe snot have enough rows, it only has " + row + "!"
+                "The file does not have enough rows, it only has " + row + "!"
         );
       }
       line = scanner.nextLine();
