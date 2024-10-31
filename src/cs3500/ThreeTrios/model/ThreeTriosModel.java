@@ -53,11 +53,12 @@ public interface ThreeTriosModel {
     public ThreeTriosPlayer getCurrentPlayer();
     
     /**
-    * Returns a copy of the hand of the specified Player.
-    * @return a copy of the hand of the specified Player p.
-    * @param p whose hand we want. 
-    */
-    public ArrayList<Card> getHand(ThreeTriosPlayer p);
+     * Returns a copy of the hand of the specified Player.
+     *
+     * @param p whose hand we want.
+     * @return a copy of the hand of the specified Player p.
+     */
+    public ArrayList<ThreeTriosCard> getHand(ThreeTriosPlayer p);
 
     /**
     * Ends the current player's turn.

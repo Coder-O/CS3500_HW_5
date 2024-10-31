@@ -18,7 +18,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     private List<ThreeTriosCard> deck;
     /* INVARIANT: Every card in the game has a unique name */
     private Grid grid;
-    private Map<ThreeTriosPlayer, List<Card>> playerHands;
+    private Map<ThreeTriosPlayer, List<ThreeTriosCard>> playerHands;
     private ThreeTriosPlayer playerRed;
     private ThreeTriosPlayer playerBlue;
     private ThreeTriosBattleRules battleRules;
@@ -84,7 +84,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         }
 
         this.battleRules = battleRules;
-        this.playerHands = new HashMap<ThreeTriosPlayer, List<Card>>();
+        this.playerHands = new HashMap<ThreeTriosPlayer, List<ThreeTriosCard>>();
         this.currentPlayer = startingPlayer;
 
         //todo random 
@@ -207,16 +207,17 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     }
     
     /**
-    * Returns a copy of the hand of the specified Player.
-    * @return a copy of the hand of the specified Player p.
-    * @param p whose hand we want.
-    * @throws IllegalArgumentException if player p does not exist or is null
-    */
-    public ArrayList<Card> getHand(ThreeTriosPlayer p) {
+     * Returns a copy of the hand of the specified Player.
+     *
+     * @param p whose hand we want.
+     * @return a copy of the hand of the specified Player p.
+     * @throws IllegalArgumentException if player p does not exist or is null
+     */
+    public ArrayList<ThreeTriosCard> getHand(ThreeTriosPlayer p) {
         if (p == null || !playerHands.containsKey(p)) {
             throw new IllegalArgumentException("Invalid player.");
         }
-        return new ArrayList<Card>(playerHands.get(p));
+        return new ArrayList<ThreeTriosCard>(playerHands.get(p));
     }
 
     /**

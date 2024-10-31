@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import cs3500.ThreeTrios.model.ThreeTriosModel;
-import cs3500.ThreeTrios.model.Card;
+import cs3500.ThreeTrios.model.ThreeTriosCard;
 
 /**
  * A textual view of the ThreeTrios Game.
@@ -73,9 +73,9 @@ public class ThreeTriosView {
         gameState.append(grid).append("\n");
 
         //display the current player's hand
-        ArrayList<Card> hand = model.getHand(model.getCurrentPlayer());
+        ArrayList<ThreeTriosCard> hand = model.getHand(model.getCurrentPlayer());
         gameState.append("Hand:\n");
-        for (Card card : hand) {
+        for (ThreeTriosCard card : hand) {
             gameState.append(card.toString()).append("\n");
         }
         return gameState.toString();
