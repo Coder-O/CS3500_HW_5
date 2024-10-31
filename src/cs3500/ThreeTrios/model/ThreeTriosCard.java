@@ -2,6 +2,7 @@ package cs3500.ThreeTrios.model;
 
 /**
 * Represents a Card in the ThreeTrios Game.
+ * Every card has a unique name.
 */
 public interface ThreeTriosCard {
 

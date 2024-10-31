@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Reads a grid configuration from a file.
+ * Reads a configuration from a file.
  */
 public class ConfigurationReader {
 
@@ -17,6 +17,7 @@ public class ConfigurationReader {
    * @throws FileNotFoundException If the file isn't found
    * @throws IllegalStateException if the file is not structured correctly
    */
+
   public static Grid readGrid(String filePath) throws FileNotFoundException {
     Scanner scanner = new Scanner(filePath);
     int rows;

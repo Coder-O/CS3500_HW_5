@@ -19,12 +19,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     /* INVARIANT: Every card in the game has a unique name */
     private Grid grid;
     private Map<ThreeTriosPlayer, List<Card>> playerHands;
-    private ThreeTriosPlayer playerOne;
-    private ThreeTriosPlayer playerTwo;
     private ThreeTriosBattleRules battleRules;
+    private final ThreeTriosPlayer playerOne;
+    private final ThreeTriosPlayer playerTwo;
     private ThreeTriosPlayer currentPlayer;
-    private int numCardCells;
-    private int numDeck;
     
     /**
      * Constructor for ThreeTrios Model.
@@ -37,23 +35,32 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
      *
      * @param grid The grid to use, given by a configuration class.
+     *             To preserve the integrity of the game state, this should not have any cards
+     *             played to it yet.
      * @param deck The deck of cards to use.
-     * @param numCardCells The number of cells.
-     * @param numDeck the number of cards in the deck.
+     * @throws IllegalArgumentException if the number of cards is not exactly N+1, where N is the number of card cells.
+     * @throws IllegalArgumentException if the provided grid has been played to already.
+     * @throws IllegalArgumentException if the provided cards are not unique.
      */
-    public ThreeTriosGameModel(Grid grid, List<ThreeTriosCard> deck, int numCardCells, int numDeck) {
-        if (numDeck + 1 < numCardCells ) {
-            throw new IllegalStateException("Not enough cards in the deck.");
+    public ThreeTriosGameModel(Grid grid, List<ThreeTriosCard> deck, ThreeTriosBattleRules battleRules, ThreeTriosPlayer startingPlayer) {
+        if (deck.size() != grid.getNumCardCells() + 1 ) {
+            throw new IllegalArgumentException(
+                    "There are "
+                            + deck.size()
+                            + " cards in the deck when there should be "
+                            + (grid.getNumCardCells() + 1)
+                            + " instead."
+            );
         }
-        this.numCardCells = numCardCells;
-        this.numDeck = numDeck;
+        if (grid.getNumCards() != 0) {
+            throw new IllegalArgumentException(
+                    "The grid should not have any cards played to it yet!"
+            );
+        }
         this.grid = grid;
-        this.playerHands = new HashMap<ThreeTriosPlayer, List<Card>>();
-        this.playerOne = ThreeTriosPlayer.ONE;
-        this.playerTwo = ThreeTriosPlayer.TWO;
-        this.currentPlayer = playerOne;
-
         this.deck = new ArrayList<>();
+
+        // Initializing deck.
         Set<String> uniqueNames = new HashSet<String>();
         for (ThreeTriosCard card : deck) {
             if (uniqueNames.contains(card.getName())) {
@@ -66,6 +73,12 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             uniqueNames.add(card.getName());
             deck.add(card);
         }
+
+        this.battleRules = battleRules;
+        this.playerHands = new HashMap<ThreeTriosPlayer, List<Card>>();
+        this.playerOne = ThreeTriosPlayer.ONE;
+        this.playerTwo = ThreeTriosPlayer.TWO;
+        this.currentPlayer = startingPlayer;
 
         //todo random 
         //todo intialize deck (random)
@@ -100,7 +113,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     public boolean isGameWon() {
         if (isGameOver()
-        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size() 
+        && this.getNumOwnedCards(playerOne) + this.getHand(playerOne).size()
         > this.getNumOwnedCards(playerTwo) + this.getHand(playerTwo).size()) {
             return true;
         }
@@ -114,7 +127,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
 
     /**
      * Count the number of cards each player owns on the grid.
-     * @param p a player
+     * @param player a player
      * @return the number of cards.
      */
     private int getNumOwnedCards(ThreeTriosPlayer player) {

@@ -9,25 +9,43 @@ import java.util.Map;
 public class Grid implements ThreeTriosGrid {
 
   private final ThreeTriosCell[][] grid;
-  /* INVARIANT: All card names are unique. */
   private final int rows;
   private final int columns;
+  private final int numCardCells;
+  /* INVARIANT: the number of card cells is odd */
+  private int numCards;
 
   /**
    * Creates a new grid from the given parameter.
    * This is only intended to be used by a builder class,
    * users should use the builder to construct this object
    * @param grid The array for this grid to store.
+   * @throws IllegalArgumentException if the number of card cells is not odd.
    */
-  Grid(ThreeTriosCell[][] grid) {
+  Grid(ThreeTriosCell[][] grid) throws IllegalArgumentException{
     this.rows = grid.length;
     this.columns = grid[0].length;
+
+    int numCardCells = 0;
+    this.numCards = 0;
     this.grid = new ThreeTriosCell[rows][columns];
     for (int row = 0; row < rows; row++) {
       for (int column = 0; column < columns; column++) {
         this.grid[row][column] = grid[row][column];
+        if (!this.grid[row][column].isHole()) {
+          ++numCardCells;
+          if (this.grid[row][column].getCard() != null) {
+            ++numCards;
+          }
+        }
       }
     }
+    if (numCardCells % 2 != 1) {
+      throw new IllegalArgumentException(
+              "The number of card cells is " + numCardCells + ", which is not odd!!"
+      );
+    }
+    this.numCardCells = numCardCells;
   }
 
   /**
@@ -75,6 +93,24 @@ public class Grid implements ThreeTriosGrid {
   }
 
   /**
+   * Returns the number of card cells in the grid, which is always odd.
+   *
+   * @return the number of card cells in the grid, which is always odd.
+   */
+  @Override
+  public int getNumCardCells() {
+    return numCardCells;
+  }
+
+  /**
+   * Returns the number of cards in the grid.
+   * @return the number of cards in the grid.
+   */
+  int getNumCards() {
+    return numCards;
+  }
+
+  /**
    * Returns a map containing all neighbors of this card.
    *
    * @param card The card to find the neighbors for.
@@ -86,7 +122,7 @@ public class Grid implements ThreeTriosGrid {
   public Map<ThreeTriosDirection, ThreeTriosCard> getNeighbors(
           ThreeTriosCard card
   ) throws IllegalArgumentException {
-    // Relies on the invariant that all card names are unique.
+    // Relies on the model's invariant that all card names are unique.
     ThreeTriosCell currentCell;
 
     // finds the location of the card and gets its neighbors from the helper method.

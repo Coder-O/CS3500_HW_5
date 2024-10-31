@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
 * Represents the Grid of the ThreeTrios Game.
-* Invariant: there is always an odd number of cells.
+* Invariant: there is always an odd number of card cells.
 */
 public interface ThreeTriosGrid {
     
@@ -28,6 +28,12 @@ public interface ThreeTriosGrid {
     * @return the number of columns in the Grid.
     */
     public int getNumColumns();
+
+    /**
+     * Returns the number of card cells in the grid, which is always odd.
+     * @return the number of card cells in the grid, which is always odd.
+     */
+    int getNumCardCells();
 
     /**
      * Returns a map containing all neighbors of this card.
