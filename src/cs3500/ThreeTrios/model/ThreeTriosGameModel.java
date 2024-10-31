@@ -3,8 +3,10 @@ package cs3500.ThreeTrios.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
 * Represents the model for the ThreeTrios Game.
@@ -14,8 +16,9 @@ import java.util.Map;
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
     private List<ThreeTriosCard> deck;
+    /* INVARIANT: Every card in the game has a unique name */
     private Grid grid;
-    private Map<ThreeTriosPlayer, List<Card>> hand;
+    private Map<ThreeTriosPlayer, List<Card>> playerHands;
     private ThreeTriosPlayer playerOne;
     private ThreeTriosPlayer playerTwo;
     private ThreeTriosBattleRules battleRules;
@@ -34,21 +37,35 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
      *
      * @param grid The grid to use, given by a configuration class.
+     * @param deck The deck of cards to use.
      * @param numCardCells The number of cells.
      * @param numDeck the number of cards in the deck.
      */
-    public ThreeTriosGameModel(Grid grid, int numCardCells, int numDeck) {
+    public ThreeTriosGameModel(Grid grid, List<ThreeTriosCard> deck, int numCardCells, int numDeck) {
         if (numDeck + 1 < numCardCells ) {
             throw new IllegalStateException("Not enough cards in the deck.");
         }
         this.numCardCells = numCardCells;
         this.numDeck = numDeck;
-        this.deck = new ArrayList<>();
         this.grid = grid;
-        this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
+        this.playerHands = new HashMap<ThreeTriosPlayer, List<Card>>();
         this.playerOne = ThreeTriosPlayer.ONE;
         this.playerTwo = ThreeTriosPlayer.TWO;
         this.currentPlayer = playerOne;
+
+        this.deck = new ArrayList<>();
+        Set<String> uniqueNames = new HashSet<String>();
+        for (ThreeTriosCard card : deck) {
+            if (uniqueNames.contains(card.getName())) {
+                throw new IllegalArgumentException(
+                        "The provided deck has duplicate names of cards,"
+                                + " which violates an invariant!!!"
+                );
+            }
+
+            uniqueNames.add(card.getName());
+            deck.add(card);
+        }
 
         //todo random 
         //todo intialize deck (random)
@@ -133,7 +150,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             );
         }
 
-        ThreeTriosCard playerCard = hand.get(player).get(cardIdxInHand);
+        ThreeTriosCard playerCard = playerHands.get(player).get(cardIdxInHand);
 
         // getCell inherently throws an IllegalArgumentException if there is no cell there.
         ThreeTriosCell cell = grid.getCell(row, column);
@@ -180,14 +197,14 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     /**
     * Returns a copy of the hand of the specified Player.
     * @return a copy of the hand of the specified Player p.
-    * @param p whose hand we want. 
+    * @param p whose hand we want.
     * @throws IllegalArgumentException if player p does not exist or is null
     */
     public ArrayList<Card> getHand(ThreeTriosPlayer p) {
-        if (p == null || !hand.containsKey(p)) {
+        if (p == null || !playerHands.containsKey(p)) {
             throw new IllegalArgumentException("Invalid player.");
         }
-        return new ArrayList<Card>(hand.get(p));
+        return new ArrayList<Card>(playerHands.get(p));
     }
 
     /**

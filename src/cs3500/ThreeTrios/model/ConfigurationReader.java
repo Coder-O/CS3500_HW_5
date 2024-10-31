@@ -1,6 +1,7 @@
 package cs3500.ThreeTrios.model;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -76,16 +77,30 @@ public class ConfigurationReader {
    */
   public static List<ThreeTriosCard> readDeck(String filePath) throws FileNotFoundException {
     Scanner scanner = new Scanner(filePath);
+    List<ThreeTriosCard> deck = new ArrayList<>();
 
-    String name;
-    String northValue;
-    String southValue;
     while(scanner.hasNextLine()) {
-      name = scanner.next();
+      String line = scanner.nextLine();
+
+      // CARD_NAME NORTH SOUTH EAST WEST
+      // 0          1     2     3   4
+      String[] elements = line.split(" ");
+      if (elements.length != 5) {
+        throw new IllegalStateException("The line '" + line + "' does not have 5 elements!!!");
+      }
+
+      deck.add(new Card(
+              ThreeTriosAttackValue.attackValueFactory(elements[1]), // North
+              ThreeTriosAttackValue.attackValueFactory(elements[3]), // East
+              ThreeTriosAttackValue.attackValueFactory(elements[4]), // West
+              ThreeTriosAttackValue.attackValueFactory(elements[2]), // South
+              null,
+              elements[0]                                            // Name
+      ));
 
     }
 
-    return null;
+    return deck;
   }
 
 }

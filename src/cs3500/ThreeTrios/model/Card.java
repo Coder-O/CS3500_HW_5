@@ -150,7 +150,7 @@ public class Card implements ThreeTriosCard {
         && this.west == otherCard.getWest() 
         && this.south == otherCard.getSouth() 
         && this.player == otherCard.getPlayer()
-        && this.name == otherCard.getName();
+        && Objects.equals(this.name, otherCard.getName());
       }
       return false;
     }
