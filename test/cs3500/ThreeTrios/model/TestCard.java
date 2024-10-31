@@ -93,7 +93,7 @@ public class TestCard {
 
         card.changePlayer();
 
-        assertEquals(ThreeTriosPlayer.RED, card.getPlayer());
+        assertEquals(ThreeTriosPlayer.BLUE, card.getPlayer());
     }
 
     @Test

@@ -3,7 +3,7 @@ package cs3500.ThreeTrios.model;
 /**
  * Represents the rules of battle for a game of ThreeTrios.
  */
-interface ThreeTriosBattleRules {
+public interface ThreeTriosBattleRules {
 
     /**
      * Handles the battling and flipping of cards after a card has been played.

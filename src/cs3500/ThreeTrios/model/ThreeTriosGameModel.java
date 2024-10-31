@@ -18,12 +18,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     private List<ThreeTriosCard> deck;
     /* INVARIANT: Every card in the game has a unique name */
     private Grid grid;
-    private Map<ThreeTriosPlayer, List<Card>> hand;
+    private Map<ThreeTriosPlayer, List<Card>> playerHands;
     private ThreeTriosPlayer playerRed;
     private ThreeTriosPlayer playerBlue;
     private ThreeTriosBattleRules battleRules;
-    private final ThreeTriosPlayer playerOne;
-    private final ThreeTriosPlayer playerTwo;
     private ThreeTriosPlayer currentPlayer;
     
     /**
@@ -44,7 +42,12 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * @throws IllegalArgumentException if the provided grid has been played to already.
      * @throws IllegalArgumentException if the provided cards are not unique.
      */
-    public ThreeTriosGameModel(Grid grid, List<ThreeTriosCard> deck, ThreeTriosBattleRules battleRules, ThreeTriosPlayer startingPlayer) {
+    public ThreeTriosGameModel(
+            Grid grid,
+            List<ThreeTriosCard> deck,
+            ThreeTriosBattleRules battleRules,
+            ThreeTriosPlayer startingPlayer
+    ) throws IllegalArgumentException {
         if (deck.size() != grid.getNumCardCells() + 1 ) {
             throw new IllegalArgumentException(
                     "There are "
@@ -60,10 +63,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             );
         }
         this.grid = grid;
-        this.hand = new HashMap<ThreeTriosPlayer, List<Card>>();
         this.playerRed = ThreeTriosPlayer.RED;
         this.playerBlue = ThreeTriosPlayer.RED;
-        this.currentPlayer = playerRed;
+        this.currentPlayer = startingPlayer;
 
         this.deck = new ArrayList<>();
 
@@ -83,8 +85,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
 
         this.battleRules = battleRules;
         this.playerHands = new HashMap<ThreeTriosPlayer, List<Card>>();
-        this.playerOne = ThreeTriosPlayer.ONE;
-        this.playerTwo = ThreeTriosPlayer.TWO;
         this.currentPlayer = startingPlayer;
 
         //todo random 

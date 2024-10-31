@@ -27,7 +27,7 @@ public class TestSimpleRules {
 //   |__8__| |__9__| |__A__|
 //
 //   |--9--| |--A--| |--9--|
-//   |9 2 9| |A 1 A| |9 2 9|
+//   |9 2 9| |A R A| |9 2 9|
 //   |__9__| |__A__| |__9__|
 //
 //   |--4--| |--9--| |--5--|
@@ -37,7 +37,7 @@ public class TestSimpleRules {
 
   // Defaults to a 1 x 2 grid
   // |--1--| |--A--|
-  // |1 1 1| |A 2 A|
+  // |1 R 1| |A 2 A|
   // |__1__| |__A__|
   private ThreeTriosGrid oneLoosesGrid;
 
@@ -50,7 +50,7 @@ public class TestSimpleRules {
 //   |__4__| |__-__| |__9__|
 //
 //   |--A--| |--_--| |--5--|
-//   |A 1 A| |_ H _| |1 2 1|
+//   |A R A| |_ H _| |1 2 1|
 //   |__A__| |__-__| |__1__|
   private ThreeTriosGrid holeGrid;
 
@@ -58,7 +58,7 @@ public class TestSimpleRules {
   @Before
   public void initCommonFields() {
     battleRules = new SimpleRules();
-    attackingPlayer = ThreeTriosPlayer.ONE;
+    attackingPlayer = ThreeTriosPlayer.RED;
 
     // Specific cards:
     aceCard = new Card(
@@ -85,7 +85,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.EIGHT,
                     ThreeTriosAttackValue.EIGHT,
                     ThreeTriosAttackValue.EIGHT,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 0,0"
             )))
             .setCell(0, 1, new Cell(new Card(
@@ -93,7 +93,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.SEVEN,
                     ThreeTriosAttackValue.NINE,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 0,1"
             )))
             .setCell(0, 2, new Cell(new Card(
@@ -101,7 +101,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.EIGHT,
                     ThreeTriosAttackValue.THREE,
                     ThreeTriosAttackValue.A,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 0,2"
             )))
             .setCell(1, 0, new Cell(new Card(
@@ -109,7 +109,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.NINE,
                     ThreeTriosAttackValue.NINE,
                     ThreeTriosAttackValue.NINE,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 1,0"
             )))
             .setCell(1, 1, new Cell(aceCard))
@@ -118,7 +118,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.NINE,
                     ThreeTriosAttackValue.NINE,
                     ThreeTriosAttackValue.NINE,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 1,2"
             )))
             .setCell(2, 0, new Cell(new Card(
@@ -126,7 +126,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.THREE,
                     ThreeTriosAttackValue.NINE,
                     ThreeTriosAttackValue.A,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 2,0"
             )))
             .setCell(2, 1, new Cell(new Card(
@@ -134,7 +134,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 2,1"
             )))
             .setCell(2, 2, new Cell(new Card(
@@ -142,7 +142,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.SEVEN,
                     ThreeTriosAttackValue.ONE,
                     ThreeTriosAttackValue.EIGHT,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "allLooseGrid 2,2"
             )))
             .buildGrid();
@@ -155,7 +155,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "Ace"
             )))
             .buildGrid();
@@ -165,7 +165,7 @@ public class TestSimpleRules {
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,
-                    ThreeTriosPlayer.TWO,
+                    ThreeTriosPlayer.BLUE,
                     "Ace"
             )))
             .setCell(1, 1, new Cell(true))
@@ -240,7 +240,7 @@ public class TestSimpleRules {
     Assert.assertEquals(
             "The attacker should not have flipped",
             oneLoosesGrid.getCell(0,1).getCard().getPlayer(),
-            ThreeTriosPlayer.TWO
+            ThreeTriosPlayer.BLUE
     );
   }
 
@@ -269,12 +269,12 @@ public class TestSimpleRules {
     Assert.assertEquals(
             "Some cards should not be flipped!",
             oneLoosesGrid.getCell(0,1).getCard().getPlayer(),
-            ThreeTriosPlayer.TWO
+            ThreeTriosPlayer.BLUE
     );
     Assert.assertEquals(
             "Some cards should not be flipped!",
             oneLoosesGrid.getCell(2,2).getCard().getPlayer(),
-            ThreeTriosPlayer.TWO
+            ThreeTriosPlayer.BLUE
     );
   }
 
@@ -286,7 +286,7 @@ public class TestSimpleRules {
     Assert.assertEquals(
             "Player two should have flipped the weak card!",
             oneLoosesGrid.getCell(0, 0).getCard().getPlayer(),
-            ThreeTriosPlayer.TWO
+            ThreeTriosPlayer.BLUE
     );
   }
 }
