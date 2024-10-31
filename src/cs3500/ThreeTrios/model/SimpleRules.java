@@ -16,7 +16,7 @@ public class SimpleRules implements ThreeTriosBattleRules{
   private List<ThreeTriosCard> flippedThisTurn;
   private ThreeTriosGrid grid;
 
-  SimpleRules() {
+  public SimpleRules() {
     flippedThisTurn = new ArrayList<>();
   }
 

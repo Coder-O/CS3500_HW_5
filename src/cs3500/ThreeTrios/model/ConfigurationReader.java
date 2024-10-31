@@ -14,11 +14,10 @@ public class ConfigurationReader {
    * Reads a grid configuration from the provided file.
    * @param filePath The file to read.
    * @return The grid read from the file.
-   * @throws FileNotFoundException If the file isn't found
    * @throws IllegalStateException if the file is not structured correctly
    */
 
-  public static Grid readGrid(String filePath) throws FileNotFoundException {
+  public static Grid readGrid(String filePath) {
     Scanner scanner = new Scanner(filePath);
     int rows;
     int columns;
@@ -73,10 +72,9 @@ public class ConfigurationReader {
    * Reads a card configuration from the provided file.
    * @param filePath The file to read.
    * @return The card read from the file.
-   * @throws FileNotFoundException If the file isn't found
    * @throws IllegalStateException if the file is not structured correctly
    */
-  public static List<ThreeTriosCard> readDeck(String filePath) throws FileNotFoundException {
+  public static List<ThreeTriosCard> readDeck(String filePath) {
     Scanner scanner = new Scanner(filePath);
     List<ThreeTriosCard> deck = new ArrayList<>();
 

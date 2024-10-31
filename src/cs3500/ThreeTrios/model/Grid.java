@@ -2,7 +2,6 @@ package cs3500.ThreeTrios.model;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Represents the playing grid of the ThreeTriosGame.
@@ -131,7 +130,7 @@ public class Grid implements ThreeTriosGrid {
    * Returns the number of cards in the grid.
    * @return the number of cards in the grid.
    */
-  int getNumCards() {
+  public int getNumCards() {
     return numCards;
   }
 

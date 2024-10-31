@@ -42,7 +42,13 @@ public interface ThreeTriosGrid {
      * Returns the number of card cells in the grid, which is always odd.
      * @return the number of card cells in the grid, which is always odd.
      */
-    int getNumCardCells();
+    public int getNumCardCells();
+
+    /**
+     * Returns the number of cards in the grid.
+     * @return the number of cards in the grid.
+     */
+    public int getNumCards();
 
     /**
      * Returns a map containing all neighbors of this card.

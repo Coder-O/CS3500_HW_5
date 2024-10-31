@@ -18,7 +18,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     
     private final List<ThreeTriosCard> deck;
     /* INVARIANT: Every card in the game has a unique name */
-    private final Grid grid;
+    private final ThreeTriosGrid grid;
     private final Map<ThreeTriosPlayer, List<ThreeTriosCard>> playerHands;
     private final ThreeTriosPlayer playerRed;
     private final ThreeTriosPlayer playerBlue;
@@ -44,11 +44,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * @throws IllegalArgumentException if the provided cards are not unique.
      */
     public ThreeTriosGameModel(
-            Grid grid,
+            ThreeTriosGrid grid,
             List<ThreeTriosCard> deck,
-            ThreeTriosBattleRules battleRules,
-            ThreeTriosPlayer startingPlayer
-    ) throws IllegalArgumentException {
+            ThreeTriosBattleRules battleRules) throws IllegalArgumentException {
         if (!(deck.size() > grid.getNumCardCells())) {
             throw new IllegalArgumentException(
                     "There are "
@@ -64,8 +62,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         }
         this.grid = grid;
         this.playerRed = ThreeTriosPlayer.RED;
-        this.playerBlue = ThreeTriosPlayer.RED;
-        this.currentPlayer = startingPlayer;
+        this.playerBlue = ThreeTriosPlayer.BLUE;
+        this.currentPlayer = ThreeTriosPlayer.RED;
         this.battleRules = battleRules;
 
         // Initializing deck.
@@ -93,9 +91,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             }
             playerHands.put(player, playerCards);
         }
-
-        this.currentPlayer = startingPlayer;
-
     }
 
     /**
@@ -198,7 +193,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * Returns the Grid in its current state.
     * @return Current Grid.
     */
-    public Grid getGrid() {
+    public ThreeTriosGrid getGrid() {
         return this.grid;
     }
     
