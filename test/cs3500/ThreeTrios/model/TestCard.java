@@ -105,10 +105,10 @@ public class TestCard {
         ThreeTriosPlayer.ONE, 
         "card");
 
-        assertEquals(ThreeTriosPlayer.ONE, card.getAttackValue(ThreeTriosDirection.NORTH));
-        assertEquals(ThreeTriosPlayer.TWO, card.getAttackValue(ThreeTriosDirection.EAST));
-        assertEquals(ThreeTriosPlayer.THREE, card.getAttackValue(ThreeTriosDirection.WEST));
-        assertEquals(ThreeTriosPlayer.FOUR, card.getAttackValue(ThreeTriosDirection.SOUTH));
+        assertEquals(ThreeTriosAttackValue.ONE, card.getAttackValue(ThreeTriosDirection.NORTH));
+        assertEquals(ThreeTriosAttackValue.TWO, card.getAttackValue(ThreeTriosDirection.EAST));
+        assertEquals(ThreeTriosAttackValue.THREE, card.getAttackValue(ThreeTriosDirection.WEST));
+        assertEquals(ThreeTriosAttackValue.FOUR, card.getAttackValue(ThreeTriosDirection.SOUTH));
     }
 
     @Test(expected = IllegalStateException.class)
