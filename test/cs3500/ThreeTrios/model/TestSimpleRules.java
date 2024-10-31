@@ -41,17 +41,17 @@ public class TestSimpleRules {
   // |__1__| |__A__|
   private ThreeTriosGrid oneLoosesGrid;
 
-//   |--5--| |--7--| |--8--|
-//   |8 2 A| |A 2 A| |3 2 8|
-//   |__2__| |__9__| |__A__|
+//   |--A--| |--A--| |--A--|
+//   |A 2 A| |A 2 A| |3 2 A|
+//   |__2__| |__A__| |__A__|
 //
 //   |--7--| |--_--| |--9--|
-//   |9 2 9| |_ H _| |9 2 9|
+//   |A 2 A| |_ H _| |9 2 9|
 //   |__4__| |__-__| |__9__|
 //
 //   |--A--| |--_--| |--5--|
-//   |A 1 A| |_ H _| |1 2 7|
-//   |__A__| |__-__| |__8__|
+//   |A 1 A| |_ H _| |1 2 1|
+//   |__A__| |__-__| |__1__|
   private ThreeTriosGrid holeGrid;
 
 
@@ -160,6 +160,14 @@ public class TestSimpleRules {
             )))
             .buildGrid();
     holeGrid = new GridBuilder(3, 3)
+            .setCell(0, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.TWO,
+                    "Ace"
+            )))
             .setCell(1, 1, new Cell(true))
             .setCell(2, 1, new Cell(true))
             .buildGrid();

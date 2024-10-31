@@ -123,7 +123,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     * @return Player who needs to play.
     */
     public ThreeTriosPlayer getCurrentPlayer() {
-        //todo
         return currentPlayer;
     }
     

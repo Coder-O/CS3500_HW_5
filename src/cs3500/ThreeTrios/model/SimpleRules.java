@@ -37,7 +37,7 @@ public class SimpleRules implements ThreeTriosBattleRules{
     ThreeTriosCard attacker;
 
     while (!flippedThisTurn.isEmpty()) {
-      attacker = flippedThisTurn.removeFirst();
+      attacker = flippedThisTurn.remove(0);
       battleWithNeighbors(attacker);
     }
   }
