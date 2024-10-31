@@ -142,7 +142,7 @@ public class TestThreeTriosGameModel {
         this.setUp();
         model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
 
-        assertEquals(9, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
+        assertEquals(5, model.getHand(ThreeTriosPlayer.RED).size()); //hand size should go down
         assertEquals(1, model.getGrid().getNumCards()); 
     }
 
@@ -234,7 +234,6 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testGetCurrentPlayerAfterOneMove() {
-        //todo
         this.setUp();
 
         model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);

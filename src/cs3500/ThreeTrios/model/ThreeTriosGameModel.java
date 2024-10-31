@@ -27,19 +27,21 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     
     /**
      * Constructor for ThreeTrios Model.
-     * 
-     * To start the game, there must be enough cards to fill both players’ hands and fill every card cell. 
+     * To start the game, there must be enough cards to fill both players’ hands 
+     * and fill every card cell. 
      * Therefore, if N is the number of card cells on the grid, 
      * there must be at least N+1 cards available in the game to split between the players.
      * With a valid grid and list of cards to play with, each player is dealt their cards at random 
      * from the list. 
-     * Each player’s hand is filled with exactly N+1/2 cards where N is the number of card cells on the grid.
+     * Each player’s hand is filled with exactly N+1/2 cards 
+     * where N is the number of card cells on the grid.
      *
      * @param grid The grid to use, given by a configuration class.
      *             To preserve the integrity of the game state, this should not have any cards
      *             played to it yet.
      * @param deck The deck of cards to use.
-     * @throws IllegalArgumentException if the number of cards is not exactly N+1, where N is the number of card cells.
+     * @throws IllegalArgumentException if the number of cards is not exactly N+1, 
+     *         where N is the number of card cells.
      * @throws IllegalArgumentException if the provided grid has been played to already.
      * @throws IllegalArgumentException if the provided cards are not unique.
      */
@@ -47,7 +49,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
             ThreeTriosGrid grid,
             List<ThreeTriosCard> deck,
             ThreeTriosBattleRules battleRules) throws IllegalArgumentException {
-        if (!(deck.size() > grid.getNumCardCells())) {
+        if (deck.size() < grid.getNumCardCells()) {
             throw new IllegalArgumentException(
                     "There are "
                             + deck.size()
@@ -117,17 +119,12 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * @return true if the game has been won, false otherwise
      */
     public boolean isGameWon() {
-        if (isGameOver()
+        return (isGameOver() 
         && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
-        > this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
-            return true;
-        }
-        if (isGameOver()
+        > this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) 
+        || (isGameOver()
         && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size()
-        < this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) {
-            return true;
-        }
-        return false;
+        < this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size());
     }
 
     /**

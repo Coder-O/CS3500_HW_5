@@ -2,8 +2,12 @@ package cs3500.ThreeTrios.model;
 
 import java.util.Objects;
 
+/**
+ * Represents a Card in the game of ThreeTrios.
+ * A Card must have four values, a player, and a name.
+ */
 public class Card implements ThreeTriosCard {
-
+    
     private final ThreeTriosAttackValue north;
     private final ThreeTriosAttackValue east;
     private final ThreeTriosAttackValue south;
@@ -94,25 +98,25 @@ public class Card implements ThreeTriosCard {
     }
 
     /**
-     * Gets the attack value for the corresponding direction
+     * Gets the attack value for the corresponding direction.
      * @param direction The direction to get the attack value for.
      * @return The attack value for the corresponding direction.
      */
     @Override
     public ThreeTriosAttackValue getAttackValue(ThreeTriosDirection direction) {
         switch (direction) {
-          case NORTH:
-              return this.north;
-          case EAST:
-              return this.east;
-          case SOUTH:
-              return this.south;
-          case WEST:
-              return this.west;
-        default:
+            case NORTH:
+            return this.north;
+            case EAST:
+            return this.east;
+            case SOUTH:
+            return this.south;
+            case WEST:
+            return this.west;
+            default:
             throw new IllegalStateException(
                 "Somehow, a ThreeTriosDirection was not one of its enumerated possibilities.");
-        }
+            }
     }
 
     /**

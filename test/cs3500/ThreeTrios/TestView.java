@@ -16,6 +16,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+/**
+ * Tests the textual view of the game.
+ */
 public class TestView {
 
     private ThreeTriosGameModel model;

@@ -22,7 +22,7 @@ public class Grid implements ThreeTriosGrid {
    * @param grid The array for this grid to store.
    * @throws IllegalArgumentException if the number of card cells is not odd.
    */
-  public Grid(ThreeTriosCell[][] grid) throws IllegalArgumentException{
+  public Grid(ThreeTriosCell[][] grid) throws IllegalArgumentException {
     this.rows = grid.length;
     this.columns = grid[0].length;
 

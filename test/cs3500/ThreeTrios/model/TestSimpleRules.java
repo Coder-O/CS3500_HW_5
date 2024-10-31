@@ -76,7 +76,7 @@ public class TestSimpleRules {
             ThreeTriosAttackValue.ONE,
             attackingPlayer,
             "Worst"
-    );;
+    );
 
     // Specific grids:
     allLooseGrid = new GridBuilder(3, 3)
@@ -293,7 +293,7 @@ public class TestSimpleRules {
       for (int col = 0; col < 3; col++) {
         Assert.assertEquals(
                 "All cards should be flipped to the attacking player, but "
-                        + row + ", "+ col + " didn't",
+                        + row + ", " + col + " didn't",
                 allLooseGrid.getCell(row, col).getCard().getPlayer(),
                 attackingPlayer
         );

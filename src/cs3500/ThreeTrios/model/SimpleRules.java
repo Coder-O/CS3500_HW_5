@@ -6,12 +6,13 @@ import java.util.Map;
 
 /**
  * A set of rules for when cards do battle in a game of Three Trios.
- * By these rules, an attacker wins a battle if it's attack value in the direction of its opponent is greater than
- *  that of its opponent's in its direction. Otherwise, the defender wins.
+ * By these rules, an attacker wins a battle if it's attack value in 
+ * the direction of its opponent is greater than that of its opponent's 
+ * in its direction. Otherwise, the defender wins.
  *
  *  <p>If the attacker wins, then the defender is flipped.</p>
  */
-public class SimpleRules implements ThreeTriosBattleRules{
+public class SimpleRules implements ThreeTriosBattleRules {
 
   private List<ThreeTriosCard> flippedThisTurn;
   private ThreeTriosGrid grid;

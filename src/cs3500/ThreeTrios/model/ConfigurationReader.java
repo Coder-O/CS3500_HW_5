@@ -102,7 +102,7 @@ public class ConfigurationReader {
 
     List<ThreeTriosCard> deck = new ArrayList<>();
 
-    while(scanner.hasNextLine()) {
+    while (scanner.hasNextLine()) {
       String line = scanner.nextLine();
 
       // CARD_NAME NORTH SOUTH EAST WEST
