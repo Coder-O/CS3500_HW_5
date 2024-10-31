@@ -8,8 +8,25 @@ The following assumptions are made:
 -Game will track whose turn it is.
 
 Quick Start: 
-// Get a grid and deck to start the game with, from configuration files 'exampleGrid.txt' and 'exampleDeck.txt'
-ThreeTriosGrid grid = new Grid
+    // Get a grid and deck to start the game with, from configuration files 'exampleGrid.txt' and 'exampleDeck.txt' in the root directory
+    ThreeTriosGrid grid = ConfigurationReader.readGrid("exampleGrid.txt");
+    List<ThreeTriosCard> deck = ConfigurationReader.readDeck("exampleGrid.txt");
+    
+    // Get an instance of the rules to start a game with, such as SimpleRules
+    ThreeTriosBattleRules battleRules = new SimpleRules();
+    
+    // Starts a game!!!
+    ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+    
+    // Sets up a view
+    ThreeTriosView view = new ThreeTriosView(ThreeTriosModel model, System.out);
+    
+    // From here, take player actions
+    ThreeTriosGameModel.playToGrid(ThreeTriosPlayer.Red, 0, 0, 0);
+    ThreeTriosGameModel.playToGrid(ThreeTriosPlayer.Blue, 0, 1, 1);
+    
+    // And view the game
+    view.render()
 
 Key Components and Subcomponents:
 -Controller: drives the control-flow of the game. To be developed.
