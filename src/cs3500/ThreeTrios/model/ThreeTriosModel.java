@@ -38,7 +38,7 @@ public interface ThreeTriosModel {
     * Returns the current deck.
     * @return the current deck.
     */
-    public List<Card> getDeck();
+    public List<ThreeTriosCard> getDeck();
     
     /**
     * Returns the Grid in its current state.

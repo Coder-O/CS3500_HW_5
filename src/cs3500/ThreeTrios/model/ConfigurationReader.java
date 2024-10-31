@@ -1,6 +1,8 @@
 package cs3500.ThreeTrios.model;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -9,10 +11,11 @@ import java.util.Scanner;
 public class ConfigurationReader {
 
   /**
-   *
-   * @param filePath
-   * @return
-   * @throws FileNotFoundException
+   * Reads a grid configuration from the provided file.
+   * @param filePath The file to read.
+   * @return The grid read from the file.
+   * @throws FileNotFoundException If the file isn't found
+   * @throws IllegalStateException if the file is not structured correctly
    */
   public static Grid readGrid(String filePath) throws FileNotFoundException {
     Scanner scanner = new Scanner(filePath);
@@ -63,6 +66,41 @@ public class ConfigurationReader {
     }
 
     return builder.buildGrid();
+  }
+
+  /**
+   * Reads a card configuration from the provided file.
+   * @param filePath The file to read.
+   * @return The card read from the file.
+   * @throws FileNotFoundException If the file isn't found
+   * @throws IllegalStateException if the file is not structured correctly
+   */
+  public static List<ThreeTriosCard> readDeck(String filePath) throws FileNotFoundException {
+    Scanner scanner = new Scanner(filePath);
+    List<ThreeTriosCard> deck = new ArrayList<>();
+
+    while(scanner.hasNextLine()) {
+      String line = scanner.nextLine();
+
+      // CARD_NAME NORTH SOUTH EAST WEST
+      // 0          1     2     3   4
+      String[] elements = line.split(" ");
+      if (elements.length != 5) {
+        throw new IllegalStateException("The line '" + line + "' does not have 5 elements!!!");
+      }
+
+      deck.add(new Card(
+              ThreeTriosAttackValue.attackValueFactory(elements[1]), // North
+              ThreeTriosAttackValue.attackValueFactory(elements[3]), // East
+              ThreeTriosAttackValue.attackValueFactory(elements[4]), // West
+              ThreeTriosAttackValue.attackValueFactory(elements[2]), // South
+              null,
+              elements[0]                                            // Name
+      ));
+
+    }
+
+    return deck;
   }
 
 }
