@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -15,13 +16,13 @@ import java.util.Set;
 */
 public class ThreeTriosGameModel implements ThreeTriosModel {
     
-    private List<ThreeTriosCard> deck;
+    private final List<ThreeTriosCard> deck;
     /* INVARIANT: Every card in the game has a unique name */
-    private Grid grid;
-    private Map<ThreeTriosPlayer, List<ThreeTriosCard>> playerHands;
-    private ThreeTriosPlayer playerRed;
-    private ThreeTriosPlayer playerBlue;
-    private ThreeTriosBattleRules battleRules;
+    private final Grid grid;
+    private final Map<ThreeTriosPlayer, List<ThreeTriosCard>> playerHands;
+    private final ThreeTriosPlayer playerRed;
+    private final ThreeTriosPlayer playerBlue;
+    private final ThreeTriosBattleRules battleRules;
     private ThreeTriosPlayer currentPlayer;
     
     /**
@@ -83,19 +84,17 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         }
 
         // Initialize hands
+        Random random = new Random();
         this.playerHands = new HashMap<ThreeTriosPlayer, List<ThreeTriosCard>>();
         for (ThreeTriosPlayer player : ThreeTriosPlayer.values()) {
             List<ThreeTriosCard> playerCards = new ArrayList<>();
             for (int i = 0; i < (grid.getNumCardCells() + 1) / 2; ++i) {
-                playerCards.add(deck.remove(0));
+                playerCards.add(deck.remove(random.nextInt(deck.size())));
             }
             playerHands.put(player, playerCards);
         }
 
         this.currentPlayer = startingPlayer;
-
-        //todo random 
-        //todo intialize deck (random)
 
     }
 
