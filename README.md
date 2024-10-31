@@ -1,6 +1,6 @@
 # CS3500_HW_5
 
-This codebase is meant to represent a game of ThreeTrios. 
+This codebase is meant to represent a game of ThreeTrios. Players take turns playing cards from their hands onto a grid
 
 The following assumptions are made:
 -There are only 2 players.
@@ -8,19 +8,22 @@ The following assumptions are made:
 -Game will track whose turn it is.
 
 Quick Start: 
-//todo: give a short snippet of code (rather like a simple JUnit test) showing how a user might get started using this codebase.
+// Get a grid and deck to start the game with, from configuration files 'exampleGrid.txt' and 'exampleDeck.txt'
+ThreeTriosGrid grid = new Grid
 
 Key Components and Subcomponents:
 -Controller: drives the control-flow of the game. To be developed.
--Model: is driven by the controller. Holds the rules and objects of the game.
-    -Card: the cards of the game.
-    -Direction: the directions a ThreeTriosCard can have neighbors in.
-    -Player: player 1 and player 2.
-    -AttackValue: values for the cards (1, 2, 3, 4, 5, 6, 7, 8, 9, A)
-    -GridBuilder: initializes a grid.
-    -Grid: the playing grid, has empty and hole cells.
-    -Cell: a cell in the grid. It can be a hole or hold a card.
-    -BattleRules: the rules that govern the ThreeTrios game.
+-ThreeTriosModel: is driven by the controller. Manages the rules and objects of the game.
+    -ThreeTriosGrid: the playing grid, a 2 by 2 grid that holds cells as described below. A grid must have an odd number of card cells.
+    -ThreeTriosCells: a cell in the grid. It can be a hole (a non-existant position) or a card cell (can hold a card).
+    -ThreeTriosCard: the cards of the game. Every card in the game must have a unique name.
+    -ThreeTriosBattleRules: the rules that govern the ThreeTrios game.
+    -ThreeTriosDirection: An enum describing the directions a ThreeTriosCard can have neighbors in.
+    -ThreeTriosPlayer: An enum describing the 2 players: Red and Blue.
+    -ThreeTriosAttackValue: An enum describing attack values for the cards (1, 2, 3, 4, 5, 6, 7, 8, 9, A) (A is numerically equivalent to 10.)
+    -ThreeTriosGridBuilder: help initializes an intance of a grid. Generally better to use ConfigurationReader from a user standpoint.
+    -ConfigurationReader: Creates a ThreeTriosGrid or a list of ThreeTriosCards from a file.
+    
 -View: renders the game into a textual view. Graphic view to be developed.
 
 Source Organization:
@@ -28,4 +31,8 @@ Source Organization:
     -Controller
     -Model
     -View
+    -Configurations
 -Test
+    -Controller
+    -Model
+    -View
