@@ -179,14 +179,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
 
         endTurn();
     }
-
-    /**
-    * Returns the current deck.
-    * @return the current deck.
-    */
-    public List<ThreeTriosCard> getDeck() {
-        return this.deck;
-    }
     
     /**
     * Returns the Grid in its current state.
