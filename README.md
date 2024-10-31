@@ -42,15 +42,17 @@ Key Components and Subcomponents:
     - ThreeTriosGridBuilder: help initializes an intance of a grid. Generally better to use ConfigurationReader from a user standpoint.
     - ConfigurationReader: Creates a ThreeTriosGrid or a list of ThreeTriosCards from a file.
     
-- View: renders the game into a textual view. Graphic view to be developed.
+- ThreeTriosView: renders the game into a textual view. Graphic view to be developed.
 
 Source Organization:
 - Src
     - Controller
+        - (Controller related code)
     - Model
+        - (ThreeTriosModel and related code)
     - View
+        - ThreeTriosView
     - Configurations
+        - (Configuration files)
 - Test
-    - Controller
-    - Model
-    - View
+    - (Tests mirroring the organization above)
