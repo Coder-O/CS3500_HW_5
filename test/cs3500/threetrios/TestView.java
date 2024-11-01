@@ -31,12 +31,14 @@ public class TestView {
         ThreeTriosBattleRules battleRules = new SimpleRules();
         List<ThreeTriosCard> deck = ConfigurationReader.readDeck("Card.10Cards");
 
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
     }
 
     //todo test starting game
     @Test
     public void testStartingView() {
+
+        this.setUp();
 
         ThreeTriosView view = new ThreeTriosView(model);
 
@@ -44,9 +46,7 @@ public class TestView {
         + "_ _ _"
         + "_ _ _" 
         + "_ _ _"
-        + "Hand:\n" 
-        + "Player: RED\n" 
-        + "Player: RED\n";
+        + "Hand:\n";
 
         assertEquals(expectedView, view.toString());
     }
@@ -55,21 +55,19 @@ public class TestView {
     @Test
     public void testView() {
 
+        this.setUp();
+
         ThreeTriosView view = new ThreeTriosView(model);
+        
         model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
 
         String expectedView = "Player: BLUE\n" 
-        + "_ _ _"
+        + "B _ _"
         + "_ _ _" 
         + "_ _ _"
-        + "Hand:\n" 
-        + "Player: RED\n" 
-        + "Player: RED\n";
-
-
+        + "Hand:\n";
 
         assertEquals(expectedView, view.toString());
     }
-
 
 }

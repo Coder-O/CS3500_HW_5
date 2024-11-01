@@ -101,7 +101,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     }
 
     /**
-     * Constructor for ThreeTriosGameModel.
+     * Constructor for ThreeTriosGameModel (No random for testing). 
      *
      * To start the game, there must be enough cards to fill both players’ hands and fill every card cell.
      * Therefore, if N is the number of card cells on the grid,
