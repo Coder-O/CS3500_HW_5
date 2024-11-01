@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class TestView {
 
-    private ThreeTriosGameModel model;
+  private ThreeTriosGameModel model;
 
     /**
      * Set up an example game.
@@ -41,9 +41,9 @@ public class TestView {
     @Test
     public void testStartingView() {
 
-        this.setUp();
+    this.setUp();
 
-        ThreeTriosView view = new ThreeTriosView(model);
+    ThreeTriosView view = new ThreeTriosView(model);
 
         String expectedView = "Player: RED\n" 
         + "_ _ _\n"
@@ -56,7 +56,7 @@ public class TestView {
         + "Card4 4 4 4 4\n"
         + "Card5 5 5 5 5\n";
 
-        assertEquals(expectedView, view.toString());
-    }
+    assertEquals(expectedView, view.toString());
+  }
 
 }
