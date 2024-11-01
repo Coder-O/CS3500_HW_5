@@ -10,38 +10,38 @@ import cs3500.threetrios.model.ThreeTriosCard;
  * A textual view of the ThreeTrios Game.
  */
 public class ThreeTriosView {
-  private final ThreeTriosModel model;
-  private final Appendable out;
+    private final ThreeTriosModel model;
+    private final Appendable out;
 
-  /**
-   * Constructor for ThreeTriosView.
-   * @param model the game model
-   * @throws IllegalArgumentException if model is null
-   */
-  public ThreeTriosView(ThreeTriosModel model) {
-    if (model == null) {
-      throw new IllegalArgumentException("Model cannot be null.");
+    /**
+     * Constructor for ThreeTriosView.
+     * @param model the game model
+     * @throws IllegalArgumentException if model is null
+     */
+    public ThreeTriosView(ThreeTriosModel model) {
+        if (model == null) {
+            throw new IllegalArgumentException("Model cannot be null.");
+        }
+        this.model = model;
+        this.out = null;
     }
-    this.model = model;
-    this.out = null;
-  }
-  
-  /**
-   * Constructor for ThreeTriosView.
-   * @param model the game model
-   * @throws IllegalArgumentException if model is null
-   * @throws IllegalArgumentException if Appendable is null
-   */
-  public ThreeTriosView(ThreeTriosModel model, Appendable out) {
-    if (model == null) {
-      throw new IllegalArgumentException("Model cannot be null.");
+    
+    /**
+     * Constructor for ThreeTriosView.
+     * @param model the game model
+     * @throws IllegalArgumentException if model is null
+     * @throws IllegalArgumentException if Appendable is null
+     */
+    public ThreeTriosView(ThreeTriosModel model, Appendable out) {
+        if (model == null) {
+            throw new IllegalArgumentException("Model cannot be null.");
+        }
+        this.model = model;
+        this.out = out;
+        if (this.out == null) {
+            throw new IllegalArgumentException("Appendable cannot be null.");
+        }
     }
-    this.model = model;
-    this.out = out;
-    if (this.out == null) {
-      throw new IllegalArgumentException("Appendable cannot be null.");
-    }
-  }
 
     /**
      * Displays the Game.

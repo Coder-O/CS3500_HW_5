@@ -27,7 +27,7 @@ public class GridBuilder implements ThreeTriosGridBuilder<Grid> {
   /**
    * Sets the cell at the specified position to the given cell.
    *
-   * @param row  of the cell we want to change.
+   * @param row    of the cell we want to change.
    * @param column of the cell we want to change.
    * @param cell   that will be placed.
    * @return
@@ -36,12 +36,12 @@ public class GridBuilder implements ThreeTriosGridBuilder<Grid> {
   public GridBuilder setCell(int row, int column, ThreeTriosCell cell) {
     if (row > rows || row < 0) {
       throw new IllegalArgumentException(
-          row + " is an invalid row value!!! Valid indices are: 0-" + rows
+              row + " is an invalid row value!!! Valid indices are: 0-" + rows
       );
     }
     if (column > columns || column < 0) {
       throw new IllegalArgumentException(
-          column + " is an invalid column value!!! Valid indices are: 0-" + columns
+              column + " is an invalid column value!!! Valid indices are: 0-" + columns
       );
     }
 
