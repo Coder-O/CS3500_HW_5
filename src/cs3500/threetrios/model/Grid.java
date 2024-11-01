@@ -79,6 +79,7 @@ public class Grid implements ThreeTriosGrid {
    * @param column the column to play the card to.
    * @param card   the card to play
    * @throws IllegalArgumentException if the row or column are not in the grid
+   * @throws IllegalStateException if the card is being played to an illgal position.
    */
   @Override
   public void playToCell(int row, int column, ThreeTriosCard card) {
@@ -90,6 +91,18 @@ public class Grid implements ThreeTriosGrid {
     if (column > columns || column < 0) {
       throw new IllegalArgumentException(
               column + " is an invalid column value!!! Valid indices are: 0-" + columns
+      );
+    }
+
+    if (grid[row][column].isHole()) {
+      throw new IllegalStateException(
+              "Cards cannot be played to a hole!"
+      );
+    }
+
+    if (grid[row][column].getCard() != null) {
+      throw new IllegalStateException(
+              "Cards cannot be played to a position twice!"
       );
     }
 
