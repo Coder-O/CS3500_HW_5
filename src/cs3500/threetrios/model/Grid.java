@@ -79,6 +79,7 @@ public class Grid implements ThreeTriosGrid {
    * @param column the column to play the card to.
    * @param card   the card to play
    * @throws IllegalArgumentException if the row or column are not in the grid
+   * @throws IllegalStateException if the card is being played to an illgal position.
    */
   @Override
   public void playToCell(int row, int column, ThreeTriosCard card) {
@@ -90,6 +91,18 @@ public class Grid implements ThreeTriosGrid {
     if (column > columns || column < 0) {
       throw new IllegalArgumentException(
               column + " is an invalid column value!!! Valid indices are: 0-" + columns
+      );
+    }
+
+    if (grid[row][column].isHole()) {
+      throw new IllegalStateException(
+              "Cards cannot be played to a hole!"
+      );
+    }
+
+    if (grid[row][column].getCard() != null) {
+      throw new IllegalStateException(
+              "Cards cannot be played to a position twice!"
       );
     }
 
@@ -141,7 +154,7 @@ public class Grid implements ThreeTriosGrid {
    *
    * @param card The card to find the neighbors for.
    * @return A map containing the neighbors of this card. If a neighbor is missing,
-   * this map does not include an entry or key for it.
+   *         this map does not include an entry or key for it.
    * @throws IllegalArgumentException If the card does not appear in the grid.
    */
   @Override
@@ -173,7 +186,7 @@ public class Grid implements ThreeTriosGrid {
    * @param row The row of the card to get neighbors for.
    * @param column The column of the card to get neighbors for.
    * @return A map containing the neighbors of this card. If a neighbor is missing,
-   * this map does not include an entry or key for it.
+   *        this map does not include an entry or key for it.
    */
   private Map<ThreeTriosDirection, ThreeTriosCard> helpGetNeighbors(int row, int column) {
     Map<ThreeTriosDirection, ThreeTriosCard> toReturn = new HashMap<>();
@@ -213,35 +226,35 @@ public class Grid implements ThreeTriosGrid {
     return toReturn;
   }
 
-    /**
-    * Prints the grid using _ for empty cells and ' ' for hole cells.
-    * Ex: 
-    BB   _
-    _B   _
-    _ R  _
-    _  _ _
-    _   _R
-    * @return a textual representation of the grid
-    */
-    @Override
-    public String toString() {
-      StringBuilder gridView = new StringBuilder();
-      for (int row = 0; row < rows; row++) {
-          for (int column = 0; column < columns; column++) {
-              ThreeTriosCell cell = grid[row][column];
-              if (cell.isHole()) {
-                gridView.append(" ");
-              } else if (cell.getCard() == null) {
-                gridView.append("_");
-              } else {
-                gridView.append(cell.getCard().getPlayer().getSymbol());
-              }
-              if (column < columns - 1) {
-                gridView.append(" ");
-              }
-          }
-          gridView.append("\n");
+  /**
+  * Prints the grid using _ for empty cells and ' ' for hole cells.
+  * Ex:
+  BB   _
+  _B   _
+  _ R  _
+  _  _ _
+  _   _R
+  * @return a textual representation of the grid
+  */
+  @Override
+  public String toString() {
+    StringBuilder gridView = new StringBuilder();
+    for (int row = 0; row < rows; row++) {
+      for (int column = 0; column < columns; column++) {
+        ThreeTriosCell cell = grid[row][column];
+        if (cell.isHole()) {
+          gridView.append(" ");
+        } else if (cell.getCard() == null) {
+          gridView.append("_");
+        } else {
+          gridView.append(cell.getCard().getPlayer().getSymbol());
+        }
+        if (column < columns - 1) {
+          gridView.append(" ");
+        }
       }
-      return gridView.toString();
+      gridView.append("\n");
     }
+    return gridView.toString();
+  }
 }
