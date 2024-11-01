@@ -21,42 +21,42 @@ import java.util.List;
  */
 public class TestView {
 
-    private ThreeTriosGameModel model;
+  private ThreeTriosGameModel model;
 
-    /**
-     * Set up an example game.
-     */
-    protected void setUp() {
-        ThreeTriosGrid grid = ConfigurationReader.readGrid(
-                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
-        );
-        ThreeTriosBattleRules battleRules = new SimpleRules();
-        List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
-                "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
-        );
+  /**
+   * Set up an example game.
+   */
+  protected void setUp() {
+    ThreeTriosGrid grid = ConfigurationReader.readGrid(
+        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+    );
+    ThreeTriosBattleRules battleRules = new SimpleRules();
+    List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
+        "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+    );
 
-        model = new ThreeTriosGameModel(grid, deck, battleRules, false);
-    }
+    model = new ThreeTriosGameModel(grid, deck, battleRules, false);
+  }
 
-    @Test
-    public void testStartingView() {
+  @Test
+  public void testStartingView() {
 
-        this.setUp();
+    this.setUp();
 
-        ThreeTriosView view = new ThreeTriosView(model);
+    ThreeTriosView view = new ThreeTriosView(model);
+    
+    String expectedView = "Player: RED\n" 
+       + "_ _ _\n"
+       + "_ _ _\n"
+       + "_ _ _\n"
+       + "Hand:\n"
+       + "Card1 1 1 1 1\n"
+       + "Card2 2 2 2 2\n"
+       + "Card3 3 3 3 3\n"
+       + "Card4 4 4 4 4\n"
+       + "Card5 5 5 5 5\n";
 
-        String expectedView = "Player: RED\n" 
-        + "_ _ _\n"
-        + "_ _ _\n" 
-        + "_ _ _\n"
-        + "Hand:\n"
-        + "Card1 1 1 1 1\n"
-        + "Card2 2 2 2 2\n"
-        + "Card3 3 3 3 3\n"
-        + "Card4 4 4 4 4\n"
-        + "Card5 5 5 5 5\n";
-
-        assertEquals(expectedView, view.toString());
-    }
+    assertEquals(expectedView, view.toString());
+  }
 
 }
