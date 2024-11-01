@@ -21,53 +21,53 @@ import java.util.List;
  */
 public class TestView {
 
-    private ThreeTriosGameModel model;
+  private ThreeTriosGameModel model;
 
-    /**
-     * Set up an example game.
-     */
-    protected void setUp() {
-        ThreeTriosGrid grid = ConfigurationReader.readGrid("Grid.Tall");
-        ThreeTriosBattleRules battleRules = new SimpleRules();
-        List<ThreeTriosCard> deck = ConfigurationReader.readDeck("Card.10Cards");
+  /**
+   * Set up an example game.
+   */
+  protected void setUp() {
+    ThreeTriosGrid grid = ConfigurationReader.readGrid("Grid.Tall");
+    ThreeTriosBattleRules battleRules = new SimpleRules();
+    List<ThreeTriosCard> deck = ConfigurationReader.readDeck("Card.10Cards");
 
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
-    }
+    ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
+  }
 
-    //todo test starting game
-    @Test
-    public void testStartingView() {
+  //todo test starting game
+  @Test
+  public void testStartingView() {
 
-        this.setUp();
+    this.setUp();
 
-        ThreeTriosView view = new ThreeTriosView(model);
+    ThreeTriosView view = new ThreeTriosView(model);
 
-        String expectedView = "Player: RED\n" 
-        + "_ _ _"
-        + "_ _ _" 
-        + "_ _ _"
-        + "Hand:\n";
+    String expectedView = "Player: RED\n" 
+    + "_ _ _"
+    + "_ _ _" 
+    + "_ _ _"
+    + "Hand:\n";
 
-        assertEquals(expectedView, view.toString());
-    }
+    assertEquals(expectedView, view.toString());
+  }
 
-    //todo test 1 play
-    @Test
-    public void testView() {
+  //todo test 1 play
+  @Test
+  public void testView() {
 
-        this.setUp();
+    this.setUp();
 
-        ThreeTriosView view = new ThreeTriosView(model);
-        
-        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    ThreeTriosView view = new ThreeTriosView(model);
+    
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
 
-        String expectedView = "Player: BLUE\n" 
-        + "B _ _"
-        + "_ _ _" 
-        + "_ _ _"
-        + "Hand:\n";
+    String expectedView = "Player: BLUE\n" 
+    + "B _ _"
+    + "_ _ _" 
+    + "_ _ _"
+    + "Hand:\n";
 
-        assertEquals(expectedView, view.toString());
-    }
+    assertEquals(expectedView, view.toString());
+  }
 
 }
