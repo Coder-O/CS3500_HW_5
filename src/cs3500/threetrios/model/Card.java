@@ -18,11 +18,11 @@ public class Card implements ThreeTriosCard {
    * Card constructor.
    */
   public Card(ThreeTriosAttackValue north,
-    ThreeTriosAttackValue east,
-    ThreeTriosAttackValue west,
-    ThreeTriosAttackValue south,
-    ThreeTriosPlayer player,
-    String name
+      ThreeTriosAttackValue east,
+      ThreeTriosAttackValue west,
+      ThreeTriosAttackValue south,
+      ThreeTriosPlayer player,
+      String name
   ) {
     this.north = north;
     this.east = east;

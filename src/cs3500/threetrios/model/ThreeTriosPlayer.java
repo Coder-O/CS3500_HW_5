@@ -5,21 +5,21 @@ package cs3500.threetrios.model;
 */
 public enum ThreeTriosPlayer {
 
-    RED("R"),
-    BLUE("B");
+  RED("R"),
+  BLUE("B");
 
-    private final String symbol;
+  private final String symbol;
 
-    ThreeTriosPlayer(String symbol) {
-        this.symbol = symbol;
-    }
+  ThreeTriosPlayer(String symbol) {
+    this.symbol = symbol;
+  }
 
-    /**
-    * Returns the Symbol of the Player.
-    * @return the Symbol of the Player.
-    */
-    public String getSymbol() {
-        return symbol;
-    }
+  /**
+  * Returns the Symbol of the Player.
+  * @return the Symbol of the Player.
+  */
+  public String getSymbol() {
+    return symbol;
+  }
 
 }
