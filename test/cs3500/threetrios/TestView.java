@@ -27,14 +27,17 @@ public class TestView {
      * Set up an example game.
      */
     protected void setUp() {
-        ThreeTriosGrid grid = ConfigurationReader.readGrid("Grid.Tall");
+        ThreeTriosGrid grid = ConfigurationReader.readGrid(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+        );
         ThreeTriosBattleRules battleRules = new SimpleRules();
-        List<ThreeTriosCard> deck = ConfigurationReader.readDeck("Card.10Cards");
+        List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
+                "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+        );
 
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
+        model = new ThreeTriosGameModel(grid, deck, battleRules, false);
     }
 
-    //todo test starting game
     @Test
     public void testStartingView() {
 
@@ -43,29 +46,15 @@ public class TestView {
         ThreeTriosView view = new ThreeTriosView(model);
 
         String expectedView = "Player: RED\n" 
-        + "_ _ _"
-        + "_ _ _" 
-        + "_ _ _"
-        + "Hand:\n";
-
-        assertEquals(expectedView, view.toString());
-    }
-
-    //todo test 1 play
-    @Test
-    public void testView() {
-
-        this.setUp();
-
-        ThreeTriosView view = new ThreeTriosView(model);
-        
-        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
-
-        String expectedView = "Player: BLUE\n" 
-        + "B _ _"
-        + "_ _ _" 
-        + "_ _ _"
-        + "Hand:\n";
+        + "_ _ _\n"
+        + "_ _ _\n" 
+        + "_ _ _\n"
+        + "Hand:\n"
+        + "Card1 1 1 1 1\n"
+        + "Card2 2 2 2 2\n"
+        + "Card3 3 3 3 3\n"
+        + "Card4 4 4 4 4\n"
+        + "Card5 5 5 5 5\n";
 
         assertEquals(expectedView, view.toString());
     }

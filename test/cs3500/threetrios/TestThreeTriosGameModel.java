@@ -37,7 +37,7 @@ public class TestThreeTriosGameModel {
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
         );
 
-        model = new ThreeTriosGameModel(grid, deck, battleRules);
+        model = new ThreeTriosGameModel(grid, deck, battleRules, false);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class TestThreeTriosGameModel {
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
         );
 
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+        model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -74,7 +74,7 @@ public class TestThreeTriosGameModel {
                 "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
         );
         grid.playToCell(1, 1, deck.remove(0));
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+        model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -93,7 +93,7 @@ public class TestThreeTriosGameModel {
         ThreeTriosPlayer.RED, 
         "card"));
 
-        ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
+        model = new ThreeTriosGameModel(grid, deck, battleRules);
     }
 
     @Test
@@ -110,7 +110,6 @@ public class TestThreeTriosGameModel {
         model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
 
         Assert.assertTrue("Game should be over", model.isGameOver());
-
     }
 
     @Test
@@ -122,35 +121,40 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testIsGameWonTrue() {
-        model.isGameWon();
+        this.setUp();
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
+
+        Assert.assertTrue(model.isGameWon());
     }
 
     @Test
     public void testIsGameWonFalse() {
-        //todo
-    }
-
-    @Test
-    public void testIsGameWonOngoingGame() {
         this.setUp();
     
         assertFalse(model.isGameWon());
     }
 
-    // @Test(expected = IllegalStateException.class)
-    // public void testPlayToGridExc1() {
-    //     //todo
-    // }
+    @Test(expected = IllegalStateException.class)
+    public void testPlayToGridExc1() {
+        this.setUp();
 
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testPlayToGridExc2() {
-    //     //todo
-    // }
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 0);
+    }
 
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testPlayToGridExc3() {
-    //     //todo
-    // }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testPlayToGridExc2() {
+        this.setUp();
+
+        model.playToGrid(ThreeTriosPlayer.RED, 50, 0, 0);
+    }
 
     @Test
     public void testPlayToGrid() {
@@ -186,7 +190,6 @@ public class TestThreeTriosGameModel {
         model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
 
         assertEquals(ThreeTriosPlayer.BLUE, model.getCurrentPlayer());
-
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -198,7 +201,40 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testGetHand() {
-        //todo
+        this.setUp();
+
+        List<ThreeTriosCard> expectedHand = List.of(new Card(ThreeTriosAttackValue.ONE, 
+        ThreeTriosAttackValue.ONE, 
+        ThreeTriosAttackValue.ONE, 
+        ThreeTriosAttackValue.ONE, 
+        ThreeTriosPlayer.RED, 
+        "Card1"), 
+        new Card(ThreeTriosAttackValue.TWO, 
+        ThreeTriosAttackValue.TWO, 
+        ThreeTriosAttackValue.TWO, 
+        ThreeTriosAttackValue.TWO, 
+        ThreeTriosPlayer.RED, 
+        "Card2"),
+        new Card(ThreeTriosAttackValue.THREE, 
+        ThreeTriosAttackValue.THREE, 
+        ThreeTriosAttackValue.THREE, 
+        ThreeTriosAttackValue.THREE, 
+        ThreeTriosPlayer.RED, 
+        "Card3"), 
+        new Card(ThreeTriosAttackValue.FOUR, 
+        ThreeTriosAttackValue.FOUR, 
+        ThreeTriosAttackValue.FOUR, 
+        ThreeTriosAttackValue.FOUR, 
+        ThreeTriosPlayer.RED, 
+        "Card4"), 
+        new Card(ThreeTriosAttackValue.FIVE, 
+        ThreeTriosAttackValue.FIVE, 
+        ThreeTriosAttackValue.FIVE, 
+        ThreeTriosAttackValue.FIVE, 
+        ThreeTriosPlayer.RED, 
+        "Card5"));
+
+        assertEquals(expectedHand.size(), model.getHand(ThreeTriosPlayer.RED).size());
     }
     
 }

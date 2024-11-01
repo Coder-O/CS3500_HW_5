@@ -70,7 +70,7 @@ public class ThreeTriosView {
         
         //display the grid
         String grid = model.getGrid().toString();
-        gameState.append(grid).append("\n");
+        gameState.append(grid);
 
         //display the current player's hand
         ArrayList<ThreeTriosCard> hand = model.getHand(model.getCurrentPlayer());

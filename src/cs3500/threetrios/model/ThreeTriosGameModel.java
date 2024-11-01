@@ -153,11 +153,11 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      */
     public boolean isGameWon() {
         return (isGameOver() 
-        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size() 
-        > this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()) 
+        && (this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size()) 
+        > (this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size())) 
         || (isGameOver()
-        && this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size()
-        < this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size());
+        && (this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size())
+        < (this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()));
     }
 
     /**
@@ -187,10 +187,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
      * @param row           The row in the grid to play the card to.
      * @param column        The column in the grid to play the card to.
      * @throws IllegalStateException    If it is not the specified player's turn
-     * @throws IllegalArgumentException If the cardIdxInHand, row, or column parameters are
-     *                                  out-of-bounds.
+     * @throws IndexOutOfBounds If the cardIdxInHand, row, or column parameters are
+     *                                  out-of-bounds. (handled in playToCellMethod in Grid).
      * @throws IllegalStateException If the specified move is invalid
-     *                              (such as playing to a hole or a filled Card Cell)
+     *                              (such as playing to a hole or a filled Card Cell) (handled in playToCellMethod in Grid).
      */
     @Override
     public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IllegalArgumentException {
