@@ -120,15 +120,6 @@ public class TestThreeTriosGameModel {
         assertFalse(model.isGameOver());
     }
 
-    @Test
-    public void testIsGameWonTrue() {
-        model.isGameWon();
-    }
-
-    @Test
-    public void testIsGameWonFalse() {
-        //todo
-    }
 
     @Test
     public void testIsGameWonOngoingGame() {
@@ -136,21 +127,6 @@ public class TestThreeTriosGameModel {
     
         assertFalse(model.isGameWon());
     }
-
-    // @Test(expected = IllegalStateException.class)
-    // public void testPlayToGridExc1() {
-    //     //todo
-    // }
-
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testPlayToGridExc2() {
-    //     //todo
-    // }
-
-    // @Test(expected = IllegalArgumentException.class)
-    // public void testPlayToGridExc3() {
-    //     //todo
-    // }
 
     @Test
     public void testPlayToGrid() {
@@ -195,10 +171,4 @@ public class TestThreeTriosGameModel {
 
         model.getHand(null);
     }
-
-    @Test
-    public void testGetHand() {
-        //todo
-    }
-    
 }
