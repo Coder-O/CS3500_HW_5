@@ -1,4 +1,4 @@
-package cs3500.ThreeTrios.model;
+package cs3500.threetrios.model;
 
 /**
  * Represents the rules of battle for a game of ThreeTrios.

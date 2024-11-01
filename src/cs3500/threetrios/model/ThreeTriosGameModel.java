@@ -1,5 +1,5 @@
 
-package cs3500.ThreeTrios.model;
+package cs3500.threetrios.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

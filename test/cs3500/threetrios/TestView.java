@@ -1,16 +1,16 @@
-package cs3500.ThreeTrios;
+package cs3500.threetrios;
 
 import org.junit.Test;
 
-import cs3500.ThreeTrios.model.ConfigurationReader;
-import cs3500.ThreeTrios.model.SimpleRules;
-import cs3500.ThreeTrios.model.ThreeTriosBattleRules;
-import cs3500.ThreeTrios.model.ThreeTriosCard;
-import cs3500.ThreeTrios.model.ThreeTriosGameModel;
-import cs3500.ThreeTrios.model.ThreeTriosGrid;
-import cs3500.ThreeTrios.model.ThreeTriosModel;
-import cs3500.ThreeTrios.model.ThreeTriosPlayer;
-import cs3500.ThreeTrios.view.ThreeTriosView;
+import cs3500.threetrios.model.ConfigurationReader;
+import cs3500.threetrios.model.SimpleRules;
+import cs3500.threetrios.model.ThreeTriosBattleRules;
+import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosGameModel;
+import cs3500.threetrios.model.ThreeTriosGrid;
+import cs3500.threetrios.model.ThreeTriosModel;
+import cs3500.threetrios.model.ThreeTriosPlayer;
+import cs3500.threetrios.view.ThreeTriosView;
 
 import static org.junit.Assert.assertEquals;
 

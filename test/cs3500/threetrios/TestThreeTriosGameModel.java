@@ -1,21 +1,20 @@
-package cs3500.ThreeTrios;
-
-import org.junit.Test;
-
-import cs3500.ThreeTrios.model.Card;
-import cs3500.ThreeTrios.model.ConfigurationReader;
-import cs3500.ThreeTrios.model.SimpleRules;
-import cs3500.ThreeTrios.model.ThreeTriosAttackValue;
-import cs3500.ThreeTrios.model.ThreeTriosBattleRules;
-import cs3500.ThreeTrios.model.ThreeTriosCard;
-import cs3500.ThreeTrios.model.ThreeTriosGameModel;
-import cs3500.ThreeTrios.model.ThreeTriosGrid;
-import cs3500.ThreeTrios.model.ThreeTriosModel;
-import cs3500.ThreeTrios.model.ThreeTriosPlayer;
+package cs3500.threetrios;
 
 import org.junit.Assert;
+import org.junit.Test;
+
+import cs3500.threetrios.model.Card;
+import cs3500.threetrios.model.ConfigurationReader;
+import cs3500.threetrios.model.SimpleRules;
+import cs3500.threetrios.model.ThreeTriosAttackValue;
+import cs3500.threetrios.model.ThreeTriosBattleRules;
+import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosGameModel;
+import cs3500.threetrios.model.ThreeTriosGrid;
+import cs3500.threetrios.model.ThreeTriosModel;
+import cs3500.threetrios.model.ThreeTriosPlayer;
+
 import java.util.List;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -43,7 +42,13 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testConfigurationError() {
-        //todo
+        Assert.assertThrows(
+                "Should throw an error for an invalid file",
+                IllegalStateException.class,
+            () -> ConfigurationReader.readGrid(
+                    "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Fail.txt"
+            )
+        );
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -93,7 +98,19 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testIsGameOverTrue() {
-        //todo
+        this.setUp();
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
+        model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
+        model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
+
+        Assert.assertTrue("Game should be over", model.isGameOver());
+
     }
 
     @Test
@@ -105,7 +122,7 @@ public class TestThreeTriosGameModel {
 
     @Test
     public void testIsGameWonTrue() {
-        //todo
+        model.isGameWon();
     }
 
     @Test

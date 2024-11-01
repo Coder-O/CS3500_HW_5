@@ -1,4 +1,4 @@
-package cs3500.ThreeTrios.model;
+package cs3500.threetrios.model;
 
 /**
  * The directions a ThreeTriosCard can have neighbors in.
