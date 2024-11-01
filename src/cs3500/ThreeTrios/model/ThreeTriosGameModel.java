@@ -100,7 +100,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         }
     }
 
-
     /**
      * Constructor for ThreeTriosGameModel.
      *
@@ -127,7 +126,6 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     ) throws IllegalArgumentException {
         this(grid, deck, battleRules, true);
     }
-
 
     /**
      * Checks if the game is over.

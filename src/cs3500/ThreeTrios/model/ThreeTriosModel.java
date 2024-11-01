@@ -1,7 +1,6 @@
 package cs3500.ThreeTrios.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
 * Represents the model for the ThreeTrios Game.
@@ -37,12 +36,6 @@ public interface ThreeTriosModel {
      */
     public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) 
     throws IllegalStateException, IllegalArgumentException;
-
-    /**
-    * Returns the current deck.
-    * @return the current deck.
-    */
-    public List<ThreeTriosCard> getDeck();
     
     /**
     * Returns the Grid in its current state.

@@ -8,7 +8,6 @@ import cs3500.ThreeTrios.model.SimpleRules;
 import cs3500.ThreeTrios.model.ThreeTriosAttackValue;
 import cs3500.ThreeTrios.model.ThreeTriosBattleRules;
 import cs3500.ThreeTrios.model.ThreeTriosCard;
-import cs3500.ThreeTrios.model.ThreeTriosCell;
 import cs3500.ThreeTrios.model.ThreeTriosGameModel;
 import cs3500.ThreeTrios.model.ThreeTriosGrid;
 import cs3500.ThreeTrios.model.ThreeTriosModel;
