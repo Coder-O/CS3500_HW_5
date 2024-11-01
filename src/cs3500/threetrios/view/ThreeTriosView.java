@@ -1,10 +1,10 @@
-package cs3500.ThreeTrios.view;
+package cs3500.threetrios.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import cs3500.ThreeTrios.model.ThreeTriosModel;
-import cs3500.ThreeTrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosModel;
+import cs3500.threetrios.model.ThreeTriosCard;
 
 /**
  * A textual view of the ThreeTrios Game.

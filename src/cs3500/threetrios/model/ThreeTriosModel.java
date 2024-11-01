@@ -1,4 +1,4 @@
-package cs3500.ThreeTrios.model;
+package cs3500.threetrios.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +37,6 @@ public interface ThreeTriosModel {
      */
     public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) 
     throws IllegalStateException, IllegalArgumentException;
-
-    /**
-    * Returns the current deck.
-    * @return the current deck.
-    */
-    public List<ThreeTriosCard> getDeck();
     
     /**
     * Returns the Grid in its current state.

@@ -1,4 +1,4 @@
-package cs3500.ThreeTrios.model;
+package cs3500.threetrios.model;
 
 /**
  * A cell for a game of three trios. Represents a location on the grid,
