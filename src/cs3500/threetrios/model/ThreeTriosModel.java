@@ -31,7 +31,7 @@ public interface ThreeTriosModel {
      * Plays a card from the cardIdxInHand position of the given player's hand 
      * to the specified row and collumn of the grid.
      * All indicies are zero indexed.
-     * @param player The player who's hand the card is being played from.
+     * @param player The player whose hand the card is being played from.
      * @param cardIdxInHand The index in the spcified habd to play the card from.
      * @param row The row in the grid to play the card to.
      * @param column The column in the grid to play the card to.

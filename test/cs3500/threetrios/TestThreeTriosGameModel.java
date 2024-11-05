@@ -25,10 +25,10 @@ import static org.junit.Assert.assertFalse;
 public class TestThreeTriosGameModel {
   private ThreeTriosGameModel model;
 
-  @Before
   /**
    * Set up an example game.
    */
+  @Before
   public void setUp() {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
         "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
@@ -46,7 +46,7 @@ public class TestThreeTriosGameModel {
     Assert.assertThrows(
         "Should throw an error for an invalid file",
         IllegalStateException.class,
-      () -> ConfigurationReader.readGrid(
+            () -> ConfigurationReader.readGrid(
           "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Fail.txt"
       )
     );
@@ -82,17 +82,18 @@ public class TestThreeTriosGameModel {
   public void testConstructorExc3() {
     ThreeTriosGrid grid = ConfigurationReader.readGrid("Grid.Tall");
     ThreeTriosBattleRules battleRules = new SimpleRules();
-    List<ThreeTriosCard> deck = List.of(new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card"), new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card"));
+    List<ThreeTriosCard> deck = List.of(new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card"),
+            new Card(ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.FOUR,
+                    ThreeTriosPlayer.RED,
+                    "card"));
 
     model = new ThreeTriosGameModel(grid, deck, battleRules);
   }
@@ -239,37 +240,37 @@ public class TestThreeTriosGameModel {
     this.setUp();
 
     List<ThreeTriosCard> expectedHand = List.of(
-      new Card(
-        ThreeTriosAttackValue.ONE,
-        ThreeTriosAttackValue.ONE,
-        ThreeTriosAttackValue.ONE,
-        ThreeTriosAttackValue.ONE,
-        ThreeTriosPlayer.RED,
-        "Card1"),
-      new Card(ThreeTriosAttackValue.TWO,
-        ThreeTriosAttackValue.TWO,
-        ThreeTriosAttackValue.TWO,
-        ThreeTriosAttackValue.TWO,
-        ThreeTriosPlayer.RED,
-        "Card2"),
-      new Card(ThreeTriosAttackValue.THREE,
-        ThreeTriosAttackValue.THREE,
-        ThreeTriosAttackValue.THREE,
-        ThreeTriosAttackValue.THREE,
-        ThreeTriosPlayer.RED,
-        "Card3"),
-      new Card(ThreeTriosAttackValue.FOUR,
-        ThreeTriosAttackValue.FOUR,
-        ThreeTriosAttackValue.FOUR,
-        ThreeTriosAttackValue.FOUR,
-        ThreeTriosPlayer.RED,
-        "Card4"),
-      new Card(ThreeTriosAttackValue.FIVE,
-        ThreeTriosAttackValue.FIVE,
-        ThreeTriosAttackValue.FIVE,
-        ThreeTriosAttackValue.FIVE,
-        ThreeTriosPlayer.RED,
-        "Card5"));
+            new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosPlayer.RED,
+                    "Card1"),
+            new Card(ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosPlayer.RED,
+                    "Card2"),
+            new Card(ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosPlayer.RED,
+                    "Card3"),
+            new Card(ThreeTriosAttackValue.FOUR,
+                    ThreeTriosAttackValue.FOUR,
+                    ThreeTriosAttackValue.FOUR,
+                    ThreeTriosAttackValue.FOUR,
+                    ThreeTriosPlayer.RED,
+                    "Card4"),
+            new Card(ThreeTriosAttackValue.FIVE,
+                    ThreeTriosAttackValue.FIVE,
+                    ThreeTriosAttackValue.FIVE,
+                    ThreeTriosAttackValue.FIVE,
+                    ThreeTriosPlayer.RED,
+                    "Card5"));
 
     assertEquals(expectedHand.size(), model.getHand(ThreeTriosPlayer.RED).size());
   }

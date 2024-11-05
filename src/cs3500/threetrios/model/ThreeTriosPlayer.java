@@ -4,7 +4,6 @@ package cs3500.threetrios.model;
 * Possible Players for a ThreeTrios Game.
 */
 public enum ThreeTriosPlayer {
-
     RED("R"),
     BLUE("B");
 

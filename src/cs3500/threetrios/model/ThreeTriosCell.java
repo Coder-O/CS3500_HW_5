@@ -8,8 +8,8 @@ package cs3500.threetrios.model;
 public interface ThreeTriosCell {
 
   /**
-   * Returns whether or not this card is a hole.
-   * @return Whether this card is a hole.
+   * Returns true if this card is a hole.
+   * @return true if this card is a hole.
    */
   boolean isHole();
 
@@ -26,7 +26,7 @@ public interface ThreeTriosCell {
    * @throws IllegalStateException If the cell is a hole.
    * @throws IllegalStateException If this cell already holds a card.
    */
-   void setCard(ThreeTriosCard card) throws IllegalStateException;
+  void setCard(ThreeTriosCard card) throws IllegalStateException;
 
 
   /**

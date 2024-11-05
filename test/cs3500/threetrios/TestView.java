@@ -8,7 +8,6 @@ import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosGrid;
-import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.view.ThreeTriosView;
 
@@ -45,16 +44,16 @@ public class TestView {
 
     ThreeTriosView view = new ThreeTriosView(model);
     
-    String expectedView = "Player: RED\n" 
-       + "_ _ _\n"
-       + "_ _ _\n"
-       + "_ _ _\n"
-       + "Hand:\n"
-       + "Card1 1 1 1 1\n"
-       + "Card2 2 2 2 2\n"
-       + "Card3 3 3 3 3\n"
-       + "Card4 4 4 4 4\n"
-       + "Card5 5 5 5 5\n";
+    String expectedView = "Player: RED\n"
+            + "_ _ _\n"
+            + "_ _ _\n"
+            + "_ _ _\n"
+            + "Hand:\n"
+            + "Card1 1 1 1 1\n"
+            + "Card2 2 2 2 2\n"
+            + "Card3 3 3 3 3\n"
+            + "Card4 4 4 4 4\n"
+            + "Card5 5 5 5 5\n";
 
     assertEquals(expectedView, view.toString());
   }

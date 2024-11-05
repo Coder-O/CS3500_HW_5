@@ -138,10 +138,9 @@ public class Grid implements ThreeTriosGrid {
 
   /**
    * Returns a map containing all neighbors of this card.
-   *
-   * @param card The card to find the neighbors for.
-   * @return A map containing the neighbors of this card. If a neighbor is missing,
-   * this map does not include an entry or key for it.
+   * @param    card The card to find the neighbors for.
+   * @return    A map containing the neighbors of this card. If a neighbor is missing,
+   *            this map does not include an entry or key for it.
    * @throws IllegalArgumentException If the card does not appear in the grid.
    */
   @Override
@@ -170,9 +169,9 @@ public class Grid implements ThreeTriosGrid {
 
   /**
    * Helper method for getNeighbors.
-   * @param row The row of the card to get neighbors for.
-   * @param column The column of the card to get neighbors for.
-   * @return A map containing the neighbors of this card. If a neighbor is missing,
+   * @param    row The row of the card to get neighbors for.
+   * @param    column The column of the card to get neighbors for.
+   * @return   A map containing the neighbors of this card. If a neighbor is missing,
    * this map does not include an entry or key for it.
    */
   private Map<ThreeTriosDirection, ThreeTriosCard> helpGetNeighbors(int row, int column) {

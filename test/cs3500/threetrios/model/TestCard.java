@@ -12,84 +12,84 @@ public class TestCard {
   
   @Test
   public void testGetNorth() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     assertEquals(ThreeTriosAttackValue.ONE, card.getNorth());
   }
 
   @Test
   public void testGetEast() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     assertEquals(ThreeTriosAttackValue.TWO, card.getEast());
   }
 
   @Test
   public void testGetWest() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     assertEquals(ThreeTriosAttackValue.THREE, card.getWest());
   }
 
   @Test
   public void testGetSouth() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     assertEquals(ThreeTriosAttackValue.FOUR, card.getSouth());
   }
 
   @Test
   public void testGetPlayer() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
     
     assertEquals(ThreeTriosPlayer.RED, card.getPlayer());
   }
 
   @Test
   public void testGetName() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
     
     assertEquals("card", card.getName());
   }
 
   @Test
   public void testChangePlayer() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     card.changePlayer();
 
@@ -98,12 +98,12 @@ public class TestCard {
 
   @Test
   public void testGetAttackValue() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     assertEquals(ThreeTriosAttackValue.ONE, card.getAttackValue(ThreeTriosDirection.NORTH));
     assertEquals(ThreeTriosAttackValue.TWO, card.getAttackValue(ThreeTriosDirection.EAST));
@@ -113,40 +113,40 @@ public class TestCard {
 
   @Test
   public void testToString() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-    ThreeTriosAttackValue.TWO, 
-    ThreeTriosAttackValue.THREE, 
-    ThreeTriosAttackValue.FOUR, 
-    ThreeTriosPlayer.RED, 
-    "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     assertEquals("card 1 2 3 4", card.toString());
   }
 
   @Test
   public void testEquals() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE, 
-      ThreeTriosAttackValue.TWO,
-      ThreeTriosAttackValue.THREE,
-      ThreeTriosAttackValue.FOUR,
-      ThreeTriosPlayer.RED,
-      "card");
+    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
     ThreeTriosCard card1 = new Card(ThreeTriosAttackValue.ONE, 
-      ThreeTriosAttackValue.TWO,
-      ThreeTriosAttackValue.THREE,
-      ThreeTriosAttackValue.FOUR,
-      ThreeTriosPlayer.RED,
-      "card");
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card");
 
-      ThreeTriosCard card2 = new Card(ThreeTriosAttackValue.ONE,
-      ThreeTriosAttackValue.TWO,
-      ThreeTriosAttackValue.THREE,
-      ThreeTriosAttackValue.FOUR,
-      ThreeTriosPlayer.RED,
-      "card2");
-    
-      Assert.assertTrue(card.equals(card1));
-      Assert.assertFalse(card.equals(card2));
+    ThreeTriosCard card2 = new Card(ThreeTriosAttackValue.ONE,
+            ThreeTriosAttackValue.TWO,
+            ThreeTriosAttackValue.THREE,
+            ThreeTriosAttackValue.FOUR,
+            ThreeTriosPlayer.RED,
+            "card2");
+
+    Assert.assertTrue(card.equals(card1));
+    Assert.assertFalse(card.equals(card2));
   }
 }

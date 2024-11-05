@@ -10,6 +10,7 @@ import cs3500.threetrios.model.ThreeTriosCard;
  * A textual view of the ThreeTrios Game.
  */
 public class ThreeTriosView {
+
     private final ThreeTriosModel model;
     private final Appendable out;
 
@@ -81,7 +82,7 @@ public class ThreeTriosView {
         return gameState.toString();
     }
 
-/**
+    /**
    * Renders a model in some manner (e.g. as text, or as graphics, etc.).
    * @throws IllegalArgumentException if Appendable is null
    * @throws IOException if the rendering fails for some reason

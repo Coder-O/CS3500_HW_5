@@ -7,7 +7,6 @@ import java.util.Objects;
  * A Card must have four values, a player, and a name.
  */
 public class Card implements ThreeTriosCard {
-    
     private final ThreeTriosAttackValue north;
     private final ThreeTriosAttackValue east;
     private final ThreeTriosAttackValue south;

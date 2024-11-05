@@ -6,11 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosAttackValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosAttackValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestSimpleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestSimpleRules.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +51,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in CS3500_HW_5" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -52,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730742439832</updated>
-      <workItem from="1730742440973" duration="2576000" />
+      <workItem from="1730742440973" duration="3981000" />
     </task>
     <servers />
   </component>

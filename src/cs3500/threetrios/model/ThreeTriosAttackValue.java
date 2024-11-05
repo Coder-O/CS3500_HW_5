@@ -45,11 +45,10 @@ public enum ThreeTriosAttackValue {
      * @param symbol The identifier for the desired enum. Symbols should be 1 character long.
      *               Valid symbols are: '1', '2', '3', '4', '5', '6', '7', '8','9', and 'A'.
      * @return A value of this enum, determined by the symbol.
-     * @throws IllegalArgumentException, if an invalid symbol is passed.
+     * @throws IllegalArgumentException if an invalid symbol is passed.
      */
     public static ThreeTriosAttackValue attackValueFactory(
-            String symbol
-    ) throws IllegalArgumentException {
+            String symbol) throws IllegalArgumentException {
         switch (symbol) {
             case "1" :
                 return ONE;

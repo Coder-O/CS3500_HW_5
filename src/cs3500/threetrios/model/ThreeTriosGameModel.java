@@ -51,7 +51,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
       ThreeTriosBattleRules battleRules,
       boolean shuffle
   ) throws IllegalArgumentException {
-    if (!(deck.size() > grid.getNumCardCells())) {
+    if (deck.size() < grid.getNumCardCells()) {
       throw new IllegalArgumentException(
           "There are "
               + deck.size()
@@ -103,8 +103,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
   }
 
   /**
-   * Constructor for ThreeTriosGameModel (No random for testing). 
-   *
+   * Constructor for ThreeTriosGameModel (No random for testing).
    * To start the game, there must be enough cards to fill both players’ hands and fill every card
    * cell.
    * Therefore, if N is the number of card cells on the grid,
@@ -158,12 +157,12 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
    * @return true if the game has been won, false otherwise
    */
   public boolean isGameWon() {
-    return (isGameOver() 
-    && (this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size()) 
-    > (this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size())) 
-    || (isGameOver()
-    && (this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size())
-    < (this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()));
+    return (isGameOver()
+            && (this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size())
+            > (this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()))
+            || (isGameOver()
+            && (this.getNumOwnedCards(playerRed) + this.getHand(playerRed).size())
+            < (this.getNumOwnedCards(playerBlue) + this.getHand(playerBlue).size()));
   }
 
   /**
