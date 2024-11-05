@@ -1,6 +1,6 @@
 package cs3500.threetrios.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
 * Represents the model for the ThreeTrios Game.
@@ -12,13 +12,20 @@ public interface ThreeTriosModel {
      * Checks if the game is over.
      * @return true if the game is over, false otherwise
      */
-    public boolean isGameOver();
+    boolean isGameOver();
 
     /**
      * Checks if the game has been won.
      * @return true if the game has been won, false otherwise
      */
-    public boolean isGameWon();
+    boolean isGameWon();
+
+    /**
+     * Returns the winning player.
+     * @return The wining player.
+     * @throws IllegalStateException If the game isn't over.
+     */
+    ThreeTriosPlayer getWinner() throws IllegalStateException;
 
     /**
      * Plays a card from the cardIdxInHand position of the given player's hand 
@@ -34,20 +41,20 @@ public interface ThreeTriosModel {
      * @throws IllegalArgumentException If the specified move is invalid 
      * (such as playing to a hole or a filled Card Cell).
      */
-    public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) 
+    void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
     throws IllegalStateException, IllegalArgumentException;
     
     /**
     * Returns the Grid in its current state.
     * @return Current Grid.
     */
-    public ThreeTriosGrid getGrid();
+    ThreeTriosGrid getGrid();
     
     /**
     * Returns the Player whose turn it is to play.
     * @return Player who needs to play.
     */
-    public ThreeTriosPlayer getCurrentPlayer();
+    ThreeTriosPlayer getCurrentPlayer();
     
     /**
      * Returns a copy of the hand of the specified Player.
@@ -55,6 +62,6 @@ public interface ThreeTriosModel {
      * @param p whose hand we want.
      * @return a copy of the hand of the specified Player p.
      */
-    public ArrayList<ThreeTriosCard> getHand(ThreeTriosPlayer p);
+    List<ThreeTriosCard> getHand(ThreeTriosPlayer p);
 
 }

@@ -11,7 +11,7 @@ public class TestSimpleRules {
   private ThreeTriosBattleRules battleRules;
 
   //|--A--|
-  //|A 1 A|
+  //|A R A|
   //|__A__|
   private ThreeTriosCard aceCard;
 
@@ -324,6 +324,7 @@ public class TestSimpleRules {
   @Test
   public void testPlayer2CanFlip() {
     aceCard.changePlayer();
+
     battleRules.battle(aceCard, oneLoosesGrid);
 
     Assert.assertEquals(

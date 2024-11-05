@@ -28,9 +28,10 @@ public interface ThreeTriosCell {
    */
    void setCard(ThreeTriosCard card) throws IllegalStateException;
 
+
   /**
-   * Returns a copy of this cell.
-   * @return A copy of this cell.
+   * Returns a depp copy of this cell. Mutating this has no effect on the original cell.
+   * @return A deep copy of this cell.
    */
   ThreeTriosCell copy();
 }

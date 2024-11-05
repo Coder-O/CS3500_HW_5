@@ -65,6 +65,9 @@ class Cell implements ThreeTriosCell {
     if (isHole) {
       throw new IllegalStateException("This cell is a hole! It has no card!!!");
     }
+    if (card == null) {
+      return null;
+    }
     return card;
   }
 
@@ -90,9 +93,15 @@ class Cell implements ThreeTriosCell {
    */
   @Override
   public ThreeTriosCell copy() {
+    if (card != null) {
+      return new Cell(
+              isHole,
+              card.copy()
+      );
+    }
     return new Cell(
             isHole,
-            card
+            null
     );
   }
 }
