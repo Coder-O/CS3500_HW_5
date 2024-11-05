@@ -69,4 +69,10 @@ public interface ThreeTriosGrid {
     * @return a textual representation of the grid
     */
     public String toString();
+
+    /**
+     * Returns a depp copy of the grid. Mutating this has no effect on the original grid.
+     * @return A deep copy of the grid.
+     */
+    ThreeTriosGrid copy();
 }

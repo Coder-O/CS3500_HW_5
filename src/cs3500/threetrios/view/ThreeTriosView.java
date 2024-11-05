@@ -1,7 +1,7 @@
 package cs3500.threetrios.view;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -73,7 +73,7 @@ public class ThreeTriosView {
         gameState.append(grid);
 
         //display the current player's hand
-        ArrayList<ThreeTriosCard> hand = model.getHand(model.getCurrentPlayer());
+        List<ThreeTriosCard> hand = model.getHand(model.getCurrentPlayer());
         gameState.append("Hand:\n");
         for (ThreeTriosCard card : hand) {
             gameState.append(card.toString()).append("\n");

@@ -94,7 +94,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         if (shuffle) {
           index = random.nextInt(deck.size());
         }
-        playerCards.add(deck.remove(index));
+        ThreeTriosCard card = deck.remove(index);
+        card.setPlayer(player);
+        playerCards.add(card);
       }
       playerHands.put(player, playerCards);
     }
@@ -165,6 +167,32 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
   }
 
   /**
+   * Returns the winning player.
+   *
+   * @return The wining player.
+   * @throws IllegalStateException If the game isn't over.
+   */
+  @Override
+  public ThreeTriosPlayer getWinner() throws IllegalStateException {
+    if (!isGameOver()) {
+      throw new IllegalArgumentException("The game isn't over! There can be no winner!");
+    }
+
+    if ((getNumOwnedCards(playerRed) + getHand(playerRed).size())
+            > (getNumOwnedCards(playerBlue) + getHand(playerBlue).size())) {
+      return playerRed;
+    }
+    if ((getNumOwnedCards(playerRed) + getHand(playerRed).size())
+            < (getNumOwnedCards(playerBlue) + getHand(playerBlue).size())) {
+      return playerBlue;
+    }
+
+    throw new IllegalStateException(
+            "The game is over, but there is somehow no winner! This should be impossible!"
+    );
+  }
+
+  /**
    * Count the number of cards each player owns on the grid.
    * @param player a player
    * @return the number of cards.
@@ -224,7 +252,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
   * @return Current Grid.
   */
   public ThreeTriosGrid getGrid() {
-    return this.grid;
+    return this.grid.copy();
   }
   
   /**
@@ -242,11 +270,15 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
    * @return a copy of the hand of the specified Player p.
    * @throws IllegalArgumentException if player p does not exist or is null
    */
-  public ArrayList<ThreeTriosCard> getHand(ThreeTriosPlayer p) {
+  public List<ThreeTriosCard> getHand(ThreeTriosPlayer p) {
     if (p == null || !playerHands.containsKey(p)) {
       throw new IllegalArgumentException("Invalid player.");
     }
-    return new ArrayList<ThreeTriosCard>(playerHands.get(p));
+    ArrayList<ThreeTriosCard> toReturn = new ArrayList<>();
+    for (ThreeTriosCard card : playerHands.get(p)) {
+      toReturn.add(card.copy());
+    }
+    return toReturn;
   }
 
   /**

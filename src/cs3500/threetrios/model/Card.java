@@ -98,6 +98,15 @@ public class Card implements ThreeTriosCard {
     }
 
     /**
+     * Sets this card's player to given player
+     * @param player The player that shall now own this card.
+     */
+    @Override
+    public void setPlayer(ThreeTriosPlayer player) {
+        this.player = player;
+    }
+
+    /**
      * Gets the attack value for the corresponding direction.
      * @param direction The direction to get the attack value for.
      * @return The attack value for the corresponding direction.
@@ -131,6 +140,23 @@ public class Card implements ThreeTriosCard {
         + this.east.getSymbol() + " "
         + this.west.getSymbol()  + " "
         + this.south.getSymbol();
+    }
+
+    /**
+     * Returns a depp copy of this card. Mutating this has no effect on the original card.
+     *
+     * @return A deep copy of this card.
+     */
+    @Override
+    public ThreeTriosCard copy() {
+        return new Card(
+                north,
+                east,
+                west,
+                south,
+                player,
+                name
+        );
     }
 
     /*

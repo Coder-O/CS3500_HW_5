@@ -31,7 +31,7 @@ public class Grid implements ThreeTriosGrid {
     this.grid = new ThreeTriosCell[rows][columns];
     for (int row = 0; row < rows; row++) {
       for (int column = 0; column < columns; column++) {
-        this.grid[row][column] = grid[row][column];
+        this.grid[row][column] = grid[row][column].copy();
         if (!this.grid[row][column].isHole()) {
           ++numCardCells;
           if (this.grid[row][column].getCard() != null) {
@@ -244,4 +244,14 @@ public class Grid implements ThreeTriosGrid {
       }
       return gridView.toString();
     }
+
+  /**
+   * Returns a depp copy of the grid. Mutating this has no effect on the original grid.
+   *
+   * @return A deep copy of the grid.
+   */
+  @Override
+  public ThreeTriosGrid copy() {
+    return new Grid(grid);
+  }
 }

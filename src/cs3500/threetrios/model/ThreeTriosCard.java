@@ -47,6 +47,8 @@ public interface ThreeTriosCard {
     */
     public void changePlayer();
 
+    void setPlayer(ThreeTriosPlayer player);
+
     /**
      * Gets the attack value for the corresponding direction.
      * @return The attack value for the corresponding direction.
@@ -59,4 +61,11 @@ public interface ThreeTriosCard {
     * @return a textual representation of the card
     */
     public String toString();
+
+
+    /**
+     * Returns a depp copy of this card. Mutating this has no effect on the original card.
+     * @return A deep copy of this card.
+     */
+    ThreeTriosCard copy();
 }
