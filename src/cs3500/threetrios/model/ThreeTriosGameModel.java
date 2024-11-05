@@ -168,14 +168,13 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
 
   /**
    * Returns the winning player.
-   *
    * @return The wining player.
    * @throws IllegalStateException If the game isn't over.
    */
   @Override
   public ThreeTriosPlayer getWinner() throws IllegalStateException {
     if (!isGameOver()) {
-      throw new IllegalArgumentException("The game isn't over! There can be no winner!");
+      throw new IllegalStateException("The game isn't over! There can be no winner!");
     }
 
     if ((getNumOwnedCards(playerRed) + getHand(playerRed).size())
@@ -187,6 +186,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
       return playerBlue;
     }
 
+    //todo should delete this? the game can be tied.
     throw new IllegalStateException(
             "The game is over, but there is somehow no winner! This should be impossible!"
     );

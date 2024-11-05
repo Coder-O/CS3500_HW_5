@@ -143,6 +143,32 @@ public class TestThreeTriosGameModel {
     assertFalse(model.isGameWon());
   }
 
+  //todo test isGameWonTiedGame
+
+  @Test(expected = IllegalStateException.class)
+  public void testGetWinnerExc() {
+    this.setUp();
+
+    model.getWinner();
+  }
+
+  @Test
+  public void testGetWinner() {
+    this.setUp();
+
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
+
+    assertEquals(ThreeTriosPlayer.BLUE, model.getWinner());
+  }
+
   @Test(expected = IllegalStateException.class)
   public void testPlayToGridExc1() {
     this.setUp();
@@ -155,6 +181,14 @@ public class TestThreeTriosGameModel {
     this.setUp();
 
     model.playToGrid(ThreeTriosPlayer.RED, 50, 0, 0);
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testPlayToGridExc3() {
+    this.setUp();
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 0);
   }
 
   @Test
@@ -241,7 +275,6 @@ public class TestThreeTriosGameModel {
   }
 
   // Test illegal mutation
-
   @Test
   public void testGridCannotBeMutated() {
     ThreeTriosCard ace = new Card(

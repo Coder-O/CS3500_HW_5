@@ -65,7 +65,7 @@ public class ThreeTriosView {
         StringBuilder gameState = new StringBuilder();
 
         //display the Player
-        String currentPlayer = model.getCurrentPlayer().getSymbol();
+        String currentPlayer = model.getCurrentPlayer().getName();
         gameState.append("Player: ").append(currentPlayer).append("\n");
         
         //display the grid

@@ -5,8 +5,8 @@ package cs3500.threetrios.model;
 */
 public enum ThreeTriosPlayer {
 
-    RED("RED"),
-    BLUE("BLUE");
+    RED("R"),
+    BLUE("B");
 
     private final String symbol;
 
@@ -20,6 +20,21 @@ public enum ThreeTriosPlayer {
     */
     public String getSymbol() {
         return symbol;
+    }
+
+    /**
+     * Returns the full name of the player.
+     * @return "RED" for RED and "BLUE" for BLUE.
+     */
+    public String getName() {
+        switch (this) {
+            case RED:
+                return "RED";
+            case BLUE:
+                return "BLUE";
+            default:
+                throw new IllegalStateException("Unexpected value: " + this);
+        }
     }
 
 }
