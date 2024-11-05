@@ -47,6 +47,8 @@ public interface ThreeTriosCard {
     */
     public void changePlayer();
 
+    void setPlayer(ThreeTriosPlayer player);
+
     /**
      * Gets the attack value for the corresponding direction.
      * @return The attack value for the corresponding direction.

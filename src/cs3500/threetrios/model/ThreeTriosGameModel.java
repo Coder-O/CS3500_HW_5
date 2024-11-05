@@ -94,7 +94,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
         if (shuffle) {
           index = random.nextInt(deck.size());
         }
-        playerCards.add(deck.remove(index));
+        ThreeTriosCard card = deck.remove(index);
+        card.setPlayer(player);
+        playerCards.add(card);
       }
       playerHands.put(player, playerCards);
     }

@@ -1,6 +1,7 @@
 package cs3500.threetrios;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import cs3500.threetrios.model.Card;
@@ -11,7 +12,6 @@ import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosGrid;
-import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 import java.util.List;
@@ -25,10 +25,11 @@ import static org.junit.Assert.assertFalse;
 public class TestThreeTriosGameModel {
   private ThreeTriosGameModel model;
 
+  @Before
   /**
    * Set up an example game.
    */
-  protected void setUp() {
+  public void setUp() {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
         "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
     );
@@ -237,6 +238,74 @@ public class TestThreeTriosGameModel {
         "Card5"));
 
     assertEquals(expectedHand.size(), model.getHand(ThreeTriosPlayer.RED).size());
+  }
+
+  // Test illegal mutation
+
+  @Test
+  public void testGridCannotBeMutated() {
+    ThreeTriosCard ace = new Card(
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosPlayer.RED,
+            "Ace");
+    model.getGrid().playToCell(0, 0, ace);
+
+    Assert.assertNotEquals(
+            "getgrid() should not allow mutation!!!!)",
+            model.getGrid().getCell(0, 0),
+            ace
+    );
+  }
+
+  @Test
+  public void testGridCellCannotBeMutated() {
+    ThreeTriosCard ace = new Card(
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosAttackValue.A,
+            ThreeTriosPlayer.RED,
+            "Ace");
+    model.getGrid().getCell(0, 0).setCard(ace);
+
+    Assert.assertNotEquals(
+            "getgrid() should not allow mutation!!!!)",
+            model.getGrid().getCell(0, 0),
+            ace
+    );
+  }
+
+  @Test
+  public void testGridCardCannotBeMutated() {
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    model.getGrid().getCell(0, 0).getCard().changePlayer();
+
+    Assert.assertEquals(
+            "getgrid() should not allow mutation!!!!)",
+            ThreeTriosPlayer.RED,
+            model.getGrid().getCell(0, 0).getCard().getPlayer()
+    );
+  }
+
+  @Test
+  public void testHandCannotBeMutated() {
+    model.getHand(ThreeTriosPlayer.RED).clear();
+
+    Assert.assertFalse(model.getHand(ThreeTriosPlayer.RED).isEmpty());
+  }
+
+  @Test
+  public void testHandCardCannotBeMutated() {
+    model.getHand(ThreeTriosPlayer.RED).get(0).changePlayer();
+
+    Assert.assertEquals(
+            "The hand should not allow mutation!",
+            ThreeTriosPlayer.RED,
+            model.getHand(ThreeTriosPlayer.RED).get(0).getPlayer()
+    );
   }
   
 }
