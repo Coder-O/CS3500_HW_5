@@ -45,8 +45,7 @@ public class TestThreeTriosGameModel {
   public void testConfigurationError() {
     Assert.assertThrows(
         "Should throw an error for an invalid file",
-        IllegalStateException.class,
-            () -> ConfigurationReader.readGrid(
+        IllegalStateException.class, () -> ConfigurationReader.readGrid(
           "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Fail.txt"
       )
     );
