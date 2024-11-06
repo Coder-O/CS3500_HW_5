@@ -2,7 +2,7 @@ package cs3500.threetrios;
 
 import org.junit.Test;
 
-import cs3500.threetrios.model.ConfigurationReader;
+import cs3500.threetrios.controller.ConfigurationReader;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;

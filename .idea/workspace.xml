@@ -13,6 +13,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -29,8 +37,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.TestCard.executor": "Run",
+    "JUnit.TestGridBuilder.executor": "Run",
+    "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
+    "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
+    "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
+    "JUnit.TestSimpleRules.executor": "Run",
     "JUnit.TestThreeTriosGameModel.executor": "Run",
     "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
+    "JUnit.TestView.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -42,6 +57,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cs3500.threetrios.controller" />
+      <recent name="cs3500.threetrios" />
+    </key>
+  </component>
   <component name="RunManager" selected="JUnit.TestCard">
     <configuration name="TestCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
@@ -53,6 +74,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestCard" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGridBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestGridBuilder" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -88,22 +124,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestThreeTriosGameModel.testPlayToGridLegal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestThreeTriosGameModel" />
-      <option name="METHOD_NAME" value="testPlayToGridLegal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -123,9 +143,9 @@
       <list>
         <item itemvalue="JUnit.TestCard" />
         <item itemvalue="JUnit.TestSimpleRules" />
-        <item itemvalue="JUnit.TestView" />
+        <item itemvalue="JUnit.TestGridBuilder" />
         <item itemvalue="JUnit.TestThreeTriosGameModel" />
-        <item itemvalue="JUnit.TestThreeTriosGameModel.testPlayToGridLegal" />
+        <item itemvalue="JUnit.TestView" />
       </list>
     </recent_temporary>
   </component>

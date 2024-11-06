@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cs3500.threetrios.model.Card;
-import cs3500.threetrios.model.ConfigurationReader;
+import cs3500.threetrios.controller.ConfigurationReader;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosAttackValue;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
@@ -364,7 +364,7 @@ public class TestThreeTriosGameModel {
     );
   }
 
-  // Testing play to grid
+  // Testing playToGrid()
 
   @Test
   public void testPlayToGridLegal() {
@@ -397,7 +397,7 @@ public class TestThreeTriosGameModel {
   // NOTE: This test assumes that a card with large attack values will flip a card with low attack
   // values, which might not be true depending upon the BattleRules implementation.
   @Test
-  public void playToGridFlipsCards() {
+  public void testPlayToGridFlipsCards() {
     model.playToGrid(ThreeTriosPlayer.RED, 0,0, 0);
     model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
 
