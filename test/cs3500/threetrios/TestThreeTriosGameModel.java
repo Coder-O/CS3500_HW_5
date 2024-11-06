@@ -15,6 +15,7 @@ import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -24,18 +25,28 @@ import static org.junit.Assert.assertFalse;
  */
 public class TestThreeTriosGameModel {
   private ThreeTriosGameModel model;
+  private List<ThreeTriosCard> deck;
+
+  private final String PATH_GRID_3X3 = "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt";
+  private final String PATH_GRID_SPLIT = "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Split.txt";
+  private final String PATH_DECK_10 = "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt";
+  private final String PATH_DECK_38 = "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt";
 
   /**
    * Set up an example game.
    */
   @Before
   public void setUp() {
+    setUp(PATH_GRID_3X3, PATH_DECK_10);
+  }
+
+  private void setUp(String gridPath, String deckPath) {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+            gridPath
     );
     ThreeTriosBattleRules battleRules = new SimpleRules();
-    List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+    deck = ConfigurationReader.readDeck(
+            deckPath
     );
 
     model = new ThreeTriosGameModel(grid, deck, battleRules, false);
@@ -53,25 +64,18 @@ public class TestThreeTriosGameModel {
   
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorExc1() {
-    ThreeTriosGrid grid = ConfigurationReader.readGrid(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Split.txt"
-    );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
-    List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
-    );
-
-    model = new ThreeTriosGameModel(grid, deck, battleRules);
+    // Deck to small for grid
+    setUp(PATH_GRID_SPLIT, PATH_DECK_10);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorExc2() {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.PlayedToGrid.txt"
+            PATH_GRID_3X3
     );
     ThreeTriosBattleRules battleRules = new SimpleRules();
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
+        PATH_DECK_10
     );
     grid.playToCell(1, 1, deck.remove(0));
     model = new ThreeTriosGameModel(grid, deck, battleRules);
@@ -79,7 +83,7 @@ public class TestThreeTriosGameModel {
 
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorExc3() {
-    ThreeTriosGrid grid = ConfigurationReader.readGrid("Grid.Tall");
+    ThreeTriosGrid grid = ConfigurationReader.readGrid(PATH_GRID_3X3);
     ThreeTriosBattleRules battleRules = new SimpleRules();
     List<ThreeTriosCard> deck = List.of(new Card(ThreeTriosAttackValue.ONE,
             ThreeTriosAttackValue.TWO,
@@ -95,6 +99,25 @@ public class TestThreeTriosGameModel {
                     "card"));
 
     model = new ThreeTriosGameModel(grid, deck, battleRules);
+  }
+
+  @Test
+  public void testShuffle() {
+    ThreeTriosGrid grid = ConfigurationReader.readGrid(
+            PATH_GRID_3X3
+    );
+    ThreeTriosBattleRules battleRules = new SimpleRules();
+    deck = ConfigurationReader.readDeck(
+            PATH_DECK_10
+    );
+
+    model = new ThreeTriosGameModel(grid, deck, battleRules, true, new Random(22));
+
+    Assert.assertNotEquals(
+            "The deck should have been shuffled!",
+            deck.get(0),
+            model.getHand(ThreeTriosPlayer.RED).get(0)
+    );
   }
 
   @Test
@@ -205,7 +228,7 @@ public class TestThreeTriosGameModel {
     this.setUp();
 
     ThreeTriosGrid expectedGrid = ConfigurationReader.readGrid(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+        PATH_GRID_3X3
     );
 
     assertEquals(expectedGrid.toString(), model.getGrid().toString());
@@ -287,7 +310,7 @@ public class TestThreeTriosGameModel {
     model.getGrid().playToCell(0, 0, ace);
 
     Assert.assertNotEquals(
-            "getgrid() should not allow mutation!!!!)",
+            "getGrid() should not allow mutation!!!!)",
             model.getGrid().getCell(0, 0),
             ace
     );
@@ -305,7 +328,7 @@ public class TestThreeTriosGameModel {
     model.getGrid().getCell(0, 0).setCard(ace);
 
     Assert.assertNotEquals(
-            "getgrid() should not allow mutation!!!!)",
+            "getGrid() should not allow mutation!!!!)",
             model.getGrid().getCell(0, 0),
             ace
     );
@@ -317,7 +340,7 @@ public class TestThreeTriosGameModel {
     model.getGrid().getCell(0, 0).getCard().changePlayer();
 
     Assert.assertEquals(
-            "getgrid() should not allow mutation!!!!)",
+            "getGrid() should not allow mutation!!!!)",
             ThreeTriosPlayer.RED,
             model.getGrid().getCell(0, 0).getCard().getPlayer()
     );
@@ -340,5 +363,85 @@ public class TestThreeTriosGameModel {
             model.getHand(ThreeTriosPlayer.RED).get(0).getPlayer()
     );
   }
-  
+
+  // Testing play to grid
+
+  @Test
+  public void testPlayToGridLegal() {
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 3, 2, 2);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 2, 1, 1);
+
+    Assert.assertEquals(
+            deck.get(0),
+            model.getGrid().getCell(0,0).getCard()
+    );
+
+    Assert.assertEquals(
+            deck.get(0+5), // Index 0 in Blues' hand, which starts 5 cards from the start.
+            model.getGrid().getCell(0, 1).getCard()
+    );
+
+    Assert.assertEquals(
+            deck.get(4),
+            model.getGrid().getCell(2,2).getCard()
+    );
+
+    Assert.assertEquals(
+            deck.get(3+5), // Index 3 in Blues' hand, which starts 5 cards from the start.
+            model.getGrid().getCell(1, 1).getCard()
+    );
+  }
+
+  // NOTE: This test assumes that a card with large attack values will flip a card with low attack
+  // values, which might not be true depending upon the BattleRules implementation.
+  @Test
+  public void playToGridFlipsCards() {
+    model.playToGrid(ThreeTriosPlayer.RED, 0,0, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+
+    Assert.assertEquals(
+            "The red card should have flipped",
+            model.getGrid().getCell(0,0).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+  }
+
+  @Test
+  public void testPlayToHoleException() {
+    setUp(PATH_GRID_SPLIT, PATH_DECK_38);
+
+    Assert.assertThrows(
+            "Playing to a hole should not be allowed!!!",
+            IllegalStateException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 3)
+    );
+  }
+
+  @Test
+  public void testPlayToFilledSpaceException() {
+    setUp(PATH_GRID_SPLIT, PATH_DECK_38);
+
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+
+    Assert.assertThrows(
+            "Playing to a cell twice should not be allowed!!!",
+            IllegalStateException.class,
+            () -> model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 0)
+    );
+  }
+
+  @Test
+  public void testPlayTwiceException() {
+    setUp(PATH_GRID_SPLIT, PATH_DECK_38);
+
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+
+    Assert.assertThrows(
+            "Playing twice in a row should not be allowed!!!",
+            IllegalStateException.class,
+            () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 1)
+    );
+  }
 }

@@ -40,6 +40,9 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
    *       To preserve the integrity of the game state, this should not have any cards
    *       played to it yet.
    * @param deck The deck of cards to use.
+   * @param battleRules The rules to use.
+   * @param shuffle Whether to shuffle.
+   * @param random The random object to use
    * @throws IllegalArgumentException if the number of cards is not exactly N+1, 
    *     where N is the number of card cells.
    * @throws IllegalArgumentException if the provided grid has been played to already.
@@ -49,7 +52,8 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
       ThreeTriosGrid grid,
       List<ThreeTriosCard> deck,
       ThreeTriosBattleRules battleRules,
-      boolean shuffle
+      boolean shuffle,
+      Random random
   ) throws IllegalArgumentException {
     if (deck.size() < grid.getNumCardCells()) {
       throw new IllegalArgumentException(
@@ -85,21 +89,51 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
     }
 
     // Initialize hands
-    Random random = new Random();
     this.playerHands = new HashMap<ThreeTriosPlayer, List<ThreeTriosCard>>();
     for (ThreeTriosPlayer player : ThreeTriosPlayer.values()) {
       List<ThreeTriosCard> playerCards = new ArrayList<>();
       for (int i = 0; i < (grid.getNumCardCells() + 1) / 2; ++i) {
         int index = 0;
         if (shuffle) {
-          index = random.nextInt(deck.size());
+          index = random.nextInt(this.deck.size());
         }
-        ThreeTriosCard card = deck.remove(index);
+        ThreeTriosCard card = this.deck.remove(index);
         card.setPlayer(player);
         playerCards.add(card);
       }
       playerHands.put(player, playerCards);
     }
+  }
+
+  /**
+   * Constructor for ThreeTrios Model.
+   * To start the game, there must be enough cards to fill both players’ hands
+   * and fill every card cell.
+   * Therefore, if N is the number of card cells on the grid,
+   * there must be at least N+1 cards available in the game to split between the players.
+   * With a valid grid and list of cards to play with, each player is dealt their cards at random
+   * from the list.
+   * Each player’s hand is filled with exactly N+1/2 cards
+   * where N is the number of card cells on the grid.
+   *
+   * @param grid The grid to use, given by a configuration class.
+   *       To preserve the integrity of the game state, this should not have any cards
+   *       played to it yet.
+   * @param deck The deck of cards to use.
+   * @param battleRules The rules to use.
+   * @param shuffle Whether to shuffle.
+   * @throws IllegalArgumentException if the number of cards is not exactly N+1,
+   *     where N is the number of card cells.
+   * @throws IllegalArgumentException if the provided grid has been played to already.
+   * @throws IllegalArgumentException if the provided cards are not unique.
+   */
+  public ThreeTriosGameModel(
+          ThreeTriosGrid grid,
+          List<ThreeTriosCard> deck,
+          ThreeTriosBattleRules battleRules,
+          boolean shuffle
+  ) throws IllegalArgumentException {
+    this(grid, deck, battleRules, shuffle, new Random());
   }
 
   /**
@@ -220,6 +254,7 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
    * @param cardIdxInHand The index in the specified hand to play the card from.
    * @param row       The row in the grid to play the card to.
    * @param column    The column in the grid to play the card to.
+   * @throws IllegalStateException  If the game is over
    * @throws IllegalStateException  If it is not the specified player's turn
    * @throws IndexOutOfBoundsException If the cardIdxInHand, row, or column parameters are
    *                  out-of-bounds. (handled in playToCellMethod in Grid).
@@ -230,6 +265,10 @@ public class ThreeTriosGameModel implements ThreeTriosModel {
   @Override
   public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
       throws IllegalStateException, IllegalArgumentException {
+    if (isGameOver()) {
+      throw new IllegalStateException("The game is over!");
+    }
+
     if (!player.equals(getCurrentPlayer())) {
       throw new IllegalStateException(
           player.name() + " cannot play, it is " + getCurrentPlayer() + "'s turn."

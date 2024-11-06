@@ -28,7 +28,7 @@ C_StrongSouth 1 A 1 1
 C_3335 3 3 3 5
 C_Ace2 A A A A
 C_Shield 7 7 7 1
-Weak 1 2 3 4 5
+Weak 1 2 3 4
 Med 5 4 6 4
 GlassCanon 1 1 A A
 GlassGannon 1 A 1 1
