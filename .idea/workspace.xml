@@ -42,11 +42,33 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TestThreeTriosGameModel">
-    <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestCard">
+    <configuration name="TestCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestCard" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSimpleRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestSimpleRules" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -82,11 +104,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestView" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestCard" />
+        <item itemvalue="JUnit.TestSimpleRules" />
+        <item itemvalue="JUnit.TestView" />
         <item itemvalue="JUnit.TestThreeTriosGameModel" />
         <item itemvalue="JUnit.TestThreeTriosGameModel.testPlayToGridLegal" />
-        <item itemvalue="JUnit.All in CS3500_HW_5" />
       </list>
     </recent_temporary>
   </component>

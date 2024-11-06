@@ -27,7 +27,7 @@ public class TestView {
    */
   protected void setUp() {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
-        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Tall.txt"
+        "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt"
     );
     ThreeTriosBattleRules battleRules = new SimpleRules();
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
