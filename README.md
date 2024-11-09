@@ -56,3 +56,6 @@ Source Organization:
         - (Configuration files)
 - Test
     - (Tests mirroring the organization above)
+
+Changes for Part 2:
+- Created a ReadOnlyThreeTriosModel interface for the observation methods of the model. The ThreeTriosModel now extends this class.
