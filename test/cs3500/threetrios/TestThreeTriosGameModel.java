@@ -143,31 +143,6 @@ public class TestThreeTriosGameModel {
     assertFalse(model.isGameOver());
   }
 
-  @Test
-  public void testIsGameWonTrue() {
-    this.setUp();
-    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
-    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
-    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
-    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
-    model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
-    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
-    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
-    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
-    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
-
-    Assert.assertTrue(model.isGameWon());
-  }
-
-  @Test
-  public void testIsGameWonFalse() {
-    this.setUp();
-  
-    assertFalse(model.isGameWon());
-  }
-
-  //todo test isGameWonTiedGame
-
   @Test(expected = IllegalStateException.class)
   public void testGetWinnerExc() {
     this.setUp();
@@ -190,6 +165,16 @@ public class TestThreeTriosGameModel {
     model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
 
     assertEquals(ThreeTriosPlayer.BLUE, model.getWinner());
+  }
+
+  //todo test getwinnertied game
+
+  @Test
+  public void testGetScore() {
+    this.setUp();
+
+    assertEquals(5, model.getScore(ThreeTriosPlayer.RED));
+    assertEquals(5, model.getScore(ThreeTriosPlayer.BLUE));
   }
 
   @Test(expected = IllegalStateException.class)

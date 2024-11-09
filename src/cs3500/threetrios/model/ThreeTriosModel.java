@@ -1,31 +1,11 @@
 package cs3500.threetrios.model;
 
-import java.util.List;
-
 /**
 * Represents the model for the ThreeTrios Game.
 * Model provides methods to perform game actions and retrieve the game state.
 * The game is setup and started in the constructor.
 */
-public interface ThreeTriosModel {
-    /**
-     * Checks if the game is over.
-     * @return true if the game is over, false otherwise
-     */
-    boolean isGameOver();
-
-    /**
-     * Checks if the game has been won.
-     * @return true if the game has been won, false otherwise
-     */
-    boolean isGameWon();
-
-    /**
-     * Returns the winning player.
-     * @return The wining player.
-     * @throws IllegalStateException If the game isn't over.
-     */
-    ThreeTriosPlayer getWinner() throws IllegalStateException;
+public interface ThreeTriosModel extends ReadOnlyThreeTriosModel {
 
     /**
      * Plays a card from the cardIdxInHand position of the given player's hand 
@@ -43,25 +23,6 @@ public interface ThreeTriosModel {
      */
     void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
     throws IllegalStateException, IllegalArgumentException;
-    
-    /**
-    * Returns the Grid in its current state.
-    * @return Current Grid.
-    */
-    ThreeTriosGrid getGrid();
-    
-    /**
-    * Returns the Player whose turn it is to play.
-    * @return Player who needs to play.
-    */
-    ThreeTriosPlayer getCurrentPlayer();
-    
-    /**
-     * Returns a copy of the hand of the specified Player.
-     *
-     * @param p whose hand we want.
-     * @return a copy of the hand of the specified Player p.
-     */
-    List<ThreeTriosCard> getHand(ThreeTriosPlayer p);
+
 
 }

@@ -81,28 +81,27 @@ public class TestView {
     assertEquals(expectedView, view.toString());
   }
 
-  //todo
-//  @Test
-//  public void testView2Play() {
-//
-//    this.setUp();
-//
-//    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
-//    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 2);
-//
-//    ThreeTriosView view = new ThreeTriosView(model);
-//
-//    String expectedView = "Player: RED\n"
-//            + "R _ B\n"
-//            + "_ _ _\n"
-//            + "_ _ _\n"
-//            + "Hand:\n"
-//            + "Card2 2 2 2 2\n"
-//            + "Card3 3 3 3 3\n"
-//            + "Card4 4 4 4 4\n"
-//            + "Card5 5 5 5 5\n";
-//
-//    assertEquals(expectedView, view.toString());
-//  }
+  @Test
+  public void testView2Play() {
+
+    this.setUp();
+
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 2);
+
+    ThreeTriosView view = new ThreeTriosView(model);
+
+    String expectedView = "Player: RED\n"
+            + "R _ B\n"
+            + "_ _ _\n"
+            + "_ _ _\n"
+            + "Hand:\n"
+            + "Card2 2 2 2 2\n"
+            + "Card3 3 3 3 3\n"
+            + "Card4 4 4 4 4\n"
+            + "Card5 5 5 5 5\n";
+
+    assertEquals(expectedView, view.toString());
+  }
 
 }
