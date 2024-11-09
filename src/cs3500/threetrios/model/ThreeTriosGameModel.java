@@ -80,7 +80,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
    */
   @Override
   public void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
-      throws IllegalStateException, IllegalArgumentException {
+      throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
     if (isGameOver()) {
       throw new IllegalStateException("The game is over!");
     }

@@ -1,6 +1,7 @@
 package cs3500.threetrios.model;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * All observations methods of the model.
@@ -48,4 +49,47 @@ public interface ReadOnlyThreeTriosModel {
    * @return a copy of the hand of the specified Player p.
    */
   List<ThreeTriosCard> getHand(ThreeTriosPlayer p);
+
+  /**
+   * Gets the projected score of playing a card from the cardIdxInHand position of the given
+   * player's hand to the specified row and collumn of the grid. All indices are zero indexed.
+   * @param player The player whose hand the card would be played from.
+   * @param cardIdxInHand The index of the card in the specified hand.
+   * @param row The row in the grid the card would be played to.
+   * @param column The column in the grid the card would be played to.
+   * @return The projected score of such a move.
+   * @throws IllegalStateException If the game is over.
+   * @throws IllegalStateException If it is not the specified player's turn.
+   * @throws IndexOutOfBoundsException If the cardIdxInHand, row,
+   * or column parameters are out-of-bounds.
+   * @throws IllegalArgumentException If the specified move is invalid
+   * (such as playing to a hole or a filled Card Cell).
+   */
+  int getMoveScore(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
+          throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException;
+
+  /**
+   * Determines if it is legal to play a card from the cardIdxInHand position of the given
+   * player's hand to the specified row and collumn of the grid, and returns the corresponding
+   * exception that would be thrown. If the move is legal, returns null.
+   * All indices are zero indexed.
+   *
+   * <p>The exceptions returned are as follows:
+   * <ul>
+   *   <li>{@link IllegalStateException} If the game is over.</li>
+   *   <li>{@link IllegalStateException} If it is not the specified player's turn.</li>
+   *   <li>{@link IndexOutOfBoundsException} If the cardIdxInHand, row, or column parameters are
+   *        out-of-bounds.</li>
+   *   <li>{@link IllegalArgumentException} If the specified move is otherwise invalid,
+   *       such as playing to a hole or a filled Card Cell.</li>
+   * </ul>
+   *
+   * @param player The player whose hand the card would be played from.
+   * @param cardIdxInHand The index of the card in the specified hand.
+   * @param row The row in the grid the card would be played to.
+   * @param column The column in the grid the card would be played to.
+   * @return The exception that would be thrown by attempting the move,
+   *         or null if the move is valid.
+   */
+  Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column);
 }

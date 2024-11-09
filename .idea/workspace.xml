@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosGameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosGameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestThreeTriosGameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestThreeTriosGameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/SimpleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/SimpleRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosBattleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosBattleRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,22 +75,7 @@
       <recent name="cs3500.threetrios.controller" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="TestCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestCard" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestView">
     <configuration name="TestCardBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -149,13 +136,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestView" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestCard" />
-        <item itemvalue="JUnit.TestSimpleRules" />
-        <item itemvalue="JUnit.TestCardBuilder" />
-        <item itemvalue="JUnit.TestGridBuilder" />
+        <item itemvalue="JUnit.TestView" />
         <item itemvalue="JUnit.TestThreeTriosGameModel" />
+        <item itemvalue="JUnit.TestGridBuilder" />
+        <item itemvalue="JUnit.TestCardBuilder" />
+        <item itemvalue="JUnit.TestSimpleRules" />
       </list>
     </recent_temporary>
   </component>

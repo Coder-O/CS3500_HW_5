@@ -10,11 +10,12 @@ import java.util.Map;
  * the direction of its opponent is greater than that of its opponent's 
  * in its direction. Otherwise, the defender wins.
  *
- *  <p>If the attacker wins, then the defender is flipped.</p>
+ *  <p>If the attacker wins, then the defender is flipped, and battles with its neighbors</p>
  */
 public class SimpleRules implements ThreeTriosBattleRules {
 
   private List<ThreeTriosCard> flippedThisTurn;
+  private int numFlippedThisTurn;
   private ThreeTriosGrid grid;
 
   public SimpleRules() {
@@ -23,14 +24,21 @@ public class SimpleRules implements ThreeTriosBattleRules {
 
   /**
    * Handles the battling and flipping of cards after a card has been played.
-   * Details of interactions vary depending upon the implementation.
+   *
+   * <p>By these rules, an attacker wins a battle if it's attack value in
+   * the direction of its opponent is greater than that of its opponent's
+   * in its direction. Otherwise, the defender wins.</p>
+   *
+   *  <p>If the attacker wins, then the defender is flipped, and battles with it's neighbors.</p>
    *
    * @param cardPlayed The card that was played this turn.
    * @param grid       The grid the card is in.
+   * @return The number of cards flipped by this action, including the original card played.
    */
   @Override
-  public void battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid) {
+  public int battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid) {
     flippedThisTurn = new ArrayList<>();
+    numFlippedThisTurn = 1;
     this.grid = grid;
 
     flippedThisTurn.add(cardPlayed);
@@ -41,6 +49,8 @@ public class SimpleRules implements ThreeTriosBattleRules {
       attacker = flippedThisTurn.remove(0);
       battleWithNeighbors(attacker);
     }
+
+    return numFlippedThisTurn;
   }
 
   /**
@@ -63,6 +73,8 @@ public class SimpleRules implements ThreeTriosBattleRules {
         // Flip the neighbor and combo off of it.
         neighbors.get(direction).changePlayer();
         flippedThisTurn.add(neighbors.get(direction));
+        // Update the number of cards that have been flipped.
+        numFlippedThisTurn += 1;
       }
     }
   }

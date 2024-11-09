@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 
@@ -265,5 +266,76 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
       toReturn.add(card.copy());
     }
     return toReturn;
+  }
+
+  /**
+   * Gets the projected score of playing a card from the cardIdxInHand position of the given
+   * player's hand to the specified row and collumn of the grid. All indices are zero indexed.
+   *
+   * @param player        The player whose hand the card would be played from.
+   * @param cardIdxInHand The index of the card in the specified hand.
+   * @param row           The row in the grid the card would be played to.
+   * @param column        The column in the grid the card would be played to.
+   * @return The projected score of such a move.
+   * @throws IllegalStateException    If the game is over.
+   * @throws IllegalStateException    If it is not the specified player's turn.
+   * @throws IndexOutOfBoundsException If the cardIdxInHand, row,
+   *                                  or column parameters are out-of-bounds.
+   * @throws IllegalArgumentException If the specified move is invalid
+   *                                  (such as playing to a hole or a filled Card Cell).
+   */
+  @Override
+  public int getMoveScore(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
+    if (isGameOver()) {
+      throw new IllegalStateException("The game is over!");
+    }
+
+    if (!player.equals(getCurrentPlayer())) {
+      throw new IllegalStateException(
+              player.name() + " cannot play, it is " + getCurrentPlayer() + "'s turn."
+      );
+    }
+    ThreeTriosCard copyPlayerCard = playerHands.get(player).get(cardIdxInHand).copy();
+
+    ThreeTriosGrid copyGrid = grid.copy();
+
+    copyGrid.playToCell(row, column, copyPlayerCard);
+
+    // Mutation is not desired, so we use a copy of the grid
+    return battleRules.battle(copyPlayerCard, copyGrid);
+  }
+
+  /**
+   * Determines if it is legal to play a card from the cardIdxInHand position of the given
+   * player's hand to the specified row and collumn of the grid, and returns the corresponding
+   * exception that would be thrown. If the move is legal, returns null.
+   * All indices are zero indexed.
+   *
+   * <p>The exceptions returned are as follows:
+   * <ul>
+   *   <li>{@link IllegalStateException} If the game is over.</li>
+   *   <li>{@link IllegalStateException} If it is not the specified player's turn.</li>
+   *   <li>{@link IndexOutOfBoundsException} If the cardIdxInHand, row, or column parameters are
+   *        out-of-bounds.</li>
+   *   <li>{@link IllegalArgumentException} If the specified move is otherwise invalid,
+   *       such as playing to a hole or a filled Card Cell.</li>
+   * </ul>
+   *
+   * @param player        The player whose hand the card would be played from.
+   * @param cardIdxInHand The index of the card in the specified hand.
+   * @param row           The row in the grid the card would be played to.
+   * @param column        The column in the grid the card would be played to.
+   * @return The exception that would be thrown by attempting the move,
+   * or null if the move is valid.
+   */
+  @Override
+  public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) {
+    try {
+      getMoveScore(player, cardIdxInHand, row, column);
+    } catch (Exception e) {
+      return Optional.of(e);
+    }
+
+    return Optional.empty();
   }
 }

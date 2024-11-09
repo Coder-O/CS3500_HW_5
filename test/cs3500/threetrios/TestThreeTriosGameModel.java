@@ -426,7 +426,43 @@ public class TestThreeTriosGameModel {
     Assert.assertThrows(
             "Playing twice in a row should not be allowed!!!",
             IllegalStateException.class,
-            () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 1)
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 1)
+    );
+  }
+
+  @Test
+  public void testHandOutOfBounds() {
+    Assert.assertThrows("Should not be able to access a card outside the hand",
+            IndexOutOfBoundsException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, -1, 0, 0)
+    );
+
+    Assert.assertThrows("Should not be able to access a card outside the hand",
+            IndexOutOfBoundsException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 300000, 0, 0)
+    );
+  }
+
+  @Test
+  public void testPlayOutOfBounds() {
+    Assert.assertThrows("Should not be able to play out of bounds!",
+            IndexOutOfBoundsException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 0, -1, 0)
+    );
+
+    Assert.assertThrows("Should not be able to play out of bounds!",
+            IndexOutOfBoundsException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, -1)
+    );
+
+    Assert.assertThrows("Should not be able to play out of bounds!",
+            IndexOutOfBoundsException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 10000, 0)
+    );
+
+    Assert.assertThrows("Should not be able to play out of bounds!",
+            IndexOutOfBoundsException.class,
+        () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 10000)
     );
   }
 }
