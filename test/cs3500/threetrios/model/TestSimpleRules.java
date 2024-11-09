@@ -79,7 +79,7 @@ public class TestSimpleRules {
     );
 
     // Specific grids:
-    allLooseGrid = new GridBuilder(3, 3)
+    allLooseGrid = new GridBuilder(3, 3, new CellBuilder())
             .setCell(0, 0, new Cell(new Card(
                     ThreeTriosAttackValue.EIGHT,
                     ThreeTriosAttackValue.EIGHT,
@@ -148,7 +148,7 @@ public class TestSimpleRules {
             .buildGrid();
 
 
-    oneLoosesGrid =  new GridBuilder(1, 3)
+    oneLoosesGrid =  new GridBuilder(1, 3, new CellBuilder())
             .setCell(0, 0, new Cell(worstCard))
             .setCell(0, 1, new Cell(new Card(
                     ThreeTriosAttackValue.A,
@@ -160,7 +160,7 @@ public class TestSimpleRules {
             )))
             .setCell(0, 2, new Cell())
             .buildGrid();
-    holeGrid = new GridBuilder(3, 3)
+    holeGrid = new GridBuilder(3, 3, new CellBuilder())
             .setCell(0, 0, new Cell(new Card(
                     ThreeTriosAttackValue.A,
                     ThreeTriosAttackValue.A,

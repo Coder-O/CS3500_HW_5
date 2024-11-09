@@ -1,10 +1,18 @@
-package cs3500.threetrios.model;
+package cs3500.threetrios.controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import cs3500.threetrios.model.Card;
+import cs3500.threetrios.model.CellBuilder;
+import cs3500.threetrios.model.GridBuilder;
+import cs3500.threetrios.model.ThreeTriosAttackValue;
+import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosCellBuilder;
+import cs3500.threetrios.model.ThreeTriosGrid;
 
 /**
  * Reads a configuration from a file.
@@ -21,6 +29,7 @@ public class ConfigurationReader {
 
   public static ThreeTriosGrid readGrid(String filePath) {
     File file = new File(filePath);
+    ThreeTriosCellBuilder cellBuilder = new CellBuilder();
     Scanner scanner;
     try {
       scanner = new Scanner(file);
@@ -36,7 +45,6 @@ public class ConfigurationReader {
     if (scanner.hasNextInt()) {
       rows = scanner.nextInt();
     } else {
-      System.out.println("Hi " + scanner.nextLine());
       throw new IllegalStateException("The provided file could not be read!!!");
     }
     if (scanner.hasNextInt()) {
@@ -45,7 +53,7 @@ public class ConfigurationReader {
       throw new IllegalStateException("The provided file could not be read!!!");
     }
 
-    GridBuilder builder = new GridBuilder(rows, columns);
+    GridBuilder builder = new GridBuilder(rows, columns, cellBuilder);
 
     // Leaves the current line, moving on to line 2
     String line = scanner.nextLine();
@@ -67,10 +75,10 @@ public class ConfigurationReader {
       for (int column = 0; column < columns; column++) {
         switch (line.charAt(column)) {
           case 'C':
-            builder.setCell(row, column, new Cell(false));
+            builder.setCell(row, column, cellBuilder.makeCell(false));
             break;
           case 'X':
-            builder.setCell(row, column, new Cell(true));
+            builder.setCell(row, column, cellBuilder.makeCell(true));
             break;
           default:
             throw new IllegalStateException("The file has an illegal character!");

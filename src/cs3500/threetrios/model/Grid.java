@@ -155,7 +155,7 @@ public class Grid implements ThreeTriosGrid {
       for (int column = 0; column < columns; column++) {
         currentCell = grid[row][column];
         if (
-                !currentCell.isHole()
+                !currentCell.isHole() && !(currentCell.getCard() == null)
                         && currentCell.getCard().getName().equals(card.getName())
         ) {
           return helpGetNeighbors(row, column);
