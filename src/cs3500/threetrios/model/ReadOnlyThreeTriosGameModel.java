@@ -278,6 +278,7 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    * @param column        The column in the grid the card would be played to.
    * @return The projected score of such a move.
    * @throws IllegalStateException    If the game is over.
+   * @throws IllegalArgumentException If player is null.
    * @throws IllegalStateException    If it is not the specified player's turn.
    * @throws IndexOutOfBoundsException If the cardIdxInHand, row,
    *                                  or column parameters are out-of-bounds.
@@ -285,9 +286,14 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    *                                  (such as playing to a hole or a filled Card Cell).
    */
   @Override
-  public int getMoveScore(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
+  public int getMoveScore(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
+          throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
     if (isGameOver()) {
       throw new IllegalStateException("The game is over!");
+    }
+
+    if (player == null) {
+      throw new IllegalArgumentException("Player should not be null!");
     }
 
     if (!player.equals(getCurrentPlayer())) {
@@ -314,10 +320,11 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    * <p>The exceptions returned are as follows:
    * <ul>
    *   <li>{@link IllegalStateException} If the game is over.</li>
+   *   <li>{@link IllegalArgumentException} If player is null.</li>
    *   <li>{@link IllegalStateException} If it is not the specified player's turn.</li>
    *   <li>{@link IndexOutOfBoundsException} If the cardIdxInHand, row, or column parameters are
    *        out-of-bounds.</li>
-   *   <li>{@link IllegalArgumentException} If the specified move is otherwise invalid,
+   *   <li>{@link IllegalStateException} If the specified move is otherwise invalid,
    *       such as playing to a hole or a filled Card Cell.</li>
    * </ul>
    *
@@ -326,7 +333,7 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    * @param row           The row in the grid the card would be played to.
    * @param column        The column in the grid the card would be played to.
    * @return The exception that would be thrown by attempting the move,
-   * or null if the move is valid.
+   *         or null if the move is valid.
    */
   @Override
   public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) {

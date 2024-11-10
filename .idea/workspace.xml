@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/SimpleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/SimpleRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosBattleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosBattleRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestSimpleRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestSimpleRules.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,81 +40,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.TestCard.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCardBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.testBuildGridExceptions.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.testSetCell.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.TestGridBuilder.testSetCellExceptions.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestView.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.TestCard.executor": "Run",
+    "JUnit.TestCardBuilder.executor": "Run",
+    "JUnit.TestGridBuilder.executor": "Run",
+    "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
+    "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
+    "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
+    "JUnit.TestSimpleRules.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreAttackFails.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreBattleComboAll.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreBattleComboPartial.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreBlue.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridGameOver.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridHole.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridNoMutation.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridOutOfBounds.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testGetMoveScoreGameOver.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
+    "JUnit.TestView.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="cs3500.threetrios" />
       <recent name="cs3500.threetrios.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestView">
-    <configuration name="TestCardBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestCardBuilder" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGridBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestGridBuilder" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSimpleRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestSimpleRules" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestThreeTriosGameModel">
     <configuration name="TestThreeTriosGameModel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -136,7 +94,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestThreeTriosGameModel.testCanPlayToGridHole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
@@ -145,19 +103,68 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="cs3500.threetrios" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestView" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestThreeTriosGameModel" />
+      <option name="METHOD_NAME" value="testCanPlayToGridHole" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestThreeTriosGameModel.testCanPlayToGridNoMutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestThreeTriosGameModel" />
+      <option name="METHOD_NAME" value="testCanPlayToGridNoMutation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestThreeTriosGameModel.testCanPlayToGridOutOfBounds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestThreeTriosGameModel" />
+      <option name="METHOD_NAME" value="testCanPlayToGridOutOfBounds" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestThreeTriosGameModel.testGetMoveScoreGameOver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestThreeTriosGameModel" />
+      <option name="METHOD_NAME" value="testGetMoveScoreGameOver" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestView" />
         <item itemvalue="JUnit.TestThreeTriosGameModel" />
-        <item itemvalue="JUnit.TestGridBuilder" />
-        <item itemvalue="JUnit.TestCardBuilder" />
-        <item itemvalue="JUnit.TestSimpleRules" />
+        <item itemvalue="JUnit.TestThreeTriosGameModel.testGetMoveScoreGameOver" />
+        <item itemvalue="JUnit.TestThreeTriosGameModel.testCanPlayToGridNoMutation" />
+        <item itemvalue="JUnit.TestThreeTriosGameModel.testCanPlayToGridHole" />
+        <item itemvalue="JUnit.TestThreeTriosGameModel.testCanPlayToGridOutOfBounds" />
       </list>
     </recent_temporary>
   </component>

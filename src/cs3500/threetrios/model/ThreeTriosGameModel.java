@@ -70,8 +70,9 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
    * @param cardIdxInHand The index in the specified hand to play the card from.
    * @param row       The row in the grid to play the card to.
    * @param column    The column in the grid to play the card to.
-   * @throws IllegalStateException  If the game is over
-   * @throws IllegalStateException  If it is not the specified player's turn
+   * @throws IllegalStateException  If the game is over.
+   * @throws IllegalArgumentException If player is null.
+   * @throws IllegalStateException  If it is not the specified player's turn.
    * @throws IndexOutOfBoundsException If the cardIdxInHand, row, or column parameters are
    *                  out-of-bounds. (handled in playToCellMethod in Grid).
    * @throws IllegalStateException If the specified move is invalid
@@ -83,6 +84,10 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
       throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
     if (isGameOver()) {
       throw new IllegalStateException("The game is over!");
+    }
+
+    if (player == null) {
+      throw new IllegalArgumentException("Player cannot be null!");
     }
 
     if (!player.equals(getCurrentPlayer())) {

@@ -15,6 +15,7 @@ import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -431,7 +432,7 @@ public class TestThreeTriosGameModel {
   }
 
   @Test
-  public void testHandOutOfBounds() {
+  public void testPlayHandOutOfBounds() {
     Assert.assertThrows("Should not be able to access a card outside the hand",
             IndexOutOfBoundsException.class,
         () -> model.playToGrid(ThreeTriosPlayer.RED, -1, 0, 0)
@@ -444,7 +445,7 @@ public class TestThreeTriosGameModel {
   }
 
   @Test
-  public void testPlayOutOfBounds() {
+  public void testPlayGridOutOfBounds() {
     Assert.assertThrows("Should not be able to play out of bounds!",
             IndexOutOfBoundsException.class,
         () -> model.playToGrid(ThreeTriosPlayer.RED, 0, -1, 0)
@@ -463,6 +464,259 @@ public class TestThreeTriosGameModel {
     Assert.assertThrows("Should not be able to play out of bounds!",
             IndexOutOfBoundsException.class,
         () -> model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 10000)
+    );
+  }
+
+  // Tests for can play to grid:
+
+  @Test
+  public void testCanPlayToGridGameOver() {
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
+
+    Assert.assertEquals(
+            "Should return an IllegalStateException",
+            IllegalStateException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.BLUE,0,0, 0
+            ).get().getClass()
+    );
+  }
+
+  @Test
+  public void testCanPlayToGridWrongPlayer() {
+    Assert.assertEquals(
+            "Should return an IllegalStateException",
+            IllegalStateException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.BLUE,0,0, 0
+            ).get().getClass()
+    );
+  }
+
+  @Test
+  public void testCanPlayToGridNullPlayer() {
+    Assert.assertEquals(
+            "Should return an IllegalArgumentException",
+            IllegalArgumentException.class,
+            model.canPlayToGrid(
+                    null,0,0, 0
+            ).get().getClass()
+    );
+  }
+
+  @Test
+  public void testCanPlayToGridOutOfBounds() {
+    Assert.assertEquals(
+            "Should return an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,-1,0, 0
+            ).get().getClass()
+    );
+
+    Assert.assertEquals(
+            "Should return an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,0,-1, 0
+            ).get().getClass()
+    );
+
+    Assert.assertEquals(
+            "Should return an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,0,0, -1
+            ).get().getClass()
+    );
+
+    Assert.assertEquals(
+            "Should return an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,5000000,0, 0
+            ).get().getClass()
+    );
+
+    Assert.assertEquals(
+            "Should return an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,0,5000000, 0
+            ).get().getClass()
+    );
+
+    Assert.assertEquals(
+            "Should return an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,0,0, 5000000
+            ).get().getClass()
+    );
+  }
+
+  @Test
+  public void testCanPlayToGridHole() {
+    setUp(PATH_GRID_SPLIT, PATH_DECK_38);
+
+    Assert.assertEquals(
+            "Should return an IllegalStateException",
+            IllegalStateException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,0,0, 3
+            ).get().getClass()
+    );
+  }
+
+  @Test
+  public void testCanPlayToGridFilledCell() {
+    model.playToGrid(ThreeTriosPlayer.RED,0,0, 0);
+
+    Assert.assertEquals(
+            "Should return an IllegalStateException",
+            IllegalStateException.class,
+            model.canPlayToGrid(
+                    ThreeTriosPlayer.RED,0,0, 0
+            ).get().getClass()
+    );
+  }
+
+  @Test
+  public void testCanPlayToGridNoMutation() {
+    model.canPlayToGrid(ThreeTriosPlayer.RED,0,0, 0);
+
+    Assert.assertNull(
+            "There should not have been any card played",
+            model.getGrid().getCell(0,0).getCard()
+    );
+  }
+
+  // Tests for getMoveScore:
+
+  @Test
+  public void testGetMoveScoreGameOver() {
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
+    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
+    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
+
+    Assert.assertThrows(
+            "Should throw an IllegalStateException",
+            IllegalStateException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.BLUE,0,0, 0)
+    );
+  }
+
+  @Test
+  public void testGetMoveScoreWrongPlayer() {
+    Assert.assertThrows(
+            "Should throw an IllegalStateException",
+            IllegalStateException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.BLUE,0,0, 0)
+    );
+  }
+
+  @Test
+  public void testGetMoveScoreNullPlayer() {
+    Assert.assertThrows(
+            "Should throw an IllegalArgumentException",
+            IllegalArgumentException.class,
+        () -> model.getMoveScore(null,0,0, 0)
+    );
+  }
+
+  @Test
+  public void testGetMoveScoreOutOfBounds() {
+    Assert.assertThrows(
+            "Should throw an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,-1,0, 0)
+    );
+
+    Assert.assertThrows(
+            "Should throw an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,0,-1, 0)
+    );
+
+    Assert.assertThrows(
+            "Should throw an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,0,0, -1)
+    );
+
+    Assert.assertThrows(
+            "Should throw an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,5000000,0, 0)
+    );
+
+    Assert.assertThrows(
+            "Should throw an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,0,5000000, 0)
+    );
+
+    Assert.assertThrows(
+            "Should throw an IndexOutOfBoundsException",
+            IndexOutOfBoundsException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,0,0, 5000000)
+    );
+  }
+
+  @Test
+  public void testGetMoveScoreHole() {
+    setUp(PATH_GRID_SPLIT, PATH_DECK_38);
+
+    Assert.assertThrows(
+            "Should throw an IllegalStateException",
+            IllegalStateException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,0,0, 3)
+    );
+  }
+
+  @Test
+  public void testGetMoveScoreFilledCell() {
+    model.playToGrid(ThreeTriosPlayer.RED,0,0, 0);
+
+    Assert.assertThrows(
+            "Should throw an IllegalStateException",
+            IllegalStateException.class,
+        () -> model.getMoveScore(ThreeTriosPlayer.RED,0,0, 0)
+    );
+  }
+
+  @Test
+  public void testGetMoveScoreNoMutation() {
+    model.getMoveScore(ThreeTriosPlayer.RED,0,0, 0);
+
+    Assert.assertNull(
+            "There should not have been any card played",
+            model.getGrid().getCell(0,0).getCard()
+    );
+  }
+
+  // This test assumes that the implementation of ThreeTriosBattleRules used returns a score of one
+  // when playing ot an empty grid, which may not be true depending upon the implementation.
+  @Test
+  public void testGetMoveScoreExpected() {
+    Assert.assertEquals(
+            "The score should be as expected",
+            1,
+            model.getMoveScore(ThreeTriosPlayer.RED,0,0, 0)
     );
   }
 }
