@@ -14,6 +14,7 @@ interface TieNarrowingStrategy {
    * Finds the best selection of the given moves, according to this strategy.
    * @param model The model to choose a move for.
    * @param playerFor The player to choose a move for.
+   * @param tiedMoves The moves to consider.
    * @return A list of the best moves this strategy could find.
    */
   List<Move> findBestMoves(

@@ -10,7 +10,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * An adapter that adapts a {@link FallibleStrategy} and any number of {@link TieNarrowingStrategy}s
  * into part of a {@link CompleteStrategy}.
  */
-class CompleteStrategyAdapter implements CompleteStrategy {
+class FallibleNarrowingCompleteAdapter implements CompleteStrategy {
 
   // INVARIANT: no member variable is null.
   private final FallibleStrategy fallibleStrategy;
@@ -33,7 +33,7 @@ class CompleteStrategyAdapter implements CompleteStrategy {
    *                     single best move was found part way through.
    * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
    */
-  CompleteStrategyAdapter(
+  FallibleNarrowingCompleteAdapter(
           FallibleStrategy fallibleStrategy,
           CompleteStrategy completeStrategy,
           List<TieNarrowingStrategy> tieNarrowingStrategies,
@@ -62,7 +62,7 @@ class CompleteStrategyAdapter implements CompleteStrategy {
    * @param completeStrategy The complete strategy to fall back on.
    * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
    */
-  CompleteStrategyAdapter(
+  FallibleNarrowingCompleteAdapter(
           FallibleStrategy fallibleStrategy,
           CompleteStrategy completeStrategy
   ) throws IllegalArgumentException {

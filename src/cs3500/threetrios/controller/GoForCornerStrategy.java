@@ -7,7 +7,6 @@ import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosDirection;
 import cs3500.threetrios.model.ThreeTriosGrid;
-import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
@@ -18,6 +17,8 @@ class GoForCornerStrategy implements FallibleStrategy {
 
   private List<ThreeTriosCard> hand;
   private Corner[] corners;
+  private int bestScore;
+  private List<Move> bestMoves;
 
   /**
    * Represents a corner.
@@ -94,9 +95,6 @@ class GoForCornerStrategy implements FallibleStrategy {
   public List<Move> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
     setUp(model, playerFor);
 
-    List<Move> bestMoves = new ArrayList<>();
-    int bestScore = 0;
-
     for (Corner corner : corners) {
 
       // If it is impossible to play to this corner, move on.
@@ -121,37 +119,56 @@ class GoForCornerStrategy implements FallibleStrategy {
           continue;
         }
 
-        ThreeTriosCard card = hand.get(cardIdxInHand);
-
-        int currentScore = getCurrentScore(model, playerFor, card,  corner);
-
-        // If the current move's score is as good or better, include it.
-        if (currentScore >= bestScore) {
-          // If the current move's score is better, ignore the previously included moves.
-          if (currentScore > bestScore) {
-            bestScore = currentScore;
-            bestMoves = new ArrayList<>();
-          }
-
-          // Include the new move.
-          bestMoves.add(new Move(
-                  playerFor,
-                  cardIdxInHand,
-                  corner.getRow(),
-                  corner.getColumn(),
-                  model.getMoveScore(
-                          playerFor,
-                          cardIdxInHand,
-                          corner.getRow(),
-                          corner.getColumn()
-                  )
-          ));
-        }
+        considerMove(model, playerFor, corner, cardIdxInHand);
       }
     }
 
+    // Reset the state, but still return the bestMoves
+    List<Move> tempBestMoves = bestMoves;
     reset();
-    return bestMoves;
+    return tempBestMoves;
+  }
+
+  /**
+   * Helper method. For a given move, determines if it should be added to the list of best moves
+   * and if the list of best moves should be reset.
+   * @param model The model to consider.
+   * @param playerFor The player to play for.
+   * @param corner The corner to play to.
+   * @param cardIdxInHand The card's index in playerFor's hand.
+   */
+  private void considerMove(
+          ReadOnlyThreeTriosModel model,
+          ThreeTriosPlayer playerFor,
+          Corner corner,
+          int cardIdxInHand
+  ) {
+    ThreeTriosCard card = hand.get(cardIdxInHand);
+
+    int currentScore = getCurrentScore(model, playerFor, card, corner);
+
+    // If the current move's score is as good or better, include it.
+    if (currentScore >= bestScore) {
+      // If the current move's score is better, ignore the previously included moves.
+      if (currentScore > bestScore) {
+        bestScore = currentScore;
+        bestMoves = new ArrayList<>();
+      }
+
+      // Include the new move.
+      bestMoves.add(new Move(
+              playerFor,
+              cardIdxInHand,
+              corner.getRow(),
+              corner.getColumn(),
+              model.getMoveScore(
+                      playerFor,
+                      cardIdxInHand,
+                      corner.getRow(),
+                      corner.getColumn()
+              )
+      ));
+    }
   }
 
   /**
@@ -175,17 +192,34 @@ class GoForCornerStrategy implements FallibleStrategy {
     int currentScore = 0;
 
     for (ThreeTriosCard opposingCard : model.getHand(playerFor.getOpposingPlayer())) {
-      if (
-              card.getAttackValue(corner.getDesiredColumnDirection()).getValue()
-                      < opposingCard.getAttackValue(corner.getDesiredColumnDirection().getOpposite()).getValue()
-      ) {
+
+      int cardLateral = card
+              .getAttackValue(
+                      corner.getDesiredColumnDirection()
+              ).getValue();
+
+      int opposingCardLateral = opposingCard
+              .getAttackValue(
+                      corner.getDesiredColumnDirection().getOpposite()
+              ).getValue();
+
+      // If the opposing card beats it in the lateral direction, decrease its score.
+      if (cardLateral < opposingCardLateral) {
         currentScore--;
       }
 
-      if (
-              card.getAttackValue(corner.getDesiredRowDirection()).getValue()
-                      < opposingCard.getAttackValue(corner.getDesiredRowDirection().getOpposite()).getValue()
-      ) {
+      int cardVertical = card
+              .getAttackValue(
+                      corner.getDesiredRowDirection()
+              ).getValue();
+
+      int opposingCardVertical = opposingCard
+              .getAttackValue(
+                      corner.getDesiredRowDirection().getOpposite()
+              ).getValue();
+
+      // If the opposing card beats it in the vertical direction, decrease its score.
+      if (cardVertical < opposingCardVertical) {
         currentScore--;
       }
     }
@@ -212,15 +246,20 @@ class GoForCornerStrategy implements FallibleStrategy {
             new Corner(maxRowIndex, 0),
             new Corner(maxRowIndex, maxColIndex)
     };
+
+    bestMoves = new ArrayList<>();
+    bestScore = 0;
   }
 
   /**
-   * Resets the state of this strategy sp that it may be used again.
+   * Resets the state of this strategy so that it may be used again.
    * Should be unnecessary, but good practice.
    */
   private void reset() {
     hand = null;
     corners = null;
+    bestMoves = new ArrayList<>();
+    bestScore = 0;
   }
 
 }
