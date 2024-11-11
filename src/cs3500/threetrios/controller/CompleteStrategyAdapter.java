@@ -2,6 +2,7 @@ package cs3500.threetrios.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
@@ -10,12 +11,13 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * An adapter that adapts a {@link FallibleStrategy} and any number of {@link TieNarrowingStrategy}s
  * into part of a {@link CompleteStrategy}.
  */
-class FallibleNarrowingCompleteAdapter implements CompleteStrategy {
+class CompleteStrategyAdapter implements CompleteStrategy {
 
   // INVARIANT: no member variable is null.
   private final FallibleStrategy fallibleStrategy;
   private final CompleteStrategy completeStrategy;
   private final List<TieNarrowingStrategy> tieNarrowingStrategies;
+  private final Optional<TieBreakingStrategy> tieBreakingStrategy;
   private final boolean stopAtOneMove;
 
   /**
@@ -23,21 +25,26 @@ class FallibleNarrowingCompleteAdapter implements CompleteStrategy {
    * The fallible strategy is tried first.
    * If it fails to return a single move, the best move is decided by the tieNarrowingStrategies,
    * which are applied in the provided order.
+   * If that fails to find a single move, the TieBreakingStrategy is called.
    * If all else fails, the completeStrategy is used.
-   * @param fallibleStrategy The fallible strategy to try.
-   * @param completeStrategy The complete strategy to fall back on.
-   * @param tieNarrowingStrategies The strategies to break ties in the fallible strategy.
-   * @param stopAtOneMove Whether the tie narrowing strategies should stop being applied when
-   *                     they have narrowed the selection down to one move.
-   *                     If this is false, all narrowing strategies will be applied, even if a
-   *                     single best move was found part way through.
+   *
+   * @param fallibleStrategy       The fallible strategy to try.
+   * @param completeStrategy       The complete strategy to fall back on.
+   * @param tieNarrowingStrategies The strategies to narrow ties in the fallible strategy.
+   * @param stopAtOneMove          Whether the tie narrowing strategies should stop being applied
+   *                               when they have narrowed the selection down to one move.
+   *                               If this is false, all narrowing strategies and the
+   *                               tieBreakingStrategy will be applied, even if a
+   *                               single best move was found part way through.
+   * @param tieBreakingStrategy    The final strategy to break a tie.
    * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
    */
-  FallibleNarrowingCompleteAdapter(
+  CompleteStrategyAdapter(
           FallibleStrategy fallibleStrategy,
           CompleteStrategy completeStrategy,
           List<TieNarrowingStrategy> tieNarrowingStrategies,
-          boolean stopAtOneMove
+          boolean stopAtOneMove,
+          TieBreakingStrategy tieBreakingStrategy
   ) throws IllegalArgumentException {
     if (completeStrategy == null || fallibleStrategy == null) {
       throw new IllegalArgumentException(
@@ -51,7 +58,29 @@ class FallibleNarrowingCompleteAdapter implements CompleteStrategy {
     this.fallibleStrategy = fallibleStrategy;
     this.completeStrategy = completeStrategy;
     this.tieNarrowingStrategies = tieNarrowingStrategies;
+    this.tieBreakingStrategy = Optional.ofNullable(tieBreakingStrategy);
     this.stopAtOneMove = stopAtOneMove;
+  }
+
+  /**
+   * Creates a complete strategy from the given fallible, tie-narrowing, and complete strategies.
+   * The fallible strategy is tried first.
+   * If it fails to return a single move, the best move is decided by the tieNarrowingStrategies,
+   * which are applied in the provided order.
+   * If that fails to find a single move, the TieBreakingStrategy is called.
+   * If all else fails, the completeStrategy is used.
+   *
+   * @param fallibleStrategy       The fallible strategy to try.
+   * @param completeStrategy       The complete strategy to fall back on.
+   * @param tieBreakingStrategy    The final strategy to break a tie.
+   * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
+   */
+  CompleteStrategyAdapter(
+          FallibleStrategy fallibleStrategy,
+          CompleteStrategy completeStrategy,
+          TieBreakingStrategy tieBreakingStrategy
+  ) throws IllegalArgumentException {
+    this(fallibleStrategy, completeStrategy, null, true, tieBreakingStrategy);
   }
 
   /**
@@ -62,11 +91,11 @@ class FallibleNarrowingCompleteAdapter implements CompleteStrategy {
    * @param completeStrategy The complete strategy to fall back on.
    * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
    */
-  FallibleNarrowingCompleteAdapter(
+  CompleteStrategyAdapter(
           FallibleStrategy fallibleStrategy,
           CompleteStrategy completeStrategy
   ) throws IllegalArgumentException {
-    this(fallibleStrategy, completeStrategy, null, true);
+    this(fallibleStrategy, completeStrategy, null, true, null);
   }
 
 
@@ -106,7 +135,18 @@ class FallibleNarrowingCompleteAdapter implements CompleteStrategy {
       }
     }
 
-    // If the tie-narrowing strategies worked, skip the rest.
+    // If a tie-breaking strategy was provided, use it on the results
+    if (tieBreakingStrategy.isPresent()) {
+      try {
+        currentMoves = List.of(
+                tieBreakingStrategy.get().findBestMove(model, playerFor, currentMoves)
+        );
+      } catch (IllegalStateException ignored) {
+        // If the tie-breaker failed in an expected way, try the complete strategy.
+      }
+    }
+
+    // If the tie-narrowing/breaking strategies worked, skip the rest.
     if (currentMoves.size() == 1) {
       return currentMoves.get(0);
     }
