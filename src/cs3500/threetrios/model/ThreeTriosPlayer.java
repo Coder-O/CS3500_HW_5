@@ -36,4 +36,21 @@ public enum ThreeTriosPlayer {
         }
     }
 
+    /**
+     * Returns the opposing player.
+     *
+     * @return The opposing player.
+     */
+    public ThreeTriosPlayer getOpposingPlayer() {
+        switch (this) {
+            case RED:
+                return BLUE;
+            case BLUE:
+                return RED;
+        }
+
+        // As there are only two players, this return is irrelevant in runtime.
+        return null;
+    }
+
 }

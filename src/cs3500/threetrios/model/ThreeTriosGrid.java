@@ -4,6 +4,8 @@ import java.util.Map;
 
 /**
 * Represents the Grid of the ThreeTrios Game.
+* The top-left corner is indexed (0, 0), with row and column indices increasing down and right,
+* respectively.
 * Invariant: there is always an odd number of card cells.
 */
 public interface ThreeTriosGrid {
