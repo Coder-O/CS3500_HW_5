@@ -2,6 +2,7 @@ package cs3500.threetrios.controller;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Random;
@@ -29,7 +30,21 @@ public abstract class AbstractStrategyTest {
   private final String PATH_GRID_SPLIT = "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Split.txt";
 
   // todo: document the player hands that result from the given deck paths.
+  // This path results in the hands:
+  //      Red: 1, 9, 3, 5, A
+  //     Blue: 7, 6, 2, 8, 4
   private final String PATH_DECK_10 = "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt";
+  // This path results in the hands:
+  //      Red:   Card7 (7 7 7 7),  C_Card6 (6 6 6 6),  Shield (7 7 1 7),   Card3 (3 3 3 3),
+  //           C_Card2 (2 2 2 2),    Card4 (4 4 4 4), C_Card9 (9 9 9 9),   Card9 (9 9 9 9),
+  //              Ace2 (A A A A), C_Shield (7 7 1 7),   Card2 (2 2 2 2),     Run (7 9 A 8),
+  //        GlassCanon (1 A A 1),  C_Card7 (7 7 7 7),   Spike (A 1 1 1), C_Card1 (1 1 1 1),
+  //       StrongSouth (1 1 1 A),    Card1 (1 1 1 1)
+  //      Blue:    Card6 (6 6 6 6),          Link (7 7 7 2),  C_Ace2 (A A A A),    Weak (1 3 4 2),
+  //                 Ace (A A A A),   StrongNorth (A 1 1 1),    3335 (3 3 5 3),   C_Ace (A A A A),
+  //             C_Card4 (4 4 4 4), C_StrongSouth (1 1 1 A), C_Card3 (3 3 3 3),   Mario (3 4 4 A),
+  //         GlassGannon (1 1 1 A),       C_Card8 (8 8 8 8),     Med (5 6 4 4), C_Card5 (5 5 5 5),
+  //       C_StrongNorth (A 1 1 1),        C_3335 (3 3 5 3),
   private final String PATH_DECK_38 = "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt";
 
   // Setup methods:
@@ -67,18 +82,27 @@ public abstract class AbstractStrategyTest {
   }
 
   /**
-   * Sets up a game with a full grid. Should only be called after setting up an empty grid.
+   * Fills up the grid of the model.
    */
   private void fillGrid() {
     ThreeTriosGrid grid = mutableModel.getGrid();
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int column = 0; column < grid.getNumColumns(); column++) {
-        mutableModel.playToGrid(
-                mutableModel.getCurrentPlayer(),
-                0,
-                row,
-                column
-        );
+        if (
+                mutableModel.canPlayToGrid(
+                        model.getCurrentPlayer(),
+                        0,
+                        row,
+                        column
+                ).isEmpty()
+        ) {
+          mutableModel.playToGrid(
+                  mutableModel.getCurrentPlayer(),
+                  0,
+                  row,
+                  column
+          );
+        }
       }
     }
   }
@@ -112,7 +136,10 @@ public abstract class AbstractStrategyTest {
    * Sets up a board state where no flips are possible.
    */
   protected final void setUpNoFlipsPossible3x3() {
-    // todo: write this method!
+    setUpEmpty3x3();
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 4, 0, 1);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 3, 0, 2);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 4, 2, 1);
   }
 
   /**

@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategyAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestGoForCornerStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestUpperLeftmostStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TranscriptMockModelAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestTieBreakingStrategies.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/controller/FallibleNarrowingCompleteAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/controller/FallibleTieBreakingCompleteAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +45,13 @@
   "keyToString": {
     "JUnit.TestCard.executor": "Run",
     "JUnit.TestCardBuilder.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
     "JUnit.TestGridBuilder.executor": "Run",
     "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
     "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
     "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Debug",
     "JUnit.TestSimpleRules.executor": "Run",
     "JUnit.TestSimpleRules.testCorrectScoreAttackFails.executor": "Run",
     "JUnit.TestSimpleRules.testCorrectScoreBattleComboAll.executor": "Run",
@@ -83,48 +83,51 @@
       <recent name="cs3500.threetrios.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestView">
-    <configuration name="TestCardBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION">
+    <configuration name="TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestCardBuilder" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestCompleteStrategyAdapter" />
+      <option name="METHOD_NAME" value="TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestGridBuilder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.*" />
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.TestGridBuilder" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestGoForCornerStrategy" />
+      <option name="METHOD_NAME" value="TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSimpleRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestSimpleRules" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestMaximizeScoreStrategy" />
+      <option name="METHOD_NAME" value="TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
+        <item itemvalue="JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
+        <item itemvalue="JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
+        <item itemvalue="JUnit.TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION" />
         <item itemvalue="JUnit.TestView" />
-        <item itemvalue="JUnit.TestThreeTriosGameModel" />
-        <item itemvalue="JUnit.TestGridBuilder" />
-        <item itemvalue="JUnit.TestCardBuilder" />
-        <item itemvalue="JUnit.TestSimpleRules" />
       </list>
     </recent_temporary>
   </component>
