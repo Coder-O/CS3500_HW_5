@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestTieBreakingStrategies.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategyAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestGoForCornerStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestUpperLeftmostStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TranscriptMockModelAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/FallibleNarrowingCompleteAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategyAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/FallibleTieBreakingCompleteAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestTieBreakingStrategies.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +30,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -177,5 +183,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
