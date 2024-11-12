@@ -39,8 +39,13 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
     Move bestMove = tiedMoves.get(0);
 
     for (Move move : tiedMoves) {
-      int moveUpperLeftScore = move.getCollumnIdx() * move.getRowIdx();
-      int bestMoveUpperLeftScore = bestMove.getCollumnIdx() * bestMove.getRowIdx();
+      // Using Pythagorean theorem a^2 + b^2 = c^2.
+      double moveUpperLeftScore = Math.sqrt(
+              Math.pow(move.getCollumnIdx(), 2) + Math.pow(move.getRowIdx(), 2)
+      );
+      double bestMoveUpperLeftScore = Math.sqrt(
+              Math.pow(bestMove.getCollumnIdx(), 2) + Math.pow(bestMove.getRowIdx(), 2)
+      );
 
       // If the current move is closer to the top left, it is the best move.
       if (moveUpperLeftScore < bestMoveUpperLeftScore) {

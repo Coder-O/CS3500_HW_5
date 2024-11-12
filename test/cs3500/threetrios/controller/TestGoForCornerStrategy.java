@@ -1,7 +1,6 @@
 package cs3500.threetrios.controller;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -127,5 +126,36 @@ public class TestGoForCornerStrategy extends AbstractStrategyTest {
             expected,
             model.getCoordinatesChecked()
     );
+  }
+
+  @Test
+  public void testAllMovesLegal() {
+    setUpEmpty3x3();
+    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
+
+    setUpFull3x3();
+    bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
+
+    setUpPartial3x3();
+    bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
+
+    setUpNoFlipsPossible3x3();
+    bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
+
+    setUpEmptySplit();
+    bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
+
+    setUpPartialSplit();
+    bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
+
+    setUpFullSplit();
+    bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    testMovesLegal(bestMoves);
   }
 }

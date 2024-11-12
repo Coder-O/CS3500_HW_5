@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/controller/GoForCornerStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/controller/GoForCornerStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestMaximizeScoreStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestMaximizeScoreStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/UpperLeftmostStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/UpperLeftmostStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestGoForCornerStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestGoForCornerStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestUpperLeftmostStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestUpperLeftmostStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +47,7 @@
     "JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
     "JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
     "JUnit.TestGoForCornerStrategy.allCornersChecked.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.executor": "Run",
     "JUnit.TestGoForCornerStrategy.testEmpty3x3.executor": "Run",
     "JUnit.TestGoForCornerStrategy.testEmptySplit.executor": "Run",
     "JUnit.TestGoForCornerStrategy.testPartial3x3.executor": "Run",
@@ -76,6 +75,9 @@
     "JUnit.TestThreeTriosGameModel.testCanPlayToGridOutOfBounds.executor": "Run",
     "JUnit.TestThreeTriosGameModel.testGetMoveScoreGameOver.executor": "Run",
     "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
+    "JUnit.TestUpperLeftmostStrategy.executor": "Run",
+    "JUnit.TestUpperLeftmostStrategy.noMovesThrowsException.executor": "Run",
+    "JUnit.TestUpperLeftmostStrategy.testNoMutation.executor": "Run",
     "JUnit.TestView.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -95,7 +97,22 @@
       <recent name="cs3500.threetrios.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestGoForCornerStrategy.allCornersChecked">
+  <component name="RunManager" selected="JUnit.TestUpperLeftmostStrategy">
+    <configuration name="TestGoForCornerStrategy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestGoForCornerStrategy" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestGoForCornerStrategy.allCornersChecked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -112,7 +129,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestGoForCornerStrategy.testEmpty3x3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestUpperLeftmostStrategy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
@@ -121,67 +138,51 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestGoForCornerStrategy" />
-      <option name="METHOD_NAME" value="testEmpty3x3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGoForCornerStrategy.testEmptySplit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestGoForCornerStrategy" />
-      <option name="METHOD_NAME" value="testEmptySplit" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestGoForCornerStrategy.testPartial3x3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestGoForCornerStrategy" />
-      <option name="METHOD_NAME" value="testPartial3x3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMaximizeScoreStrategy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestMaximizeScoreStrategy" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestUpperLeftmostStrategy" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestUpperLeftmostStrategy.noMovesThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestUpperLeftmostStrategy" />
+      <option name="METHOD_NAME" value="noMovesThrowsException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestUpperLeftmostStrategy.testNoMutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestUpperLeftmostStrategy" />
+      <option name="METHOD_NAME" value="testNoMutation" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestUpperLeftmostStrategy" />
+        <item itemvalue="JUnit.TestUpperLeftmostStrategy.testNoMutation" />
+        <item itemvalue="JUnit.TestUpperLeftmostStrategy.noMovesThrowsException" />
+        <item itemvalue="JUnit.TestGoForCornerStrategy" />
         <item itemvalue="JUnit.TestGoForCornerStrategy.allCornersChecked" />
-        <item itemvalue="JUnit.TestGoForCornerStrategy.testEmptySplit" />
-        <item itemvalue="JUnit.TestGoForCornerStrategy.testPartial3x3" />
-        <item itemvalue="JUnit.TestGoForCornerStrategy.testEmpty3x3" />
-        <item itemvalue="JUnit.TestMaximizeScoreStrategy" />
       </list>
     </recent_temporary>
   </component>
