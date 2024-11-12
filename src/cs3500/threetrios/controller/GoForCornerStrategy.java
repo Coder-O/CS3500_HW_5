@@ -103,7 +103,7 @@ class GoForCornerStrategy implements FallibleStrategy {
               0,
               corner.getRow(),
               corner.getColumn()
-      ).isEmpty()) {
+      ).isPresent()) {
         continue;
       }
 
@@ -115,7 +115,7 @@ class GoForCornerStrategy implements FallibleStrategy {
                 cardIdxInHand,
                 corner.getRow(),
                 corner.getColumn()
-        ).isEmpty()) {
+        ).isPresent()) {
           continue;
         }
 
@@ -124,7 +124,7 @@ class GoForCornerStrategy implements FallibleStrategy {
     }
 
     // Reset the state, but still return the bestMoves
-    List<Move> tempBestMoves = bestMoves;
+    List<Move> tempBestMoves = List.copyOf(bestMoves);
     reset();
     return tempBestMoves;
   }
@@ -230,8 +230,8 @@ class GoForCornerStrategy implements FallibleStrategy {
     // Setup
     ThreeTriosGrid grid = model.getGrid();
     hand = model.getHand(playerFor);
-    int maxColIndex = grid.getNumRows() - 1;
-    int maxRowIndex = grid.getNumColumns() - 1;
+    int maxColIndex = grid.getNumColumns() - 1;
+    int maxRowIndex = grid.getNumRows() - 1;
 
     // Stores the indices of each corner.
     corners = new Corner[]{
@@ -242,7 +242,7 @@ class GoForCornerStrategy implements FallibleStrategy {
     };
 
     bestMoves = new ArrayList<>();
-    bestScore = 0;
+    bestScore = Integer.MIN_VALUE;
   }
 
   /**

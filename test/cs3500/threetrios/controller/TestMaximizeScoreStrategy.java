@@ -1,7 +1,6 @@
 package cs3500.threetrios.controller;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -120,7 +119,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
     }
 
     Assert.assertEquals(
-            "The strategy should have checked all coordiantes!",
+            "The strategy should have checked all coordinates!",
             expected,
             model.getCoordinatesChecked()
     );
