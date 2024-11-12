@@ -1,11 +1,12 @@
 package cs3500.threetrios.controller;
 
+import java.util.Objects;
+
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * Represents a move in a game of Three Trios.
- * A way of tracking and organizing all data required to make a move, as well as the expected score
- * of the move.
+ * A way of tracking and organizing all data required to make a move.
  * Moves are immutable.
  * All indices are zero indexed.
  */
@@ -14,7 +15,6 @@ class Move {
   private final int cardIdxInHand;
   private final int rowIdx;
   private final int collumnIdx;
-  private final int projectedScore;
 
   /**
    * Creates a new move.
@@ -24,9 +24,8 @@ class Move {
    * @param collumnIdx The index og the column to play to.
    * @throws IllegalArgumentException If player is null.
    */
-  Move(ThreeTriosPlayer player, int cardIdxInHand, int rowIdx, int collumnIdx, int projectedScore)
+  Move(ThreeTriosPlayer player, int cardIdxInHand, int rowIdx, int collumnIdx)
           throws IllegalArgumentException {
-    this.projectedScore = projectedScore;
     if (player == null) {
       throw new IllegalArgumentException("Player cannot be null!");
     }
@@ -69,11 +68,23 @@ class Move {
     return collumnIdx;
   }
 
-  /**
-   * Returns the projected score of this move.
-   * @return the projected score of this move.
-   */
-  public int getProjectedScore() {
-    return projectedScore;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Move other = (Move) o;
+    return cardIdxInHand == other.cardIdxInHand
+            && rowIdx == other.rowIdx
+            && collumnIdx == other.collumnIdx
+            && player == other.player;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(player, cardIdxInHand, rowIdx, collumnIdx);
   }
 }

@@ -2,12 +2,10 @@ package cs3500.threetrios.controller;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.util.List;
 import java.util.Random;
 
-import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -21,15 +19,14 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * Helps set up specific configurations for testing purposes.
  * Holds many methods that each set up a specific scenario for easy testing.
  */
-public abstract class AbstractStrategyTest {
-  protected ReadOnlyThreeTriosModel model;
+abstract class AbstractStrategyTest {
+  protected TranscriptMockModelAdapter model;
   private ThreeTriosModel mutableModel;
   protected Appendable appendable;
 
   private final String PATH_GRID_3X3 = "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt";
   private final String PATH_GRID_SPLIT = "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.Split.txt";
 
-  // todo: document the player hands that result from the given deck paths.
   // This path results in the hands:
   //      Red: 1, 9, 3, 5, A
   //     Blue: 7, 6, 2, 8, 4
@@ -77,8 +74,8 @@ public abstract class AbstractStrategyTest {
     Random random = new Random(0);
 
     mutableModel = new ThreeTriosGameModel(grid, deck, battleRules, true, random);
-    model = mutableModel;
     appendable = new StringBuilder();
+    model = new TranscriptMockModelAdapter(mutableModel, appendable);
   }
 
   /**
@@ -120,7 +117,7 @@ public abstract class AbstractStrategyTest {
   protected final void setUpPartial3x3() {
     setUpEmpty3x3();
     mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
-    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 2);
     mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
   }
 
@@ -139,7 +136,7 @@ public abstract class AbstractStrategyTest {
     setUpEmpty3x3();
     mutableModel.playToGrid(ThreeTriosPlayer.RED, 4, 0, 1);
     mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 3, 0, 2);
-    mutableModel.playToGrid(ThreeTriosPlayer.RED, 4, 2, 1);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 1, 2, 1);
   }
 
   /**
@@ -154,7 +151,25 @@ public abstract class AbstractStrategyTest {
    */
   protected final void setUpPartialSplit() {
     setUpEmptySplit();
-    // todo: finish this method.
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 17, 4, 4);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 17, 0, 0);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 6);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 0, 7);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 9);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 1, 2);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 9);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 2, 4);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 7);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 2, 8);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 3, 0);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 3, 1);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 3, 2);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 3, 6);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 3, 8);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 4, 1);
+    mutableModel.playToGrid(ThreeTriosPlayer.BLUE, 0, 4, 2);
+    mutableModel.playToGrid(ThreeTriosPlayer.RED, 0, 4, 6);
   }
 
   /**
@@ -173,31 +188,24 @@ public abstract class AbstractStrategyTest {
    * @param move The move to test.
    */
   protected void testMoveLegal(Move move) {
-    Assert.assertNull(
+    Assert.assertTrue(
             "The provided move should be legal.",
             model.canPlayToGrid(
                     move.getPlayer(),
                     move.getCardIdxInHand(),
                     move.getRowIdx(),
                     move.getCollumnIdx()
-            )
+            ).isEmpty()
     );
   }
 
   /**
-   * Tests if a given move has the correct score.
-   * @param move The move to test.
+   * Tests if each move in a given list is legal.
+   * @param moves The moves to test.
    */
-  protected void testMoveScoreIsExpected(Move move) {
-    Assert.assertEquals(
-            "The projected score in the move should be the standard expected!",
-            model.getMoveScore(
-                    move.getPlayer(),
-                    move.getCardIdxInHand(),
-                    move.getRowIdx(),
-                    move.getCollumnIdx()
-            ),
-            move.getProjectedScore()
-    );
+  protected void testMovesLegal(List<Move> moves) {
+    for (Move move : moves) {
+      testMoveLegal(move);
+    }
   }
 }

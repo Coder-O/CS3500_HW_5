@@ -53,7 +53,7 @@ class MaximizeScoreStrategy implements FallibleStrategy {
             }
 
             // Include the new move.
-            bestMoves.add(new Move(playerFor, cardIdxInHand, row, column, currentScore));
+            bestMoves.add(new Move(playerFor, cardIdxInHand, row, column));
           }
 
         }

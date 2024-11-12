@@ -1,9 +1,11 @@
 package cs3500.threetrios.controller;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -19,6 +21,45 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
 
   private final ReadOnlyThreeTriosModel adaptee;
   private final Appendable appendable;
+  private final Set<Coordinate> coordinatesChecked;
+
+  /**
+   * Represents a single coordinate.
+   */
+  public static class Coordinate {
+    private final int row;
+    private final int column;
+
+    public Coordinate(int row, int column) {
+      this.row = row;
+      this.column = column;
+    }
+
+    public int getRow() {
+      return row;
+    }
+
+    public int getColumn() {
+      return column;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+      Coordinate other = (Coordinate) o;
+      return row == other.row && column == other.column;
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(row, column);
+    }
+  }
 
   /**
    * Creates a new mock model that adapts a adaptee so that it tracks how many times it's
@@ -29,6 +70,7 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
   public TranscriptMockModelAdapter(ReadOnlyThreeTriosModel adaptee, Appendable appendable) {
     this.adaptee = adaptee;
     this.appendable = Objects.requireNonNull(appendable);
+    this.coordinatesChecked = new HashSet<>();
   }
 
   /**
@@ -210,6 +252,16 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
       throw new RuntimeException("The appendable failed!", e);
     }
 
+    coordinatesChecked.add(new Coordinate(row, column));
+
     return adaptee.canPlayToGrid(player, cardIdxInHand, row , column);
+  }
+
+  /**
+   * Returns the set of all coordinates that have been checked by canPlayToGrid.
+   * @return The set of all coordinates that have been checked by canPlayToGrid.
+   */
+  public Set<Coordinate> getCoordinatesChecked() {
+    return coordinatesChecked;
   }
 }
