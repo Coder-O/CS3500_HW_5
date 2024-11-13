@@ -1,6 +1,9 @@
 package cs3500.threetrios;
 
+import java.awt.*;
 import java.util.List;
+
+import javax.swing.*;
 
 import cs3500.threetrios.controller.ConfigurationReader;
 import cs3500.threetrios.model.SimpleRules;

@@ -33,7 +33,8 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
 
   /**
    * Updates the grid.
-   * When a cell is cliked, it will print its row and col.
+   * When a cell is clicked, it will print its row and col.
+   * Card cells are drawn in grey, holes are drawn in yellow.
    */
   @Override
   public void update() {
