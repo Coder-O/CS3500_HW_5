@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/configurationfiles/Grid.3x3H.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGUIView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosGameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosGameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/model/ThreeTriosModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestThreeTriosGameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestThreeTriosGameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/ThreeTrios/TestView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,30 +43,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.TestCard.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCardBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.testBuildGridExceptions.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.testSetCell.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.TestGridBuilder.testSetCellExceptions.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestView.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.TestCard.executor": "Run",
+    "JUnit.TestCardBuilder.executor": "Run",
+    "JUnit.TestGridBuilder.executor": "Run",
+    "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
+    "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
+    "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
+    "JUnit.TestSimpleRules.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
+    "JUnit.TestView.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "/Users/anabellavivas/Documents/NORTHEASTERN/SUMMER24/CS3200/CS3500_HW_5/src/cs3500/threetrios",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cs3500.threetrios.view" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="cs3500.threetrios" />
       <recent name="cs3500.threetrios.controller" />
@@ -167,7 +170,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730742439832</updated>
-      <workItem from="1730742440973" duration="9943000" />
+      <workItem from="1730742440973" duration="30180000" />
     </task>
     <servers />
   </component>

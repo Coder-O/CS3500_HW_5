@@ -42,8 +42,7 @@ public class TestThreeTriosGameModel {
 
   private void setUp(String gridPath, String deckPath) {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
-            gridPath
-    );
+            gridPath);
     ThreeTriosBattleRules battleRules = new SimpleRules();
     deck = ConfigurationReader.readDeck(
             deckPath
