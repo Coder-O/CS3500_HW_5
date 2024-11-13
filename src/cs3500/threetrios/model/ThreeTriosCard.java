@@ -40,7 +40,7 @@ public interface ThreeTriosCard {
 
 
     /**
-     * Returns a depp copy of this card. Mutating this has no effect on the original card.
+     * Returns a deep copy of this card. Mutating this has no effect on the original card.
      * @return A deep copy of this card.
      */
     ThreeTriosCard copy();
