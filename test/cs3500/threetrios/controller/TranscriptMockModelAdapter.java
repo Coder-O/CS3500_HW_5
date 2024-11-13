@@ -230,7 +230,7 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
    * @param row           The row in the grid the card would be played to.
    * @param column        The column in the grid the card would be played to.
    * @return The exception that would be thrown by attempting the move,
-   * or null if the move is valid.
+   *         or null if the move is valid.
    */
   @Override
   public Optional<Exception> canPlayToGrid(

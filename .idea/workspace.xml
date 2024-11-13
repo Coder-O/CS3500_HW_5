@@ -7,12 +7,26 @@
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Archive.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Archive.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/ThreeTrios.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/ThreeTrios.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/CardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/CardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategyAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/TieBreakingCompleteAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/TieBreakingCompleteAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ReadOnlyThreeTriosModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCellBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosCellBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestCardBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestCardBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestGridBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestGridBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/FibingMockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/FibingMockModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategies.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategies.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

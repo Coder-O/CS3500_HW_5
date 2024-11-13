@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import cs3500.threetrios.model.Grid;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
-import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
@@ -112,7 +110,8 @@ public class FibingMockModel implements ReadOnlyThreeTriosModel {
    *                                   (such as playing to a hole or a filled Card Cell).
    */
   @Override
-  public int getMoveScore(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
+  public int getMoveScore(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
+          throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException {
     if (row == 1 && column == 2 && cardIdxInHand == 3) {
       return Integer.MAX_VALUE;
     }
@@ -142,10 +141,11 @@ public class FibingMockModel implements ReadOnlyThreeTriosModel {
    * @param row           The row in the grid the card would be played to.
    * @param column        The column in the grid the card would be played to.
    * @return The exception that would be thrown by attempting the move,
-   * or null if the move is valid.
+   *         or null if the move is valid.
    */
   @Override
-  public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) {
+  public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row,
+                                           int column) {
     return Optional.empty();
   }
 }

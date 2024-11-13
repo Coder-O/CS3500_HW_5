@@ -16,7 +16,8 @@ class TieBreakingCompleteAdapter implements CompleteStrategy {
   private final TieBreakingStrategy tieBreakingStrategy;
 
   /**
-   * Creates a CompleteStrategy using the given tieBreakingStrategy, by providing the tie breaking strategy evey possible move.
+   * Creates a CompleteStrategy using the given tieBreakingStrategy,
+   * by providing the tie breaking strategy evey possible move.
    * @param tieBreakingStrategy The tie-breaker to use.
    * @throws NullPointerException If tieBreakingStrategy is null.
    */
@@ -35,7 +36,8 @@ class TieBreakingCompleteAdapter implements CompleteStrategy {
    * @throws IllegalStateException If no legal move could be found.
    */
   @Override
-  public Move findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) throws IllegalStateException {
+  public Move findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor)
+          throws IllegalStateException {
     List<Move> legalMoves = findAllLegalMoves(model, playerFor);
     return tieBreakingStrategy.findBestMove(model, playerFor, legalMoves);
   }

@@ -14,7 +14,6 @@ import java.util.Set;
  */
 public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
 
-  private final List<ThreeTriosCard> deck;
   /* INVARIANT: Every card in the game has a unique name */
   protected final ThreeTriosGrid grid;
   protected final Map<ThreeTriosPlayer, List<ThreeTriosCard>> playerHands;
@@ -73,7 +72,7 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
     this.battleRules = battleRules;
 
     // Initializing deck.
-    this.deck = new ArrayList<>();
+    List<ThreeTriosCard> deck1 = new ArrayList<>();
     Set<String> uniqueNames = new HashSet<String>();
     for (ThreeTriosCard card : deck) {
       if (uniqueNames.contains(card.getName())) {
@@ -83,7 +82,7 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
         );
       }
       uniqueNames.add(card.getName());
-      this.deck.add(card);
+      deck1.add(card);
     }
 
     // Initialize hands
@@ -93,9 +92,9 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
       for (int i = 0; i < (grid.getNumCardCells() + 1) / 2; ++i) {
         int index = 0;
         if (shuffle) {
-          index = random.nextInt(this.deck.size());
+          index = random.nextInt(deck1.size());
         }
-        ThreeTriosCard card = this.deck.remove(index);
+        ThreeTriosCard card = deck1.remove(index);
         card.setPlayer(player);
         playerCards.add(card);
       }
@@ -336,7 +335,8 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    *         or null if the move is valid.
    */
   @Override
-  public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column) {
+  public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player,
+                                           int cardIdxInHand, int row, int column) {
     try {
       getMoveScore(player, cardIdxInHand, row, column);
     } catch (Exception e) {

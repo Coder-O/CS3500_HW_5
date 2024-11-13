@@ -137,7 +137,8 @@ class CompleteStrategyAdapter implements CompleteStrategy {
    * @throws IllegalStateException If no legal move could be found.
    */
   @Override
-  public Move findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) throws IllegalStateException {
+  public Move findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor)
+          throws IllegalStateException {
     List<Move> currentMoves = fallibleStrategy.findBestMoves(model, playerFor);
 
     // If the fallible strategy worked, skip the rest.

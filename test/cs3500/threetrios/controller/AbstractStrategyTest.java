@@ -113,7 +113,7 @@ abstract class AbstractStrategyTest {
   }
 
   /**
-   * Sets up a 3x3 game that is mid-way through
+   * Sets up a 3x3 game that is mid-way through.
    */
   protected final void setUpPartial3x3() {
     setUpEmpty3x3();

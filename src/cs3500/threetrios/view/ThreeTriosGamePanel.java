@@ -2,7 +2,7 @@ package cs3500.threetrios.view;
 
 import java.util.Objects;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 
@@ -11,11 +11,12 @@ import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
  */
 public class ThreeTriosGamePanel extends JPanel {
 
-  private final ReadOnlyThreeTriosGameModel model;
-
-  //todo finish
+  /**
+   * Constructor for ThreeTriosGamePanel.
+   * @param model The game model.
+   */
   public ThreeTriosGamePanel(ReadOnlyThreeTriosGameModel model) {
-    this.model = Objects.requireNonNull(model);
+    ReadOnlyThreeTriosGameModel model1 = Objects.requireNonNull(model);
   }
 
 }

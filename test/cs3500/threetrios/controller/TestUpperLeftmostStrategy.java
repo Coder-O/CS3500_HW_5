@@ -9,7 +9,7 @@ import java.util.List;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
- * A testing class for {@link UpperLeftmostStrategy}, a Tie-Breaking Strategy
+ * A testing class for {@link UpperLeftmostStrategy}, a Tie-Breaking Strategy.
  */
 public class TestUpperLeftmostStrategy extends AbstractStrategyTest {
 

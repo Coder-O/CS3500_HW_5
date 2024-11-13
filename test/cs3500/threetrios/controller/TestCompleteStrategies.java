@@ -14,20 +14,20 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * A testing class for {@link CompleteStrategyAdapter}.
  */
 public class TestCompleteStrategies extends AbstractStrategyTest {
-  private CompleteStrategy MaxScore_UpperLeft_Strategy;
-  private CompleteStrategy Corner_UpperLeft_Strategy;
-  private CompleteStrategy UpperLeft_CompleteStrategy;
+  private CompleteStrategy maxScoreUpperLeftStrategy;
+  private CompleteStrategy cornerUpperLeftStrategy;
+  private CompleteStrategy upperLeftCompleteStrategy;
   private List<CompleteStrategy> strategies;
 
   @Override
   public void reset() {
     super.reset();
 
-    UpperLeft_CompleteStrategy = new TieBreakingCompleteAdapter(
+    upperLeftCompleteStrategy = new TieBreakingCompleteAdapter(
             new UpperLeftmostStrategy()
     );
 
-    MaxScore_UpperLeft_Strategy = new CompleteStrategyAdapter(
+    maxScoreUpperLeftStrategy = new CompleteStrategyAdapter(
             new MaximizeScoreStrategy(),
             new TieBreakingCompleteAdapter(
                     new UpperLeftmostStrategy()
@@ -35,7 +35,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
             new UpperLeftmostStrategy()
     );
 
-    Corner_UpperLeft_Strategy = new CompleteStrategyAdapter(
+    cornerUpperLeftStrategy = new CompleteStrategyAdapter(
             new GoForCornerStrategy(),
             new TieBreakingCompleteAdapter(
                     new UpperLeftmostStrategy()
@@ -44,9 +44,9 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
     );
 
     strategies = new ArrayList<>();
-    strategies.add(MaxScore_UpperLeft_Strategy);
-    strategies.add(Corner_UpperLeft_Strategy);
-    strategies.add(UpperLeft_CompleteStrategy);
+    strategies.add(maxScoreUpperLeftStrategy);
+    strategies.add(cornerUpperLeftStrategy);
+    strategies.add(upperLeftCompleteStrategy);
   }
 
   @Test
@@ -57,7 +57,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
       Assert.assertThrows(
               "There should be no legal moves!!!",
               IllegalStateException.class,
-          () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
+        () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
       );
 
       setUpPartial3x3();
@@ -65,7 +65,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
       Assert.assertThrows(
               "There should be no legal moves!!!",
               IllegalStateException.class,
-              () -> strategy.findBestMove(model, ThreeTriosPlayer.RED)
+        () -> strategy.findBestMove(model, ThreeTriosPlayer.RED)
       );
     }
 
@@ -79,7 +79,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
       Assert.assertThrows(
               "There should be no legal moves!!!",
               IllegalStateException.class,
-              () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
+        () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
       );
 
       setUpFullSplit();
@@ -95,7 +95,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3Max() {
     setUpEmpty3x3();
-    Move bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
+    Move bestMove = maxScoreUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.RED);
     Move expected = new Move(ThreeTriosPlayer.RED, 0,0,0);
 
     Assert.assertEquals(
@@ -108,7 +108,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3Corner() {
     setUpEmpty3x3();
-    Move bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
+    Move bestMove = cornerUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.RED);
     // Play card 9 to top left corner.
     Move expected = new Move(ThreeTriosPlayer.RED, 1,0,0);
 
@@ -122,7 +122,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testPartial3x3Max() {
     setUpPartial3x3();
-    Move bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
+    Move bestMove = maxScoreUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.BLUE);
     // Play first card in hand to top middle to flip top left
     Move expected = new Move(ThreeTriosPlayer.BLUE, 0,0,1);
 
@@ -136,7 +136,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testPartial3x3Corner() {
     setUpPartial3x3();
-    Move bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
+    Move bestMove = cornerUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.BLUE);
     Move expected = new Move(ThreeTriosPlayer.BLUE, 0, 2, 0);
 
     Assert.assertEquals(

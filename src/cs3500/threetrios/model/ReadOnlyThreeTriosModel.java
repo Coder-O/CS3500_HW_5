@@ -94,5 +94,6 @@ public interface ReadOnlyThreeTriosModel {
    * @return The exception that would be thrown by attempting the move,
    *         or null if the move is valid.
    */
-  Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column);
+  Optional<Exception> canPlayToGrid(ThreeTriosPlayer player,
+                                    int cardIdxInHand, int row, int column);
 }

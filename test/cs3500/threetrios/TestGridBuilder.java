@@ -10,7 +10,7 @@ import cs3500.threetrios.model.ThreeTriosCellBuilder;
 import cs3500.threetrios.model.ThreeTriosGridBuilder;
 
 /**
- * A testing class for a ThreeTriosGridBuilder
+ * A testing class for a ThreeTriosGridBuilder.
  */
 public class TestGridBuilder {
   private ThreeTriosGridBuilder builder;
@@ -20,6 +20,7 @@ public class TestGridBuilder {
   public void setUp() {
     setUp(3, 3);
   }
+
   private void setUp(int rows, int columns) {
     cellBuilder = new CellBuilder();
     builder = new GridBuilder(rows, columns, cellBuilder);
@@ -36,7 +37,7 @@ public class TestGridBuilder {
     Assert.assertThrows(
             "< 1 columns should throw an exception.",
             IllegalArgumentException.class,
-            () -> setUp(11, 0)
+        () -> setUp(11, 0)
     );
   }
 
@@ -73,7 +74,7 @@ public class TestGridBuilder {
     Assert.assertThrows(
             "Should not be able to set a cell outside of the valid range!",
             IllegalArgumentException.class,
-            () -> builder.setCell(0, -1, cellBuilder.makeCell(true))
+        () -> builder.setCell(0, -1, cellBuilder.makeCell(true))
     );
   }
 

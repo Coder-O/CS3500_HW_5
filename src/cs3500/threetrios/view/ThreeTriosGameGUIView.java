@@ -1,11 +1,13 @@
 package cs3500.threetrios.view;
 
-import java.awt.*;
-import javax.swing.*;
-
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
+
+import java.awt.Dimension;
+import java.awt.BorderLayout;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;

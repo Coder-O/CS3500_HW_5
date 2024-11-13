@@ -1,5 +1,4 @@
 package cs3500.threetrios.view;
-import javax.swing.JComponent;
 
 /**
  * Represents the GUI view for the ThreeTrios Game.

@@ -5,12 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cs3500.threetrios.model.CellBuilder;
-import cs3500.threetrios.model.GridBuilder;
 import cs3500.threetrios.model.ThreeTriosCellBuilder;
-import cs3500.threetrios.model.ThreeTriosGridBuilder;
 
 /**
- * A testing class for a card builder
+ * A testing class for a card builder.
  */
 public class TestCardBuilder {
   private ThreeTriosCellBuilder builder;

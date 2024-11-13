@@ -1,9 +1,6 @@
 package cs3500.threetrios;
 
-import java.awt.*;
 import java.util.List;
-
-import javax.swing.*;
 
 import cs3500.threetrios.controller.ConfigurationReader;
 import cs3500.threetrios.model.SimpleRules;
@@ -20,6 +17,10 @@ import cs3500.threetrios.view.ThreeTriosGameGUIView;
  */
 public final class ThreeTrios {
 
+  /**
+   * Instantiates a model, instantiates a view
+   * using that model, and tells the view to get started.
+   */
   public static void main(String[] args) {
 
     ThreeTriosGrid grid = ConfigurationReader.readGrid(

@@ -15,7 +15,6 @@ import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -364,17 +363,17 @@ public class TestThreeTriosGameModel {
     );
 
     Assert.assertEquals(
-            deck.get(0+5), // Index 0 in Blues' hand, which starts 5 cards from the start.
+            deck.get(0 + 5), // Index 0 in Blues' hand, which starts 5 cards from the start.
             model.getGrid().getCell(0, 1).getCard()
     );
 
     Assert.assertEquals(
             deck.get(4),
-            model.getGrid().getCell(2,2).getCard()
+            model.getGrid().getCell(2, 2).getCard()
     );
 
     Assert.assertEquals(
-            deck.get(3+5), // Index 3 in Blues' hand, which starts 5 cards from the start.
+            deck.get(3 + 5), // Index 3 in Blues' hand, which starts 5 cards from the start.
             model.getGrid().getCell(1, 1).getCard()
     );
   }
@@ -413,7 +412,7 @@ public class TestThreeTriosGameModel {
     Assert.assertThrows(
             "Playing to a cell twice should not be allowed!!!",
             IllegalStateException.class,
-            () -> model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 0)
+        () -> model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 0)
     );
   }
 

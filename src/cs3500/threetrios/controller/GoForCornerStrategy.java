@@ -235,10 +235,10 @@ class GoForCornerStrategy implements FallibleStrategy {
 
     // Stores the indices of each corner.
     corners = new Corner[]{
-            new Corner(0, 0),
-            new Corner(0, maxColIndex),
-            new Corner(maxRowIndex, 0),
-            new Corner(maxRowIndex, maxColIndex)
+      new Corner(0, 0),
+      new Corner(0, maxColIndex),
+      new Corner(maxRowIndex, 0),
+      new Corner(maxRowIndex, maxColIndex)
     };
 
     bestMoves = new ArrayList<>();
