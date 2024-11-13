@@ -211,13 +211,20 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   }
 
   @Test
-  public void testFullyCompleateness() {
+  public void testFullyCompleteness() {
     for (FullyCompleteStrategy strategy : strategies) {
       Assert.assertTrue(
               "Should be fully complete!",
               strategy.findsAtLeastOneMove()
       );
     }
+  }
+
+  @Test
+  public void testSimpleStrategy() {
+    setUpEmpty3x3();
+    UpperLeft_CompleteStrategy.findBestMove(model, ThreeTriosPlayer.RED);
+    System.out.println(appendable.toString());
   }
 
 }
