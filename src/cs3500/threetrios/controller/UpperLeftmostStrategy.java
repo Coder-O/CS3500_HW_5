@@ -24,10 +24,10 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
    * @throws IllegalStateException If no Moves were given.
    */
   @Override
-  public Move findBestMove(
+  public ThreeTriosMove findBestMove(
           ReadOnlyThreeTriosModel model,
           ThreeTriosPlayer playerFor,
-          List<Move> tiedMoves
+          List<ThreeTriosMove> tiedMoves
   )
           throws IllegalStateException {
     if (tiedMoves == null || tiedMoves.isEmpty()) {
@@ -36,9 +36,9 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
       );
     }
 
-    Move bestMove = tiedMoves.get(0);
+    ThreeTriosMove bestMove = tiedMoves.get(0);
 
-    for (Move move : tiedMoves) {
+    for (ThreeTriosMove move : tiedMoves) {
       // Using Pythagorean theorem a^2 + b^2 = c^2.
       double moveUpperLeftScore = Math.sqrt(
               Math.pow(move.getCollumnIdx(), 2) + Math.pow(move.getRowIdx(), 2)
@@ -63,5 +63,17 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
     }
 
     return bestMove;
+  }
+
+  /**
+   * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
+   * Useful for determining if a composition of strategies is Fully Complete.
+   *
+   * @return Whether this implementation is guaranteed to find at least one move, if any legal move
+   * exists.
+   */
+  @Override
+  public boolean findsAtLeastOneMove() {
+    return false;
   }
 }

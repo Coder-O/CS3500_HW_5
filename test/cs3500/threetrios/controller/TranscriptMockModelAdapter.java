@@ -247,7 +247,8 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
               .append(", row = ")
               .append(String.valueOf(row))
               .append(", and column = ")
-              .append(String.valueOf(column));
+              .append(String.valueOf(column))
+              .append(System.lineSeparator());
     } catch (IOException e) {
       throw new RuntimeException("The appendable failed!", e);
     }

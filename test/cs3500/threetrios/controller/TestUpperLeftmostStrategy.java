@@ -34,8 +34,8 @@ public class TestUpperLeftmostStrategy extends AbstractStrategyTest {
   @Test
   public void testReturnsSingleMove() {
     setUpEmpty3x3();
-    Move expected = new Move(ThreeTriosPlayer.RED, 0, 0, 0);
-    Move actual = strategy.findBestMove(model, ThreeTriosPlayer.RED, List.of(expected));
+    ThreeTriosMove expected = new Move(ThreeTriosPlayer.RED, 0, 0, 0);
+    ThreeTriosMove actual = strategy.findBestMove(model, ThreeTriosPlayer.RED, List.of(expected));
 
     Assert.assertEquals(
             "The strategy should return the only move!",
@@ -46,12 +46,12 @@ public class TestUpperLeftmostStrategy extends AbstractStrategyTest {
 
   @Test
   public void testNoMutation() {
-    List<Move> original = new ArrayList<>();
+    List<ThreeTriosMove> original = new ArrayList<>();
     original.add(new Move(ThreeTriosPlayer.RED, 0, 20, 365));
     original.add(new Move(ThreeTriosPlayer.RED, 46, -12, 4444));
     original.add(new Move(ThreeTriosPlayer.RED, 2, 2, 1));
 
-    List<Move> used = List.copyOf(original);
+    List<ThreeTriosMove> used = List.copyOf(original);
 
     strategy.findBestMove(model, ThreeTriosPlayer.RED, used);
 
@@ -64,13 +64,13 @@ public class TestUpperLeftmostStrategy extends AbstractStrategyTest {
 
   @Test
   public void testReturnsExpected() {
-    List<Move> moves = new ArrayList<>();
+    List<ThreeTriosMove> moves = new ArrayList<>();
     moves.add(new Move(ThreeTriosPlayer.RED, 0, 20, 365));
     moves.add(new Move(ThreeTriosPlayer.RED, 46, 4, 4444));
     moves.add(new Move(ThreeTriosPlayer.RED, 2, 2, 1));
     moves.add(new Move(ThreeTriosPlayer.RED, 2, 2, 0));
 
-    Move bestMove = strategy.findBestMove(model, ThreeTriosPlayer.RED, moves);
+    ThreeTriosMove bestMove = strategy.findBestMove(model, ThreeTriosPlayer.RED, moves);
 
     Assert.assertEquals(
             "The chosen move should be as expected!",

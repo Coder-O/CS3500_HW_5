@@ -188,7 +188,7 @@ abstract class AbstractStrategyTest {
    * Tests if a given move is legal.
    * @param move The move to test.
    */
-  protected void testMoveLegal(Move move) {
+  protected void testMoveLegal(ThreeTriosMove move) {
     Assert.assertTrue(
             "The provided move should be legal.",
             model.canPlayToGrid(
@@ -204,8 +204,8 @@ abstract class AbstractStrategyTest {
    * Tests if each move in a given list is legal.
    * @param moves The moves to test.
    */
-  protected void testMovesLegal(List<Move> moves) {
-    for (Move move : moves) {
+  protected void testMovesLegal(List<ThreeTriosMove> moves) {
+    for (ThreeTriosMove move : moves) {
       testMoveLegal(move);
     }
   }

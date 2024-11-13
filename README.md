@@ -4,7 +4,6 @@ This codebase is meant to represent a game of ThreeTrios. Players take turns pla
 
 The following assumptions are made:
 - There are only 2 players.
-- Players will specify locations in hand/grid using integer coordinates.
 - Game will track whose turn it is.
 
 Quick Start: 
@@ -32,6 +31,13 @@ Quick Start:
 Key Components and Subcomponents:
 - Controller: drives the control-flow of the game. To be developed.
     - ConfigurationReader: Creates a ThreeTriosGrid or a list of ThreeTriosCards from a file.
+    - FullyCompleteStrategy: An interface for a strategy that is guaranteed to find a single move for a given board state, should a legal move be possible.
+    - CompleteStrategy: An interface for a strategy that is guaranteed to find a single move for a given board state or throw an exception.
+    - TieBreakingStrategy: An interface for a strategy that is guaranteed to find a single move for a given board state and list of moves or throw an exception.
+    - TieNarrowingStrategy: An interface for a strategy that finds a list of desired moves for a given board state and list of moves. Intended to narrow down move options, and allow multiple strategies to be combined.
+    - FallibleStrategy: An interface for a strategy that that finds a list of desired moves for a given board state.
+    - Strategy: An interface for other strategies to build off of. Includes a findsAtLeastOneMove method to allow users to know if a given strategy allways returns at least one move.
+    - Several adapters exist to convert between and combine different types of strategies.
 - ThreeTriosModel: is driven by the controller. Manages the rules and objects of the game.
     - ThreeTriosGrid: the playing grid, a 2 by 2 grid that holds cells as described below. A grid must have an odd number of card cells.
     - ThreeTriosCell: a cell in the grid. It can be a hole (a non-existant position) or a card cell (can hold a card).
