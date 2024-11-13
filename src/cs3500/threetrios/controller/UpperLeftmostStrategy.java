@@ -70,7 +70,7 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
    * Useful for determining if a composition of strategies is Fully Complete.
    *
    * @return Whether this implementation is guaranteed to find at least one move, if any legal move
-   * exists.
+   *         exists.
    */
   @Override
   public boolean findsAtLeastOneMove() {

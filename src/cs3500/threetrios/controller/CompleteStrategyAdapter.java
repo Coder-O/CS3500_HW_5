@@ -144,7 +144,8 @@ class CompleteStrategyAdapter implements FullyCompleteStrategy {
    * @throws IllegalStateException If no legal move could be found.
    */
   @Override
-  public ThreeTriosMove findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) throws IllegalStateException {
+  public ThreeTriosMove findBestMove(ReadOnlyThreeTriosModel model,
+                                     ThreeTriosPlayer playerFor) throws IllegalStateException {
     List<ThreeTriosMove> currentMoves = fallibleStrategy.findBestMoves(model, playerFor);
 
     // If the fallible strategy worked, skip the rest.
@@ -155,7 +156,8 @@ class CompleteStrategyAdapter implements FullyCompleteStrategy {
     // If the fallible strategy failed, attempt to find a single move through applying the
     // tie-narrowing strategies.
     for (TieNarrowingStrategy narrowingStrategy : tieNarrowingStrategies) {
-      List<ThreeTriosMove> newMoves = narrowingStrategy.findBestMoves(model, playerFor, currentMoves);
+      List<ThreeTriosMove> newMoves = narrowingStrategy.findBestMoves(model,
+              playerFor, currentMoves);
       if (newMoves == null) {
         newMoves = new ArrayList<>();
       }
@@ -194,6 +196,7 @@ class CompleteStrategyAdapter implements FullyCompleteStrategy {
    * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
    * Useful for determining if a composition of strategies is Fully Complete.
    * This adapter is guaranteed to be fully complete in 2 scenarios:
+   *
    *     <p>1.) The {@link CompleteStrategy} always finds one move.
    *
    *     <p>2.) The {@link FallibleStrategy} always finds at least 1 move,
@@ -201,7 +204,7 @@ class CompleteStrategyAdapter implements FullyCompleteStrategy {
    *     and the {@link TieBreakingStrategy} exists.
    *
    * @return Whether this implementation is guaranteed to find at least one move, if any legal move
-   * exists.
+   *         exists.
    */
   @Override
   public boolean findsAtLeastOneMove() {

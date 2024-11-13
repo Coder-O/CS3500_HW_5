@@ -15,27 +15,27 @@ public enum ThreeTriosAttackValue {
     NINE("9", 9),
     A("A", 10);
 
-    private final String symbol;
-    private final int value;
+  private final String symbol;
+  private final int value;
 
-    ThreeTriosAttackValue(String symbol, int value) {
-        this.symbol = symbol;
-        this.value = value;
-    }
+  ThreeTriosAttackValue(String symbol, int value) {
+    this.symbol = symbol;
+    this.value = value;
+  }
 
-    /**
-    * Returns the Symbol of the AttackValue.
-    * @return the Symbol of the AttackValue.
-    */
-    public String getSymbol() {
+  /**
+   * Returns the Symbol of the AttackValue.
+   * @return the Symbol of the AttackValue.
+   */
+  public String getSymbol() {
         return symbol;
     }
 
-    /**
-    * Returns the value of the AttackValue.
-    * @return the value of the AttackValue.
-    */
-    public int getValue() {
+  /**
+   * Returns the value of the AttackValue.
+   * @return the value of the AttackValue.
+   */
+  public int getValue() {
         return value;
     }
 
@@ -47,9 +47,9 @@ public enum ThreeTriosAttackValue {
      * @return A value of this enum, determined by the symbol.
      * @throws IllegalArgumentException if an invalid symbol is passed.
      */
-    public static ThreeTriosAttackValue attackValueFactory(
-            String symbol) throws IllegalArgumentException {
-        switch (symbol) {
+    public static ThreeTriosAttackValue attackValueFactory(String symbol)
+            throws IllegalArgumentException {
+     switch (symbol) {
             case "1" :
                 return ONE;
             case "2" :

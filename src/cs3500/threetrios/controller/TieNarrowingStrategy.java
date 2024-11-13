@@ -12,6 +12,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 interface TieNarrowingStrategy extends Strategy {
   /**
    * Finds the best selection of the given moves, according to this strategy.
+   *
    * <p>If neverReturnsZeroMoves() is true, then this is guaranteed to return a non-empty list
    * when provided a non-empty list.
    * @param model The model to choose a move for.
@@ -30,7 +31,7 @@ interface TieNarrowingStrategy extends Strategy {
    * Returns whether this strategy's findBestMoves method
    * is guaranteed to never return an empty list, provided it received a non-empty list.
    * @return whether this strategy's findBestMoves method
-   * is guaranteed to never return an empty list, provided it received a non-empty list.
+   *         is guaranteed to never return an empty list, provided it received a non-empty list.
    */
   boolean neverReturnsZeroMoves();
 }

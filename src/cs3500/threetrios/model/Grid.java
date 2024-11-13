@@ -81,7 +81,8 @@ public class Grid implements ThreeTriosGrid {
    * @throws IndexOutOfBoundsException if the row or column are not in the grid
    */
   @Override
-  public void playToCell(int row, int column, ThreeTriosCard card) throws IndexOutOfBoundsException {
+  public void playToCell(int row, int column, ThreeTriosCard card)
+          throws IndexOutOfBoundsException {
     if (row > rows || row < 0) {
       throw new IndexOutOfBoundsException(
               row + " is an invalid row value!!! Valid indices are: 0-" + rows
@@ -155,7 +156,7 @@ public class Grid implements ThreeTriosGrid {
       for (int column = 0; column < columns; column++) {
         currentCell = grid[row][column];
         if (
-                !currentCell.isHole() && !(currentCell.getCard() == null)
+                !currentCell.isHole() && currentCell.getCard() != null
                         && currentCell.getCard().getName().equals(card.getName())
         ) {
           return helpGetNeighbors(row, column);
@@ -172,7 +173,7 @@ public class Grid implements ThreeTriosGrid {
    * @param    row The row of the card to get neighbors for.
    * @param    column The column of the card to get neighbors for.
    * @return   A map containing the neighbors of this card. If a neighbor is missing,
-   * this map does not include an entry or key for it.
+   *           this map does not include an entry or key for it.
    */
   private Map<ThreeTriosDirection, ThreeTriosCard> helpGetNeighbors(int row, int column) {
     Map<ThreeTriosDirection, ThreeTriosCard> toReturn = new HashMap<>();
@@ -212,37 +213,37 @@ public class Grid implements ThreeTriosGrid {
     return toReturn;
   }
 
-    /**
-    * Prints the grid using _ for empty cells and ' ' for hole cells.
-    * Ex: 
-    BB   _
-    _B   _
-    _ R  _
-    _  _ _
-    _   _R
-    * @return a textual representation of the grid
-    */
-    @Override
-    public String toString() {
-      StringBuilder gridView = new StringBuilder();
-      for (int row = 0; row < rows; row++) {
-          for (int column = 0; column < columns; column++) {
-              ThreeTriosCell cell = grid[row][column];
-              if (cell.isHole()) {
-                gridView.append(" ");
-              } else if (cell.getCard() == null) {
-                gridView.append("_");
-              } else {
-                gridView.append(cell.getCard().getPlayer().getSymbol());
-              }
-              if (column < columns - 1) {
-                gridView.append(" ");
-              }
-          }
-          gridView.append("\n");
-      }
-      return gridView.toString();
+  /**
+  * Prints the grid using _ for empty cells and ' ' for hole cells.
+  * Ex:
+  BB   _
+  _B   _
+  _ R  _
+  _  _ _
+  _   _R
+  * @return a textual representation of the grid
+  */
+  @Override
+  public String toString() {
+    StringBuilder gridView = new StringBuilder();
+    for (int row = 0; row < rows; row++) {
+        for (int column = 0; column < columns; column++) {
+            ThreeTriosCell cell = grid[row][column];
+            if (cell.isHole()) {
+              gridView.append(" ");
+            } else if (cell.getCard() == null) {
+              gridView.append("_");
+            } else {
+              gridView.append(cell.getCard().getPlayer().getSymbol());
+            }
+            if (column < columns - 1) {
+              gridView.append(" ");
+            }
+        }
+        gridView.append("\n");
     }
+    return gridView.toString();
+  }
 
   /**
    * Returns a depp copy of the grid. Mutating this has no effect on the original grid.

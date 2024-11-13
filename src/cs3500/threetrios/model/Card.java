@@ -7,19 +7,17 @@ import java.util.Objects;
  * A Card must have four values, a player, and a name.
  */
 public class Card implements ThreeTriosCard {
-    private final ThreeTriosAttackValue north;
-    private final ThreeTriosAttackValue east;
-    private final ThreeTriosAttackValue south;
-    private final ThreeTriosAttackValue west;
-    private ThreeTriosPlayer player;
-    private final String name;
+  private final ThreeTriosAttackValue north;
+  private final ThreeTriosAttackValue east;
+  private final ThreeTriosAttackValue south;
+  private final ThreeTriosAttackValue west;
+  private ThreeTriosPlayer player;
+  private final String name;
 
-    /**
-     * Card constructor.
-     */
-    public Card(ThreeTriosAttackValue north,
-    ThreeTriosAttackValue east,
-    ThreeTriosAttackValue west,
+  /**
+   * Card constructor.
+   */
+  public Card(ThreeTriosAttackValue north, ThreeTriosAttackValue east, ThreeTriosAttackValue west,
     ThreeTriosAttackValue south,
     ThreeTriosPlayer player,
     String name) {
@@ -61,7 +59,7 @@ public class Card implements ThreeTriosCard {
     }
 
     /**
-     * Sets this card's player to given player
+     * Sets this card's player to given player.
      * @param player The player that shall now own this card.
      */
     @Override
@@ -98,8 +96,8 @@ public class Card implements ThreeTriosCard {
     */
     @Override
     public String toString() {
-        return this.getName() + " " 
-        + this.north.getSymbol() + " " 
+        return this.getName() + " "
+        + this.north.getSymbol() + " "
         + this.east.getSymbol() + " "
         + this.west.getSymbol()  + " "
         + this.south.getSymbol();
@@ -129,7 +127,7 @@ public class Card implements ThreeTriosCard {
     public int hashCode() {
       return Objects.hash(north, east, west, south, player);
     }
-  
+
     /*
      * Checks if this Card is equal to another Card.
      * @return true if both cards are equal.

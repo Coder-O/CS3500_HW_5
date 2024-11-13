@@ -57,7 +57,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
       Assert.assertThrows(
               "There should be no legal moves!!!",
               IllegalStateException.class,
-        () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
+          () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
       );
 
       setUpPartial3x3();
@@ -79,16 +79,14 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
       Assert.assertThrows(
               "There should be no legal moves!!!",
               IllegalStateException.class,
-        () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
-      );
+        () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE));
 
       setUpFullSplit();
       // There are no spaces to play, so there should be no legal moves.
       Assert.assertThrows(
               "There should be no legal moves!!!",
               IllegalStateException.class,
-              () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE)
-      );
+         () -> strategy.findBestMove(model, ThreeTriosPlayer.BLUE));
     }
   }
 

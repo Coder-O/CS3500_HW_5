@@ -12,5 +12,5 @@ public interface ThreeTriosBattleRules {
      * @param grid The grid the card is in.
      * @return the score resulting from the battle.
      */
-    int battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid);
+  int battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid);
 }
