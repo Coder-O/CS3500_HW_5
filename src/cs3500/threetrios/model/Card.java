@@ -42,13 +42,13 @@ public class Card implements ThreeTriosCard {
    * Returns the Card's Name.
    * @return the player of the Card.
    */
-   public String getName() {
-     return this.name;
-   }
+  public String getName() {
+    return this.name;
+  }
 
-   /**
-    * Flips the Card's Player to the other one.
-    */
+  /**
+   * Flips the Card's Player to the other one.
+   */
   @Override
   public void changePlayer() {
     if (this.player == ThreeTriosPlayer.RED) {
