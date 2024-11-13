@@ -47,8 +47,14 @@ Key Components and Subcomponents:
     - ThreeTriosPlayer: An enum describing the 2 players: Red and Blue.
     - ThreeTriosAttackValue: An enum describing attack values for the cards (1, 2, 3, 4, 5, 6, 7, 8, 9, A) (A is numerically equivalent to 10.)
     - ThreeTriosGridBuilder: help initializes an intance of a grid. Generally better to use ConfigurationReader from a user standpoint.
-    
-- ThreeTriosView: renders the game into a textual view. Graphic view to be developed.
+- ThreeTriosView: renders the game into a textual view and graphical view. 
+    -  ThreeTriosView: textual view of the game.
+    -  ThreeTriosGUIView: interface for the graphical view of the game.
+        - ThreeTriosGameGUIView: class for the graphical view methods.
+    -  ThreeTriosPanel: panel interface.
+        - CardPanel: Contains one card which can be clicked to print its player and its index in the player's hand. Clicked card will also be highlighted.
+        - GridPanel: Contains cells which can be clicked. Prints the clicked cell's row and col.
+- ThreeTrios: Main method to instantiate a model and view.
 
 Source Organization:
 - Src
@@ -57,11 +63,13 @@ Source Organization:
     - Model
         - (ThreeTriosModel and related code)
     - View
-        - ThreeTriosView
+        - (Both textual and graphical view and related code)
     - Configurations
         - (Configuration files)
+    - ThreeTrios
 - Test
     - (Tests mirroring the organization above)
+
 
 Changes for Part 2:
 - New features for HW6
@@ -72,6 +80,9 @@ Changes for Part 2:
         - This is useful for strategies to determine what moves to make.
         - To accomplish this, the ThreeTriosBattleRules interface and implemntations were edited so that they return a score.
     - Added a getOpposingPlayer method to the ThreeTriosPlayer enum, as it is useful for strategies to be able to easily find the opposing player.
+    - Created a GUiView interface and class (extends JFrame).
+    - Created a panel interface and two panel classes for the hands and the grid.
+    - Created a ThreeTrios file with a main method.
 
 - Fixing bugs/issues
     - Revised methods to disallow illegal mutation
