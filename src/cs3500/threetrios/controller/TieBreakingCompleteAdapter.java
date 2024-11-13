@@ -36,7 +36,10 @@ class TieBreakingCompleteAdapter implements FullyCompleteStrategy {
    * @throws IllegalStateException If no legal move could be found.
    */
   @Override
-  public ThreeTriosMove findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) throws IllegalStateException {
+  public ThreeTriosMove findBestMove(
+          ReadOnlyThreeTriosModel model,
+          ThreeTriosPlayer playerFor
+  ) throws IllegalStateException {
     List<ThreeTriosMove> legalMoves = findAllLegalMoves(model, playerFor);
     return tieBreakingStrategy.findBestMove(model, playerFor, legalMoves);
   }
@@ -47,7 +50,10 @@ class TieBreakingCompleteAdapter implements FullyCompleteStrategy {
    * @param playerFor The player to find moves for.
    * @return a List containing every single legal move.
    */
-  private List<ThreeTriosMove> findAllLegalMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
+  private List<ThreeTriosMove> findAllLegalMoves(
+          ReadOnlyThreeTriosModel model,
+          ThreeTriosPlayer playerFor
+  ) {
     List<ThreeTriosMove> legalMoves = new ArrayList<>();
 
     ThreeTriosGrid grid = model.getGrid();
@@ -75,7 +81,7 @@ class TieBreakingCompleteAdapter implements FullyCompleteStrategy {
    * Useful for determining if a composition of strategies is Fully Complete.
    *
    * @return Whether this implementation is guaranteed to find at least one move, if any legal move
-   * exists.
+   *         exists.
    */
   @Override
   public boolean findsAtLeastOneMove() {
