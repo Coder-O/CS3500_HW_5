@@ -7,20 +7,19 @@ package cs3500.threetrios.model;
 */
 public interface ThreeTriosGridBuilder<T extends ThreeTriosGrid> {
 
-    /**
-     * Sets the cell at the specified position to the given cell.
-     *
-     * @param row    of the cell we want to change.
-     * @param column of the cell we want to change.
-     * @param cell   that will be placed.
-     * @return
-     */
-    GridBuilder setCell(int row, int column, ThreeTriosCell cell);
+  /**
+   * Sets the cell at the specified position to the given cell.
+   *
+   * @param row    of the cell we want to change.
+   * @param column of the cell we want to change.
+   * @param cell   that will be placed.
+   */
+  GridBuilder setCell(int row, int column, ThreeTriosCell cell);
     
-    /**
-     * Returns the Grid created by this builder.
-     * @return The grid created by this builder.
-     */
-    T buildGrid();
+  /**
+   * Returns the Grid created by this builder.
+   * @return The grid created by this builder.
+   */
+  T buildGrid();
 }
 

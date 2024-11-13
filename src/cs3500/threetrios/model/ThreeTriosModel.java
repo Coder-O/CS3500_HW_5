@@ -23,8 +23,8 @@ public interface ThreeTriosModel extends ReadOnlyThreeTriosModel {
      * @throws IllegalStateException If the specified move is invalid
      *         (such as playing to a hole or a filled Card Cell).
      */
-    void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
-    throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException;
+  void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
+        throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException;
 
 
 }
