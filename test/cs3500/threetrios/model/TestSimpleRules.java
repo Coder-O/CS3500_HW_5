@@ -322,7 +322,7 @@ public class TestSimpleRules {
   }
 
   @Test
-  public void testPlayer2CanFlip() {
+  public void testBlueCanFlip() {
     aceCard.changePlayer();
 
     battleRules.battle(aceCard, oneLoosesGrid);
@@ -331,6 +331,44 @@ public class TestSimpleRules {
             "Player two should have flipped the weak card!",
             oneLoosesGrid.getCell(0, 0).getCard().getPlayer(),
             ThreeTriosPlayer.BLUE
+    );
+  }
+
+  @Test
+  public void testCorrectScoreBattleComboPartial() {
+    Assert.assertEquals(
+            "The score should be as expected.",
+            3,
+            battleRules.battle(aceCard, holeGrid)
+    );
+  }
+
+  @Test
+  public void testCorrectScoreBattleComboAll() {
+    Assert.assertEquals(
+            "The score should be as expected.",
+            9,
+            battleRules.battle(aceCard, allLooseGrid)
+    );
+  }
+
+  @Test
+  public void testCorrectScoreAttackFails() {
+    Assert.assertEquals(
+            "The score should be as expected.",
+            1,
+            battleRules.battle(worstCard, oneLoosesGrid)
+    );
+  }
+
+  @Test
+  public void testCorrectScoreBlue() {
+    aceCard.changePlayer();
+
+    Assert.assertEquals(
+            "The score should be as expected.",
+            2,
+            battleRules.battle(aceCard, oneLoosesGrid)
     );
   }
 }

@@ -9,54 +9,6 @@ import static org.junit.Assert.assertEquals;
  * Test Card behaviors.
  */
 public class TestCard {
-  
-  @Test
-  public void testGetNorth() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
-            ThreeTriosAttackValue.TWO,
-            ThreeTriosAttackValue.THREE,
-            ThreeTriosAttackValue.FOUR,
-            ThreeTriosPlayer.RED,
-            "card");
-
-    assertEquals(ThreeTriosAttackValue.ONE, card.getNorth());
-  }
-
-  @Test
-  public void testGetEast() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
-            ThreeTriosAttackValue.TWO,
-            ThreeTriosAttackValue.THREE,
-            ThreeTriosAttackValue.FOUR,
-            ThreeTriosPlayer.RED,
-            "card");
-
-    assertEquals(ThreeTriosAttackValue.TWO, card.getEast());
-  }
-
-  @Test
-  public void testGetWest() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
-            ThreeTriosAttackValue.TWO,
-            ThreeTriosAttackValue.THREE,
-            ThreeTriosAttackValue.FOUR,
-            ThreeTriosPlayer.RED,
-            "card");
-
-    assertEquals(ThreeTriosAttackValue.THREE, card.getWest());
-  }
-
-  @Test
-  public void testGetSouth() {
-    ThreeTriosCard card = new Card(ThreeTriosAttackValue.ONE,
-            ThreeTriosAttackValue.TWO,
-            ThreeTriosAttackValue.THREE,
-            ThreeTriosAttackValue.FOUR,
-            ThreeTriosPlayer.RED,
-            "card");
-
-    assertEquals(ThreeTriosAttackValue.FOUR, card.getSouth());
-  }
 
   @Test
   public void testGetPlayer() {

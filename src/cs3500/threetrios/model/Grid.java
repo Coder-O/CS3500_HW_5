@@ -54,17 +54,17 @@ public class Grid implements ThreeTriosGrid {
    * @param row    The row to get the cell from.
    * @param column The collumn to get the cell from.
    * @return A copy of cell at the specified position.
-   * @throws IllegalArgumentException If the given indices are outside the grid's range.
+   * @throws IndexOutOfBoundsException If the given indices are outside the grid's range.
    */
   @Override
-  public ThreeTriosCell getCell(int row, int column) throws IllegalArgumentException {
+  public ThreeTriosCell getCell(int row, int column) throws IndexOutOfBoundsException {
     if (row > rows || row < 0) {
-      throw new IllegalArgumentException(
+      throw new IndexOutOfBoundsException(
               row + " is an invalid row value!!! Valid indices are: 0-" + rows
       );
     }
     if (column > columns || column < 0) {
-      throw new IllegalArgumentException(
+      throw new IndexOutOfBoundsException(
               column + " is an invalid column value!!! Valid indices are: 0-" + columns
       );
     }
@@ -78,17 +78,17 @@ public class Grid implements ThreeTriosGrid {
    * @param row    the row to play the card to.
    * @param column the column to play the card to.
    * @param card   the card to play
-   * @throws IllegalArgumentException if the row or column are not in the grid
+   * @throws IndexOutOfBoundsException if the row or column are not in the grid
    */
   @Override
-  public void playToCell(int row, int column, ThreeTriosCard card) {
+  public void playToCell(int row, int column, ThreeTriosCard card) throws IndexOutOfBoundsException {
     if (row > rows || row < 0) {
-      throw new IllegalArgumentException(
+      throw new IndexOutOfBoundsException(
               row + " is an invalid row value!!! Valid indices are: 0-" + rows
       );
     }
     if (column > columns || column < 0) {
-      throw new IllegalArgumentException(
+      throw new IndexOutOfBoundsException(
               column + " is an invalid column value!!! Valid indices are: 0-" + columns
       );
     }

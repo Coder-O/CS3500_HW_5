@@ -10,6 +10,7 @@ public interface ThreeTriosBattleRules {
      * Details of interactions vary depending upon the implementation.
      * @param cardPlayed The card that was played this turn.
      * @param grid The grid the card is in.
+     * @return the score resulting from the battle.
      */
-    public void battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid);
+    int battle(ThreeTriosCard cardPlayed, ThreeTriosGrid grid);
 }

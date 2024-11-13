@@ -4,6 +4,8 @@ import java.util.Map;
 
 /**
 * Represents the Grid of the ThreeTrios Game.
+* The top-left corner is indexed (0, 0), with row and column indices increasing down and right,
+* respectively.
 * Invariant: there is always an odd number of card cells.
 */
 public interface ThreeTriosGrid {
@@ -13,18 +15,18 @@ public interface ThreeTriosGrid {
      * @param row The row to get the cell from.
      * @param column The collumn to get the cell from.
      * @return The cell at the specified position. NOTE: Allows for mutation.
-     * @throws IllegalArgumentException If the specified position is not in the grid.
+     * @throws IndexOutOfBoundsException If the specified position is not in the grid.
      */
-    ThreeTriosCell getCell(int row, int column) throws IllegalArgumentException;
+    ThreeTriosCell getCell(int row, int column) throws IndexOutOfBoundsException;
 
     /**
      * Plays the given card to the specified row and index of the grid.
      * @param row the row to play the card to.
      * @param column the column to play the card to.
      * @param card the card to play
-     * @throws IllegalArgumentException if the row or column are not in the grid
+     * @throws IndexOutOfBoundsException if the row or column are not in the grid
      */
-    void playToCell(int row, int column, ThreeTriosCard card);
+    void playToCell(int row, int column, ThreeTriosCard card) throws IndexOutOfBoundsException;
 
     /**
     * Returns the number of rows in the Grid.
