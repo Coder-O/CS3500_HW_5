@@ -146,46 +146,56 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
 
   @Test
   public void testAllMovesLegal() {
+    boolean allTrue = true;
     for (CompleteStrategy strategy : strategies) {
       setUpEmpty3x3();
       ThreeTriosMove bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
-      testMoveLegal(bestMove);
+      allTrue &= testMoveLegal(bestMove);
 
       setUpPartial3x3();
       bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
-      testMoveLegal(bestMove);
+      allTrue &= testMoveLegal(bestMove);
 
       setUpNoFlipsPossible3x3();
       bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
-      testMoveLegal(bestMove);
+      allTrue &= testMoveLegal(bestMove);
 
       setUpEmptySplit();
       bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
-      testMoveLegal(bestMove);
+      allTrue &= testMoveLegal(bestMove);
 
       setUpPartialSplit();
       bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
-      testMoveLegal(bestMove);
+      allTrue &= testMoveLegal(bestMove);
     }
+
+    Assert.assertTrue(
+            allTrue
+    );
   }
 
   @Test
   public void testFullGames() {
+    boolean allTrue = true;
     for (CompleteStrategy redStrategy : strategies) {
       for (CompleteStrategy blueStrategy : strategies) {
         setUpEmpty3x3();
-        testFullGame(redStrategy, blueStrategy);
+        allTrue &= testFullGame(redStrategy, blueStrategy);
 
         setUpEmptySplit();
-        testFullGame(redStrategy, blueStrategy);
+        allTrue &= testFullGame(redStrategy, blueStrategy);
       }
     }
+
+    Assert.assertTrue(
+            allTrue
+    );
   }
 
   /**
    * Helper method for testing a full game for a given setup.
    */
-  private void testFullGame(CompleteStrategy redStrategy, CompleteStrategy blueStrategy) {
+  private boolean testFullGame(CompleteStrategy redStrategy, CompleteStrategy blueStrategy) {
     Map<ThreeTriosPlayer, CompleteStrategy> strategyMap = new HashMap<>();
     strategyMap.put(ThreeTriosPlayer.RED, redStrategy);
     strategyMap.put(ThreeTriosPlayer.BLUE, blueStrategy);
@@ -206,6 +216,8 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
 
     // For fun:
     // System.out.println(model.getGrid());
+
+    return model.isGameOver();
   }
 
   @Test
@@ -221,7 +233,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testSimpleStrategy() {
     setUpEmpty3x3();
-    upperLeftCompleteStrategy.findBestMove(model, ThreeTriosPlayer.RED);
+    Assert.assertNotNull(upperLeftCompleteStrategy.findBestMove(model, ThreeTriosPlayer.RED));
     System.out.println(appendable.toString());
   }
 

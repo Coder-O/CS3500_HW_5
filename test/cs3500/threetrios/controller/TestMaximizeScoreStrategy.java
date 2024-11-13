@@ -127,33 +127,37 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
 
   @Test
   public void testAllMovesLegal() {
+    boolean allTrue = true;
+
     setUpEmpty3x3();
     List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
 
     setUpFull3x3();
     bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
 
     setUpPartial3x3();
     bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
 
     setUpNoFlipsPossible3x3();
     bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
 
     setUpEmptySplit();
     bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
 
     setUpPartialSplit();
     bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
 
     setUpFullSplit();
     bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
-    testMovesLegal(bestMoves);
+    allTrue &= testMovesLegal(bestMoves);
+
+    Assert.assertTrue(allTrue);
   }
 
   @Test
