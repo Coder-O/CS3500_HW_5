@@ -8,14 +8,15 @@ import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
- * An adapter that adapts a {@link FallibleStrategy} and any number of {@link TieNarrowingStrategy}s
+ * An adapter that adapts a {@link FallibleStrategy}, any number of {@link TieNarrowingStrategy}s,
+ * and at least one of a Complete or TieBreaking strategy
  * into part of a {@link CompleteStrategy}.
  */
 class CompleteStrategyAdapter implements CompleteStrategy {
 
   // INVARIANT: no member variable is null.
   private final FallibleStrategy fallibleStrategy;
-  private final CompleteStrategy completeStrategy;
+  private final Optional<CompleteStrategy> completeStrategy;
   private final List<TieNarrowingStrategy> tieNarrowingStrategies;
   private final Optional<TieBreakingStrategy> tieBreakingStrategy;
   private final boolean stopAtOneMove;
@@ -26,7 +27,7 @@ class CompleteStrategyAdapter implements CompleteStrategy {
    * If it fails to return a single move, the best move is decided by the tieNarrowingStrategies,
    * which are applied in the provided order.
    * If that fails to find a single move, the TieBreakingStrategy is called.
-   * If all else fails, the completeStrategy is used.
+   * The above should find a legal move, but if all else fails, the completeStrategy is used.
    *
    * @param fallibleStrategy       The fallible strategy to try.
    * @param completeStrategy       The complete strategy to fall back on.
@@ -37,7 +38,8 @@ class CompleteStrategyAdapter implements CompleteStrategy {
    *                               tieBreakingStrategy will be applied, even if a
    *                               single best move was found part way through.
    * @param tieBreakingStrategy    The final strategy to break a tie.
-   * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
+   * @throws IllegalArgumentException If the fallibleStrategy is null or
+   *                               both the complete and tie-breaking strategies are null
    */
   CompleteStrategyAdapter(
           FallibleStrategy fallibleStrategy,
@@ -46,9 +48,15 @@ class CompleteStrategyAdapter implements CompleteStrategy {
           boolean stopAtOneMove,
           TieBreakingStrategy tieBreakingStrategy
   ) throws IllegalArgumentException {
-    if (completeStrategy == null || fallibleStrategy == null) {
+    if (fallibleStrategy == null) {
       throw new IllegalArgumentException(
-              "Neither the complete nor fallible strategies can be null!"
+              "The fallible strategy cannot be null!"
+      );
+    }
+
+    if (completeStrategy == null && tieBreakingStrategy == null) {
+      throw new IllegalArgumentException(
+              "At least one of the Tie-Breaking or Complete strategies must not be null!"
       );
     }
 
@@ -56,24 +64,23 @@ class CompleteStrategyAdapter implements CompleteStrategy {
       tieNarrowingStrategies = new ArrayList<TieNarrowingStrategy>();
     }
     this.fallibleStrategy = fallibleStrategy;
-    this.completeStrategy = completeStrategy;
+    this.completeStrategy = Optional.ofNullable(completeStrategy);
     this.tieNarrowingStrategies = tieNarrowingStrategies;
     this.tieBreakingStrategy = Optional.ofNullable(tieBreakingStrategy);
     this.stopAtOneMove = stopAtOneMove;
   }
 
   /**
-   * Creates a complete strategy from the given fallible, tie-narrowing, and complete strategies.
+   * Creates a complete strategy from the given fallible, tie-breaking, and complete strategies.
    * The fallible strategy is tried first.
-   * If it fails to return a single move, the best move is decided by the tieNarrowingStrategies,
-   * which are applied in the provided order.
    * If that fails to find a single move, the TieBreakingStrategy is called.
-   * If all else fails, the completeStrategy is used.
+   * The above should find a legal move, but if all else fails, the completeStrategy is used.
    *
    * @param fallibleStrategy       The fallible strategy to try.
    * @param completeStrategy       The complete strategy to fall back on.
    * @param tieBreakingStrategy    The final strategy to break a tie.
-   * @throws IllegalArgumentException If the completeStrategy or the fallibleStrategy is null.
+   * @throws IllegalArgumentException If the fallibleStrategy is null or
+   *                               both the complete and tie-breaking strategies are null
    */
   CompleteStrategyAdapter(
           FallibleStrategy fallibleStrategy,
@@ -96,6 +103,22 @@ class CompleteStrategyAdapter implements CompleteStrategy {
           CompleteStrategy completeStrategy
   ) throws IllegalArgumentException {
     this(fallibleStrategy, completeStrategy, null, true, null);
+  }
+
+  /**
+   * Creates a complete strategy from the given fallible, tie-narrowing, and complete strategies.
+   * The fallible strategy is tried first.
+   * If that fails to find a single move, the TieBreakingStrategy is called.
+   *
+   * @param fallibleStrategy       The fallible strategy to try.
+   * @param tieBreakingStrategy    The final strategy to break a tie.
+   * @throws IllegalArgumentException If either the fallibleStrategy or tieBreakingStrategy is null.
+   */
+  CompleteStrategyAdapter(
+          FallibleStrategy fallibleStrategy,
+          TieBreakingStrategy tieBreakingStrategy
+  ) throws IllegalArgumentException {
+    this(fallibleStrategy, null, null, true, tieBreakingStrategy);
   }
 
 
@@ -151,7 +174,12 @@ class CompleteStrategyAdapter implements CompleteStrategy {
       return currentMoves.get(0);
     }
 
+    // If the process has come to rely on the complete strategy, but there is none,
+    // throw an exception.
+    if (completeStrategy.isEmpty()) {
+      throw new IllegalStateException("No legal move could be found!!!");
+    }
     // If all else has failed, return the result of the complete strategy.
-    return completeStrategy.findBestMove(model, playerFor);
+    return completeStrategy.get().findBestMove(model, playerFor);
   }
 }

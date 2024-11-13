@@ -21,7 +21,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  */
 abstract class AbstractStrategyTest {
   protected TranscriptMockModelAdapter model;
-  private ThreeTriosModel mutableModel;
+  public ThreeTriosModel mutableModel;
   protected Appendable appendable;
 
   private final String PATH_GRID_3X3 = "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt";
@@ -63,6 +63,7 @@ abstract class AbstractStrategyTest {
    * @param deckPath The file path to the deck for the model.
    */
   private void initialSetUp(String gridPath, String deckPath) {
+    reset();
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             gridPath
     );
