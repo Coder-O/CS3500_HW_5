@@ -9,7 +9,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * Represents a fallible strategy for a game of Three Trios.
  * A fallible strategy may not find exactly one best move.
  */
-interface FallibleStrategy {
+interface FallibleStrategy extends Strategy {
   /**
    * Finds the best move, according to this strategy.
    * If multiple moves are just as desirable, returns all tied moves.

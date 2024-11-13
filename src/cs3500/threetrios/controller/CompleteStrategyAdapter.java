@@ -9,12 +9,13 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * An adapter that adapts a {@link FallibleStrategy}, any number of {@link TieNarrowingStrategy}s,
- * and at least one of a Complete or TieBreaking strategy
- * into part of a {@link CompleteStrategy}.
+ * and at least one of a {@link CompleteStrategy} or {@link TieBreakingStrategy}
+ * into part of a {@link FullyCompleteStrategy}.
  */
-class CompleteStrategyAdapter implements CompleteStrategy {
+class CompleteStrategyAdapter implements FullyCompleteStrategy {
 
   // INVARIANT: no member variable is null.
+  // INVARIANT: this.findsAtLeastOneMove() is true.
   private final FallibleStrategy fallibleStrategy;
   private final Optional<CompleteStrategy> completeStrategy;
   private final List<TieNarrowingStrategy> tieNarrowingStrategies;
@@ -68,6 +69,12 @@ class CompleteStrategyAdapter implements CompleteStrategy {
     this.tieNarrowingStrategies = tieNarrowingStrategies;
     this.tieBreakingStrategy = Optional.ofNullable(tieBreakingStrategy);
     this.stopAtOneMove = stopAtOneMove;
+
+    if (!this.findsAtLeastOneMove()) {
+      throw new IllegalArgumentException(
+              "The given composition of strategies is not fully complete!"
+      );
+    }
   }
 
   /**
@@ -181,5 +188,37 @@ class CompleteStrategyAdapter implements CompleteStrategy {
     }
     // If all else has failed, return the result of the complete strategy.
     return completeStrategy.get().findBestMove(model, playerFor);
+  }
+
+  /**
+   * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
+   * Useful for determining if a composition of strategies is Fully Complete.
+   * This adapter is guaranteed to be fully complete in 2 scenarios:
+   *     <p>1.) The {@link CompleteStrategy} always finds one move.
+   *
+   *     <p>2.) The {@link FallibleStrategy} always finds at least 1 move,
+   *     the {@link TieNarrowingStrategy}s never decrease the number of possible moves to zero,
+   *     and the {@link TieBreakingStrategy} exists.
+   *
+   * @return Whether this implementation is guaranteed to find at least one move, if any legal move
+   * exists.
+   */
+  @Override
+  public boolean findsAtLeastOneMove() {
+    if (completeStrategy.isPresent() && completeStrategy.get().findsAtLeastOneMove()) {
+      return true;
+    }
+
+    if (!fallibleStrategy.findsAtLeastOneMove() || tieBreakingStrategy.isEmpty()) {
+      return false;
+    }
+
+    for (TieNarrowingStrategy strategy : tieNarrowingStrategies) {
+      if (!strategy.neverReturnsZeroMoves()) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

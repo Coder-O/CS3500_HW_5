@@ -21,6 +21,18 @@ class GoForCornerStrategy implements FallibleStrategy {
   private List<Move> bestMoves;
 
   /**
+   * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
+   * Useful for determining if a composition of strategies is Fully Complete.
+   *
+   * @return Whether this implementation is guaranteed to find at least one move, if any legal move
+   * exists.
+   */
+  @Override
+  public boolean findsAtLeastOneMove() {
+    return false;
+  }
+
+  /**
    * Represents a corner.
    * Stores relevant information such as its index in the grid and its directions that aren't
    * blocked.

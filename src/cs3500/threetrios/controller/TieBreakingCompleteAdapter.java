@@ -9,10 +9,10 @@ import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
- * An adapter that adapts a {@link TieBreakingStrategy} into a {@link CompleteStrategy}
+ * An adapter that adapts a {@link TieBreakingStrategy} into a {@link FullyCompleteStrategy}
  * by providing it every legal move.
  */
-class TieBreakingCompleteAdapter implements CompleteStrategy {
+class TieBreakingCompleteAdapter implements FullyCompleteStrategy {
   private final TieBreakingStrategy tieBreakingStrategy;
 
   /**
@@ -67,5 +67,17 @@ class TieBreakingCompleteAdapter implements CompleteStrategy {
     }
 
     return legalMoves;
+  }
+
+  /**
+   * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
+   * Useful for determining if a composition of strategies is Fully Complete.
+   *
+   * @return Whether this implementation is guaranteed to find at least one move, if any legal move
+   * exists.
+   */
+  @Override
+  public boolean findsAtLeastOneMove() {
+    return true;
   }
 }

@@ -62,4 +62,16 @@ class MaximizeScoreStrategy implements FallibleStrategy {
 
     return bestMoves;
   }
+
+  /**
+   * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
+   * Useful for determining if a composition of strategies is Fully Complete.
+   *
+   * @return Whether this implementation is guaranteed to find at least one move, if any legal move
+   * exists.
+   */
+  @Override
+  public boolean findsAtLeastOneMove() {
+    return true;
+  }
 }

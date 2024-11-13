@@ -8,7 +8,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 /**
  * A strategy for a game of ThreeTrios that can break a tie between several Moves.
  */
-interface TieBreakingStrategy {
+interface TieBreakingStrategy extends Strategy {
 
   /**
    * Finds the best move provided, according to this strategy.

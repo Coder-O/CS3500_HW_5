@@ -14,10 +14,10 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * A testing class for {@link CompleteStrategyAdapter}.
  */
 public class TestCompleteStrategies extends AbstractStrategyTest {
-  private CompleteStrategy MaxScore_UpperLeft_Strategy;
-  private CompleteStrategy Corner_UpperLeft_Strategy;
-  private CompleteStrategy UpperLeft_CompleteStrategy;
-  private List<CompleteStrategy> strategies;
+  private FullyCompleteStrategy MaxScore_UpperLeft_Strategy;
+  private FullyCompleteStrategy Corner_UpperLeft_Strategy;
+  private FullyCompleteStrategy UpperLeft_CompleteStrategy;
+  private List<FullyCompleteStrategy> strategies;
 
   @Override
   public void reset() {
@@ -208,6 +208,16 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
 
     // For fun:
     // System.out.println(model.getGrid());
+  }
+
+  @Test
+  public void testFullyCompleateness() {
+    for (FullyCompleteStrategy strategy : strategies) {
+      Assert.assertTrue(
+              "Should be fully complete!",
+              strategy.findsAtLeastOneMove()
+      );
+    }
   }
 
 }
