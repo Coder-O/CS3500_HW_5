@@ -19,7 +19,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * Contains one card which can be clicked to print its player
- * and its index in the player's hand.
+ * and its index in the player's hand. Clicked card will also be highlighted.
  * The card's index is 0-indexed.
  */
 public class CardPanel extends JPanel implements ThreeTriosPanel {

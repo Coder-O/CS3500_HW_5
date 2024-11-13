@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Archive.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Archive.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGamePanel.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
