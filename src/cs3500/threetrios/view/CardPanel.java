@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosDirection;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
@@ -36,25 +37,29 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
     // North value
     gbc.gridx = 1;
     gbc.gridy = 0;
-    JLabel northValue = new JLabel(card.getNorth().getSymbol(), SwingConstants.CENTER);
+    JLabel northValue = new JLabel(card.getAttackValue(ThreeTriosDirection.NORTH).getSymbol(),
+            SwingConstants.CENTER);
     add(northValue, gbc);
 
     // East value
     gbc.gridx = 2;
     gbc.gridy = 1;
-    JLabel eastValue = new JLabel(card.getEast().getSymbol(), SwingConstants.CENTER);
+    JLabel eastValue = new JLabel(card.getAttackValue(ThreeTriosDirection.EAST).getSymbol(),
+            SwingConstants.CENTER);
     add(eastValue, gbc);
 
     // South value
     gbc.gridx = 1;
     gbc.gridy = 2;
-    JLabel southValue = new JLabel(card.getSouth().getSymbol(), SwingConstants.CENTER);
+    JLabel southValue = new JLabel(card.getAttackValue(ThreeTriosDirection.SOUTH).getSymbol(),
+            SwingConstants.CENTER);
     add(southValue, gbc);
 
     // West value
     gbc.gridx = 0;
     gbc.gridy = 1;
-    JLabel westValue = new JLabel(card.getWest().getSymbol(), SwingConstants.CENTER);
+    JLabel westValue = new JLabel(card.getAttackValue(ThreeTriosDirection.WEST).getSymbol(),
+            SwingConstants.CENTER);
     add(westValue, gbc);
 
     addMouseListener(new MouseAdapter() {

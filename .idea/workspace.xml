@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/configurationfiles/Grid.3x3H.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGUIView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/TestThreeTriosGameModel.java" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/TieBreakingCompleteAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/controller/CompleteStrategyAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/ThreeTrios/controller/CompleteStrategyAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/AbstractStrategyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/AbstractStrategyTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestCompleteStrategyAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestGoForCornerStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestGoForCornerStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestMaximizeScoreStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestMaximizeScoreStrategy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/CompleteStrategyAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategyAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestGoForCornerStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestGoForCornerStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestMaximizeScoreStrategy.java" afterDir="false" />
->>>>>>> 02aee155970a3facd5fd72efa9a2a8e33ccc476c
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,15 +24,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+    &quot;isMigrated&quot;: true
+    }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
-}</component>
+    &quot;associatedIndex&quot;: 7
+    }</component>
   <component name="ProjectId" id="2oOZAW3bvCo8lryX9l33nat4sOB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -66,8 +42,6 @@
   "keyToString": {
     "JUnit.TestCard.executor": "Run",
     "JUnit.TestCardBuilder.executor": "Run",
-<<<<<<< HEAD
-=======
     "JUnit.TestCompleteStrategies.executor": "Run",
     "JUnit.TestCompleteStrategies.testFullGames.executor": "Run",
     "JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
@@ -85,16 +59,10 @@
     "JUnit.TestGoForCornerStrategy.testEmpty3x3.executor": "Run",
     "JUnit.TestGoForCornerStrategy.testEmptySplit.executor": "Run",
     "JUnit.TestGoForCornerStrategy.testPartial3x3.executor": "Run",
->>>>>>> 02aee155970a3facd5fd72efa9a2a8e33ccc476c
     "JUnit.TestGridBuilder.executor": "Run",
     "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
     "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
     "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
-<<<<<<< HEAD
-    "JUnit.TestSimpleRules.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
-=======
     "JUnit.TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Debug",
     "JUnit.TestMaximizeScoreStrategy.executor": "Run",
     "JUnit.TestMaximizeScoreStrategy.testAllMovesLegal.executor": "Run",
@@ -118,16 +86,11 @@
     "JUnit.TestUpperLeftmostStrategy.executor": "Run",
     "JUnit.TestUpperLeftmostStrategy.noMovesThrowsException.executor": "Run",
     "JUnit.TestUpperLeftmostStrategy.testNoMutation.executor": "Run",
->>>>>>> 02aee155970a3facd5fd72efa9a2a8e33ccc476c
     "JUnit.TestView.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-<<<<<<< HEAD
-    "last_directory_selection": "/Users/anabellavivas/Documents/NORTHEASTERN/SUMMER24/CS3200/CS3500_HW_5/src/cs3500/threetrios",
-=======
->>>>>>> 02aee155970a3facd5fd72efa9a2a8e33ccc476c
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -136,16 +99,13 @@
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="cs3500.threetrios.view" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="cs3500.threetrios.controller" />
       <recent name="cs3500.threetrios.controller.strategies" />
       <recent name="cs3500.threetrios" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestCompleteStrategies">
+  <component name="RunManager">
     <configuration name="TestCompleteStrategies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -243,7 +203,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730742439832</updated>
-      <workItem from="1730742440973" duration="30180000" />
+      <workItem from="1730742440973" duration="9943000" />
     </task>
     <servers />
   </component>
