@@ -16,6 +16,6 @@ interface CompleteStrategy extends Strategy {
    * @return The best move this strategy could find.
    * @throws IllegalStateException If no legal move could be found.
    */
-  Move findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor)
+  ThreeTriosMove findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor)
           throws IllegalStateException;
 }

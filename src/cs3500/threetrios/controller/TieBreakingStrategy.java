@@ -20,9 +20,9 @@ interface TieBreakingStrategy extends Strategy {
    * @return The best move this strategy could find.
    * @throws IllegalStateException If no legal move could be found.
    */
-  Move findBestMove(
+  ThreeTriosMove findBestMove(
           ReadOnlyThreeTriosModel model,
           ThreeTriosPlayer playerFor,
-          List<Move> tiedMoves
+          List<ThreeTriosMove> tiedMoves
   ) throws IllegalStateException;
 }

@@ -18,7 +18,7 @@ class GoForCornerStrategy implements FallibleStrategy {
   private List<ThreeTriosCard> hand;
   private Corner[] corners;
   private int bestScore;
-  private List<Move> bestMoves;
+  private List<ThreeTriosMove> bestMoves;
 
   /**
    * Whether this implementation is guaranteed to find at least one move, if any legal move exists.
@@ -104,7 +104,7 @@ class GoForCornerStrategy implements FallibleStrategy {
    * @return A list of the best moves this strategy could find.
    */
   @Override
-  public List<Move> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
+  public List<ThreeTriosMove> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
     setUp(model, playerFor);
 
     for (Corner corner : corners) {
@@ -136,7 +136,7 @@ class GoForCornerStrategy implements FallibleStrategy {
     }
 
     // Reset the state, but still return the bestMoves
-    List<Move> tempBestMoves = List.copyOf(bestMoves);
+    List<ThreeTriosMove> tempBestMoves = List.copyOf(bestMoves);
     reset();
     return tempBestMoves;
   }

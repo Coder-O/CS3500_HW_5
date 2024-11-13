@@ -19,10 +19,11 @@ interface TieNarrowingStrategy extends Strategy {
    * @param tiedMoves The moves to consider.
    * @return A list of the best moves this strategy could find.
    */
-  List<Move> findBestMoves(
+  List<ThreeTriosMove> findBestMoves(
+
           ReadOnlyThreeTriosModel model,
           ThreeTriosPlayer playerFor,
-          List<Move> tiedMoves
+          List<ThreeTriosMove> tiedMoves
   ) throws IllegalStateException;
 
   /**

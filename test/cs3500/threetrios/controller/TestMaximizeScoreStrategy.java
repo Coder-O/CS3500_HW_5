@@ -61,7 +61,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3() {
     setUpEmpty3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.RED);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.RED);
 
     Assert.assertEquals(
             "There should be no best move, so all possible moves should be present!",
@@ -73,7 +73,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
   @Test
   public void testPartial3x3() {
     setUpPartial3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
 
     Assert.assertEquals(
             "There should be 8 best moves!",
@@ -81,7 +81,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
             bestMoves.size()
     );
 
-    List<Move> expectedMoves = new ArrayList<>();
+    List<ThreeTriosMove> expectedMoves = new ArrayList<>();
     for (int i = 0; i < 4; i++) {
       expectedMoves.add(new Move(ThreeTriosPlayer.BLUE, i, 0, 1));
     }
@@ -98,7 +98,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
   @Test
   public void testNoFlipsPossible() {
     setUpNoFlipsPossible3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
 
     Assert.assertEquals(
             "There should be no best move, so all possible moves should be represented!",
@@ -128,7 +128,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
   @Test
   public void testAllMovesLegal() {
     setUpEmpty3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
     testMovesLegal(bestMoves);
 
     setUpFull3x3();
@@ -161,7 +161,7 @@ public class TestMaximizeScoreStrategy extends AbstractStrategyTest {
     setUpEmptySplit();
     // A model that asserts the best move is to row 1 column 2 hand index 3.
     ReadOnlyThreeTriosModel fibModel = new FibingMockModel(model);
-    List<Move> bestMoves = strategy.findBestMoves(fibModel, ThreeTriosPlayer.RED);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(fibModel, ThreeTriosPlayer.RED);
 
     Assert.assertEquals(
             "The chosen move should be the determined best move!",

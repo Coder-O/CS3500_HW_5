@@ -95,8 +95,8 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3Max() {
     setUpEmpty3x3();
-    Move bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
-    Move expected = new Move(ThreeTriosPlayer.RED, 0,0,0);
+    ThreeTriosMove bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
+    ThreeTriosMove expected = new Move(ThreeTriosPlayer.RED, 0,0,0);
 
     Assert.assertEquals(
             "The move should be as expected!",
@@ -108,9 +108,9 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3Corner() {
     setUpEmpty3x3();
-    Move bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
+    ThreeTriosMove bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
     // Play card 9 to top left corner.
-    Move expected = new Move(ThreeTriosPlayer.RED, 1,0,0);
+    ThreeTriosMove expected = new Move(ThreeTriosPlayer.RED, 1,0,0);
 
     Assert.assertEquals(
             "The move should be as expected!",
@@ -122,9 +122,9 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testPartial3x3Max() {
     setUpPartial3x3();
-    Move bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
+    ThreeTriosMove bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
     // Play first card in hand to top middle to flip top left
-    Move expected = new Move(ThreeTriosPlayer.BLUE, 0,0,1);
+    ThreeTriosMove expected = new Move(ThreeTriosPlayer.BLUE, 0,0,1);
 
     Assert.assertEquals(
             "The move should be as expected!",
@@ -136,8 +136,8 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testPartial3x3Corner() {
     setUpPartial3x3();
-    Move bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
-    Move expected = new Move(ThreeTriosPlayer.BLUE, 0, 2, 0);
+    ThreeTriosMove bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
+    ThreeTriosMove expected = new Move(ThreeTriosPlayer.BLUE, 0, 2, 0);
 
     Assert.assertEquals(
             "The move should be as expected!",
@@ -150,7 +150,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   public void testAllMovesLegal() {
     for (CompleteStrategy strategy : strategies) {
       setUpEmpty3x3();
-      Move bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
+      ThreeTriosMove bestMove = strategy.findBestMove(model, model.getCurrentPlayer());
       testMoveLegal(bestMove);
 
       setUpPartial3x3();
@@ -194,7 +194,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
 
     while (!model.isGameOver()) {
       ThreeTriosPlayer currentPlayer = model.getCurrentPlayer();
-      Move move = strategyMap.get(currentPlayer).findBestMove(model, currentPlayer);
+      ThreeTriosMove move = strategyMap.get(currentPlayer).findBestMove(model, currentPlayer);
       mutableModel.playToGrid(
               move.getPlayer(),
               move.getCardIdxInHand(),

@@ -24,11 +24,11 @@ class MaximizeScoreStrategy implements FallibleStrategy {
    * @return A list of the best moves this strategy could find.
    */
   @Override
-  public List<Move> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
+  public List<ThreeTriosMove> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
     ThreeTriosGrid grid = model.getGrid();
     List<ThreeTriosCard> hand = model.getHand(playerFor);
 
-    List<Move> bestMoves = new ArrayList<>();
+    List<ThreeTriosMove> bestMoves = new ArrayList<>();
     int bestScore = 0;
 
     // For every cell

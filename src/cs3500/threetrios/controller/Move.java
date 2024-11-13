@@ -10,7 +10,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * Moves are immutable.
  * All indices are zero indexed.
  */
-class Move {
+class Move implements ThreeTriosMove {
   private final ThreeTriosPlayer player;
   private final int cardIdxInHand;
   private final int rowIdx;
@@ -40,6 +40,7 @@ class Move {
    * Returns the player of this move.
    * @return the player of this move.
    */
+  @Override
   public ThreeTriosPlayer getPlayer() {
     return player;
   }
@@ -48,6 +49,7 @@ class Move {
    * Returns the index of the desired card in the hand of this move's player.
    * @return the index of the desired card.
    */
+  @Override
   public int getCardIdxInHand() {
     return cardIdxInHand;
   }
@@ -56,6 +58,7 @@ class Move {
    * Returns the index of the row to play to.
    * @return the index of the row to play to.
    */
+  @Override
   public int getRowIdx() {
     return rowIdx;
   }
@@ -64,6 +67,7 @@ class Move {
    * Returns the index of the collumn to play to.
    * @return The index of the collumn to play to.
    */
+  @Override
   public int getCollumnIdx() {
     return collumnIdx;
   }

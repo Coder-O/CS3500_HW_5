@@ -60,9 +60,9 @@ public class TestGoForCornerStrategy extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3() {
     setUpEmpty3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.RED);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.RED);
 
-    List<Move> expectedMoves = new ArrayList<>();
+    List<ThreeTriosMove> expectedMoves = new ArrayList<>();
     expectedMoves.add(new Move(ThreeTriosPlayer.RED, 1, 0, 0));
     expectedMoves.add(new Move(ThreeTriosPlayer.RED, 1, 0, 2));
     expectedMoves.add(new Move(ThreeTriosPlayer.RED, 1, 2, 0));
@@ -81,7 +81,7 @@ public class TestGoForCornerStrategy extends AbstractStrategyTest {
   @Test
   public void testPartial3x3() {
     setUpPartial3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.BLUE);
 
     List<Move> expectedMoves = new ArrayList<>();
     expectedMoves.add(new Move(ThreeTriosPlayer.BLUE, 0, 2, 0));
@@ -96,9 +96,9 @@ public class TestGoForCornerStrategy extends AbstractStrategyTest {
   @Test
   public void testEmptySplit() {
     setUpEmptySplit();
-    List<Move> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.RED);
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, ThreeTriosPlayer.RED);
 
-    List<Move> expectedMoves = new ArrayList<>();
+    List<ThreeTriosMove> expectedMoves = new ArrayList<>();
     expectedMoves.add(new Move(ThreeTriosPlayer.RED, 8, 0, 0));
     expectedMoves.add(new Move(ThreeTriosPlayer.RED, 8, 0, 9));
     expectedMoves.add(new Move(ThreeTriosPlayer.RED, 8, 4, 0));
@@ -131,7 +131,7 @@ public class TestGoForCornerStrategy extends AbstractStrategyTest {
   @Test
   public void testAllMovesLegal() {
     setUpEmpty3x3();
-    List<Move> bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
+    List<ThreeTriosMove> bestMoves = strategy.findBestMoves(model, model.getCurrentPlayer());
     testMovesLegal(bestMoves);
 
     setUpFull3x3();

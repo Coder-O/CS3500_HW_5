@@ -18,5 +18,5 @@ interface FallibleStrategy extends Strategy {
    * @param playerFor The player to choose a move for.
    * @return A list of the best moves this strategy could find.
    */
-  List<Move> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor);
+  List<ThreeTriosMove> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor);
 }

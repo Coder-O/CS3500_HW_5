@@ -144,8 +144,8 @@ class CompleteStrategyAdapter implements FullyCompleteStrategy {
    * @throws IllegalStateException If no legal move could be found.
    */
   @Override
-  public Move findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) throws IllegalStateException {
-    List<Move> currentMoves = fallibleStrategy.findBestMoves(model, playerFor);
+  public ThreeTriosMove findBestMove(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) throws IllegalStateException {
+    List<ThreeTriosMove> currentMoves = fallibleStrategy.findBestMoves(model, playerFor);
 
     // If the fallible strategy worked, skip the rest.
     if (currentMoves.size() == 1) {
@@ -155,7 +155,7 @@ class CompleteStrategyAdapter implements FullyCompleteStrategy {
     // If the fallible strategy failed, attempt to find a single move through applying the
     // tie-narrowing strategies.
     for (TieNarrowingStrategy narrowingStrategy : tieNarrowingStrategies) {
-      List<Move> newMoves = narrowingStrategy.findBestMoves(model, playerFor, currentMoves);
+      List<ThreeTriosMove> newMoves = narrowingStrategy.findBestMoves(model, playerFor, currentMoves);
       if (newMoves == null) {
         newMoves = new ArrayList<>();
       }
