@@ -227,20 +227,20 @@ public class Grid implements ThreeTriosGrid {
   public String toString() {
     StringBuilder gridView = new StringBuilder();
     for (int row = 0; row < rows; row++) {
-        for (int column = 0; column < columns; column++) {
-            ThreeTriosCell cell = grid[row][column];
-            if (cell.isHole()) {
-              gridView.append(" ");
-            } else if (cell.getCard() == null) {
-              gridView.append("_");
-            } else {
-              gridView.append(cell.getCard().getPlayer().getSymbol());
-            }
-            if (column < columns - 1) {
-              gridView.append(" ");
-            }
+      for (int column = 0; column < columns; column++) {
+        ThreeTriosCell cell = grid[row][column];
+        if (cell.isHole()) {
+          gridView.append(" ");
+        } else if (cell.getCard() == null) {
+          gridView.append("_");
+        } else {
+          gridView.append(cell.getCard().getPlayer().getSymbol());
         }
-        gridView.append("\n");
+        if (column < columns - 1) {
+          gridView.append(" ");
+        }
+      }
+      gridView.append("\n");
     }
     return gridView.toString();
   }

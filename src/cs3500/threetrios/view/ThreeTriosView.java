@@ -34,12 +34,12 @@ public class ThreeTriosView {
    */
   public ThreeTriosView(ThreeTriosModel model, Appendable out) {
     if (model == null) {
-        throw new IllegalArgumentException("Model cannot be null.");
+      throw new IllegalArgumentException("Model cannot be null.");
     }
     this.model = model;
     this.out = out;
     if (this.out == null) {
-        throw new IllegalArgumentException("Appendable cannot be null.");
+      throw new IllegalArgumentException("Appendable cannot be null.");
     }
   }
 
@@ -76,7 +76,7 @@ public class ThreeTriosView {
     List<ThreeTriosCard> hand = model.getHand(model.getCurrentPlayer());
     gameState.append("Hand:\n");
     for (ThreeTriosCard card : hand) {
-        gameState.append(card.toString()).append("\n");
+      gameState.append(card.toString()).append("\n");
     }
     return gameState.toString();
   }
