@@ -10,16 +10,16 @@ public enum ThreeTriosPlayer {
   private final String symbol;
 
   ThreeTriosPlayer(String symbol) {
-        this.symbol = symbol;
-    }
+    this.symbol = symbol;
+  }
 
   /**
    * Returns the Symbol of the Player.
    * @return the Symbol of the Player.
    */
   public String getSymbol() {
-        return symbol;
-    }
+    return symbol;
+  }
 
   /**
    * Returns the full name of the player.
@@ -42,15 +42,10 @@ public enum ThreeTriosPlayer {
    * @return The opposing player.
    */
   public ThreeTriosPlayer getOpposingPlayer() {
-    switch (this) {
-      case RED:
-        return BLUE;
-      case BLUE:
-         return RED;
+    if (this == RED) {
+      return BLUE;
     }
-
-    // As there are only two players, this return is irrelevant in runtime.
-    return null;
+    return RED;
   }
 
 }

@@ -117,8 +117,8 @@ public class Card implements ThreeTriosCard {
    */
   @Override
    public int hashCode() {
-      return Objects.hash(north, east, west, south, player);
-    }
+    return Objects.hash(north, east, west, south, player);
+  }
 
   /**
    * Checks if this Card is equal to another Card.
