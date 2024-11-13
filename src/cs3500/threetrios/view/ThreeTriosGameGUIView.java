@@ -1,11 +1,11 @@
 package cs3500.threetrios.view;
 
 import java.awt.*;
+import javax.swing.*;
+
 import java.util.List;
 
 import javax.swing.JFrame;
-
-import javax.swing.*;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
@@ -14,6 +14,8 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * Represents the GUI view for the ThreeTrios Game.
+ * The view consists of both player's hands and the playing grid.
+ * The view will also display which player's turn it is.
  */
 public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
 
@@ -32,26 +34,31 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     setMinimumSize(new Dimension(800, 600));
     this.pack();
 
+    //Display which player's turn it is
     setLayout(new BorderLayout());
     setTitle("Current player: " + model.getCurrentPlayer().getName());
 
+    //Build grid
     gridPanel = new GridPanel(model.getGrid());
     add(gridPanel, BorderLayout.CENTER);
 
+    //Build hand panels
     redHandPanel = new JPanel();
     blueHandPanel = new JPanel();
     redHandPanel.setLayout(new BoxLayout(redHandPanel, BoxLayout.Y_AXIS));
     blueHandPanel.setLayout(new BoxLayout(blueHandPanel, BoxLayout.Y_AXIS));
 
     List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
-    for (ThreeTriosCard card : redHand) {
-      CardPanel cardPanel = new CardPanel(card);
+    for (int i = 0; i < redHand.size(); i++) {
+      ThreeTriosCard card = redHand.get(i);
+      CardPanel cardPanel = new CardPanel(card, i);
       redHandPanel.add(cardPanel);
     }
 
     List<ThreeTriosCard> blueHand = model.getHand(ThreeTriosPlayer.BLUE);
-    for (ThreeTriosCard card : blueHand) {
-      CardPanel cardPanel = new CardPanel(card);
+    for (int i = 0; i < blueHand.size(); i++) {
+      ThreeTriosCard card = blueHand.get(i);
+      CardPanel cardPanel = new CardPanel(card, i);
       blueHandPanel.add(cardPanel);
     }
 
@@ -71,8 +78,10 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     handPanel.removeAll();
 
     // Add each card from the player's hand to the panel
-    for (ThreeTriosCard card : model.getHand(player)) {
-      CardPanel cardPanel = new CardPanel(card);
+    List<ThreeTriosCard> hand = model.getHand(player);
+    for (int i = 0; i < hand.size(); i++) {
+      ThreeTriosCard card = hand.get(i);
+      CardPanel cardPanel = new CardPanel(card, i);
       handPanel.add(cardPanel.getComponent());
     }
 

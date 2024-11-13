@@ -4,6 +4,7 @@ import javax.swing.*;
 
 /**
  * Describes what the Panel is capable of.
+ * There is a Grid Panel and a Card Panel. They can be clicked by the player.
  */
 public interface ThreeTriosPanel {
 

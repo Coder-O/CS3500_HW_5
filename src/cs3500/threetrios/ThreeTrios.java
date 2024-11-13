@@ -12,7 +12,7 @@ import cs3500.threetrios.view.ThreeTriosGUIView;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
 /**
- * Main, instantiates a model, instantiates a view
+ * Instantiates a model, instantiates a view
  * using that model, and tells the view to get started.
  */
 public final class ThreeTrios {

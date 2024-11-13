@@ -1,35 +1,61 @@
 package cs3500.threetrios.view;
 
 import java.awt.*;
+import javax.swing.*;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.*;
 
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosDirection;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
- * Describes what the Card Panels are capable of.
+ * Contains one card which can be clicked to print its player
+ * and its index in the player's hand.
+ * The card's index is 0-indexed.
  */
 public class CardPanel extends JPanel implements ThreeTriosPanel {
 
   private final ThreeTriosCard card;
-  private JComponent selectedCard = null;
+  private final int index;
+  private boolean isSelected = false;
+
+  private static CardPanel selectedCardPanel = null;
 
   /**
    * Card Panel constructor.
-   * @param card that we wish to display.
+   * @param card A card in the hand.
+   * @param index The index of the Card in the Hand.
    */
-  public CardPanel(ThreeTriosCard card) {
+  public CardPanel(ThreeTriosCard card, int index) {
     this.card = card;
+    this.index = index;
+
+    //draw card
+    this.drawCardsHelper();
+
+    update();
+
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        handleCardClick();
+      }
+    });
+  }
+
+  /**
+   * Draws the Card.
+   * The background color will be the player's color.
+   * The values are arranged in a diamond shape.
+   */
+  private void drawCardsHelper() {
     setBackground(getPlayerColor(card.getPlayer()));
     setPreferredSize(new Dimension(50, 50));
     setBorder(BorderFactory.createLineBorder(Color.BLACK));
     setOpaque(true);
 
-// Use GridBagLayout to position the labels in a diamond shape
     setLayout(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.fill = GridBagConstraints.CENTER;
@@ -61,44 +87,57 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
     JLabel westValue = new JLabel(card.getAttackValue(ThreeTriosDirection.WEST).getSymbol(),
             SwingConstants.CENTER);
     add(westValue, gbc);
-
-    addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseClicked(MouseEvent e) {
-        handleCardClick();
-      }
-    });
-
-    update();
   }
 
   /**
-   * Handles clicks on a card, toggling selection and highlighting.
+   * Prints the index and player of the clicked card.
+   * The card's index is 0-indexed.
    */
   private void handleCardClick() {
-    // Print which card was clicked and who owns it
-    int cardIndex = getComponentZOrder(this);
-    System.out.println("Clicked card index: " + cardIndex + ", Card: " + card.getName());
+    System.out.println("Clicked card index: " + index + ", Player: " + card.getPlayer().getName());
+    toggleSelection();
+  }
 
-    // Toggle selection
-    if (selectedCard == this) {
-      selectedCard.setBorder(null);  // Deselect if already selected
-      selectedCard = null;
+  /**
+   * Highlights or removes the highlight of the selected card.
+   */
+  private void toggleSelection() {
+    // Deselect the currently selected card if it exists and is not the current card
+    if (selectedCardPanel != null && selectedCardPanel != this) {
+      selectedCardPanel.deselect();
+    }
+
+    // Select or deselect the current card
+    if (isSelected) {
+      deselect();
     } else {
-      if (selectedCard != null) {
-        selectedCard.setBorder(null);  // Remove highlight from previously selected card
-      }
-      selectedCard = this;
-      selectedCard.setBorder(BorderFactory.createLineBorder(Color.RED, 5));  // Highlight selected card
-      selectedCard.revalidate();
-      selectedCard.repaint();
+      select();
     }
   }
 
   /**
-   * Returns the player's color.
+   * Highlights the selected card.
+   */
+  private void select() {
+    setBorder(BorderFactory.createLineBorder(Color.RED, 5));
+    isSelected = true;
+    selectedCardPanel = this;
+  }
+
+  /**
+   * Removes the highlight if the card was deselected.
+   * A card can be deselected by clicking it again or clicking another card.
+   */
+  private void deselect() {
+    setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    isSelected = false;
+    selectedCardPanel = null;
+  }
+
+  /**
+   * Returns the card's color/player.
    * @param player the card's player
-   * @return the player's color
+   * @return the card's color/player
    */
   private Color getPlayerColor(ThreeTriosPlayer player) {
     if (player == ThreeTriosPlayer.RED) {
@@ -109,7 +148,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
 
   /**
    * Updates the card.
-   * The only thing that can change is its color.
+   * The only thing that can change is its color (aka player).
    */
   @Override
   public void update() {
@@ -117,8 +156,8 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   }
 
   /**
-   * The game component.
-   * @return game component.
+   * Return the card.
+   * @return the card.
    */
   @Override
   public JComponent getComponent() {

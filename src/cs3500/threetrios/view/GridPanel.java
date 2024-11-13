@@ -9,7 +9,10 @@ import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
 
 /**
- * Describes what the Grid Panels are capable of.
+ * Contains cells which can be clicked.
+ * Prints the clicked cell's row and col.
+ * Row is 0-indexed, with 0 being the topmost row.
+ * Col is 0-indexed, with 0 being the furthest left col.
  */
 public class GridPanel extends JPanel implements ThreeTriosPanel {
 
@@ -30,6 +33,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
 
   /**
    * Updates the grid.
+   * When a cell is cliked, it will print its row and col.
    */
   @Override
   public void update() {
@@ -40,26 +44,28 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
         ThreeTriosCell cell = grid.getCell(row, col);
         JPanel cellPanel = new JPanel();
         cellPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        cellPanel.setOpaque(true); // Ensure background color is visible
+        cellPanel.setOpaque(true);
 
         if (cell.isHole()) {
           cellPanel.setBackground(Color.YELLOW);
         } else if (cell.getCard() == null) {
           cellPanel.setBackground(Color.LIGHT_GRAY);
         } else {
-          CardPanel cardPanel = new CardPanel(cell.getCard());
-          cardPanel.update(); // Set initial background color
+          // Generate a unique index based on the cell's position in the grid
+          int cardIndex = row * grid.getNumColumns() + col;
+          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex);
+          cardPanel.update();
           cellPanel.setLayout(new BorderLayout());
           cellPanel.add(cardPanel.getComponent(), BorderLayout.CENTER);
         }
 
-        int finalRow = row;
-        int finalCol = col;
+        int clickedRow = row;
+        int clickedCol = col;
 
         cellPanel.addMouseListener(new MouseAdapter() {
           @Override
           public void mouseClicked(MouseEvent e) {
-            System.out.println("Clicked cell at: (" + finalRow + ", " + finalCol + ")");
+            System.out.println("Clicked cell at: (" + clickedRow + ", " + clickedCol + ")");
           }
         });
 
@@ -72,8 +78,8 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   }
 
   /**
-   * The game component.
-   * @return game component.
+   * Returns the current grid.
+   * @return the current grid.
    */
   @Override
   public JComponent getComponent() {
