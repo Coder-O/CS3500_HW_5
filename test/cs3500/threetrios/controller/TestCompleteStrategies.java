@@ -14,9 +14,9 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * A testing class for {@link CompleteStrategyAdapter}.
  */
 public class TestCompleteStrategies extends AbstractStrategyTest {
-  private FullyCompleteStrategy MaxScore_UpperLeft_Strategy;
-  private FullyCompleteStrategy Corner_UpperLeft_Strategy;
-  private FullyCompleteStrategy UpperLeft_CompleteStrategy;
+  private FullyCompleteStrategy maxScoreUpperLeftStrategy;
+  private FullyCompleteStrategy cornerUpperLeftStrategy;
+  private FullyCompleteStrategy upperLeftCompleteStrategy;
   private List<FullyCompleteStrategy> strategies;
 
   @Override
@@ -95,7 +95,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3Max() {
     setUpEmpty3x3();
-    ThreeTriosMove bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
+    ThreeTriosMove bestMove = maxScoreUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.RED);
     ThreeTriosMove expected = new Move(ThreeTriosPlayer.RED, 0,0,0);
 
     Assert.assertEquals(
@@ -108,7 +108,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testEmpty3x3Corner() {
     setUpEmpty3x3();
-    ThreeTriosMove bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.RED);
+    ThreeTriosMove bestMove = cornerUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.RED);
     // Play card 9 to top left corner.
     ThreeTriosMove expected = new Move(ThreeTriosPlayer.RED, 1,0,0);
 
@@ -122,7 +122,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testPartial3x3Max() {
     setUpPartial3x3();
-    ThreeTriosMove bestMove = MaxScore_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
+    ThreeTriosMove bestMove = maxScoreUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.BLUE);
     // Play first card in hand to top middle to flip top left
     ThreeTriosMove expected = new Move(ThreeTriosPlayer.BLUE, 0,0,1);
 
@@ -136,7 +136,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testPartial3x3Corner() {
     setUpPartial3x3();
-    ThreeTriosMove bestMove = Corner_UpperLeft_Strategy.findBestMove(model, ThreeTriosPlayer.BLUE);
+    ThreeTriosMove bestMove = cornerUpperLeftStrategy.findBestMove(model, ThreeTriosPlayer.BLUE);
     ThreeTriosMove expected = new Move(ThreeTriosPlayer.BLUE, 0, 2, 0);
 
     Assert.assertEquals(
@@ -223,7 +223,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   @Test
   public void testSimpleStrategy() {
     setUpEmpty3x3();
-    UpperLeft_CompleteStrategy.findBestMove(model, ThreeTriosPlayer.RED);
+    upperLeftCompleteStrategy.findBestMove(model, ThreeTriosPlayer.RED);
     System.out.println(appendable.toString());
   }
 
