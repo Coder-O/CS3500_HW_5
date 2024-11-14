@@ -38,6 +38,7 @@ Key Components and Subcomponents:
     - FallibleStrategy: An interface for a strategy that that finds a list of desired moves for a given board state.
     - Strategy: An interface for other strategies to build off of. Includes a findsAtLeastOneMove method to allow users to know if a given strategy allways returns at least one move.
     - Several adapters exist to convert between and combine different types of strategies.
+    - ThreeTriosMove: Represents a move in a game of ThreeTrios. Also stores a score that can be used by strtegies to assign a value to a move.
 - ThreeTriosModel: is driven by the controller. Manages the rules and objects of the game.
     - ThreeTriosGrid: the playing grid, a 2 by 2 grid that holds cells as described below. A grid must have an odd number of card cells.
     - ThreeTriosCell: a cell in the grid. It can be a hole (a non-existant position) or a card cell (can hold a card).
@@ -69,7 +70,12 @@ Source Organization:
     - ThreeTrios
 - Test
     - (Tests mirroring the organization above)
-
+ 
+Extra Credit:
+- Implementations and design for the two extra strategies and the ability to combine strategies were completed, but we ran out of time to fully test them.
+- The MinCanFlipStrategy and MinOpponentMoveStrategy in the controller package are the two extra implmentations.
+- TestMinCanFlipStrategy has some tests for MinCanFlipStrategy.
+- TestCompleteStrategies has some tests for mixing different strategies, including both new strategies.
 
 Changes for Part 2:
 - New features for HW6
@@ -83,6 +89,7 @@ Changes for Part 2:
     - Created a GUiView interface and class (extends JFrame).
     - Created a panel interface and two panel classes for the hands and the grid.
     - Created a ThreeTrios file with a main method.
+    - Created a getMutableCopy method in the model for more advanced strategies to be able to simulate moves in advace.
 
 - Fixing bugs/issues
     - Revised methods to disallow illegal mutation
