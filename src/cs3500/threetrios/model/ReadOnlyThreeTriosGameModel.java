@@ -163,6 +163,32 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
   }
 
   /**
+   * A constructor for creating a copy of a given game model.
+   * This should not be generally used, as it lacks the protections of a standard constructor.
+   * @param grid The grid.
+   * @param map The player hands.
+   * @param playerRed the red player.
+   * @param playerBlue the blue player.
+   * @param battleRules The battle rules to use.
+   * @param currentPlayer The current player.
+   */
+  protected ReadOnlyThreeTriosGameModel(
+          ThreeTriosGrid grid,
+          Map<ThreeTriosPlayer, List<ThreeTriosCard>> map,
+          ThreeTriosPlayer playerRed,
+          ThreeTriosPlayer playerBlue,
+          ThreeTriosBattleRules battleRules,
+          ThreeTriosPlayer currentPlayer
+  ) {
+    this.grid = grid.copy();
+    this.playerHands = Map.copyOf(map);
+    this.playerRed = playerRed;
+    this.playerBlue = playerBlue;
+    this.battleRules = battleRules;
+    this.currentPlayer = currentPlayer;
+  }
+
+  /**
    * Checks if the game is over.
    * The game ends when all empty card cells are filled.
    * @return true if the game is over, false otherwise
@@ -344,5 +370,15 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
     }
 
     return Optional.empty();
+  }
+
+  /**
+   * Returns a mutable copy of this model.
+   *
+   * @return A mutable copy of this model.
+   */
+  @Override
+  public ThreeTriosModel getMutableCopy() {
+    throw new RuntimeException("This model cannot be mutable!");
   }
 }

@@ -13,7 +13,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * A strategy for a game of ThreeTrios.
  * This strategy consists of: minimizing the number of ways an opponent can flip this card.
  */
-public class MinCanFlipStrategy implements FallibleStrategy {
+class MinCanFlipStrategy implements FallibleStrategy {
 
   // To prevent the code from being one large method, it was split into many sections.
   // However, many variables are accesses throughout the code.

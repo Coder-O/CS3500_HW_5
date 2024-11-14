@@ -10,6 +10,7 @@ import java.util.Set;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGrid;
+import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 
@@ -256,6 +257,16 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
     coordinatesChecked.add(new Coordinate(row, column));
 
     return adaptee.canPlayToGrid(player, cardIdxInHand, row , column);
+  }
+
+  /**
+   * Returns a mutable copy of this model.
+   *
+   * @return A mutable copy of this model.
+   */
+  @Override
+  public ThreeTriosModel getMutableCopy() {
+    return adaptee.getMutableCopy();
   }
 
   /**

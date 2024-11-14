@@ -7,6 +7,7 @@ import java.util.Random;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGrid;
+import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
@@ -147,5 +148,15 @@ public class FibingMockModel implements ReadOnlyThreeTriosModel {
   public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row,
                                            int column) {
     return Optional.empty();
+  }
+
+  /**
+   * Returns a mutable copy of this model.
+   *
+   * @return A mutable copy of this model.
+   */
+  @Override
+  public ThreeTriosModel getMutableCopy() {
+    return delegate.getMutableCopy();
   }
 }

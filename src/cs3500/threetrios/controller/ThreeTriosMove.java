@@ -16,4 +16,6 @@ public interface ThreeTriosMove {
   int getRowIdx();
 
   int getCollumnIdx();
+
+  int getScore();
 }

@@ -2,6 +2,7 @@
 package cs3500.threetrios.model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -62,6 +63,20 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
   }
 
   /**
+   * A constructor for creating a copy of a given game model.
+   * This should not be generally used, as it lacks the protections of a standard constructor.
+   * @param grid The grid.
+   * @param map The player hands.
+   * @param playerRed the red player.
+   * @param playerBlue the blue player.
+   * @param battleRules The battle rules to use.
+   * @param currentPlayer The current player.
+   */
+  private ThreeTriosGameModel(ThreeTriosGrid grid, Map<ThreeTriosPlayer, List<ThreeTriosCard>> map, ThreeTriosPlayer playerRed, ThreeTriosPlayer playerBlue, ThreeTriosBattleRules battleRules, ThreeTriosPlayer currentPlayer) {
+    super(grid, map, playerRed, playerBlue, battleRules, currentPlayer);
+  }
+
+  /**
    * Plays a card from the cardIdxInHand position of the given player's hand to the specified row
    * and collumn of the grid.
    * All indices are zero indexed.
@@ -116,5 +131,17 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
     else if (this.currentPlayer == playerBlue) {
       this.currentPlayer = playerRed;
     }
+  }
+
+  @Override
+  public ThreeTriosModel getMutableCopy() {
+    return new ThreeTriosGameModel(
+            grid.copy(),
+            Map.copyOf(playerHands),
+            playerRed,
+            playerBlue,
+            battleRules,
+            currentPlayer
+    );
   }
 }

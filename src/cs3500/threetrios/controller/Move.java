@@ -15,6 +15,28 @@ class Move implements ThreeTriosMove {
   private final int cardIdxInHand;
   private final int rowIdx;
   private final int collumnIdx;
+  private final int score;
+
+  /**
+   * Creates a new move.
+   * @param player The player to make the move.
+   * @param cardIdxInHand The index of the card to play in the player's hand.
+   * @param rowIdx The index of the row to play to.
+   * @param collumnIdx The index og the column to play to.
+   * @throws IllegalArgumentException If player is null.
+   */
+  Move(ThreeTriosPlayer player, int cardIdxInHand, int rowIdx, int collumnIdx, int score)
+          throws IllegalArgumentException {
+    if (player == null) {
+      throw new IllegalArgumentException("Player cannot be null!");
+    }
+
+    this.player = player;
+    this.cardIdxInHand = cardIdxInHand;
+    this.rowIdx = rowIdx;
+    this.collumnIdx = collumnIdx;
+    this.score = score;
+  }
 
   /**
    * Creates a new move.
@@ -26,14 +48,7 @@ class Move implements ThreeTriosMove {
    */
   Move(ThreeTriosPlayer player, int cardIdxInHand, int rowIdx, int collumnIdx)
           throws IllegalArgumentException {
-    if (player == null) {
-      throw new IllegalArgumentException("Player cannot be null!");
-    }
-
-    this.player = player;
-    this.cardIdxInHand = cardIdxInHand;
-    this.rowIdx = rowIdx;
-    this.collumnIdx = collumnIdx;
+    this(player, cardIdxInHand, rowIdx, collumnIdx, 0);
   }
 
   /**
@@ -70,6 +85,15 @@ class Move implements ThreeTriosMove {
   @Override
   public int getCollumnIdx() {
     return collumnIdx;
+  }
+
+  /**
+   * Returns the score the strategy assigned to this move.
+   * @return the score the strategy assigned to this move.
+   */
+  @Override
+  public int getScore() {
+    return score;
   }
 
   @Override
