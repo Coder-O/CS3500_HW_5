@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/MinCanFlipStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGamePanel.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiProvider">{
@@ -107,7 +111,7 @@
       <recent name="cs3500.threetrios" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in CS3500_HW_5">
     <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <option name="PACKAGE_NAME" value="" />
@@ -181,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in CS3500_HW_5" />
-        <item itemvalue="JUnit.TestCompleteStrategies" />
+        <item itemvalue="JUnit.TestMaximizeScoreStrategy.testAllMovesLegal" />
         <item itemvalue="JUnit.TestCompleteStrategies.testFullGames" />
         <item itemvalue="JUnit.TestCompleteStrategies.testAllMovesLegal" />
-        <item itemvalue="JUnit.TestMaximizeScoreStrategy.testAllMovesLegal" />
+        <item itemvalue="JUnit.TestCompleteStrategies" />
+        <item itemvalue="JUnit.All in CS3500_HW_5" />
       </list>
     </recent_temporary>
   </component>
@@ -214,26 +218,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/cs3500/threetrios/controller/GoForCornerStrategy.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
