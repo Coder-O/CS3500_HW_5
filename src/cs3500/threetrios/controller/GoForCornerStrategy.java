@@ -173,7 +173,8 @@ class GoForCornerStrategy implements FallibleStrategy {
               playerFor,
               cardIdxInHand,
               corner.getRow(),
-              corner.getColumn()
+              corner.getColumn(),
+              currentScore
       ));
     }
   }

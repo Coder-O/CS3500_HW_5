@@ -15,7 +15,7 @@ class Move implements ThreeTriosMove {
   private final int cardIdxInHand;
   private final int rowIdx;
   private final int collumnIdx;
-  private final int score;
+  private int score;
 
   /**
    * Creates a new move.
@@ -94,6 +94,16 @@ class Move implements ThreeTriosMove {
   @Override
   public int getScore() {
     return score;
+  }
+
+  /**
+   * Sets the score of this move.
+   *
+   * @param score The new score.
+   */
+  @Override
+  public void setScore(int score) {
+    this.score = score;
   }
 
   @Override

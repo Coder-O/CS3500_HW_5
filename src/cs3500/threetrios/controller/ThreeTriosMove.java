@@ -18,4 +18,10 @@ public interface ThreeTriosMove {
   int getCollumnIdx();
 
   int getScore();
+
+  /**
+   * Sets the score of this move.
+   * @param score The new score.
+   */
+  void setScore(int score);
 }

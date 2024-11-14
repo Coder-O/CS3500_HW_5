@@ -136,7 +136,8 @@ class MinCanFlipStrategy implements FallibleStrategy {
               playerFor,
               cardIdxInHand,
               row,
-              column
+              column,
+              currentScore
       ));
     }
   }
