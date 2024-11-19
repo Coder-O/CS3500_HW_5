@@ -50,6 +50,7 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
       // If the current move is closer to the top left, it is the best move.
       if (moveUpperLeftScore < bestMoveUpperLeftScore) {
         bestMove = move;
+        bestMove.setScore((int) moveUpperLeftScore);
       }
 
       // If the current move is just as close to the top left and has a lower index in hand,

@@ -96,4 +96,10 @@ public interface ReadOnlyThreeTriosModel {
    */
   Optional<Exception> canPlayToGrid(ThreeTriosPlayer player,
                                     int cardIdxInHand, int row, int column);
+
+  /**
+   * Returns a mutable copy of this model.
+   * @return A mutable copy of this model.
+   */
+  ThreeTriosModel getMutableCopy();
 }

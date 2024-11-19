@@ -11,13 +11,15 @@ import java.util.Map;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
- * A testing class for {@link CompleteStrategyAdapter}.
+ * A testing class for {@link CompleteStrategyAdapter} and other {@link FullyCompleteStrategy}s.
  */
 public class TestCompleteStrategies extends AbstractStrategyTest {
   private FullyCompleteStrategy maxScoreUpperLeftStrategy;
   private FullyCompleteStrategy cornerUpperLeftStrategy;
   private FullyCompleteStrategy upperLeftCompleteStrategy;
   private List<FullyCompleteStrategy> strategies;
+  private FullyCompleteStrategy minCanFlipComplete;
+  private FullyCompleteStrategy minOpponentMoveComplete;
 
   @Override
   public void reset() {
@@ -37,6 +39,25 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
 
     cornerUpperLeftStrategy = new CompleteStrategyAdapter(
             new GoForCornerStrategy(),
+            new TieBreakingCompleteAdapter(
+                    new UpperLeftmostStrategy()
+            ),
+            new UpperLeftmostStrategy()
+    );
+
+    minCanFlipComplete = new CompleteStrategyAdapter(
+            new MinCanFlipStrategy(),
+            new TieBreakingCompleteAdapter(
+                    new UpperLeftmostStrategy()
+            ),
+            new UpperLeftmostStrategy()
+    );
+
+    minOpponentMoveComplete = new CompleteStrategyAdapter(
+            new MinOpponentMoveStrategy(
+            new TieBreakingCompleteAdapter(
+                    new UpperLeftmostStrategy()
+            )),
             new TieBreakingCompleteAdapter(
                     new UpperLeftmostStrategy()
             ),
