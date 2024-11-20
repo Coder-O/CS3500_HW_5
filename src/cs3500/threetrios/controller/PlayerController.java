@@ -1,6 +1,8 @@
 package cs3500.threetrios.controller;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
+import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * A controller that manages interactions between a player implementation suite and a model.
@@ -15,14 +17,29 @@ public interface PlayerController {
   void addViewListener(ViewFeatures view);
 
   /**
+   * Adds a player to listens to this controller.
+   * @param player The player to listen (for model updates).
+   */
+  void addPlayerListener(PlayerActions player);
+
+  /**
    * The model will call this method whenever it finishes updating.
+   * The controller will update everything that listens to it with the model.
    */
   void updateModel(ReadOnlyThreeTriosModel model);
 
   /**
-   * PlayerActions implementations will call this method to attempt to make a move in the model.
-   * @param move
+   * Handles when a player selects a card in their hand.
+   * @param cardIdx the chosen card's index in the player's hand (0-indexed).
+   * @param player the current player.
    */
-  void makeMove(ThreeTriosMove move);
+  void handleCardSelection(int cardIdx, ThreeTriosPlayer player);
+
+  /**
+   * Handles when a player selects a cell on the grid.
+   * @param row the row of the chosen cell.
+   * @param col the column of the chosen cell.
+   */
+  void handleGridCellSelection(int row, int col);
 
 }

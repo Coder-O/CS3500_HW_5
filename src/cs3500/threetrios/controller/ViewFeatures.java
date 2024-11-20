@@ -26,7 +26,14 @@ public interface ViewFeatures {
 
   /**
    * Updates the view with the new model.
+   * This method is called by the controller when the model updates to update the view.
    * @param model the current model
    */
   void updateModel(ReadOnlyThreeTriosGameModel model);
+
+  /**
+   * Displays information about the error to the user.
+   * @param e The exception to display to the user.
+   */
+  void showError(Exception e);
 }
