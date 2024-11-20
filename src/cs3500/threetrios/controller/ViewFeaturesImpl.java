@@ -13,8 +13,8 @@ import cs3500.threetrios.view.ThreeTriosGameGUIView;
  */
 public class ViewFeaturesImpl implements ViewFeatures {
 
-  private final ReadOnlyThreeTriosGameModel model;
-  private final ThreeTriosGameGUIView view;
+  private ReadOnlyThreeTriosGameModel model;
+  private ThreeTriosGameGUIView view;
 
   /**
    * Constructor for ViewFeaturesImpl.
@@ -33,17 +33,17 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void handleCardSelection(ThreeTriosCard card, ThreeTriosPlayer player) {
-
+    //todo
   }
 
   /**
-   * Handles when a player clicks a cell on the grid.
+   * Handles when a player selects a cell on the grid.
    * @param row the row of the clicked cell.
    * @param col the column of the clicked cell.
    */
   @Override
-  public void handleGridCellClick(int row, int col) {
-
+  public void handleGridCellSelection(int row, int col) {
+    //todo
   }
 
   /**
@@ -52,6 +52,6 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void updateModel(ReadOnlyThreeTriosGameModel model) {
-    new ThreeTriosGameGUIView(model);
+    this.model = model;
   }
 }

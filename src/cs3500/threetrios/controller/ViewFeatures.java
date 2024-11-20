@@ -18,11 +18,11 @@ public interface ViewFeatures {
   void handleCardSelection(ThreeTriosCard card, ThreeTriosPlayer player);
 
   /**
-   * Handles when a player clicks a cell on the grid.
+   * Handles when a player selects a cell on the grid.
    * @param row the row of the clicked cell.
    * @param col the column of the clicked cell.
    */
-  void handleGridCellClick(int row, int col);
+  void handleGridCellSelection(int row, int col);
 
   /**
    * Updates the view with the new model.
