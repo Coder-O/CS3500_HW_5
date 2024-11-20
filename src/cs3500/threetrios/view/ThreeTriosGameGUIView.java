@@ -1,14 +1,13 @@
 package cs3500.threetrios.view;
 
+import java.awt.*;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-
+import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -118,5 +117,26 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   public void makeVisible() {
     setVisible(true);
   }
+
+  /**
+   * register the controller as a listener for player actions.
+   * @param features player actions.
+   */
+  @Override
+  public void addFeatures(ViewFeatures features) {
+    // Pass the features to the grid panel and hand panels
+    gridPanel.addFeatures(features);
+    for (Component component : redHandPanel.getComponents()) {
+      if (component instanceof CardPanel) {
+        ((CardPanel) component).addFeatures(features, ThreeTriosPlayer.RED);
+      }
+    }
+    for (Component component : blueHandPanel.getComponents()) {
+      if (component instanceof CardPanel) {
+        ((CardPanel) component).addFeatures(features, ThreeTriosPlayer.BLUE);
+      }
+    }
+  }
+
 
 }
