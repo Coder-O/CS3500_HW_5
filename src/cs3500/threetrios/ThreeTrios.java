@@ -3,11 +3,14 @@ package cs3500.threetrios;
 import java.util.List;
 
 import cs3500.threetrios.controller.ConfigurationReader;
+import cs3500.threetrios.controller.ViewFeatures;
+import cs3500.threetrios.controller.ViewFeaturesImpl;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosGrid;
+import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.view.ThreeTriosGUIView;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
@@ -30,7 +33,10 @@ public final class ThreeTrios {
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
 
     ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
-    ThreeTriosGUIView view = new ThreeTriosGameGUIView(model);
+    ThreeTriosGameGUIView view = new ThreeTriosGameGUIView(model);
+
+    ViewFeatures features = new ViewFeaturesImpl(model, view);
+
     view.makeVisible();
   }
 

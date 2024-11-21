@@ -1,6 +1,6 @@
 package cs3500.threetrios.controller;
 
-import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
+import cs3500.threetrios.model.ThreeTriosGameModel;
 
 /**
  * A controller that manages interactions between a player implementation suite and a model.
@@ -17,7 +17,7 @@ public interface PlayerController {
   /**
    * The model will call this method whenever it finishes updating.
    */
-  void updateModel(ReadOnlyThreeTriosModel model);
+  void updateModel(ThreeTriosGameModel model);
 
   /**
    * PlayerActions implementations will call this method to attempt to make a move in the model.

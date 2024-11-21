@@ -1,7 +1,6 @@
 package cs3500.threetrios.controller;
 
-import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
-import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
@@ -12,10 +11,17 @@ public interface ViewFeatures {
 
   /**
    * Handles when a player clicks a card in their hand.
-   * @param card the clicked card.
+   * @param index the index of the clicked card in the player's hand.
    * @param player the current player.
    */
-  void handleCardSelection(ThreeTriosCard card, ThreeTriosPlayer player);
+  void handleCardSelection(Integer index, ThreeTriosPlayer player);
+
+  /**
+   * Handles when a player deselects a card.
+   * @param index the index of the clicked card in the player's hand.
+   * @param player the current player.
+   */
+  void handleCardDeselection(Integer index, ThreeTriosPlayer player);
 
   /**
    * Handles when a player selects a cell on the grid.
@@ -28,5 +34,5 @@ public interface ViewFeatures {
    * Updates the view with the new model.
    * @param model the current model
    */
-  void updateModel(ReadOnlyThreeTriosGameModel model);
+  void updateModel(ThreeTriosGameModel model);
 }

@@ -11,7 +11,7 @@ public interface ModelFeatures {
   void makeMove(Move move);
 
   /**
-   * Adds a controller for a specific player
+   * Adds a controller listener for a specific player.
    * @param controller
    * @param playerFor
    */
