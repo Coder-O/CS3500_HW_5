@@ -30,7 +30,6 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private final ThreeTriosCard card;
   private final int index;
   private boolean isSelected = false;
-
   private static CardPanel selectedCardPanel = null;
 
   /**
@@ -103,12 +102,12 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    * Prints the index and player of the clicked card.
    * The card's index is 0-indexed.
    */
-  private void handleCardClick() {
+  public void handleCardClick() {
     System.out.println("Clicked card index: " + index + ", Player: " + card.getPlayer().getName());
     toggleSelection();
 
     if (features != null) {
-      features.handleCardSelection(card, player);
+      features.handleCardSelection(index, player);
     }
   }
 

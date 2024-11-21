@@ -1,11 +1,14 @@
 package cs3500.threetrios.view;
 
-import java.awt.*;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.Component;
 
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
@@ -70,6 +73,26 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   }
 
   /**
+   * Updates the view based on the model's current state.
+   */
+  @Override
+  public void refresh() {
+    // Update the grid display
+    ((GridPanel) gridPanel).update();
+
+    // Update the title to show current game state
+    setTitle("Current player: " + model.getCurrentPlayer().getName());
+
+    // Update the hand displays for both players
+    updateHandPanel(ThreeTriosPlayer.RED);
+    updateHandPanel(ThreeTriosPlayer.BLUE);
+
+    // Repaint to apply updates
+    repaint();
+    revalidate();
+  }
+
+  /**
    * Updates the hand panel for the specified player.
    * @param player the player (RED or BLUE)
    */
@@ -91,26 +114,6 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   }
 
   /**
-   * Updates the view based on the model's current state.
-   */
-  @Override
-  public void refresh() {
-    // Update the grid display
-    ((GridPanel) gridPanel).update();
-
-    // Update the title to show current game state
-    setTitle("Current player: " + model.getCurrentPlayer().getName());
-
-    // Update the hand displays for both players
-    updateHandPanel(ThreeTriosPlayer.RED);
-    updateHandPanel(ThreeTriosPlayer.BLUE);
-
-    // Repaint to apply updates
-    repaint();
-    revalidate();
-  }
-
-  /**
    * Displays the game window.
    */
   @Override
@@ -119,7 +122,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   }
 
   /**
-   * register the controller as a listener for player actions.
+   * Register the controller as a listener for player actions.
    * @param features player actions.
    */
   @Override
@@ -138,5 +141,18 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     }
   }
 
+  /**
+   * Display an error message.
+   * @param message the message we want to display.
+   */
+  @Override
+  public void showErrorMessage(String message) {
+    JOptionPane.showMessageDialog(
+            this,                // Parent component (the JFrame itself)
+            message,             // Message to display
+            "Error",             // Title of the dialog box
+            JOptionPane.ERROR_MESSAGE // Icon type (Error icon)
+    );
+  }
 
 }

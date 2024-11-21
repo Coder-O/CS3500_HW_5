@@ -18,9 +18,15 @@ public interface ThreeTriosGUIView {
   void makeVisible();
 
   /**
-   * register the controller as a listener for player actions.
+   * Register the controller as a listener for player actions.
    * @param features player actions.
    */
   void addFeatures(ViewFeatures features);
+
+  /**
+   * Display an error message.
+   * @param message the message we want to display.
+   */
+  void showErrorMessage(String message);
 
 }

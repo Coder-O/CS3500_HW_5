@@ -3,6 +3,7 @@ package cs3500.threetrios.controller;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosPlayer;
+import cs3500.threetrios.model.ThreeTriosGameModel;
 
 /**
  * A controller that manages interactions between a player implementation suite and a model.
@@ -26,7 +27,7 @@ public interface PlayerController {
    * The model will call this method whenever it finishes updating.
    * The controller will update everything that listens to it with the model.
    */
-  void updateModel(ReadOnlyThreeTriosModel model);
+  void updateModel(ThreeTriosGameModel model);
 
   /**
    * Handles when a player selects a card in their hand.

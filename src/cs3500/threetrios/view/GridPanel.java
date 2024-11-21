@@ -74,6 +74,9 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
           @Override
           public void mouseClicked(MouseEvent e) {
             System.out.println("Clicked cell at: (" + clickedRow + ", " + clickedCol + ")");
+            if (features != null) {
+              features.handleGridCellSelection(clickedRow, clickedCol);
+            }
           }
         });
 
