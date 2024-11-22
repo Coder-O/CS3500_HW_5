@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
+import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
@@ -90,6 +91,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     // Repaint to apply updates
     repaint();
     revalidate();
+    setVisible(true);
   }
 
   /**
@@ -126,7 +128,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
    * @param features player actions.
    */
   @Override
-  public void addFeatures(ViewFeatures features) {
+  public void addFeatures(PlayerActionEvents features) {
     // Pass the features to the grid panel and hand panels
     gridPanel.addFeatures(features);
     for (Component component : redHandPanel.getComponents()) {

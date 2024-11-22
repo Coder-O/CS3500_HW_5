@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
@@ -22,7 +23,7 @@ import cs3500.threetrios.model.ThreeTriosGrid;
  */
 public class GridPanel extends JPanel implements ThreeTriosPanel {
 
-  private ViewFeatures features;
+  private PlayerActionEvents features;
   private final ThreeTriosGrid grid;
   private final JPanel gridContainer;
 
@@ -101,7 +102,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
    * Adds the features to enable communication with the controller.
    * @param features the controller's features interface.
    */
-  public void addFeatures(ViewFeatures features) {
+  public void addFeatures(PlayerActionEvents features) {
     this.features = features;
   }
 }

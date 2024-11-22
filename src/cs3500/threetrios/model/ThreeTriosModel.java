@@ -1,11 +1,13 @@
 package cs3500.threetrios.model;
 
+import cs3500.threetrios.controller.ModelFeatures;
+
 /**
 * Represents the model for the ThreeTrios Game.
 * Model provides methods to perform game actions and retrieve the game state.
 * The game is setup and started in the constructor.
 */
-public interface ThreeTriosModel extends ReadOnlyThreeTriosModel {
+public interface ThreeTriosModel extends ReadOnlyThreeTriosModel, ModelFeatures {
 
   /**
    * Plays a card from the cardIdxInHand position of the given player's hand
@@ -25,6 +27,4 @@ public interface ThreeTriosModel extends ReadOnlyThreeTriosModel {
    */
   void playToGrid(ThreeTriosPlayer player, int cardIdxInHand, int row, int column)
         throws IllegalStateException, IndexOutOfBoundsException, IllegalArgumentException;
-
-
 }

@@ -15,18 +15,12 @@ import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
  *   <li>Know what controller to call</li>
  * </ul>
  */
-public interface PlayerActions {
+public interface Player {
   /**
    * Adds the controller that this Player will call on.
    * @param controller
    */
   void addControllerListener(PlayerController controller);
-
-  /**
-   * Updates the player with the given model.
-   * @param model The updated model.
-   */
-  void update(ReadOnlyThreeTriosModel model);
 
   /**
    * Lets this Player know that it should make a move.

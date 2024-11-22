@@ -1,9 +1,13 @@
 
 package cs3500.threetrios.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import cs3500.threetrios.controller.Move;
+import cs3500.threetrios.controller.PlayerController;
 
 /**
 * Represents the model for the ThreeTrios Game.
@@ -11,6 +15,7 @@ import java.util.Random;
 * The game is set up and started in the constructor.
 */
 public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements ThreeTriosModel {
+  private final Map<ThreeTriosPlayer, PlayerController> playerControllers;
 
   /**
    * Constructor for the mutable ThreeTriosGameModel, initializing it with
@@ -30,6 +35,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
           Random random
   ) {
     super(grid, deck, battleRules, shuffle, random);
+    this.playerControllers = new HashMap<>();
   }
 
   /**
@@ -46,6 +52,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
           ThreeTriosBattleRules battleRules,
           boolean shuffle) {
     super(grid, deck, battleRules, shuffle);
+    this.playerControllers = new HashMap<>();
   }
 
   /**
@@ -60,6 +67,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
           List<ThreeTriosCard> deck,
           ThreeTriosBattleRules battleRules) {
     super(grid, deck, battleRules);
+    this.playerControllers = new HashMap<>();
   }
 
   /**
@@ -74,6 +82,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
    */
   private ThreeTriosGameModel(ThreeTriosGrid grid, Map<ThreeTriosPlayer, List<ThreeTriosCard>> map, ThreeTriosPlayer playerRed, ThreeTriosPlayer playerBlue, ThreeTriosBattleRules battleRules, ThreeTriosPlayer currentPlayer) {
     super(grid, map, playerRed, playerBlue, battleRules, currentPlayer);
+    this.playerControllers = new HashMap<>();
   }
 
   /**
@@ -131,6 +140,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
     else if (this.currentPlayer == playerBlue) {
       this.currentPlayer = playerRed;
     }
+    update();
   }
 
   @Override
@@ -143,5 +153,52 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
             battleRules,
             currentPlayer
     );
+  }
+
+  /**
+   * Attempts to make a move in the model. (may throw an exception if the move is illegal).
+   *
+   * @param move The move to attempt
+   */
+  @Override
+  public void makeMove(Move move) {
+    this.playToGrid(
+            move.getPlayer(),
+            move.getCardIdxInHand(),
+            move.getRowIdx(),
+            move.getCollumnIdx()
+    );
+  }
+
+  /**
+   * Adds a controller listener for a specific player.
+   *
+   * @param controller The controller to add.
+   * @param playerFor What three trios player the controller controls.
+   */
+  @Override
+  public void addControllerListener(PlayerController controller, ThreeTriosPlayer playerFor) {
+    playerControllers.put(playerFor, controller);
+  }
+
+  /**
+   * Starts the game by updating all controllers
+   * and informing the starting player's controller that it is their turn.
+   */
+  @Override
+  public void startGame() throws IllegalStateException {
+    update();
+  }
+
+  /**
+   * Updates all controllers and asks the current player to make a move.
+   * Should be called after every move.
+   */
+  private void update() {
+    for (PlayerController controller : playerControllers.values()) {
+      controller.update();
+    }
+
+    playerControllers.get(currentPlayer).isYourTurn();
   }
 }

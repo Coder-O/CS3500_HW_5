@@ -2,11 +2,14 @@ package cs3500.threetrios.controller;
 
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
+/**
+ * Features for a model to interact with a controller.
+ */
 public interface ModelFeatures {
 
   /**
    * Attempts to make a move in the model. (may throw an exception if the move is illegal).
-   * @param move
+   * @param move The move to attempt
    */
   void makeMove(Move move);
 
@@ -16,4 +19,10 @@ public interface ModelFeatures {
    * @param playerFor
    */
   void addControllerListener(PlayerController controller, ThreeTriosPlayer playerFor);
+
+  /**
+   * Starts the game by calling update on the first player's controller.
+   */
+  void startGame();
+
 }

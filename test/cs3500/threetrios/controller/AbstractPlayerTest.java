@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class AbstractPlayerTest {
   protected Appendable appendable;
-  protected PlayerActions player;
+  protected Player player;
   @Test
   public void testUpdatesAllControllers() {
 

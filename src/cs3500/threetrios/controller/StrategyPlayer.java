@@ -9,11 +9,11 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 /**
  * A machine representation of a player. It makes deterministic moves based on a strategy.
  */
-public class StrategyPlayer implements PlayerActions {
+public class StrategyPlayer implements Player {
   private final FullyCompleteStrategy strategy;
   private final ThreeTriosPlayer player;
   private final List<PlayerController> controllerListeners;
-  private ReadOnlyThreeTriosModel model;
+  private final ReadOnlyThreeTriosModel model;
 
 
   /**
@@ -22,8 +22,16 @@ public class StrategyPlayer implements PlayerActions {
    * @param player The three trios player in the game this object controls.
    * @throws IllegalArgumentException If any of the arguments are null.
    */
-  public StrategyPlayer(FullyCompleteStrategy strategy, ThreeTriosPlayer player)
+  public StrategyPlayer(
+          ReadOnlyThreeTriosModel model,
+          FullyCompleteStrategy strategy,
+          ThreeTriosPlayer player
+  )
           throws IllegalArgumentException {
+    if (model == null) {
+      throw new IllegalArgumentException("The model cannot be null!");
+    }
+
     if (strategy == null) {
       throw new IllegalArgumentException("The strategy cannot be null!");
     }
@@ -32,6 +40,7 @@ public class StrategyPlayer implements PlayerActions {
       throw new IllegalArgumentException("The three trios player cannot be null!");
     }
 
+    this.model = model;
     this.strategy = strategy;
     this.player = player;
     this.controllerListeners = new ArrayList<>();
@@ -46,16 +55,6 @@ public class StrategyPlayer implements PlayerActions {
   @Override
   public void addControllerListener(PlayerController controller) {
     controllerListeners.add(controller);
-  }
-
-  /**
-   * Updates the player with the given model.
-   *
-   * @param model The updated model.
-   */
-  @Override
-  public void update(ReadOnlyThreeTriosModel model) {
-    this.model = model;
   }
 
   /**

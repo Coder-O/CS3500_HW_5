@@ -13,6 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosDirection;
@@ -25,7 +26,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  */
 public class CardPanel extends JPanel implements ThreeTriosPanel {
 
-  private ViewFeatures features;
+  private PlayerActionEvents features;
   private ThreeTriosPlayer player;
   private final ThreeTriosCard card;
   private final int index;
@@ -182,7 +183,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    * @param features the controller's features interface.
    * @param player the current player.
    */
-  public void addFeatures(ViewFeatures features, ThreeTriosPlayer player) {
+  public void addFeatures(PlayerActionEvents features, ThreeTriosPlayer player) {
     this.features = features;
     this.player = player;
   }
