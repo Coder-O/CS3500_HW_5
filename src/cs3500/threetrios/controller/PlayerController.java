@@ -1,7 +1,9 @@
 package cs3500.threetrios.controller;
 
+import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 
@@ -27,7 +29,7 @@ public interface PlayerController {
    * The model will call this method whenever it finishes updating.
    * The controller will update everything that listens to it with the model.
    */
-  void updateModel(ThreeTriosGameModel model);
+  void updateModel(ThreeTriosModel model);
 
   /**
    * Handles when a player selects a card in their hand.
@@ -43,4 +45,5 @@ public interface PlayerController {
    */
   void handleGridCellSelection(int row, int col);
 
+  void makeMove(ThreeTriosMove move);
 }

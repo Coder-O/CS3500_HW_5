@@ -3,6 +3,8 @@ package cs3500.threetrios.controller;
 import java.io.IOException;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
+import cs3500.threetrios.model.ThreeTriosGameModel;
+import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
@@ -58,7 +60,7 @@ public class MockPlayerController implements PlayerController {
    * @param model
    */
   @Override
-  public void updateModel(ReadOnlyThreeTriosModel model) {
+  public void updateModel(ThreeTriosModel model) {
     try {
       appendable.append("updateModel called with model = ");
       appendable.append(model.toString());
@@ -104,5 +106,10 @@ public class MockPlayerController implements PlayerController {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  @Override
+  public void makeMove(ThreeTriosMove move) {
+
   }
 }

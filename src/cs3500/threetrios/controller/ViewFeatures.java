@@ -1,5 +1,6 @@
 package cs3500.threetrios.controller;
 
+import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
@@ -35,7 +36,7 @@ public interface ViewFeatures {
    * This method is called by the controller when the model updates to update the view.
    * @param model the current model
    */
-  void updateModel(ReadOnlyThreeTriosGameModel model);
+  void updateModel(ReadOnlyThreeTriosModel model);
 
   /**
    * Displays information about the error to the user.

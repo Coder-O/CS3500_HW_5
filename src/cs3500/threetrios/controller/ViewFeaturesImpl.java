@@ -2,6 +2,7 @@ package cs3500.threetrios.controller;
 
 import java.util.Objects;
 
+import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
@@ -12,14 +13,14 @@ import cs3500.threetrios.view.ThreeTriosGameGUIView;
  */
 public class ViewFeaturesImpl implements ViewFeatures {
 
-  private ThreeTriosGameModel model;
+  private ReadOnlyThreeTriosModel model;
   private ThreeTriosGameGUIView view;
   private Integer selectedCardIdx;
 
   /**
    * Constructor for ViewFeaturesImpl.
    */
-  public ViewFeaturesImpl(ThreeTriosGameModel model, ThreeTriosGameGUIView view) {
+  public ViewFeaturesImpl(ReadOnlyThreeTriosModel model, ThreeTriosGameGUIView view) {
     this.model = Objects.requireNonNull(model);
     this.view = Objects.requireNonNull(view);
 
@@ -86,7 +87,17 @@ public class ViewFeaturesImpl implements ViewFeatures {
    * @param model The current game model
    */
   @Override
-  public void updateModel(ThreeTriosGameModel model) {
+  public void updateModel(ReadOnlyThreeTriosModel model) {
     this.model = model;
+  }
+
+  /**
+   * Displays information about the error to the user.
+   *
+   * @param e The exception to display to the user.
+   */
+  @Override
+  public void showError(Exception e) {
+
   }
 }
