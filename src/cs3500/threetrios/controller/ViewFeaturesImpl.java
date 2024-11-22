@@ -16,6 +16,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
   private ReadOnlyThreeTriosModel model;
   private ThreeTriosGUIView view;
   private Integer selectedCardIdx;
+  private PlayerActionEvents features;
 
   /**
    * Constructor for ViewFeaturesImpl.
@@ -28,6 +29,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
   @Override
   public void addFeatures(PlayerActionEvents features) {
     this.view.addFeatures(features);
+    this.features = features;
   }
 
   /**
@@ -50,10 +52,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
 
     if (selectedCardIdx != null) {
       selectedCardIdx = index;
-      handleCardSelection(selectedCardIdx, player);
     }
-
-    handleCardSelection(index, player);
   }
 
   /**
@@ -75,6 +74,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
     }
 
     view.refresh();
+    view.addFeatures(features);
   }
 
   /**
@@ -84,6 +84,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
   @Override
   public void update() {
     view.refresh();
+    view.addFeatures(features);
   }
 
   /**

@@ -3,6 +3,8 @@ package cs3500.threetrios.controller;
 import java.util.Objects;
 import java.util.Optional;
 
+import javax.sound.midi.Soundbank;
+
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
@@ -37,14 +39,12 @@ public class PlayerControllerImpl implements PlayerController {
     model.addControllerListener(this, this.playerColor);
 
     this.view = Objects.requireNonNull(view);
-    view.addFeatures(this);
+    this.view.addFeatures(this);
 
     this.player = player;
     if (player != null) {
       player.addControllerListener(this);
     }
-
-    indexSelected = 0;
   }
 
   /**
@@ -101,6 +101,8 @@ public class PlayerControllerImpl implements PlayerController {
    */
   @Override
   public void handleGridCellSelection(int row, int col) {
+    System.out.println("Cell Clicked!!!");
+
     view.handleGridCellSelection(row, col);
 
     // Play selected card to selected cell
