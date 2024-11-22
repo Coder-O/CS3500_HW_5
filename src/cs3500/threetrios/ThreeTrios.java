@@ -26,6 +26,7 @@ public final class ThreeTrios {
    */
   public static void main(String[] args) {
 
+    // Creating model, which controls the game state.
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3H.txt");
     ThreeTriosBattleRules battleRules = new SimpleRules();
@@ -33,11 +34,43 @@ public final class ThreeTrios {
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
 
     ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
+
+    // -- Creating players, which handle player inputs (machine or human) --
+
+    // Player redPlayer = new PlayerImpl(model); // Either StrategyPlayer(model, Strategy) or HumanPlayer()
+    // Player bluePlayer = new PlayerImpl(model); // Either StrategyPlayer(model, Strategy) or HumanPlayer()
+
+    // -- Creating views, which display information --
+
+    // View redView = new ViewImpl(model); // Should be the same implementation for both humans and machines
+    // But we will need to add a Player as a listener in the human case.
+    // View blueView = the same thing...
+
+    // Old view construction:
     ThreeTriosGameGUIView view = new ThreeTriosGameGUIView(model);
 
     ViewFeatures features = new ViewFeaturesImpl(model, view);
 
     view.makeVisible();
+
+    // -- Creating controllers, which connect each player's components and the model. --
+
+    // PlayerController redController = new PlayerControllerImpl(model, redView, redPlayer, ThreeTriosPlayer.RED);
+    // PlayerController blueController = new PlayerControllerImpl(model, blueView, bluePlayer, ThreeTriosPlayer.BLUE);
+    // Constructors will establish the controller as a listener/subscriber to the model and player.
+    // If we didn't do it in the view section, it might also set the Player as a listenr to the view.
+
+
+    // -- Starting the game. --
+    // model.startGame()
+    // This has the model call update() on it's subscribers for the first time.
+    // Assumes the views set themselves to be visible when updated.
+
+    // todo:
+    //  Update interfaces to match this design
+    //  Update implementations to match those interfaces.
+    //  Document to decrease confusion.
+    // ;
   }
 
   //todo
