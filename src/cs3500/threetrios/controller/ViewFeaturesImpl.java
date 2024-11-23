@@ -37,16 +37,9 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void handleCardSelection(Integer index, ThreeTriosPlayer player) {
-
-    //Confirm selected card belongs to player
-    if (!model.getHand(player).get(index).getPlayer().equals(player)) {
-      view.showErrorMessage("Selected card does not belong to you.");
-    }
-
     if (index != null) {
       selectedCardIdx = index;
     }
-
   }
 
   /**

@@ -70,8 +70,17 @@ public class StrategyPlayer implements Player {
 
     ThreeTriosMove move = strategy.findBestMove(model, player);
 
+    System.out.println(player.getName() + " attempted to play move:");
+    System.out.println("Hand: " + move.getCardIdxInHand());
+    System.out.println("Row: " + move.getRowIdx());
+    System.out.println("Col: " + move.getCollumnIdx());
+
     for (PlayerController controller : controllerListeners) {
       controller.handleCardSelection(move.getCardIdxInHand(), player);
+    }
+
+    for (PlayerController controller : controllerListeners) {
+      controller.handleGridCellSelection(move.getRowIdx(), move.getCollumnIdx());
     }
   }
 

@@ -40,25 +40,21 @@ public final class ThreeTrios {
 
     ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
 
-    // -- Creating players, which handle player inputs (from machines) --
+    // -- Creating players, which handle player inputs (mainly for ai implementations) --
 
     Player redPlayer = new StrategyPlayer(
             model,
              StrategyFactory.makeStrategy(""),
              ThreeTriosPlayer.RED
-    ); // Either StrategyPlayer(model, Strategy) or HumanPlayer()
+    );
     Player bluePlayer = new StrategyPlayer(
             model,
             StrategyFactory.makeStrategy(""),
             ThreeTriosPlayer.BLUE
-    ); // Either StrategyPlayer(model, Strategy) or HumanPlayer()
+    );
 
-    // -- Creating views, which display information (and potentially handel inputs)--
-
-    // View redView = new ViewImpl(model);
-    // Should be the same implementation for both humans and machines
-    // But we will need to add a Player as a listener in the human case.
-    // View blueView = the same thing...
+    // -- Creating views, which display information
+    // (and potentially handel inputs for human players)--
 
     ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.RED);
     ViewFeatures redView = new ViewFeaturesImpl(model, redGuiView);
@@ -69,13 +65,9 @@ public final class ThreeTrios {
     // -- Creating controllers, which connect each player's components and the model. --
 
     PlayerController redController = new PlayerControllerImpl(model,
-            redView, ThreeTriosPlayer.RED);
+            redView, redPlayer, ThreeTriosPlayer.RED);
     PlayerController blueController = new PlayerControllerImpl(model,
-            blueView, ThreeTriosPlayer.BLUE);
-    // Constructors will establish the controller as a listener/subscriber to the model and player.
-    // If we didn't do it in the view section,
-    // it might also set the Player as a listener to the view.
-
+            blueView, bluePlayer, ThreeTriosPlayer.BLUE);
 
     // -- Starting the game. --
     model.startGame();
@@ -83,7 +75,6 @@ public final class ThreeTrios {
     // Assumes the views set themselves to be visible when updated.
 
     // todo:
-    //  Update interfaces to match this design
     //  Update implementations to match those interfaces.
     //  Document to decrease confusion.
     //
