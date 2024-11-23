@@ -80,7 +80,9 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
    * @param battleRules The battle rules to use.
    * @param currentPlayer The current player.
    */
-  private ThreeTriosGameModel(ThreeTriosGrid grid, Map<ThreeTriosPlayer, List<ThreeTriosCard>> map, ThreeTriosPlayer playerRed, ThreeTriosPlayer playerBlue, ThreeTriosBattleRules battleRules, ThreeTriosPlayer currentPlayer) {
+  private ThreeTriosGameModel(ThreeTriosGrid grid, Map<ThreeTriosPlayer, List<ThreeTriosCard>> map,
+                              ThreeTriosPlayer playerRed, ThreeTriosPlayer playerBlue,
+                              ThreeTriosBattleRules battleRules, ThreeTriosPlayer currentPlayer) {
     super(grid, map, playerRed, playerBlue, battleRules, currentPlayer);
     this.playerControllers = new HashMap<>();
   }

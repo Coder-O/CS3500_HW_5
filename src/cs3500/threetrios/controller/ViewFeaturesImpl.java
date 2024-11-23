@@ -77,7 +77,6 @@ public class ViewFeaturesImpl implements ViewFeatures {
 
   /**
    * Updates the view with the new model.
-   * @param model The current game model
    */
   @Override
   public void update() {

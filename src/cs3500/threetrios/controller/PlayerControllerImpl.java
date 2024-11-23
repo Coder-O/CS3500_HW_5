@@ -16,7 +16,6 @@ public class PlayerControllerImpl implements PlayerController {
   private final ViewFeatures view;
   private final Player player;
   private final ThreeTriosPlayer playerColor;
-
   private int indexSelected;
 
   /**
