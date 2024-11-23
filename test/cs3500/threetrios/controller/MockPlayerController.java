@@ -25,7 +25,7 @@ public class MockPlayerController implements PlayerController {
    * @param player  the current player.
    */
   @Override
-  public void handleCardSelection(int cardIdx, ThreeTriosPlayer player) {
+  public void handleCardSelection(Integer cardIdx, ThreeTriosPlayer player) {
     try {
       appendable.append("handleCardSelection called with cardIdx = ");
       appendable.append(cardIdx + "");

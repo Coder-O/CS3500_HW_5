@@ -16,7 +16,7 @@ public class PlayerControllerImpl implements PlayerController {
   private final ViewFeatures view;
   private final Player player;
   private final ThreeTriosPlayer playerColor;
-  private int indexSelected;
+  private Integer indexSelected;
 
   /**
    * Constructor for a machine PlayerControllerImpl.
@@ -80,12 +80,17 @@ public class PlayerControllerImpl implements PlayerController {
    * @param player  the current player.
    */
   @Override
-  public void handleCardSelection(int cardIdx, ThreeTriosPlayer player) {
+  public void handleCardSelection(Integer cardIdx, ThreeTriosPlayer player) {
     System.out.println("Card clicked!!!");
 
-    indexSelected = cardIdx;
 
     view.handleCardSelection(cardIdx, player);
+
+    if (Objects.equals(indexSelected, cardIdx)) {
+      indexSelected = null;
+    } else {
+      indexSelected = cardIdx;
+    }
   }
 
   /**
@@ -100,10 +105,16 @@ public class PlayerControllerImpl implements PlayerController {
 
     view.handleGridCellSelection(row, col);
 
+    if (indexSelected == null) {
+      view.showError(new IllegalStateException("Please choose a card before playing to a cell!"));
+      return;
+    }
+
     // Play selected card to selected cell
     Optional<Exception> e = model.canPlayToGrid(playerColor, indexSelected, row, col);
     if (e.isEmpty()) {
       model.playToGrid(playerColor, indexSelected, row, col);
+      indexSelected = null;
     } else {
       view.showError(e.get());
     }

@@ -36,21 +36,17 @@ public class ViewFeaturesImpl implements ViewFeatures {
    * @param player the current player.
    */
   @Override
-  public void handleCardSelection(int index, ThreeTriosPlayer player) {
-
-    //Confirm it is the player's turn
-    if (!model.getCurrentPlayer().equals(player)) {
-      view.showErrorMessage("It's not your turn.");
-    }
+  public void handleCardSelection(Integer index, ThreeTriosPlayer player) {
 
     //Confirm selected card belongs to player
     if (!model.getHand(player).get(index).getPlayer().equals(player)) {
       view.showErrorMessage("Selected card does not belong to you.");
     }
 
-    if (selectedCardIdx != null) {
+    if (index != null) {
       selectedCardIdx = index;
     }
+
   }
 
   /**
@@ -60,17 +56,6 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void handleGridCellSelection(int row, int col) {
-    // Check if a card is selected before attempting to place it
-    if (selectedCardIdx == null) {
-      view.showErrorMessage("Please select a card before choosing a cell.");
-    }
-
-    //Confirm cell is not a hole or does not have a card already
-    if (model.getGrid().getCell(row, col).isHole()
-            || model.getGrid().getCell(row, col).getCard() != null) {
-      view.showErrorMessage("Invalid move.");
-    }
-
     update();
   }
 

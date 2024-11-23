@@ -11,7 +11,7 @@ public interface PlayerActionEvents {
    * @param index the index of the clicked card in the player's hand.
    * @param player the current player.
    */
-  void handleCardSelection(int index, ThreeTriosPlayer player);
+  void handleCardSelection(Integer index, ThreeTriosPlayer player);
 
   /**
    * Handles when a player selects a cell on the grid.
