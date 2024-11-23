@@ -14,8 +14,6 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.view.ThreeTriosGUIView;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
-import static org.junit.Assert.assertEquals;
-
 /**
  * Test the full controller of the game. (HW3).
  */
