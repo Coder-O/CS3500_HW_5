@@ -29,4 +29,11 @@ public interface ThreeTriosGUIView {
    */
   void showErrorMessage(String message);
 
+  /**
+   * Display Results Message.
+   * If the game was won, will display who won and score.
+   * If the game was a tie, will display that it was a tie.
+   */
+  void showResultsMessage();
+
 }

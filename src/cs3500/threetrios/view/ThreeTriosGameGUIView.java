@@ -91,6 +91,11 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     updateHandPanel(ThreeTriosPlayer.RED);
     updateHandPanel(ThreeTriosPlayer.BLUE);
 
+    //Display final message if game is over
+    if (model.isGameOver()) {
+      showResultsMessage();
+    }
+
     // Repaint to apply updates
     repaint();
     revalidate();
@@ -157,6 +162,29 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
             message,             // Message to display
             "Error",             // Title of the dialog box
             JOptionPane.ERROR_MESSAGE // Icon type (Error icon)
+    );
+  }
+
+  /**
+   * Display Results Message.
+   * If the game was won, will display who won and score.
+   * If the game was a tie, will display that it was a tie.
+   */
+  @Override
+  public void showResultsMessage() {
+    if (model.getWinner() == null) {
+      JOptionPane.showMessageDialog(
+              this,                // Parent component (the JFrame itself)
+              "The Game was tied.",             // Message to display
+              "Game over!",             // Title of the dialog box
+              JOptionPane.PLAIN_MESSAGE // Icon type
+      );
+    }
+    JOptionPane.showMessageDialog(
+            this,
+            model.getWinner().getName() + "won! Score: " + model.getScore(model.getWinner()),
+            "Game over!",
+            JOptionPane.PLAIN_MESSAGE
     );
   }
 
