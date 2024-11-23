@@ -28,6 +28,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   private final GridPanel gridPanel;
   private final JPanel redHandPanel;
   private final JPanel blueHandPanel;
+  CardPanel selectedCardPanel = null;
 
   /**
    * Constructor for the ThreeTriosGameGUIView.
@@ -44,7 +45,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     setTitle("Current player: " + model.getCurrentPlayer().getName());
 
     //Build grid
-    gridPanel = new GridPanel(model.getGrid());
+    gridPanel = new GridPanel(model.getGrid(), this);
     add(gridPanel, BorderLayout.CENTER);
 
     //Build hand panels
@@ -56,14 +57,14 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
     for (int i = 0; i < redHand.size(); i++) {
       ThreeTriosCard card = redHand.get(i);
-      CardPanel cardPanel = new CardPanel(card, i);
+      CardPanel cardPanel = new CardPanel(card, i, this);
       redHandPanel.add(cardPanel);
     }
 
     List<ThreeTriosCard> blueHand = model.getHand(ThreeTriosPlayer.BLUE);
     for (int i = 0; i < blueHand.size(); i++) {
       ThreeTriosCard card = blueHand.get(i);
-      CardPanel cardPanel = new CardPanel(card, i);
+      CardPanel cardPanel = new CardPanel(card, i, this);
       blueHandPanel.add(cardPanel);
     }
 
@@ -107,7 +108,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     List<ThreeTriosCard> hand = model.getHand(player);
     for (int i = 0; i < hand.size(); i++) {
       ThreeTriosCard card = hand.get(i);
-      CardPanel cardPanel = new CardPanel(card, i);
+      CardPanel cardPanel = new CardPanel(card, i, this);
       handPanel.add(cardPanel.getComponent());
     }
 

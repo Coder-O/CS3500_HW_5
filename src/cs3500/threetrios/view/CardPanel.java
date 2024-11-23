@@ -31,23 +31,24 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private final ThreeTriosCard card;
   private final int index;
   private boolean isSelected = false;
-  private static CardPanel selectedCardPanel = null;
+  private final ThreeTriosGameGUIView view;
 
   /**
    * Card Panel constructor.
    * @param card A card in the hand.
    * @param index The index of the Card in the Hand.
    */
-  public CardPanel(ThreeTriosCard card, int index) {
+  public CardPanel(ThreeTriosCard card, int index, ThreeTriosGameGUIView view) {
     this.card = card;
     this.index = index;
+    this.view = view;
 
     //draw card
     this.drawCardsHelper();
 
     update();
 
-    addMouseListener(new MouseAdapter() {
+    this.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
         handleCardClick();
@@ -105,7 +106,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    */
   public void handleCardClick() {
     System.out.println("Clicked card index: " + index + ", Player: " + card.getPlayer().getName());
-    toggleSelection();
+    this.toggleSelection();
 
     if (features != null) {
       features.handleCardSelection(index, player);
@@ -117,8 +118,8 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    */
   private void toggleSelection() {
     // Deselect the currently selected card if it exists and is not the current card
-    if (selectedCardPanel != null && selectedCardPanel != this) {
-      selectedCardPanel.deselect();
+    if (view.selectedCardPanel != null && view.selectedCardPanel != this) {
+      view.selectedCardPanel.deselect();
     }
 
     // Select or deselect the current card
@@ -135,7 +136,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private void select() {
     setBorder(BorderFactory.createLineBorder(Color.RED, 5));
     isSelected = true;
-    selectedCardPanel = this;
+    view.selectedCardPanel = this;
   }
 
   /**
@@ -145,7 +146,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private void deselect() {
     setBorder(BorderFactory.createLineBorder(Color.BLACK));
     isSelected = false;
-    selectedCardPanel = null;
+    view.selectedCardPanel = null;
   }
 
   /**

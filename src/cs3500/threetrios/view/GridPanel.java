@@ -26,14 +26,16 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   private PlayerActionEvents features;
   private final ThreeTriosGrid grid;
   private final JPanel gridContainer;
+  private final ThreeTriosGameGUIView view;
 
   /**
    * Constructor for GridPanel.
    * @param grid the game's grid.
    */
-  public GridPanel(ThreeTriosGrid grid) {
+  public GridPanel(ThreeTriosGrid grid, ThreeTriosGameGUIView view) {
     this.grid = grid;
     this.gridContainer = new JPanel(new GridLayout(grid.getNumRows(), grid.getNumColumns()));
+    this.view = view;
     setLayout(new BorderLayout());
     add(gridContainer, BorderLayout.CENTER);
     update();
@@ -62,7 +64,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
         } else {
           // Generate a unique index based on the cell's position in the grid
           int cardIndex = row * grid.getNumColumns() + col;
-          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex);
+          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex, view);
           cardPanel.update();
           cellPanel.setLayout(new BorderLayout());
           cellPanel.add(cardPanel.getComponent(), BorderLayout.CENTER);

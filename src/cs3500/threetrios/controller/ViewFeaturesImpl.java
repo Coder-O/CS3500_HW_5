@@ -73,8 +73,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
       view.showErrorMessage("Invalid move.");
     }
 
-    view.refresh();
-    view.addFeatures(features);
+    update();
   }
 
   /**
