@@ -1,7 +1,6 @@
 package cs3500.threetrios.view;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
-import cs3500.threetrios.controller.ViewFeatures;
 
 /**
  * Represents the GUI view for the ThreeTrios Game.

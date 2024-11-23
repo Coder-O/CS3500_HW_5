@@ -5,7 +5,6 @@ import java.util.Objects;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.view.ThreeTriosGUIView;
-import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
 /**
  * An adapter/controller that manages a ThreeTriosGUIView.

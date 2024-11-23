@@ -5,17 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestPlayerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Archive.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/ThreeTrios.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/ThreeTrios.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/CardPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/CardPanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/CardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/CardPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/GridPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/ThreeTriosGameGUIView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CS3500_HW_5/cs3500/threetrios/view/ThreeTriosGameGUIView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestCompleteStrategies.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CS3500_HW_5/cs3500/threetrios/controller/TestCompleteStrategies.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/MinCanFlipStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/MinCanFlipStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ModelFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ModelFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerActionEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerActionEvents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ViewFeaturesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ViewFeaturesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/AbstractPlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategies.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestCompleteStrategies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/TestPlayerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,30 +135,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMinCanFlipStrategy.testEmpty3x3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestMinCanFlipStrategy" />
-      <option name="METHOD_NAME" value="testEmpty3x3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestPlayerController.testCellWithCardClicked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -178,6 +167,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestPlayerController.testNotYourCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestPlayerController" />
+      <option name="METHOD_NAME" value="testNotYourCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPlayerController.testNotYourTurn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestPlayerController" />
+      <option name="METHOD_NAME" value="testNotYourTurn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestPlayerController.testNullPlayer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
@@ -197,10 +218,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestPlayerController.testCellWithCardClicked" />
+        <item itemvalue="JUnit.TestPlayerController.testNotYourTurn" />
+        <item itemvalue="JUnit.TestPlayerController.testNotYourCard" />
         <item itemvalue="JUnit.TestPlayerController.testHoleClicked" />
         <item itemvalue="JUnit.TestPlayerController.testNullPlayer" />
-        <item itemvalue="JUnit.All in CS3500_HW_5" />
-        <item itemvalue="JUnit.TestMinCanFlipStrategy.testEmpty3x3" />
       </list>
     </recent_temporary>
   </component>

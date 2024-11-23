@@ -40,7 +40,8 @@ class MinCanFlipStrategy implements FallibleStrategy {
    * @return A list of the best moves this strategy could find.
    */
   @Override
-  public List<ThreeTriosMove> findBestMoves(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerFor) {
+  public List<ThreeTriosMove> findBestMoves(ReadOnlyThreeTriosModel model,
+                                            ThreeTriosPlayer playerFor) {
     setUp(model, playerFor);
 
     // Calling consider move on every legal move

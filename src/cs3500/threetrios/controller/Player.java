@@ -1,7 +1,5 @@
 package cs3500.threetrios.controller;
 
-import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
-
 /**
  * An object that implements every action we want a player to be able to take.
  * A player should be able to:
@@ -18,7 +16,7 @@ import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 public interface Player {
   /**
    * Adds the controller that this Player will call on.
-   * @param controller
+   * @param controller the controller for the game.
    */
   void addControllerListener(PlayerController controller);
 

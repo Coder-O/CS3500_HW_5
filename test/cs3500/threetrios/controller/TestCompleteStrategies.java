@@ -18,8 +18,6 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
   private FullyCompleteStrategy cornerUpperLeftStrategy;
   private FullyCompleteStrategy upperLeftCompleteStrategy;
   private List<FullyCompleteStrategy> strategies;
-  private FullyCompleteStrategy minCanFlipComplete;
-  private FullyCompleteStrategy minOpponentMoveComplete;
 
   @Override
   public void reset() {
@@ -45,7 +43,7 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
             new UpperLeftmostStrategy()
     );
 
-    minCanFlipComplete = new CompleteStrategyAdapter(
+    FullyCompleteStrategy minCanFlipComplete = new CompleteStrategyAdapter(
             new MinCanFlipStrategy(),
             new TieBreakingCompleteAdapter(
                     new UpperLeftmostStrategy()
@@ -53,11 +51,11 @@ public class TestCompleteStrategies extends AbstractStrategyTest {
             new UpperLeftmostStrategy()
     );
 
-    minOpponentMoveComplete = new CompleteStrategyAdapter(
+    FullyCompleteStrategy minOpponentMoveComplete = new CompleteStrategyAdapter(
             new MinOpponentMoveStrategy(
-            new TieBreakingCompleteAdapter(
-                    new UpperLeftmostStrategy()
-            )),
+                    new TieBreakingCompleteAdapter(
+                            new UpperLeftmostStrategy()
+                    )),
             new TieBreakingCompleteAdapter(
                     new UpperLeftmostStrategy()
             ),

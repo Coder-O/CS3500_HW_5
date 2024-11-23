@@ -11,7 +11,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
-import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
 

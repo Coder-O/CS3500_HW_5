@@ -2,6 +2,9 @@ package cs3500.threetrios.controller;
 
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
+/**
+ * Handles the actions a player might do.
+ */
 public interface PlayerActionEvents {
   /**
    * Handles when a player clicks a card in their hand.

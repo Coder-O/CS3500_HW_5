@@ -15,8 +15,8 @@ public interface ModelFeatures {
 
   /**
    * Adds a controller listener for a specific player.
-   * @param controller
-   * @param playerFor
+   * @param controller the game controller.
+   * @param playerFor player we want to listen to.
    */
   void addControllerListener(PlayerController controller, ThreeTriosPlayer playerFor);
 

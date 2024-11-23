@@ -11,6 +11,7 @@ import java.util.List;
 public class AbstractPlayerTest {
   protected Appendable appendable;
   protected Player player;
+
   @Test
   public void testUpdatesAllControllers() {
 
@@ -25,6 +26,7 @@ public class AbstractPlayerTest {
       player.addControllerListener(controller);
     }
 
+    //todo add assert statement
 
   }
 }

@@ -11,7 +11,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
-import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
