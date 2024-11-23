@@ -2,7 +2,6 @@ package cs3500.threetrios.controller;
 
 import java.util.Objects;
 
-import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
@@ -84,8 +83,6 @@ public class PlayerControllerImpl implements PlayerController {
    */
   @Override
   public void makeMove(ThreeTriosMove move) {
-
-
     //Handle Card Selection
     features.handleCardSelection(move.getCardIdxInHand(), move.getPlayer());
 

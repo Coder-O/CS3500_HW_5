@@ -3,7 +3,6 @@ package cs3500.threetrios.controller;
 import java.util.Objects;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
-import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
