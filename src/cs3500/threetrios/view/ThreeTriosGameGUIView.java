@@ -29,13 +29,15 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   private final JPanel redHandPanel;
   private final JPanel blueHandPanel;
   CardPanel selectedCardPanel = null;
+  private final ThreeTriosPlayer playerColor;
 
   /**
    * Constructor for the ThreeTriosGameGUIView.
    * @param model ReadOnly model (ensures view is incapable of modifying  model)
    */
-  public ThreeTriosGameGUIView(ReadOnlyThreeTriosGameModel model) {
+  public ThreeTriosGameGUIView(ReadOnlyThreeTriosGameModel model, ThreeTriosPlayer playerColor) {
     this.model = model;
+    this.playerColor = playerColor;
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setMinimumSize(new Dimension(800, 600));
     this.pack();
@@ -57,14 +59,14 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
     for (int i = 0; i < redHand.size(); i++) {
       ThreeTriosCard card = redHand.get(i);
-      CardPanel cardPanel = new CardPanel(card, i, this);
+      CardPanel cardPanel = new CardPanel(card, i, this, ThreeTriosPlayer.RED == playerColor);
       redHandPanel.add(cardPanel);
     }
 
     List<ThreeTriosCard> blueHand = model.getHand(ThreeTriosPlayer.BLUE);
     for (int i = 0; i < blueHand.size(); i++) {
       ThreeTriosCard card = blueHand.get(i);
-      CardPanel cardPanel = new CardPanel(card, i, this);
+      CardPanel cardPanel = new CardPanel(card, i, this, ThreeTriosPlayer.BLUE == playerColor);
       blueHandPanel.add(cardPanel);
     }
 
@@ -83,7 +85,8 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     ((GridPanel) gridPanel).update();
 
     // Update the title to show current game state
-    setTitle("Current player: " + model.getCurrentPlayer().getName());
+    setTitle("You are: " + playerColor.getName()
+            + ". Current player: " + model.getCurrentPlayer().getName());
 
     // Update the hand displays for both players
     updateHandPanel(ThreeTriosPlayer.RED);
@@ -108,7 +111,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     List<ThreeTriosCard> hand = model.getHand(player);
     for (int i = 0; i < hand.size(); i++) {
       ThreeTriosCard card = hand.get(i);
-      CardPanel cardPanel = new CardPanel(card, i, this);
+      CardPanel cardPanel = new CardPanel(card, i, this, playerColor == player);
       handPanel.add(cardPanel.getComponent());
     }
 

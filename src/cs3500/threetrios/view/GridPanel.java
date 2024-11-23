@@ -64,7 +64,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
         } else {
           // Generate a unique index based on the cell's position in the grid
           int cardIndex = row * grid.getNumColumns() + col;
-          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex, view);
+          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex, view, false);
           cardPanel.update();
           cellPanel.setLayout(new BorderLayout());
           cellPanel.add(cardPanel.getComponent(), BorderLayout.CENTER);

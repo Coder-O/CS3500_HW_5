@@ -3,13 +3,9 @@ package cs3500.threetrios.controller;
 import java.util.Objects;
 import java.util.Optional;
 
-import javax.sound.midi.Soundbank;
-
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
-import cs3500.threetrios.view.ThreeTriosGUIView;
-import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
 /**
  * A controller that manages interactions between a player implementation suite and a model.

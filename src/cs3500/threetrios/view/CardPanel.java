@@ -32,16 +32,18 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private final int index;
   private boolean isSelected = false;
   private final ThreeTriosGameGUIView view;
+  private final boolean selectable;
 
   /**
    * Card Panel constructor.
    * @param card A card in the hand.
    * @param index The index of the Card in the Hand.
    */
-  public CardPanel(ThreeTriosCard card, int index, ThreeTriosGameGUIView view) {
+  public CardPanel(ThreeTriosCard card, int index, ThreeTriosGameGUIView view, boolean selectable) {
     this.card = card;
     this.index = index;
     this.view = view;
+    this.selectable = selectable;
 
     //draw card
     this.drawCardsHelper();
@@ -106,11 +108,16 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    */
   public void handleCardClick() {
     System.out.println("Clicked card index: " + index + ", Player: " + card.getPlayer().getName());
-    this.toggleSelection();
+    if (selectable) {
+      this.toggleSelection();
 
-    if (features != null) {
-      features.handleCardSelection(index, player);
+      if (features != null) {
+        features.handleCardSelection(index, player);
+      }
+    } else {
+      view.showErrorMessage("Cannot select that card!");
     }
+
   }
 
   /**

@@ -59,10 +59,10 @@ public final class ThreeTrios {
     // But we will need to add a Player as a listener in the human case.
     // View blueView = the same thing...
 
-    ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model);
+    ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.RED);
     ViewFeatures redView = new ViewFeaturesImpl(model, redGuiView);
 
-    ThreeTriosGUIView blueGuiView = new ThreeTriosGameGUIView(model);
+    ThreeTriosGUIView blueGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.BLUE);
     ViewFeatures blueView = new ViewFeaturesImpl(model, blueGuiView);
 
     // -- Creating controllers, which connect each player's components and the model. --
