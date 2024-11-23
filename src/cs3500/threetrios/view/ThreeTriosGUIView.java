@@ -1,5 +1,6 @@
 package cs3500.threetrios.view;
 
+import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.controller.ViewFeatures;
 
 /**
@@ -21,7 +22,7 @@ public interface ThreeTriosGUIView {
    * Register the controller as a listener for player actions.
    * @param features player actions.
    */
-  void addFeatures(ViewFeatures features);
+  void addFeatures(PlayerActionEvents features);
 
   /**
    * Display an error message.

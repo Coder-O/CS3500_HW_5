@@ -13,6 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosDirection;
@@ -25,28 +26,31 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  */
 public class CardPanel extends JPanel implements ThreeTriosPanel {
 
-  private ViewFeatures features;
+  private PlayerActionEvents features;
   private ThreeTriosPlayer player;
   private final ThreeTriosCard card;
   private final int index;
   private boolean isSelected = false;
-  private static CardPanel selectedCardPanel = null;
+  private final ThreeTriosGameGUIView view;
+  private final boolean selectable;
 
   /**
    * Card Panel constructor.
    * @param card A card in the hand.
    * @param index The index of the Card in the Hand.
    */
-  public CardPanel(ThreeTriosCard card, int index) {
+  public CardPanel(ThreeTriosCard card, int index, ThreeTriosGameGUIView view, boolean selectable) {
     this.card = card;
     this.index = index;
+    this.view = view;
+    this.selectable = selectable;
 
     //draw card
     this.drawCardsHelper();
 
     update();
 
-    addMouseListener(new MouseAdapter() {
+    this.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
         handleCardClick();
@@ -104,11 +108,16 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    */
   public void handleCardClick() {
     System.out.println("Clicked card index: " + index + ", Player: " + card.getPlayer().getName());
-    toggleSelection();
+    if (selectable) {
+      this.toggleSelection();
 
-    if (features != null) {
-      features.handleCardSelection(index, player);
+      if (features != null) {
+        features.handleCardSelection(index, player);
+      }
+    } else {
+      view.showErrorMessage("Cannot select that card!");
     }
+
   }
 
   /**
@@ -116,8 +125,8 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    */
   private void toggleSelection() {
     // Deselect the currently selected card if it exists and is not the current card
-    if (selectedCardPanel != null && selectedCardPanel != this) {
-      selectedCardPanel.deselect();
+    if (view.selectedCardPanel != null && view.selectedCardPanel != this) {
+      view.selectedCardPanel.deselect();
     }
 
     // Select or deselect the current card
@@ -134,7 +143,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private void select() {
     setBorder(BorderFactory.createLineBorder(Color.RED, 5));
     isSelected = true;
-    selectedCardPanel = this;
+    view.selectedCardPanel = this;
   }
 
   /**
@@ -144,7 +153,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
   private void deselect() {
     setBorder(BorderFactory.createLineBorder(Color.BLACK));
     isSelected = false;
-    selectedCardPanel = null;
+    view.selectedCardPanel = null;
   }
 
   /**
@@ -182,7 +191,7 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
    * @param features the controller's features interface.
    * @param player the current player.
    */
-  public void addFeatures(ViewFeatures features, ThreeTriosPlayer player) {
+  public void addFeatures(PlayerActionEvents features, ThreeTriosPlayer player) {
     this.features = features;
     this.player = player;
   }

@@ -1,58 +1,77 @@
 package cs3500.threetrios.controller;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
-import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
 /**
  * A controller that manages interactions between a player implementation suite and a model.
  * There is one instance of a controller for every player.
  */
 public class PlayerControllerImpl implements PlayerController {
+  private final ThreeTriosModel model;
+  private final ViewFeatures view;
+  private final Player player;
+  private final ThreeTriosPlayer playerColor;
 
-  private ThreeTriosModel model;
-  private ThreeTriosGameGUIView view;
-  private ViewFeaturesImpl features;
+  private int indexSelected;
 
   /**
-   * Constructor for PlayerControllerImpl.
+   * Constructor for a machine PlayerControllerImpl.
    * @param model the game model.
    * @param view the game view.
    */
-  public PlayerControllerImpl(ThreeTriosGameModel model, ThreeTriosGameGUIView view) {
+  public PlayerControllerImpl(
+          ThreeTriosGameModel model,
+          ViewFeatures view,
+          Player player,
+          ThreeTriosPlayer playerColor
+  ) {
     this.model = Objects.requireNonNull(model);
+    this.playerColor = Objects.requireNonNull(playerColor);
+    model.addControllerListener(this, this.playerColor);
+
     this.view = Objects.requireNonNull(view);
-    features = new ViewFeaturesImpl(model, view);
+    this.view.addFeatures(this);
+
+    this.player = player;
+    if (player != null) {
+      player.addControllerListener(this);
+    }
   }
 
   /**
-   * Add a view as a listener to this controller.
-   * @param view
+   * Constructor for a human PlayerControllerImpl.
+   * @param model the game model.
+   * @param view the game view.
    */
-  @Override
-  public void addViewListener(ViewFeatures view) {
-
+  public PlayerControllerImpl(
+          ThreeTriosGameModel model,
+          ViewFeatures view,
+          ThreeTriosPlayer playerColor
+  ) {
+    this(model, view, null, playerColor);
   }
 
   /**
-   * Adds a player to listens to this controller.
-   *
-   * @param player The player to listen (for model updates).
+   * Updates this controller and all of its listeners with a new model.
    */
   @Override
-  public void addPlayerListener(PlayerActions player) {
-
+  public void update() {
+    view.update();
   }
 
   /**
-   * The model will call this method whenever it finishes updating.
+   * Informs this controller that it is its turn.
    */
   @Override
-  public void updateModel(ThreeTriosModel model) {
-    this.model = model;
+  public void isYourTurn() {
+    if (player != null) {
+      player.itsYourTurn();
+    }
   }
 
   /**
@@ -63,7 +82,11 @@ public class PlayerControllerImpl implements PlayerController {
    */
   @Override
   public void handleCardSelection(int cardIdx, ThreeTriosPlayer player) {
+    System.out.println("Card clicked!!!");
 
+    indexSelected = cardIdx;
+
+    view.handleCardSelection(cardIdx, player);
   }
 
   /**
@@ -74,25 +97,16 @@ public class PlayerControllerImpl implements PlayerController {
    */
   @Override
   public void handleGridCellSelection(int row, int col) {
+    System.out.println("Cell Clicked!!!");
 
-  }
+    view.handleGridCellSelection(row, col);
 
-  /**
-   * PlayerActions implementations will call this method to attempt to make a move in the model.
-   * @param move the move the player wants to make.
-   */
-  @Override
-  public void makeMove(ThreeTriosMove move) {
-    //Handle Card Selection
-    features.handleCardSelection(move.getCardIdxInHand(), move.getPlayer());
-
-    //todo add handleCardDeselection
-
-    //Handle Cell Selection
-    features.handleGridCellSelection(move.getRowIdx(), move.getCollumnIdx());
-
-    //Play selected card to selected cell
-    model.playToGrid(move.getPlayer(), move.getCardIdxInHand(),
-            move.getRowIdx(), move.getCollumnIdx());
+    // Play selected card to selected cell
+    Optional<Exception> e = model.canPlayToGrid(playerColor, indexSelected, row, col);
+    if (e.isEmpty()) {
+      model.playToGrid(playerColor, indexSelected, row, col);
+    } else {
+      view.showError(e.get());
+    }
   }
 }

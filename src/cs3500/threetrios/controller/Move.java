@@ -10,7 +10,7 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
  * Moves are immutable.
  * All indices are zero indexed.
  */
-class Move implements ThreeTriosMove {
+public class Move implements ThreeTriosMove {
   private final ThreeTriosPlayer player;
   private final int cardIdxInHand;
   private final int rowIdx;

@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
@@ -22,17 +23,19 @@ import cs3500.threetrios.model.ThreeTriosGrid;
  */
 public class GridPanel extends JPanel implements ThreeTriosPanel {
 
-  private ViewFeatures features;
+  private PlayerActionEvents features;
   private final ThreeTriosGrid grid;
   private final JPanel gridContainer;
+  private final ThreeTriosGameGUIView view;
 
   /**
    * Constructor for GridPanel.
    * @param grid the game's grid.
    */
-  public GridPanel(ThreeTriosGrid grid) {
+  public GridPanel(ThreeTriosGrid grid, ThreeTriosGameGUIView view) {
     this.grid = grid;
     this.gridContainer = new JPanel(new GridLayout(grid.getNumRows(), grid.getNumColumns()));
+    this.view = view;
     setLayout(new BorderLayout());
     add(gridContainer, BorderLayout.CENTER);
     update();
@@ -61,7 +64,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
         } else {
           // Generate a unique index based on the cell's position in the grid
           int cardIndex = row * grid.getNumColumns() + col;
-          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex);
+          CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex, view, false);
           cardPanel.update();
           cellPanel.setLayout(new BorderLayout());
           cellPanel.add(cardPanel.getComponent(), BorderLayout.CENTER);
@@ -101,7 +104,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
    * Adds the features to enable communication with the controller.
    * @param features the controller's features interface.
    */
-  public void addFeatures(ViewFeatures features) {
+  public void addFeatures(PlayerActionEvents features) {
     this.features = features;
   }
 }

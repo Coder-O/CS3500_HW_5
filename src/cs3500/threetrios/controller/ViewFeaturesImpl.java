@@ -4,26 +4,31 @@ import java.util.Objects;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
+import cs3500.threetrios.view.ThreeTriosGUIView;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
 /**
- * Features interface describing the actions a player can perform in the game.
- * The controller implements this interface to handle player actions.
+ * An adapter/controller that manages a ThreeTriosGUIView.
  */
 public class ViewFeaturesImpl implements ViewFeatures {
 
   private ReadOnlyThreeTriosModel model;
-  private ThreeTriosGameGUIView view;
+  private ThreeTriosGUIView view;
   private Integer selectedCardIdx;
+  private PlayerActionEvents features;
 
   /**
    * Constructor for ViewFeaturesImpl.
    */
-  public ViewFeaturesImpl(ReadOnlyThreeTriosModel model, ThreeTriosGameGUIView view) {
+  public ViewFeaturesImpl(ReadOnlyThreeTriosModel model, ThreeTriosGUIView view) {
     this.model = Objects.requireNonNull(model);
     this.view = Objects.requireNonNull(view);
+  }
 
-    this.view.addFeatures(this);
+  @Override
+  public void addFeatures(PlayerActionEvents features) {
+    this.view.addFeatures(features);
+    this.features = features;
   }
 
   /**
@@ -32,7 +37,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
    * @param player the current player.
    */
   @Override
-  public void handleCardSelection(Integer index, ThreeTriosPlayer player) {
+  public void handleCardSelection(int index, ThreeTriosPlayer player) {
 
     //Confirm it is the player's turn
     if (!model.getCurrentPlayer().equals(player)) {
@@ -44,19 +49,8 @@ public class ViewFeaturesImpl implements ViewFeatures {
       view.showErrorMessage("Selected card does not belong to you.");
     }
 
-    selectedCardIdx = index;
-  }
-
-  /**
-   * Handles when a player deselects a card.
-   * @param index the index of the clicked card in the player's hand.
-   * @param player the current player.
-   */
-  @Override
-  public void handleCardDeselection(Integer index, ThreeTriosPlayer player) {
     if (selectedCardIdx != null) {
       selectedCardIdx = index;
-      handleCardSelection(selectedCardIdx, player);
     }
   }
 
@@ -78,7 +72,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
       view.showErrorMessage("Invalid move.");
     }
 
-    view.refresh();
+    update();
   }
 
   /**
@@ -86,8 +80,9 @@ public class ViewFeaturesImpl implements ViewFeatures {
    * @param model The current game model
    */
   @Override
-  public void updateModel(ReadOnlyThreeTriosModel model) {
-    this.model = model;
+  public void update() {
+    view.refresh();
+    view.addFeatures(features);
   }
 
   /**
@@ -97,6 +92,6 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void showError(Exception e) {
-
+    view.showErrorMessage(e.getMessage());
   }
 }

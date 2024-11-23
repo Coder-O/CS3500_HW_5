@@ -2,8 +2,6 @@ package cs3500.threetrios.controller;
 
 import java.io.IOException;
 
-import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
-import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
 
@@ -19,55 +17,6 @@ public class MockPlayerController implements PlayerController {
    */
   public MockPlayerController(Appendable appendable) {
     this.appendable = appendable;
-  }
-
-  /**
-   * Add a view as a listener to this controller.
-   *
-   * @param view
-   */
-  @Override
-  public void addViewListener(ViewFeatures view) {
-    try {
-      appendable.append("addViewListener called with view = ");
-      appendable.append(view.toString());
-      appendable.append(System.lineSeparator());
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /**
-   * Adds a player to listens to this controller.
-   *
-   * @param player The player to listen (for model updates).
-   */
-  @Override
-  public void addPlayerListener(PlayerActions player) {
-    try {
-      appendable.append("addPlayerListener called with player = ");
-      appendable.append(player.toString());
-      appendable.append(System.lineSeparator());
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /**
-   * The model will call this method whenever it finishes updating.
-   * The controller will update everything that listens to it with the model.
-   *
-   * @param model
-   */
-  @Override
-  public void updateModel(ThreeTriosModel model) {
-    try {
-      appendable.append("updateModel called with model = ");
-      appendable.append(model.toString());
-      appendable.append(System.lineSeparator());
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
   }
 
   /**
@@ -108,8 +57,30 @@ public class MockPlayerController implements PlayerController {
     }
   }
 
+  /**
+   * The model will call this method whenever it finishes updating.
+   * The controller will update everything that listens to it with the model.
+   */
   @Override
-  public void makeMove(ThreeTriosMove move) {
+  public void update() {
+    try {
+      appendable.append("update was called");
+      appendable.append(System.lineSeparator());
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
 
+  /**
+   * Informs this controller that it is its turn.
+   */
+  @Override
+  public void isYourTurn() {
+    try {
+      appendable.append("isYourTurn was called");
+      appendable.append(System.lineSeparator());
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
