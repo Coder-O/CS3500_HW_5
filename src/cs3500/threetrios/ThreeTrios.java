@@ -10,6 +10,7 @@ import cs3500.threetrios.controller.StrategyFactory;
 import cs3500.threetrios.controller.StrategyPlayer;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.controller.ViewFeaturesImpl;
+import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -28,8 +29,37 @@ public final class ThreeTrios {
   /**
    * Instantiates a model, instantiates a view
    * using that model, and tells the view to get started.
+   * @param args The arguments for setup. It must be organized as follows:
+   *             <ul>
+   *                <li>args[0]: The type of the red player, 'machine' or 'human'.</li>
+   *                <li>args[1]: The type of the blue player, 'machine' or 'human'.</li>
+   *                <li>args[2]: The strategy of the red player. </li>
+   *                <li>args[3]: The strategy of the blue player.</li>
+   *             </ul>
+   *             The strategy arguments are optional if and only if both players are 'human'.
+   *             Valid strategies are:
+   *             'upperLeft', 'maxScore', 'cornerUpperLeft', 'minCanFlip', and 'minOpponentMove'.
    */
   public static void main(String[] args) {
+
+    // interpreting args
+    if (args.length != 4 && args.length != 2) {
+      throw new IllegalArgumentException("An incorrect number of parameters were given!");
+    }
+
+    String redPlayerType = args[0];
+    String bluePlayerType = args[1];
+
+    String redStrategyType = null;
+    String blueStrategyType = null;
+
+    if (!(redPlayerType.equals("human") && bluePlayerType.equals("human"))) {
+      if (args.length != 4) {
+        throw new IllegalArgumentException("An incorrect number of parameters were given!");
+      }
+      redStrategyType = args[2];
+      blueStrategyType = args[3];
+    }
 
     // Creating model, which controls the game state.
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
@@ -38,19 +68,21 @@ public final class ThreeTrios {
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
 
-    ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
+    ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, true);
 
     // -- Creating players, which handle player inputs (mainly for ai implementations) --
 
-    Player redPlayer = new StrategyPlayer(
+    Player redPlayer = choosePlayer(
             model,
-             StrategyFactory.makeStrategy(""),
-             ThreeTriosPlayer.RED
+            ThreeTriosPlayer.RED,
+            redPlayerType,
+            redStrategyType
     );
-    Player bluePlayer = new StrategyPlayer(
+    Player bluePlayer = choosePlayer(
             model,
-            StrategyFactory.makeStrategy(""),
-            ThreeTriosPlayer.BLUE
+            ThreeTriosPlayer.BLUE,
+            bluePlayerType,
+            blueStrategyType
     );
 
     // -- Creating views, which display information
@@ -81,5 +113,29 @@ public final class ThreeTrios {
 
     // todo:
     //  Make the controller assign players to everything else.;
+  }
+
+  /**
+   * Creates a Player object based on input.
+   * @param model The model for this player to observe.
+   * @param playerColor The color this Player shall play for.
+   * @param type The type of player, 'human' or 'machine'
+   * @param strategy The strategy for that player to follow, if it is a machine player.
+   * @return The corresponding player.
+   */
+  private static Player choosePlayer(
+          ReadOnlyThreeTriosModel model,
+          ThreeTriosPlayer playerColor,
+          String type,
+          String strategy
+  ) {
+    switch (type) {
+      case "human" :
+        return null;
+      case "machine" :
+        return new StrategyPlayer(model, StrategyFactory.makeStrategy(strategy), playerColor);
+    }
+
+    throw new IllegalStateException("The arguments of main were invalid!");
   }
 }

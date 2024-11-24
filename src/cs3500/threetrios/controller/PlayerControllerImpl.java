@@ -120,7 +120,6 @@ public class PlayerControllerImpl implements PlayerController {
       indexSelected = null;
       model.playToGrid(playerColor, tempIndexSelected, row, col);
     } else {
-      System.out.println("Huh????");
       view.showError(e.get());
     }
   }

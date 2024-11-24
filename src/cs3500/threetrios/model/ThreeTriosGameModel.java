@@ -201,7 +201,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
       controller.update();
     }
 
-    if (!isGameOver()) {
+    if (!isGameOver() && !playerControllers.isEmpty()) {
       playerControllers.get(currentPlayer).isYourTurn();
     }
   }
