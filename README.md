@@ -7,30 +7,61 @@ The following assumptions are made:
 - Game will track whose turn it is.
 
 Quick Start: 
+
+    // Use the provided .jar, or:
     
-    // Get a grid and deck to start the game with, from configuration files 'exampleGrid.txt' and 'exampleDeck.txt' in the root directory
-    ThreeTriosGrid grid = ConfigurationReader.readGrid("exampleGrid.txt");
-    List<ThreeTriosCard> deck = ConfigurationReader.readDeck("exampleGrid.txt");
     
-    // Get an instance of the rules to start a game with, such as SimpleRules
+
+    // Creating model, which controls the game state.
+    ThreeTriosGrid grid = ConfigurationReader.readGrid(
+            "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3H.txt");
     ThreeTriosBattleRules battleRules = new SimpleRules();
-    
-    // Starts a game!!!
-    ThreeTriosModel model = new ThreeTriosGameModel(grid, deck, battleRules);
-    
-    // Sets up a view
-    ThreeTriosView view = new ThreeTriosView(ThreeTriosModel model, System.out);
-    
-    // From here, take player actions
-    ThreeTriosGameModel.playToGrid(ThreeTriosPlayer.Red, 0, 0, 0);
-    ThreeTriosGameModel.playToGrid(ThreeTriosPlayer.Blue, 0, 1, 1);
-    
-    // And view the game
-    view.render()
+    List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
+            "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
+
+    ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, false);
+
+    // -- Creating players, which handle player inputs (mainly for ai implementations) --
+
+    Player redPlayer = new StrategyPlayer(
+            model,
+             StrategyFactory.makeStrategy(""),
+             ThreeTriosPlayer.RED
+    );
+    Player bluePlayer = new StrategyPlayer(
+            model,
+            StrategyFactory.makeStrategy(""),
+            ThreeTriosPlayer.BLUE
+    );
+
+    // -- Creating views, which display information
+    // (and potentially handel inputs for human players)--
+
+    ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.RED);
+    ViewFeatures redView = new ViewFeaturesImpl(model, redGuiView);
+
+    ThreeTriosGUIView blueGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.BLUE);
+    ViewFeatures blueView = new ViewFeaturesImpl(model, blueGuiView);
+
+    // -- Creating controllers, which connect each player's components and the model. --
+
+    PlayerController redController = new PlayerControllerImpl(model,
+            redView, ThreeTriosPlayer.RED);
+    PlayerController blueController = new PlayerControllerImpl(model,
+            blueView, ThreeTriosPlayer.BLUE);
+
+    // -- Starting the game. --
+    model.startGame();
 
 Key Components and Subcomponents:
-- Controller: drives the control-flow of the game. To be developed.
+- Controller: drives the control-flow of the game.
     - ConfigurationReader: Creates a ThreeTriosGrid or a list of ThreeTriosCards from a file.
+    - ModelFeatures: an interface for a model to implement that details its interactions with a controller.
+    - Player: An interface for a Player in the game, which handels decition making and strategies for an in-game player.
+        - Note: it is possible for a view to handel user input and call the controller directly, so Player implementations are not always requied.
+    - PlayerActionEvents: The high-level actions a real-world player can take. This interface is implemented by any component that wishes to react directly to such events,             such as a controller or view.
+    - PlayerController: The core of the overal controller section. Every in-game player has a coresponding controller, which manages interactions between components.
+    - ViewFeatures: The features a View must implemnt to interact with a controller.
     - FullyCompleteStrategy: An interface for a strategy that is guaranteed to find a single move for a given board state, should a legal move be possible.
     - CompleteStrategy: An interface for a strategy that is guaranteed to find a single move for a given board state or throw an exception.
     - TieBreakingStrategy: An interface for a strategy that is guaranteed to find a single move for a given board state and list of moves or throw an exception.
@@ -60,7 +91,7 @@ Key Components and Subcomponents:
 Source Organization:
 - Src
     - Controller
-        - (Controller related code)
+        - (Controller related code, including the interfaces for other compenent's interactions with the controller)
     - Model
         - (ThreeTriosModel and related code)
     - View
@@ -70,12 +101,6 @@ Source Organization:
     - ThreeTrios
 - Test
     - (Tests mirroring the organization above)
- 
-Extra Credit:
-- Implementations and design for the two extra strategies and the ability to combine strategies were completed, but we ran out of time to fully test them.
-- The MinCanFlipStrategy and MinOpponentMoveStrategy in the controller package are the two extra implmentations.
-- TestMinCanFlipStrategy has some tests for MinCanFlipStrategy.
-- TestCompleteStrategies has some tests for mixing different strategies, including both new strategies.
 
 Changes for Part 2:
 - New features for HW6
@@ -109,3 +134,10 @@ Changes for Part 2:
         - Changed some exceptions to be more specific (such as throwing an IndexOutOfBounds exception instead of an IllegalArgument exception for certain errors.)
     - Added more thorough tests to all parts of the program, and made many small updates to implementations to fix previouly uncaught errors
 
+Changes for Part 3:
+- New Features for HW7:
+    - Model:
+        - A new ModelFeatures interface was created, to doument every feature a model may need to be used by a controller. Models interfaces now extend this interface.
+            - Specifically, a Model should be able to add controllers as listeners and publish to them, listen for moves, and start a game by updating the initial controller.                 We added all of these features.
+    - View:
+        - We updated the view to better interact with view features, be able to handel multiple indepnedant instances at once, and to rely more on being controlled by a view             features and controller rather than handeling all processies itself.

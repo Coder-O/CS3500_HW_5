@@ -34,7 +34,9 @@ public class PlayerControllerImpl implements PlayerController {
     model.addControllerListener(this, this.playerColor);
 
     this.view = Objects.requireNonNull(view);
-    this.view.addFeatures(this);
+    if (player == null) {
+      this.view.addFeatures(this);
+    }
 
     this.player = player;
     if (player != null) {
@@ -69,6 +71,7 @@ public class PlayerControllerImpl implements PlayerController {
   @Override
   public void isYourTurn() {
     if (player != null) {
+      System.out.println("Index is " + indexSelected);
       player.itsYourTurn();
     }
   }
@@ -110,11 +113,9 @@ public class PlayerControllerImpl implements PlayerController {
     // Play selected card to selected cell
     Optional<Exception> e = model.canPlayToGrid(playerColor, indexSelected, row, col);
     if (e.isEmpty()) {
-      System.out.println("playing card");
-      model.playToGrid(playerColor, indexSelected, row, col);
-      System.out.println("card populated" + Thread.currentThread().getStackTrace()[2]);
-      view.handleGridCellSelection(row, col);
+      int tempIndexSelected = indexSelected;
       indexSelected = null;
+      model.playToGrid(playerColor, tempIndexSelected, row, col);
     } else {
       view.showError(e.get());
     }
