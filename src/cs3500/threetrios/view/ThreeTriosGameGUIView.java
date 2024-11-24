@@ -80,9 +80,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
    */
   @Override
   public void refresh() {
-    // Update the grid display
-    ((GridPanel) gridPanel).update();
-
+    System.out.println("Calling view.refresh() from: " + Thread.currentThread().getStackTrace()[2]);
     // Update the title to show current game state
     setTitle("You are: " + playerColor.getName()
             + ". Current player: " + model.getCurrentPlayer().getName());
@@ -90,6 +88,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     // Update the hand displays for both players
     updateHandPanel(ThreeTriosPlayer.RED);
     updateHandPanel(ThreeTriosPlayer.BLUE);
+    gridPanel.update();
 
     //Display final message if game is over
     if (model.isGameOver()) {

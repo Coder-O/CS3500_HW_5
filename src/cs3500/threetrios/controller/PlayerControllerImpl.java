@@ -86,7 +86,6 @@ public class PlayerControllerImpl implements PlayerController {
   public void handleCardSelection(Integer cardIdx, ThreeTriosPlayer player) {
     System.out.println("Card clicked!!!");
 
-
     view.handleCardSelection(cardIdx, player);
 
     if (Objects.equals(indexSelected, cardIdx)) {
@@ -105,8 +104,6 @@ public class PlayerControllerImpl implements PlayerController {
   @Override
   public void handleGridCellSelection(int row, int col) {
     System.out.println("Cell Clicked!!!");
-
-    view.handleGridCellSelection(row, col);
 
     if (indexSelected == null) {
       view.showError(new IllegalStateException("Please choose a card before playing to a cell!"));

@@ -152,6 +152,7 @@
     <configuration name="ThreeTrios" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
+      <option name="PROGRAM_PARAMETERS" value="human human" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cs3500.threetrios.*" />
