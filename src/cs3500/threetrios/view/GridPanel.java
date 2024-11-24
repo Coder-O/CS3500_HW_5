@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
+import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
 
@@ -23,7 +24,8 @@ import cs3500.threetrios.model.ThreeTriosGrid;
 public class GridPanel extends JPanel implements ThreeTriosPanel {
 
   private PlayerActionEvents features;
-  private final ThreeTriosGrid grid;
+  private final ReadOnlyThreeTriosModel model;
+  private ThreeTriosGrid grid;
   private final JPanel gridContainer;
   private final ThreeTriosGameGUIView view;
 
@@ -31,8 +33,9 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
    * Constructor for GridPanel.
    * @param grid the game's grid.
    */
-  public GridPanel(ThreeTriosGrid grid, ThreeTriosGameGUIView view) {
-    this.grid = grid;
+  public GridPanel(ReadOnlyThreeTriosModel model, ThreeTriosGameGUIView view) {
+    this.model = model;
+    this.grid = this.model.getGrid();
     this.gridContainer = new JPanel(new GridLayout(grid.getNumRows(), grid.getNumColumns()));
     this.view = view;
     setLayout(new BorderLayout());
@@ -48,6 +51,8 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   @Override
   public void update() {
     gridContainer.removeAll();
+
+    grid = model.getGrid();
 
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int col = 0; col < grid.getNumColumns(); col++) {

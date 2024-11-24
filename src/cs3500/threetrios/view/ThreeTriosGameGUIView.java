@@ -46,7 +46,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     setTitle("Current player: " + model.getCurrentPlayer().getName());
 
     //Build grid
-    gridPanel = new GridPanel(model.getGrid(), this);
+    gridPanel = new GridPanel(model, this);
     add(gridPanel, BorderLayout.CENTER);
 
     //Build hand panels
