@@ -83,7 +83,6 @@ public class PlayerControllerImpl implements PlayerController {
   public void handleCardSelection(Integer cardIdx, ThreeTriosPlayer player) {
     System.out.println("Card clicked!!!");
 
-
     view.handleCardSelection(cardIdx, player);
 
     if (Objects.equals(indexSelected, cardIdx)) {
@@ -103,8 +102,6 @@ public class PlayerControllerImpl implements PlayerController {
   public void handleGridCellSelection(int row, int col) {
     System.out.println("Cell Clicked!!!");
 
-    view.handleGridCellSelection(row, col);
-
     if (indexSelected == null) {
       view.showError(new IllegalStateException("Please choose a card before playing to a cell!"));
       return;
@@ -113,7 +110,10 @@ public class PlayerControllerImpl implements PlayerController {
     // Play selected card to selected cell
     Optional<Exception> e = model.canPlayToGrid(playerColor, indexSelected, row, col);
     if (e.isEmpty()) {
+      System.out.println("playing card");
       model.playToGrid(playerColor, indexSelected, row, col);
+      System.out.println("card populated" + Thread.currentThread().getStackTrace()[2]);
+      view.handleGridCellSelection(row, col);
       indexSelected = null;
     } else {
       view.showError(e.get());

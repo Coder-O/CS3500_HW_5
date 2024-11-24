@@ -166,8 +166,6 @@ public class TestThreeTriosGameModel {
     assertEquals(ThreeTriosPlayer.BLUE, model.getWinner());
   }
 
-  //todo test getwinnertied game
-
   @Test
   public void testGetScore() {
     this.setUp();

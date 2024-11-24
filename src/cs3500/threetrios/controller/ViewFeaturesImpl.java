@@ -56,6 +56,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void handleGridCellSelection(int row, int col) {
+    System.out.println("Calling viewfeaturesimpl.update() from: " + Thread.currentThread().getStackTrace()[2]);
     update();
   }
 
