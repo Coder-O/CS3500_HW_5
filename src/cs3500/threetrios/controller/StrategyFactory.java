@@ -50,6 +50,8 @@ public class StrategyFactory {
                 ),
                 new UpperLeftmostStrategy()
         );
+      default:
+        //nothing
     }
 
     throw new IllegalArgumentException("The proved strategy type was invalid!");

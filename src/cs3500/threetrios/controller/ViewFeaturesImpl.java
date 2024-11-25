@@ -11,7 +11,6 @@ import cs3500.threetrios.view.ThreeTriosGUIView;
  */
 public class ViewFeaturesImpl implements ViewFeatures {
 
-  private ReadOnlyThreeTriosModel model;
   private ThreeTriosGUIView view;
   private Integer selectedCardIdx;
   private PlayerActionEvents features;
@@ -20,7 +19,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
    * Constructor for ViewFeaturesImpl.
    */
   public ViewFeaturesImpl(ReadOnlyThreeTriosModel model, ThreeTriosGUIView view) {
-    this.model = Objects.requireNonNull(model);
+    ReadOnlyThreeTriosModel model1 = Objects.requireNonNull(model);
     this.view = Objects.requireNonNull(view);
   }
 
@@ -49,7 +48,8 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void handleGridCellSelection(int row, int col) {
-    System.out.println("Calling viewfeaturesimpl.update() from: " + Thread.currentThread().getStackTrace()[2]);
+    System.out.println("Calling viewfeaturesimpl.update() from: "
+            + Thread.currentThread().getStackTrace()[2]);
     update();
   }
 

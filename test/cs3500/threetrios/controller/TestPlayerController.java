@@ -100,26 +100,4 @@ public class TestPlayerController {
   //test handlegridselection when a cell with a card is clicked
   //Cannot test a view but correct message is being displayed
 
-  //todo test a game is won
-//  @Test
-//  public void testIsGameWon() {
-//    this.setUp();
-//
-//    controller = new PlayerControllerImpl(model, features, player, ThreeTriosPlayer.RED);
-//
-//    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 0);
-//    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 0, 1);
-//    model.playToGrid(ThreeTriosPlayer.RED, 0, 0, 2);
-//    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 0);
-//    model.playToGrid(ThreeTriosPlayer.RED, 0, 1, 1);
-//    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 1, 2);
-//    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 0);
-//    model.playToGrid(ThreeTriosPlayer.BLUE, 0, 2, 1);
-//    model.playToGrid(ThreeTriosPlayer.RED, 0, 2, 2);
-//
-//    assertEquals(ThreeTriosPlayer.BLUE, model.getWinner());
-//  }
-
-  //todo test a game is tied
-
 }

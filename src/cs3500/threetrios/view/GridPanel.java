@@ -31,7 +31,6 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
 
   /**
    * Constructor for GridPanel.
-   * @param grid the game's grid.
    */
   public GridPanel(ReadOnlyThreeTriosModel model, ThreeTriosGameGUIView view) {
     this.model = model;

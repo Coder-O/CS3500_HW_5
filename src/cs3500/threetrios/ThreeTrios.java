@@ -106,13 +106,6 @@ public final class ThreeTrios {
     // This has the model call update() on it's subscribers for the first time.
     // Assumes the views set themselves to be visible when updated.
 
-    // todo:
-    //  Update implementations to match those interfaces.
-    //  Document to decrease confusion.
-    //
-
-    // todo:
-    //  Make the controller assign players to everything else.;
   }
 
   /**
@@ -129,13 +122,13 @@ public final class ThreeTrios {
           String type,
           String strategy
   ) {
-    switch (type) {
-      case "human" :
-        return null;
-      case "machine" :
-        return new StrategyPlayer(model, StrategyFactory.makeStrategy(strategy), playerColor);
-    }
 
+    if (type.equals("human")) {
+      return null;
+    }
+    else if (type.equals("machine")) {
+      return new StrategyPlayer(model, StrategyFactory.makeStrategy(strategy), playerColor);
+    }
     throw new IllegalStateException("The arguments of main were invalid!");
   }
 }
