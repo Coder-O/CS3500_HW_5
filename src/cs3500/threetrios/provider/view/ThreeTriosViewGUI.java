@@ -1,8 +1,8 @@
-package cs3500.threetrios.view;
+package cs3500.threetrios.provider.view;
 
-import cs3500.threetrios.controller.Features;
-import cs3500.threetrios.controller.Player;
-import cs3500.threetrios.model.IReadOnlyThreeTriosModel;
+import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.controller.Player;
+import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;

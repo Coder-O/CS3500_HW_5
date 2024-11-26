@@ -1,13 +1,13 @@
-package cs3500.threetrios.view;
+package cs3500.threetrios.provider.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import cs3500.threetrios.model.Card;
-import cs3500.threetrios.model.CardCell;
-import cs3500.threetrios.model.Cell;
-import cs3500.threetrios.model.Hole;
-import cs3500.threetrios.model.IThreeTriosModel;
+import cs3500.threetrios.provider.model.Card;
+import cs3500.threetrios.provider.model.CardCell;
+import cs3500.threetrios.provider.model.Cell;
+import cs3500.threetrios.provider.model.Hole;
+import cs3500.threetrios.provider.model.IThreeTriosModel;
 
 /**
  * Represents a rudimentary text view of a game of ThreeTrios.

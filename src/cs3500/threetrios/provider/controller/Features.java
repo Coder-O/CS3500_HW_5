@@ -1,4 +1,4 @@
-package cs3500.threetrios.controller;
+package cs3500.threetrios.provider.controller;
 
 /**
  * The Features that the controller handles.

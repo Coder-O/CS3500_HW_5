@@ -1,6 +1,6 @@
-package cs3500.threetrios.model;
+package cs3500.threetrios.provider.model;
 
-import cs3500.threetrios.controller.Features;
+import cs3500.threetrios.provider.controller.Features;
 
 /**
  * Represents a game of ThreeTrios.

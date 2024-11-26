@@ -1,4 +1,4 @@
-package cs3500.threetrios.view;
+package cs3500.threetrios.provider.view;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;

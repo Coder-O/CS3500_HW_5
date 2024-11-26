@@ -1,4 +1,4 @@
-package cs3500.threetrios.model;
+package cs3500.threetrios.provider.model;
 
 /**
  * Interface for a Strategy in ThreeTrios.

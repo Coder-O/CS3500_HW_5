@@ -1,6 +1,6 @@
-package cs3500.threetrios.view;
+package cs3500.threetrios.provider.view;
 
-import cs3500.threetrios.controller.Features;
+import cs3500.threetrios.provider.controller.Features;
 
 
 /**
