@@ -187,6 +187,7 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
     }
 
     if (!isGameOver() && !playerControllers.isEmpty()) {
+      System.out.println(playerControllers.get(currentPlayer) == null);
       playerControllers.get(currentPlayer).isYourTurn();
     }
   }

@@ -32,7 +32,7 @@ class UpperLeftmostStrategy implements TieBreakingStrategy {
           throws IllegalStateException {
     if (tiedMoves == null || tiedMoves.isEmpty()) {
       throw new IllegalStateException(
-              "The provided list of moved is empty! No move could be found!"
+              "The provided list of moves is empty! No move could be found!"
       );
     }
 

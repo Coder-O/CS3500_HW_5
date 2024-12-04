@@ -11,9 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS3500_HW_5.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/UpperLeftmostStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/UpperLeftmostStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +134,7 @@
       <recent name="cs3500.threetrios" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RedMaxBlueHuman">
+  <component name="RunManager" selected="Application.BothMinCanFlip">
     <configuration name="All human" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
