@@ -57,11 +57,9 @@ public class ProviderController implements Features {
       return false;
     }
 
-    // assuming that isLegalMove throws an error when a move is illegal...
-    // todo: make sure our implementation fits this!
     try {
-      model.isLegalMove(row, col); // Does this... do anything? todo: message providers
-    } catch (IllegalStateException e) {
+      model.isLegalMove(row, col);
+    } catch (Exception e) {
       view.error(e.getMessage());
       view.refresh();
       return false;
@@ -82,7 +80,6 @@ public class ProviderController implements Features {
     // Assuming that this informs this controller if it is this specific controller object's turn.
     isMyTurn = turn;
     view.blurScreen(turn); // Does this prevent card selection?
-    // todo: message providers
     view.refresh();
   }
 
