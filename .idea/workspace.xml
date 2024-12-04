@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerColorAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellToICardCellAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/CardToCardAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CardToCardAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellToCellAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellToCellAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +47,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.All human.executor": "Debug",
+    "Application.All human.executor": "Run",
     "Application.BothMinCanFlip.executor": "Run",
     "Application.BothMinOpponentMove.executor": "Debug",
     "Application.RedMaxBlueHuman.executor": "Run",

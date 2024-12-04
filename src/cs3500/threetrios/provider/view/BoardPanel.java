@@ -44,6 +44,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
 
   @Override
   protected void paintComponent(Graphics g) {
+    System.out.println("Board painted");
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
 
@@ -85,6 +86,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
   }
 
   private void drawCard(Graphics2D g2, int row, int col, int x, int y) {
+    System.out.println("Attempted to draw card at: " + row + ", " + col);
     int cellWidth = getWidth() / cols;
     int cellHeight = getHeight() / rows;
 
@@ -142,7 +144,6 @@ public class BoardPanel extends JPanel implements IBoardPanel {
   private class MouseEventsListener extends MouseInputAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
-      System.out.println("Test 1");
       int cellWidth = getWidth() / cols;
       int cellHeight = getHeight() / rows;
 
@@ -150,13 +151,9 @@ public class BoardPanel extends JPanel implements IBoardPanel {
       int row = e.getY() / cellHeight;
 
       if (row < rows && col < cols) {
-        System.out.println("Test 2");
         if (modelGrid.get(row).get(col) instanceof ICardCell) {
-          System.out.println("Test 3");
           if (features.get(0).placeCard(row, col)) {
-            System.out.println("Test 4");
             highlightCell(row, col);
-            System.out.println("Clicked cell at (" + row + ", " + col + ")");
             repaint();
           }
         }

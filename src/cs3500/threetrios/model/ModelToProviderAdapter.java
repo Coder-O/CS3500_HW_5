@@ -2,6 +2,7 @@ package cs3500.threetrios.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.provider.controller.Features;
@@ -192,7 +193,10 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public void isLegalMove(int row, int col) {
-    model.canPlayToGrid(currPlayer, 0, row, col);
+    Optional<Exception> e = model.canPlayToGrid(currPlayer, 0, row, col);
+    if (e.isPresent()) {
+      throw new IllegalArgumentException(e.get());
+    }
   }
 
   /**

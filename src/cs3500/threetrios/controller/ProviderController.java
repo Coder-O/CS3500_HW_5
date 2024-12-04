@@ -69,9 +69,15 @@ public class ProviderController implements Features, PlayerController  {
       return false;
     }
 
+    if (!isMyTurn) {
+      view.error("It is not your turn!");
+      view.refresh();
+      return false;
+    }
+
     try {
       model.isLegalMove(row, col);
-    } catch (Exception e) {
+    } catch (IllegalArgumentException e) {
       view.error(e.getMessage());
       view.refresh();
       return false;
@@ -91,7 +97,7 @@ public class ProviderController implements Features, PlayerController  {
   public void setTurn(boolean turn) {
     // Assuming that this informs this controller if it is this specific controller object's turn.
     isMyTurn = turn;
-    view.blurScreen(!turn); // Does this prevent card selection?
+    view.blurScreen(!turn);
     view.refresh();
   }
 
