@@ -1,8 +1,10 @@
 package cs3500.threetrios.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
 
 /**
@@ -11,6 +13,8 @@ import cs3500.threetrios.provider.model.IThreeTriosModel;
 public class ModelToProviderAdapter implements IThreeTriosModel {
 
   private final ThreeTriosModel model;
+
+  private ThreeTriosPlayer currPlayer;
 
   public ModelToProviderAdapter(ThreeTriosModel model) {
     this.model = model;
@@ -22,7 +26,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public int numCardCellOnBoard() {
-    return 0;
+    return model.getGrid().getNumCardCells();
   }
 
   /**
@@ -32,7 +36,12 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public String getTurn() {
-    return null;
+    currPlayer = model.getCurrentPlayer();
+
+    if (currPlayer == ThreeTriosPlayer.RED) {
+      return "true";
+    }
+    return "false";
   }
 
   /**
@@ -41,8 +50,37 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    * @return a 2D ArrayList of Card copy of game grid.
    */
   @Override
-  public ArrayList<ArrayList<Cell>> getGrid() {
-    return null;
+  public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGrid() {
+
+    //The outer ArrayList represents the columns, inner ArrayList the rows
+
+
+    // Initialize the 2D ArrayList to hold the grid copy
+    ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> gridCopy = new ArrayList<>();
+
+    // Assuming the model provides the number of rows and columns
+    int numRows = model.getGrid().getNumRows();
+    int numCols = model.getGrid().getNumColumns();
+
+    // Iterate over columns first
+    for (int col = 0; col < numCols; col++) {
+      // Create a new column for the grid copy
+      ArrayList<cs3500.threetrios.provider.model.Cell> columnCopy = new ArrayList<>();
+
+      // Iterate over rows for the current column
+      for (int row = 0; row < numRows; row++) {
+        // Get the ThreeTriosCell from the model
+        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
+
+        // Wrap it in the adapter and add to the column
+        columnCopy.add(new CellToCellAdapter(originalCell).toCell());
+      }
+
+      // Add the column to the grid copy
+      gridCopy.add(columnCopy);
+    }
+
+    return gridCopy;
   }
 
   /**
@@ -53,8 +91,25 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    * @throws IllegalArgumentException if invalid player name is given.
    */
   @Override
-  public ArrayList<Card> getPlayerHand(String player) {
-    return null;
+  public ArrayList<ICard> getPlayerHand(String player) {
+
+    // Initialize the list to hold the adapted hand
+    ArrayList<ICard> adaptedHand = new ArrayList<ICard>();
+
+    // Get the hand based on the player's color
+    if (player.equals("RED")) {
+      List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
+      for (ThreeTriosCard card : redHand) {
+        adaptedHand.add(new CardToCardAdapter(card).toCard());
+      }
+    } else {
+      List<ThreeTriosCard> blueHand = model.getHand(ThreeTriosPlayer.BLUE);
+      for (ThreeTriosCard card : blueHand) {
+        adaptedHand.add(new CardToCardAdapter(card).toCard());
+      }
+    }
+
+    return adaptedHand;
   }
 
   /**
@@ -64,7 +119,24 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public boolean isGameOver() {
-    return false;
+    return model.isGameOver();
+  }
+
+  /**
+   * Returns all cards owned by a player.
+   *
+   * @param player the player that's cards are being listed.
+   * @param tempGrid the current game grid that is being checked for a player's cards.
+   * @return all the player's owned cards in the game.
+   */
+  @Override
+  public int playerOwnedCards(boolean player,
+                              ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>>
+                                      tempGrid) {
+    if (player) {
+      return model.getNumOwnedCards(ThreeTriosPlayer.RED);
+    }
+    return model.getNumOwnedCards(ThreeTriosPlayer.BLUE);
   }
 
   /**
@@ -74,7 +146,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public int getRows() {
-    return 0;
+    return model.getGrid().getNumRows();
   }
 
   /**
@@ -84,6 +156,25 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public int getCols() {
+    return model.getGrid().getNumColumns();
+  }
+
+  /**
+   * Gets the number of cards that are flipped when a certain card is played to a certain spot.
+   *
+   * @param row the row of the spot being played to.
+   * @param col the column of the spot being plaued to.
+   * @param card the card being played to that spot.
+   * @return the number of cards flipped to the owner of the card that was played.
+   */
+  public int getCardsFlipped(int row, int col, ICard card) {
+    List<ICard> hand = this.getPlayerHand(currPlayer.getName());
+
+    for (int i = 0; i < hand.size(); i++) {
+      if (hand.get(i).equals(card)) {
+        return model.getMoveScore(currPlayer, i, row, col);
+      }
+    }
     return 0;
   }
 
@@ -95,7 +186,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public void isLegalMove(int row, int col) {
-
+    model.canPlayToGrid(currPlayer, 0, row, col);
   }
 
   /**
@@ -104,8 +195,37 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    * @return a copy of the grid.
    */
   @Override
-  public ArrayList<ArrayList<Cell>> getGridCopy() {
-    return null;
+  public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGridCopy() {
+
+    //The outer ArrayList represents the columns, inner ArrayList the rows
+
+
+    // Initialize the 2D ArrayList to hold the grid copy
+    ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> gridCopy = new ArrayList<>();
+
+    // Assuming the model provides the number of rows and columns
+    int numRows = model.getGrid().getNumRows();
+    int numCols = model.getGrid().getNumColumns();
+
+    // Iterate over columns first
+    for (int col = 0; col < numCols; col++) {
+      // Create a new column for the grid copy
+      ArrayList<cs3500.threetrios.provider.model.Cell> columnCopy = new ArrayList<>();
+
+      // Iterate over rows for the current column
+      for (int row = 0; row < numRows; row++) {
+        // Get the ThreeTriosCell from the model
+        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
+
+        // Wrap it in the adapter and add to the column
+        columnCopy.add(new CellToCellAdapter(originalCell).toCell());
+      }
+
+      // Add the column to the grid copy
+      gridCopy.add(columnCopy);
+    }
+
+    return gridCopy;
   }
 
   /**
@@ -116,32 +236,14 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public String whoWonGame() {
-    return null;
+    return model.getWinner().toString();
   }
 
   /**
-   * Gets the number of cards that are flipped when a certain card is played to a certain spot.
-   *
-   * @param row  the row of the spot being played to.
-   * @param col  the column of the spot being plaued to.
-   * @param card the card being played to that spot.
-   * @return the number of cards flipped to the owner of the card that was played.
+   * Sets initial turn in controller to the correct one for each player.
    */
-  @Override
-  public int getCardsFlipped(int row, int col, Card card) {
-    return 0;
-  }
-
-  /**
-   * Returns all cards owned by a player.
-   *
-   * @param player   the player that's cards are being listed.
-   * @param tempGrid the current game grid that is being checked for a player's cards.
-   * @return all the player's owned cards in the game.
-   */
-  @Override
-  public int playerOwnedCards(boolean player, ArrayList<ArrayList<Cell>> tempGrid) {
-    return 0;
+  public void startGame() {
+    model.startGame();
   }
 
   /**
@@ -157,11 +259,17 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public void placeCard(int row, int col, int handIdx) {
-
+    model.playToGrid(currPlayer, handIdx, row, col);
   }
 
+  /**
+   * Adds an observer (the controller) to this model
+   * so that the model can communicate with the controller.
+   *
+   * @param listener the controller being added.
+   */
   @Override
   public void addFeaturesListener(Features listener) {
-
+    //todo
   }
 }

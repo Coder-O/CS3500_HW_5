@@ -30,8 +30,7 @@ public interface IReadOnlyThreeTriosModel {
    * @return an ArrayList of Card of player's hand if valid input is given.
    * @throws IllegalArgumentException if invalid player name is given.
    */
-  ArrayList<Card> getPlayerHand(String player);
-
+  ArrayList<ICard> getPlayerHand(String player);
 
   /**
    * Determines whether the game is over.
@@ -46,7 +45,7 @@ public interface IReadOnlyThreeTriosModel {
    * @param tempGrid the current game grid that is being checked for a player's cards.
    * @return all the player's owned cards in the game.
    */
-  int playerOwnedCards(boolean player, ArrayList<ArrayList<Cell>> tempGrid);
+  int playerOwnedCards(boolean player, ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> tempGrid);
 
   /**
    * Gets the number of rows in the grid.
@@ -70,7 +69,7 @@ public interface IReadOnlyThreeTriosModel {
    * @param card the card being played to that spot.
    * @return the number of cards flipped to the owner of the card that was played.
    */
-  int getCardsFlipped(int row, int col, Card card);
+  int getCardsFlipped(int row, int col, ICard card);
 
   /**
    * Checks if a certain move is legal on the board.
@@ -85,7 +84,7 @@ public interface IReadOnlyThreeTriosModel {
    *
    * @return a copy of the grid.
    */
-  ArrayList<ArrayList<Cell>> getGridCopy();
+  ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGridCopy();
 
   /**
    * Determines who won the game, if it's over.

@@ -1,10 +1,10 @@
 package cs3500.threetrios.provider.view;
 
 import cs3500.threetrios.provider.controller.Features;
-import cs3500.threetrios.provider.model.Card;
-import cs3500.threetrios.provider.model.CardCell;
 import cs3500.threetrios.provider.model.Cell;
+import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
+import cs3500.threetrios.provider.model.ICardCell;
 
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
@@ -39,7 +39,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
     this.cols = model.getCols();
     this.modelGrid = model.getGrid();
     this.addMouseListener(new MouseEventsListener());
-    this.features = new ArrayList<Features>();
+    this.features = new ArrayList<>();
   }
 
   @Override
@@ -56,8 +56,8 @@ public class BoardPanel extends JPanel implements IBoardPanel {
         int y = row * cellHeight;
 
 
-        if (modelGrid.get(row).get(col) instanceof CardCell) {
-          if (((CardCell) modelGrid.get(row).get(col)).getCard() == null) {
+        if (modelGrid.get(row).get(col) instanceof ICardCell) {
+          if (((ICardCell) modelGrid.get(row).get(col)).getCard() == null) {
             g2.setColor(Color.YELLOW);
             g2.setStroke(new BasicStroke(4));
             g2.fillRect(x, y, cellWidth, cellHeight);
@@ -88,7 +88,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
     int cellWidth = getWidth() / cols;
     int cellHeight = getHeight() / rows;
 
-    Card card = ((CardCell) modelGrid.get(row).get(col)).getCard();
+    ICard card = ((ICardCell) modelGrid.get(row).get(col)).getCard();
     if (card.getOwner().equals("R")) {
       g2.setColor(Color.RED);
     } else {
@@ -149,7 +149,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
       int row = e.getY() / cellHeight;
 
       if (row < rows && col < cols) {
-        if (modelGrid.get(row).get(col) instanceof CardCell) {
+        if (modelGrid.get(row).get(col) instanceof ICardCell) {
           if (features.get(0).placeCard(row, col)) {
             highlightCell(row, col);
             System.out.println("Clicked cell at (" + row + ", " + col + ")");
@@ -160,5 +160,8 @@ public class BoardPanel extends JPanel implements IBoardPanel {
     }
   }
 }
+
+
+
 
 

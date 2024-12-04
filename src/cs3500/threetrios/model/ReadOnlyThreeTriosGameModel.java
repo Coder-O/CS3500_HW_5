@@ -243,7 +243,8 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    * @param player a player
    * @return the number of cards.
    */
-  private int getNumOwnedCards(ThreeTriosPlayer player) {
+  @Override
+  public int getNumOwnedCards(ThreeTriosPlayer player) {
     int count = 0;
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int column = 0; column < grid.getNumColumns(); column++) {

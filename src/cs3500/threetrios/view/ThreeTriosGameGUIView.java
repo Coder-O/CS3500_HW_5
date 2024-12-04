@@ -34,7 +34,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
    * Constructor for the ThreeTriosGameGUIView.
    * @param model ReadOnly model (ensures view is incapable of modifying  model)
    */
-  public ThreeTriosGameGUIView(ReadOnlyThreeTriosGameModel model, ThreeTriosPlayer playerColor) {
+  public ThreeTriosGameGUIView(ReadOnlyThreeTriosModel model, ThreeTriosPlayer playerColor) {
     this.model = model;
     this.playerColor = playerColor;
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -7,6 +7,10 @@ import cs3500.threetrios.provider.controller.Features;
  */
 public interface IThreeTriosModel extends IReadOnlyThreeTriosModel {
 
+  /**
+   * Sets initial turn in controller to the correct one for each player.
+   */
+  void startGame();
 
   /**
    * Takes in a location on the board and places the current player's chosen card there.
@@ -20,6 +24,12 @@ public interface IThreeTriosModel extends IReadOnlyThreeTriosModel {
    */
   void placeCard(int row, int col, int handIdx);
 
+  /**
+   * Adds an observer (the controller) to this model
+   * so that the model can communicate with the controller.
+   *
+   * @param listener the controller being added.
+   */
   void addFeaturesListener(Features listener);
 }
 

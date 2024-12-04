@@ -1,8 +1,8 @@
 package cs3500.threetrios.provider.view;
 
 import cs3500.threetrios.provider.controller.Features;
-import cs3500.threetrios.provider.controller.Player;
-import cs3500.threetrios.provider.model.Card;
+import cs3500.threetrios.controller.Player;
+import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
 
 import javax.swing.JPanel;
@@ -63,7 +63,7 @@ public class EnemyPanel extends JPanel implements IHandPanel {
     int cardWidth = getWidth();
     int cardHeight = getHeight() / model.getPlayerHand(player.getColor().toString()).size();
 
-    Card card = model.getPlayerHand(player.getColor().toString()).get(index);
+    ICard card = model.getPlayerHand(player.getColor().toString()).get(index);
     if (player.getColor().toString().equals("R")) {
       g2.setColor(Color.RED);
     } else {

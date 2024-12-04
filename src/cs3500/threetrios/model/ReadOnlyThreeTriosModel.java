@@ -31,6 +31,13 @@ public interface ReadOnlyThreeTriosModel {
   int getScore(ThreeTriosPlayer player);
 
   /**
+   * Count the number of cards each player owns on the grid.
+   * @param player a player
+   * @return the number of cards.
+   */
+  int getNumOwnedCards(ThreeTriosPlayer player);
+
+  /**
    * Returns the Grid in its current state.
    * @return Current Grid.
    */
