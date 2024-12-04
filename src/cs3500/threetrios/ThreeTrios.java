@@ -70,7 +70,7 @@ public final class ThreeTrios {
 
     // Creating model, which controls the game state.
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
-            "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3H.txt");
+            "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt");
     ThreeTriosBattleRules battleRules = new SimpleRules();
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");

@@ -253,6 +253,9 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public String whoWonGame() {
+    if (model.getWinner() == null) {
+      return "Tied";
+    }
     return model.getWinner().toString();
   }
 

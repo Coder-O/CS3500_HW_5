@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CS3500_HW_5:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS3500_HW_5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +52,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.All human.executor": "Debug",
+    "Application.All human.executor": "Run",
     "Application.BothMinCanFlip.executor": "Run",
     "Application.BothMinOpponentMove.executor": "Debug",
     "Application.RedMaxBlueHuman.executor": "Run",
@@ -125,7 +133,7 @@
       <recent name="cs3500.threetrios" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.All human">
+  <component name="RunManager" selected="Application.RedMaxBlueHuman">
     <configuration name="All human" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
@@ -220,8 +228,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ThreeTrios" />
         <item itemvalue="JUnit.All in CS3500_HW_5" />
+        <item itemvalue="Application.ThreeTrios" />
         <item itemvalue="JUnit.TestPlayerController.testCellWithCardClicked" />
         <item itemvalue="JUnit.TestPlayerController.testNotYourTurn" />
       </list>
@@ -269,11 +277,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="6" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
