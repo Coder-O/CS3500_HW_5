@@ -28,6 +28,10 @@
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" afterDir="false" />
+      =======
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ModelFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ModelFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ThreeTriosGameModel.java" afterDir="false" />
+      &gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,7 +271,7 @@
       <updated>1730742439832</updated>
       <workItem from="1730742440973" duration="9943000" />
       <workItem from="1732491136375" duration="7283000" />
-      <workItem from="1733091087767" duration="8203000" />
+      <workItem from="1733091087767" duration="11124000" />
     </task>
     <servers />
   </component>

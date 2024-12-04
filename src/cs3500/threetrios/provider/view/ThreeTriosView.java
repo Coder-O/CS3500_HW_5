@@ -3,8 +3,8 @@ package cs3500.threetrios.provider.view;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import cs3500.threetrios.provider.model.Card;
-import cs3500.threetrios.provider.model.CardCell;
+import cs3500.threetrios.provider.model.ICard;
+import cs3500.threetrios.provider.model.ICardCell;
 import cs3500.threetrios.provider.model.Cell;
 import cs3500.threetrios.provider.model.Hole;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
@@ -48,11 +48,11 @@ public class ThreeTriosView {
     for (int row = 0; row < grid.size(); row++) {
       for (int col = 0; col < grid.get(0).size(); col++) {
 
-        if (grid.get(row).get(col) instanceof CardCell) {
+        if (grid.get(row).get(col) instanceof ICardCell) {
 
-          if (((CardCell) grid.get(row).get(col)).getCard() != null) {
-            gameState.append(((CardCell) grid.get(row).get(col)).getCard().getOwner());
-          } else if (((CardCell) grid.get(row).get(col)).getCard() == null) {
+          if (((ICardCell) grid.get(row).get(col)).getCard() != null) {
+            gameState.append(((ICardCell) grid.get(row).get(col)).getCard().getOwner());
+          } else if (((ICardCell) grid.get(row).get(col)).getCard() == null) {
             gameState.append("_");
           }
         }
@@ -66,7 +66,7 @@ public class ThreeTriosView {
 
     gameState.append("Hand:\n");
 
-    for (Card card : model.getPlayerHand(model.getTurn())) {
+    for (ICard card : model.getPlayerHand(model.getTurn())) {
       gameState.append(card.toString() + "\n");
     }
 
