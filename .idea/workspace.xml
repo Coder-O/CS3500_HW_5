@@ -5,21 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/controller/Features.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/controller/Features.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/Hole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/Hole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/ICard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/ICard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/ICardCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/ICardCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/IPlayerHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/IPlayerHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/IReadOnlyThreeTriosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/IReadOnlyThreeTriosModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/RobotMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/RobotMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/model/ThreeTriosStrategy.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerColorAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellToICardCellAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/CardToCardAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CardToCardAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellToCellAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CellToCellAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/PlayerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/ThreeTriosView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/ThreeTriosViewGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,79 +53,79 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.All human.executor&quot;: &quot;Run&quot;,
-    &quot;Application.BothMinCanFlip.executor&quot;: &quot;Run&quot;,
-    &quot;Application.BothMinOpponentMove.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.RedMaxBlueHuman.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ThreeTrios.executor&quot;: &quot;Run&quot;,
-    &quot;JAR Application.CS3500_HW_5.jar.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in CS3500_HW_5.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCard.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCardBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategies.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategies.testFullGames.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.testAllMovesLegal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.testEmpty3x3Corner.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.testEmpty3x3Max.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.testFullGames.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.testPartial3x3Corner.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestCompleteStrategyAdapter.testPartial3x3Max.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.allCornersChecked.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.testAllMovesLegal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.testEmpty3x3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.testEmptySplit.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGoForCornerStrategy.testPartial3x3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.testBuildGridExceptions.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestGridBuilder.testSetCell.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.TestGridBuilder.testSetCellExceptions.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.testAllMovesLegal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.testAllPositionsChecked.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.testBestMoveMade.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.testEmpty3x3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.testNoFlipsPossible.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMaximizeScoreStrategy.testPartial3x3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMinCanFlipStrategy.testEmpty3x3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.testCorrectScoreAttackFails.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.testCorrectScoreBattleComboAll.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.testCorrectScoreBattleComboPartial.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSimpleRules.testCorrectScoreBlue.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testCanPlayToGridGameOver.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testCanPlayToGridHole.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testCanPlayToGridNoMutation.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testCanPlayToGridOutOfBounds.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testGetMoveScoreGameOver.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestUpperLeftmostStrategy.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestUpperLeftmostStrategy.noMovesThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestUpperLeftmostStrategy.testNoMutation.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestView.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.All human.executor": "Debug",
+    "Application.BothMinCanFlip.executor": "Run",
+    "Application.BothMinOpponentMove.executor": "Debug",
+    "Application.RedMaxBlueHuman.executor": "Run",
+    "Application.ThreeTrios.executor": "Run",
+    "JAR Application.CS3500_HW_5.jar.executor": "Run",
+    "JUnit.All in CS3500_HW_5.executor": "Run",
+    "JUnit.TestCard.executor": "Run",
+    "JUnit.TestCardBuilder.executor": "Run",
+    "JUnit.TestCompleteStrategies.executor": "Run",
+    "JUnit.TestCompleteStrategies.testFullGames.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.testAllMovesLegal.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.testEmpty3x3Corner.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.testEmpty3x3Max.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.testFullGames.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.testPartial3x3Corner.executor": "Run",
+    "JUnit.TestCompleteStrategyAdapter.testPartial3x3Max.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.allCornersChecked.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.testAllMovesLegal.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.testEmpty3x3.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.testEmptySplit.executor": "Run",
+    "JUnit.TestGoForCornerStrategy.testPartial3x3.executor": "Run",
+    "JUnit.TestGridBuilder.executor": "Run",
+    "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
+    "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
+    "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Debug",
+    "JUnit.TestMaximizeScoreStrategy.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.testAllMovesLegal.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.testAllPositionsChecked.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.testBestMoveMade.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.testEmpty3x3.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.testNoFlipsPossible.executor": "Run",
+    "JUnit.TestMaximizeScoreStrategy.testPartial3x3.executor": "Run",
+    "JUnit.TestMinCanFlipStrategy.testEmpty3x3.executor": "Run",
+    "JUnit.TestSimpleRules.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreAttackFails.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreBattleComboAll.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreBattleComboPartial.executor": "Run",
+    "JUnit.TestSimpleRules.testCorrectScoreBlue.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridGameOver.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridHole.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridNoMutation.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testCanPlayToGridOutOfBounds.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testGetMoveScoreGameOver.executor": "Run",
+    "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
+    "JUnit.TestUpperLeftmostStrategy.executor": "Run",
+    "JUnit.TestUpperLeftmostStrategy.noMovesThrowsException.executor": "Run",
+    "JUnit.TestUpperLeftmostStrategy.testNoMutation.executor": "Run",
+    "JUnit.TestView.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/cs3500/threetrios/provider/model" />

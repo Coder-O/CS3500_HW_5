@@ -67,6 +67,9 @@ public class CardToCardAdapter implements ICard {
    */
   @Override
   public String getOwner() {
+    if (card.getPlayer() == null) {
+      return null;
+    }
     return card.getPlayer().toString();
   }
 
@@ -84,6 +87,9 @@ public class CardToCardAdapter implements ICard {
    * @return Card
    */
   public ICard toCard() {
+    if (card == null) {
+      return null;
+    }
     return this;
   }
 }

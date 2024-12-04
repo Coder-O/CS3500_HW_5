@@ -82,4 +82,20 @@ public class MockPlayerController implements PlayerController {
       throw new RuntimeException(e);
     }
   }
+
+  /**
+   * Returns the player of this controller.
+   *
+   * @return This controller's player.
+   */
+  @Override
+  public ThreeTriosPlayer getPlayer() {
+    try {
+      appendable.append("getPlayer was called");
+      appendable.append(System.lineSeparator());
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    return null;
+  }
 }

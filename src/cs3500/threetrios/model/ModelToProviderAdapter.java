@@ -3,6 +3,7 @@ package cs3500.threetrios.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.provider.controller.Features;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
@@ -16,6 +17,10 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
 
   private ThreeTriosPlayer currPlayer;
 
+  /**
+   * Adapts a {@link ThreeTriosModel} into a {@link IThreeTriosModel}.
+   * @param model the model to adapt.
+   */
   public ModelToProviderAdapter(ThreeTriosModel model) {
     this.model = model;
   }
@@ -38,10 +43,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
   public String getTurn() {
     currPlayer = model.getCurrentPlayer();
 
-    if (currPlayer == ThreeTriosPlayer.RED) {
-      return "true";
-    }
-    return "false";
+    return currPlayer.getName();
   }
 
   /**
@@ -72,8 +74,12 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
         // Get the ThreeTriosCell from the model
         ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
 
-        // Wrap it in the adapter and add to the column
-        columnCopy.add(new CellToCellAdapter(originalCell).toCell());
+        if (originalCell.isHole()) {
+          // Wrap it in the adapter and add to the column
+          columnCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
+        } else {
+          columnCopy.add(new CellToICardCellAdapter(originalCell, row, col));
+        }
       }
 
       // Add the column to the grid copy
@@ -217,8 +223,12 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
         // Get the ThreeTriosCell from the model
         ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
 
-        // Wrap it in the adapter and add to the column
-        columnCopy.add(new CellToCellAdapter(originalCell).toCell());
+        if (originalCell.isHole()) {
+          // Wrap it in the adapter and add to the column
+          columnCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
+        } else {
+          columnCopy.add(new CellToICardCellAdapter(originalCell, row, col));
+        }
       }
 
       // Add the column to the grid copy
@@ -266,10 +276,29 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    * Adds an observer (the controller) to this model
    * so that the model can communicate with the controller.
    *
+   * <p>NOTE: This implementation has limited functionality, and can only add listeners that
+   * also implement {@link PlayerController}.
+   *
    * @param listener the controller being added.
+   * @throws IllegalArgumentException If the provided listener does not also
+   *                                  implement {@link PlayerController}
    */
   @Override
-  public void addFeaturesListener(Features listener) {
-    //todo
+  public void addFeaturesListener(Features listener) throws IllegalArgumentException {
+
+    // Actually implementing full functionality for a different controller
+    // would require restructuring our program or making assumptions on when and how a model calls
+    // its controllers. Either way, we lose generality, so this choice was made.
+    if (listener instanceof PlayerController) {
+      model.addControllerListener(
+              (PlayerController) listener,
+              ((PlayerController) listener).getPlayer()
+      );
+    } else {
+      throw new IllegalArgumentException(
+              "This implementation can only deal with PlayerControllers!"
+                      + " The provided listener was not a PlayerController!"
+      );
+    }
   }
 }

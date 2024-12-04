@@ -142,6 +142,7 @@ public class BoardPanel extends JPanel implements IBoardPanel {
   private class MouseEventsListener extends MouseInputAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
+      System.out.println("Test 1");
       int cellWidth = getWidth() / cols;
       int cellHeight = getHeight() / rows;
 
@@ -149,8 +150,11 @@ public class BoardPanel extends JPanel implements IBoardPanel {
       int row = e.getY() / cellHeight;
 
       if (row < rows && col < cols) {
+        System.out.println("Test 2");
         if (modelGrid.get(row).get(col) instanceof ICardCell) {
+          System.out.println("Test 3");
           if (features.get(0).placeCard(row, col)) {
+            System.out.println("Test 4");
             highlightCell(row, col);
             System.out.println("Clicked cell at (" + row + ", " + col + ")");
             repaint();

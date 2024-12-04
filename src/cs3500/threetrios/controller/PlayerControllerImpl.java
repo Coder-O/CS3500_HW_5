@@ -77,6 +77,16 @@ public class PlayerControllerImpl implements PlayerController {
   }
 
   /**
+   * Returns the player of this controller.
+   *
+   * @return This controller's player.
+   */
+  @Override
+  public ThreeTriosPlayer getPlayer() {
+    return playerColor;
+  }
+
+  /**
    * Handles when a player selects a card in their hand.
    *
    * @param cardIdx the chosen card's index in the player's hand (0-indexed).

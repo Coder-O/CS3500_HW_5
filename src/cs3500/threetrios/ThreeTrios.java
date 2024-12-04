@@ -4,12 +4,15 @@ import java.util.List;
 
 import cs3500.threetrios.controller.ConfigurationReader;
 import cs3500.threetrios.controller.Player;
+import cs3500.threetrios.controller.PlayerColorAdapter;
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.controller.PlayerControllerImpl;
+import cs3500.threetrios.controller.ProviderController;
 import cs3500.threetrios.controller.StrategyFactory;
 import cs3500.threetrios.controller.StrategyPlayer;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.controller.ViewFeaturesImpl;
+import cs3500.threetrios.model.ModelToProviderAdapter;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
@@ -17,6 +20,10 @@ import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
+import cs3500.threetrios.provider.controller.PlayerColor;
+import cs3500.threetrios.provider.model.IThreeTriosModel;
+import cs3500.threetrios.provider.view.IPlayerView;
+import cs3500.threetrios.provider.view.PlayerView;
 import cs3500.threetrios.view.ThreeTriosGUIView;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 
@@ -69,6 +76,7 @@ public final class ThreeTrios {
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
 
     ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, true);
+    IThreeTriosModel adaptedModel = new ModelToProviderAdapter(model);
 
     // -- Creating players, which handle player inputs (mainly for ai implementations) --
 
@@ -78,12 +86,6 @@ public final class ThreeTrios {
             redPlayerType,
             redStrategyType
     );
-    Player bluePlayer = choosePlayer(
-            model,
-            ThreeTriosPlayer.BLUE,
-            bluePlayerType,
-            blueStrategyType
-    );
 
     // -- Creating views, which display information
     // (and potentially handel inputs for human players)--
@@ -91,15 +93,18 @@ public final class ThreeTrios {
     ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.RED);
     ViewFeatures redView = new ViewFeaturesImpl(model, redGuiView);
 
-    ThreeTriosGUIView blueGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.BLUE);
-    ViewFeatures blueView = new ViewFeaturesImpl(model, blueGuiView);
+    IPlayerView blueView = new PlayerView(
+            adaptedModel,
+            new PlayerColorAdapter(ThreeTriosPlayer.BLUE),
+            new PlayerColorAdapter(ThreeTriosPlayer.BLUE.getOpposingPlayer())
+    );
 
     // -- Creating controllers, which connect each player's components and the model. --
 
     PlayerController redController = new PlayerControllerImpl(model,
             redView, redPlayer, ThreeTriosPlayer.RED);
-    PlayerController blueController = new PlayerControllerImpl(model,
-            blueView, bluePlayer, ThreeTriosPlayer.BLUE);
+    ProviderController blueController = new ProviderController(adaptedModel,
+            ThreeTriosPlayer.BLUE, blueView);
 
     // -- Starting the game. --
     model.startGame();
