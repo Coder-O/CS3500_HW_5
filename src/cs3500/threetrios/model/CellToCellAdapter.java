@@ -8,19 +8,23 @@ import cs3500.threetrios.provider.model.Cell;
 public class CellToCellAdapter implements Cell {
 
   private final ThreeTriosCell cell;
+  private final int row;
+  private final int col;
 
-  public CellToCellAdapter(ThreeTriosCell cell) {
+  public CellToCellAdapter(ThreeTriosCell cell, int row, int col) {
     this.cell = cell;
+    this.row = row;
+    this.col = col;
   }
 
   @Override
   public int getRow() {
-    return 0;
+    return row;
   }
 
   @Override
   public int getCol() {
-    return 0;
+    return col;
   }
 
   public Cell toCell() {

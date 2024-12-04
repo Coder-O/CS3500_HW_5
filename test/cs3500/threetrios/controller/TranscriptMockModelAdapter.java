@@ -126,6 +126,24 @@ public class TranscriptMockModelAdapter implements ReadOnlyThreeTriosModel {
   }
 
   /**
+   * Count the number of cards each player owns on the grid.
+   *
+   * @param player a player
+   * @return the number of cards.
+   */
+  @Override
+  public int getNumOwnedCards(ThreeTriosPlayer player) {
+    try {
+      appendable.append("getNumOwnedCards was called with player = ")
+              .append(player.toString())
+              .append("\n");
+    } catch (IOException e) {
+      throw new RuntimeException("The appendable failed!", e);
+    }
+    return adaptee.getNumOwnedCards(player);
+  }
+
+  /**
    * Returns the Grid in its current state.
    *
    * @return Current Grid.

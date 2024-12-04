@@ -12,7 +12,7 @@ import java.awt.BorderLayout;
 /**
  * A view representing the swing view for each player of ThreeTrios.
  */
-public class PlayerView extends JFrame implements IThreeTriosViewGUI {
+public class PlayerView extends JFrame implements IPlayerView {
   private final BoardPanel boardPanel;
   private final HandPanel leftHandPanel;
   private final JPanel blurOverlay;
@@ -87,6 +87,11 @@ public class PlayerView extends JFrame implements IThreeTriosViewGUI {
    */
   public void blurScreen(boolean blur) {
     blurOverlay.setVisible(blur);
+  }
+
+  @Override
+  public void setEnabled(boolean enabled) {
+    super.setEnabled(enabled);
   }
 
   /**

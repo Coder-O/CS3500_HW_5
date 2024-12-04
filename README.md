@@ -141,3 +141,17 @@ Changes for Part 3:
             - Specifically, a Model should be able to add controllers as listeners and publish to them, listen for moves, and start a game by updating the initial controller.                 We added all of these features.
     - View:
         - We updated the view to better interact with view features, be able to handel multiple indepnedant instances at once, and to rely more on being controlled by a view             features and controller rather than handeling all processies itself.
+
+Changes for Part 4:
+- New features for HW8:
+    - We created ModelToProviderAdapter to adapt our model to our proivder's interface so that their view could use it
+        - To support this, we also created adapters for each of our internal representations that needed to be adapted – namely the grid, cards, cells (of various types),                 player colors
+    - We created a ProivderController that acts both as a Features object for the provider's view and as a PlayerController for interfacing with our code.
+    - We added getNumOwnedCards to our model Interface to implement a similar feature in the proivder's interface. Prevously, this was a private method, but upon further             reflection it makes sense for the user to have access to it.
+    - We added a getPlayer observation method to our PlayerController interface, as it was useful and it makes sense for a user to have access to it.
+- Changes for HW8:
+    - Changes for customers:
+        - We had an unused makeMove(Move) method in our model interface that exposed our Move class to clients when it wasn't nessicary. This caused our customers trouble, so             we removed it.
+        - We unintentionally had our view implementation take in a ReadOnlyThreeTriosGameModel implementation class instead of a ReadOnlyThreeTriosModel interface class. We                 fixed this.
+    - We updated our main to use the proivder's view instead of our old view.
+        - NOTE: While all previous command line arguments should compile, Blue players do not actually use strategies properly, as it was not a requiremnt of the assignment             to get them to.

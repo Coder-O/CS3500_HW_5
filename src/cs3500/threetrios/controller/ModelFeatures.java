@@ -8,12 +8,6 @@ import cs3500.threetrios.model.ThreeTriosPlayer;
 public interface ModelFeatures {
 
   /**
-   * Attempts to make a move in the model. (may throw an exception if the move is illegal).
-   * @param move The move to attempt
-   */
-  void makeMove(Move move);
-
-  /**
    * Adds a controller listener for a specific player.
    * @param controller the game controller.
    * @param playerFor player we want to listen to.

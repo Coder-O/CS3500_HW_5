@@ -158,21 +158,6 @@ public class ThreeTriosGameModel extends ReadOnlyThreeTriosGameModel implements 
   }
 
   /**
-   * Attempts to make a move in the model. (may throw an exception if the move is illegal).
-   *
-   * @param move The move to attempt
-   */
-  @Override
-  public void makeMove(Move move) {
-    this.playToGrid(
-            move.getPlayer(),
-            move.getCardIdxInHand(),
-            move.getRowIdx(),
-            move.getCollumnIdx()
-    );
-  }
-
-  /**
    * Adds a controller listener for a specific player.
    *
    * @param controller The controller to add.

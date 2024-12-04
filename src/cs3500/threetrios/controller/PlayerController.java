@@ -1,5 +1,7 @@
 package cs3500.threetrios.controller;
 
+import cs3500.threetrios.model.ThreeTriosPlayer;
+
 /**
  * A controller that manages interactions between a player implementation suite and a model.
  * There is one instance of a controller for every player.
@@ -17,4 +19,10 @@ public interface PlayerController extends PlayerActionEvents {
    * Informs this controller that it is its turn.
    */
   void isYourTurn();
+
+  /**
+   * Returns the player of this controller.
+   * @return This controller's player.
+   */
+  ThreeTriosPlayer getPlayer();
 }

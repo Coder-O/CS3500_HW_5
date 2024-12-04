@@ -152,7 +152,6 @@ public class BoardPanel extends JPanel implements IBoardPanel {
         if (modelGrid.get(row).get(col) instanceof ICardCell) {
           if (features.get(0).placeCard(row, col)) {
             highlightCell(row, col);
-            System.out.println("Clicked cell at (" + row + ", " + col + ")");
             repaint();
           }
         }
@@ -160,8 +159,5 @@ public class BoardPanel extends JPanel implements IBoardPanel {
     }
   }
 }
-
-
-
 
 

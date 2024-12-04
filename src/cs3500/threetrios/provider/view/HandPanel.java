@@ -1,7 +1,7 @@
 package cs3500.threetrios.provider.view;
 
 import cs3500.threetrios.provider.controller.Features;
-import cs3500.threetrios.controller.Player;
+import cs3500.threetrios.provider.controller.Player;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
 

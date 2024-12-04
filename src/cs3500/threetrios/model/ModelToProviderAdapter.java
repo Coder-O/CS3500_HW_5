@@ -2,8 +2,12 @@ package cs3500.threetrios.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.controller.PlayerColor;
+import cs3500.threetrios.provider.model.Cell;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
 
@@ -16,8 +20,51 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
 
   private ThreeTriosPlayer currPlayer;
 
+  private final ArrayList<ArrayList<Cell>> grid;
+
+  /**
+   * Adapts a {@link ThreeTriosModel} into a {@link IThreeTriosModel}.
+   * @param model the model to adapt.
+   */
   public ModelToProviderAdapter(ThreeTriosModel model) {
     this.model = model;
+    this.grid = new ArrayList<ArrayList<Cell>>();
+  }
+
+  /**
+   * Re-creates the grid, ensuring it is accurate and up-to-date.
+   */
+  private void remakeGrid() {
+    //The outer ArrayList represents the rows, inner ArrayList the columns
+
+    // Initialize the 2D ArrayList to hold the grid copy
+    grid.clear();
+
+    // Assuming the model provides the number of rows and columns
+    int numRows = model.getGrid().getNumRows();
+    int numCols = model.getGrid().getNumColumns();
+
+    // Iterate over rows first!!!
+    for (int row = 0; row < numRows; row++) {
+      // Create a new column for the grid copy
+      ArrayList<Cell> rowCopy = new ArrayList<>();
+
+      // Iterate over columns for the current row
+      for (int col = 0; col < numCols; col++) {
+        // Get the ThreeTriosCell from the model
+        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
+
+        if (originalCell.isHole()) {
+          // Wrap it in the adapter and add to the column
+          rowCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
+        } else {
+          rowCopy.add(new CellToICardCellAdapter(originalCell, row, col));
+        }
+      }
+
+      // Add the column to the grid copy
+      grid.add(rowCopy);
+    }
   }
 
   /**
@@ -38,10 +85,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
   public String getTurn() {
     currPlayer = model.getCurrentPlayer();
 
-    if (currPlayer == ThreeTriosPlayer.RED) {
-      return "true";
-    }
-    return "false";
+    return currPlayer.getName();
   }
 
   /**
@@ -51,36 +95,8 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGrid() {
-
-    //The outer ArrayList represents the columns, inner ArrayList the rows
-
-
-    // Initialize the 2D ArrayList to hold the grid copy
-    ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> gridCopy = new ArrayList<>();
-
-    // Assuming the model provides the number of rows and columns
-    int numRows = model.getGrid().getNumRows();
-    int numCols = model.getGrid().getNumColumns();
-
-    // Iterate over columns first
-    for (int col = 0; col < numCols; col++) {
-      // Create a new column for the grid copy
-      ArrayList<cs3500.threetrios.provider.model.Cell> columnCopy = new ArrayList<>();
-
-      // Iterate over rows for the current column
-      for (int row = 0; row < numRows; row++) {
-        // Get the ThreeTriosCell from the model
-        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
-
-        // Wrap it in the adapter and add to the column
-        columnCopy.add(new CellToCellAdapter(originalCell).toCell());
-      }
-
-      // Add the column to the grid copy
-      gridCopy.add(columnCopy);
-    }
-
-    return gridCopy;
+    remakeGrid();
+    return grid;
   }
 
   /**
@@ -92,12 +108,13 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public ArrayList<ICard> getPlayerHand(String player) {
+    remakeGrid();
 
     // Initialize the list to hold the adapted hand
     ArrayList<ICard> adaptedHand = new ArrayList<ICard>();
 
     // Get the hand based on the player's color
-    if (player.equals("RED")) {
+    if (player.equals(PlayerColor.R.toString())) {
       List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
       for (ThreeTriosCard card : redHand) {
         adaptedHand.add(new CardToCardAdapter(card).toCard());
@@ -186,7 +203,10 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public void isLegalMove(int row, int col) {
-    model.canPlayToGrid(currPlayer, 0, row, col);
+    Optional<Exception> e = model.canPlayToGrid(currPlayer, 0, row, col);
+    if (e.isPresent()) {
+      throw new IllegalArgumentException(e.get());
+    }
   }
 
   /**
@@ -196,33 +216,30 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGridCopy() {
+    //The outer ArrayList represents the rows, inner ArrayList the columns
 
-    //The outer ArrayList represents the columns, inner ArrayList the rows
-
+    // Updates the grid
+    remakeGrid();
 
     // Initialize the 2D ArrayList to hold the grid copy
-    ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> gridCopy = new ArrayList<>();
+    ArrayList<ArrayList<Cell>> gridCopy = new ArrayList<>();
 
     // Assuming the model provides the number of rows and columns
     int numRows = model.getGrid().getNumRows();
     int numCols = model.getGrid().getNumColumns();
 
-    // Iterate over columns first
-    for (int col = 0; col < numCols; col++) {
+    // Iterate over rows first!!!
+    for (int row = 0; row < numRows; row++) {
       // Create a new column for the grid copy
-      ArrayList<cs3500.threetrios.provider.model.Cell> columnCopy = new ArrayList<>();
+      ArrayList<Cell> rowCopy = new ArrayList<>();
 
-      // Iterate over rows for the current column
-      for (int row = 0; row < numRows; row++) {
-        // Get the ThreeTriosCell from the model
-        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
-
-        // Wrap it in the adapter and add to the column
-        columnCopy.add(new CellToCellAdapter(originalCell).toCell());
+      // Iterate over columns for the current row
+      for (int col = 0; col < numCols; col++) {
+        rowCopy.add(grid.get(row).get(col));
       }
 
       // Add the column to the grid copy
-      gridCopy.add(columnCopy);
+      gridCopy.add(rowCopy);
     }
 
     return gridCopy;
@@ -236,6 +253,9 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public String whoWonGame() {
+    if (model.getWinner() == null) {
+      return "Tied";
+    }
     return model.getWinner().toString();
   }
 
@@ -266,10 +286,29 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    * Adds an observer (the controller) to this model
    * so that the model can communicate with the controller.
    *
+   * <p>NOTE: This implementation has limited functionality, and can only add listeners that
+   * also implement {@link PlayerController}.
+   *
    * @param listener the controller being added.
+   * @throws IllegalArgumentException If the provided listener does not also
+   *                                  implement {@link PlayerController}
    */
   @Override
-  public void addFeaturesListener(Features listener) {
-    //todo
+  public void addFeaturesListener(Features listener) throws IllegalArgumentException {
+
+    // Actually implementing full functionality for a different controller
+    // would require restructuring our program or making assumptions on when and how a model calls
+    // its controllers. Either way, we lose generality, so this choice was made.
+    if (listener instanceof PlayerController) {
+      model.addControllerListener(
+              (PlayerController) listener,
+              ((PlayerController) listener).getPlayer()
+      );
+    } else {
+      throw new IllegalArgumentException(
+              "This implementation can only deal with PlayerControllers!"
+                      + " The provided listener was not a PlayerController!"
+      );
+    }
   }
 }

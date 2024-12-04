@@ -6,7 +6,7 @@ package cs3500.threetrios.provider.model;
 public interface Cell {
 
   int getRow();
-
+  
   int getCol();
 
 }

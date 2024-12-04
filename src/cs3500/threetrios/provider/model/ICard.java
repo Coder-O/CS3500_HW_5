@@ -51,4 +51,3 @@ public interface ICard {
   String toString();
 
 }
-
