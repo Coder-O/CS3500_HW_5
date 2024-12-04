@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.model.Cell;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
 
@@ -18,12 +19,51 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
 
   private ThreeTriosPlayer currPlayer;
 
+  private final ArrayList<ArrayList<Cell>> grid;
+
   /**
    * Adapts a {@link ThreeTriosModel} into a {@link IThreeTriosModel}.
    * @param model the model to adapt.
    */
   public ModelToProviderAdapter(ThreeTriosModel model) {
     this.model = model;
+    this.grid = new ArrayList<ArrayList<Cell>>();
+  }
+
+  /**
+   * Re-creates the grid, ensuring it is accurate and up-to-date.
+   */
+  private void remakeGrid() {
+    //The outer ArrayList represents the rows, inner ArrayList the columns
+
+    // Initialize the 2D ArrayList to hold the grid copy
+    grid.clear();
+
+    // Assuming the model provides the number of rows and columns
+    int numRows = model.getGrid().getNumRows();
+    int numCols = model.getGrid().getNumColumns();
+
+    // Iterate over rows first!!!
+    for (int row = 0; row < numRows; row++) {
+      // Create a new column for the grid copy
+      ArrayList<Cell> rowCopy = new ArrayList<>();
+
+      // Iterate over columns for the current row
+      for (int col = 0; col < numCols; col++) {
+        // Get the ThreeTriosCell from the model
+        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
+
+        if (originalCell.isHole()) {
+          // Wrap it in the adapter and add to the column
+          rowCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
+        } else {
+          rowCopy.add(new CellToICardCellAdapter(originalCell, row, col));
+        }
+      }
+
+      // Add the column to the grid copy
+      grid.add(rowCopy);
+    }
   }
 
   /**
@@ -54,8 +94,8 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGrid() {
-
-    return getGridCopy();
+    remakeGrid();
+    return grid;
   }
 
   /**
@@ -67,6 +107,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public ArrayList<ICard> getPlayerHand(String player) {
+    remakeGrid();
 
     // Initialize the list to hold the adapted hand
     ArrayList<ICard> adaptedHand = new ArrayList<ICard>();
@@ -174,12 +215,13 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
    */
   @Override
   public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGridCopy() {
+    //The outer ArrayList represents the rows, inner ArrayList the columns
 
-    //The outer ArrayList represents the columns, inner ArrayList the rows
-
+    // Updates the grid
+    remakeGrid();
 
     // Initialize the 2D ArrayList to hold the grid copy
-    ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> gridCopy = new ArrayList<>();
+    ArrayList<ArrayList<Cell>> gridCopy = new ArrayList<>();
 
     // Assuming the model provides the number of rows and columns
     int numRows = model.getGrid().getNumRows();
@@ -188,19 +230,11 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
     // Iterate over rows first!!!
     for (int row = 0; row < numRows; row++) {
       // Create a new column for the grid copy
-      ArrayList<cs3500.threetrios.provider.model.Cell> rowCopy = new ArrayList<>();
+      ArrayList<Cell> rowCopy = new ArrayList<>();
 
       // Iterate over columns for the current row
       for (int col = 0; col < numCols; col++) {
-        // Get the ThreeTriosCell from the model
-        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
-
-        if (originalCell.isHole()) {
-          // Wrap it in the adapter and add to the column
-          rowCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
-        } else {
-          rowCopy.add(new CellToICardCellAdapter(originalCell, row, col));
-        }
+        rowCopy.add(grid.get(row).get(col));
       }
 
       // Add the column to the grid copy
