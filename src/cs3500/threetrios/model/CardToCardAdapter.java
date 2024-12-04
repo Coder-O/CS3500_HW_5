@@ -70,7 +70,7 @@ public class CardToCardAdapter implements ICard {
     if (card.getPlayer() == null) {
       return null;
     }
-    return card.getPlayer().toString();
+    return card.getPlayer().toString().substring(0,1);
   }
 
   /**

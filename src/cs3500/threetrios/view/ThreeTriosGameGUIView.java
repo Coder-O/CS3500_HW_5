@@ -178,6 +178,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
               "Game over!",             // Title of the dialog box
               JOptionPane.PLAIN_MESSAGE // Icon type
       );
+      return;
     }
     JOptionPane.showMessageDialog(
             this,

@@ -44,7 +44,6 @@ public class BoardPanel extends JPanel implements IBoardPanel {
 
   @Override
   protected void paintComponent(Graphics g) {
-    System.out.println("Board painted");
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
 
@@ -86,7 +85,6 @@ public class BoardPanel extends JPanel implements IBoardPanel {
   }
 
   private void drawCard(Graphics2D g2, int row, int col, int x, int y) {
-    System.out.println("Attempted to draw card at: " + row + ", " + col);
     int cellWidth = getWidth() / cols;
     int cellHeight = getHeight() / rows;
 
