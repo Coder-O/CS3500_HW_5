@@ -1,9 +1,11 @@
 package cs3500.threetrios.provider.model;
 
+
 /**
  * Represents a Hole on the ThreeTrios game board where no Cards can be played.
  */
 public class Hole implements Cell {
+
 
   private final int row;
   private final int col;

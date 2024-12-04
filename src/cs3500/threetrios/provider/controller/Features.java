@@ -27,7 +27,7 @@ public interface Features {
   void setTurn(boolean turn);
 
   /**
-   * Model tells the controller the game is over and haas it handle it.
+   * Model tells the controller the game is over and has it handle it.
    */
   void gameOver();
 }

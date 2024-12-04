@@ -63,6 +63,17 @@ public class FibingMockModel implements ReadOnlyThreeTriosModel {
   }
 
   /**
+   * Count the number of cards each player owns on the grid.
+   *
+   * @param player a player
+   * @return the number of cards.
+   */
+  @Override
+  public int getNumOwnedCards(ThreeTriosPlayer player) {
+    return 0;
+  }
+
+  /**
    * Returns the Grid in its current state.
    *
    * @return Current Grid.
