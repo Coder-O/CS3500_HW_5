@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/CardToCardAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/CardToCardAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.All human.executor": "Run",
+    "Application.All human.executor": "Debug",
     "Application.BothMinCanFlip.executor": "Run",
     "Application.BothMinOpponentMove.executor": "Debug",
     "Application.RedMaxBlueHuman.executor": "Run",
@@ -271,6 +269,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="6" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

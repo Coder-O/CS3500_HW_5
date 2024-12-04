@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.controller.PlayerColor;
 import cs3500.threetrios.provider.model.Cell;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
@@ -113,7 +114,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
     ArrayList<ICard> adaptedHand = new ArrayList<ICard>();
 
     // Get the hand based on the player's color
-    if (player.equals("RED")) {
+    if (player.equals(PlayerColor.R.toString())) {
       List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
       for (ThreeTriosCard card : redHand) {
         adaptedHand.add(new CardToCardAdapter(card).toCard());
