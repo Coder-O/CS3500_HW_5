@@ -7,7 +7,7 @@ package cs3500.threetrios.provider.model;
  * The rows and columns held in this class's fields correspond exactly
  * to the same coordinates on the grid.
  */
-public interface ICardCell extends Cell{
+public interface ICardCell extends Cell {
 
   /**
    * Returns a copy of the card in this cell.

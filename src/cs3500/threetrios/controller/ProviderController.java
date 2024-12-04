@@ -40,7 +40,7 @@ public class ProviderController implements Features, PlayerController  {
    * Takes in hand index selected from view and
    * sets the hand index in the controller to that val.
    *
-   * @param handIdx
+   * @param handIdx the index of the selected card
    */
   @Override
   public void selectCard(int handIdx) {
@@ -57,8 +57,8 @@ public class ProviderController implements Features, PlayerController  {
    * Takes in the spot on the board that was selected and places the saved hand index there.
    * If the hand index wasn't selected first, it tells the player.
    *
-   * @param row
-   * @param col
+   * @param row The cell's row
+   * @param col The cell's column
    */
   @Override
   public boolean placeCard(int row, int col) {

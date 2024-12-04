@@ -36,9 +36,10 @@ public class PlayerColorAdapter implements cs3500.threetrios.provider.controller
         return PlayerColor.R;
       case BLUE:
         return PlayerColor.B;
+      default:
+        throw new IllegalStateException(
+                "A ThreeTriosPlayer enum object did not have an expected value... how?!"
+        );
     }
-    throw new IllegalStateException(
-            "A ThreeTriosPlayer enum object did not have an expected value... how?!"
-    );
   }
 }

@@ -20,7 +20,6 @@ import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
-import cs3500.threetrios.provider.controller.PlayerColor;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
 import cs3500.threetrios.provider.view.IPlayerView;
 import cs3500.threetrios.provider.view.PlayerView;

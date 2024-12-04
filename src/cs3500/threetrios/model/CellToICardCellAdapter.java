@@ -4,14 +4,14 @@ import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.ICardCell;
 
 /**
- * Adapts a {@link ThreeTriosCell} to a {@link ICardCell}, if possible
+ * Adapts a {@link ThreeTriosCell} to a {@link ICardCell}, if possible.
  */
 public class CellToICardCellAdapter extends CellToCellAdapter implements ICardCell {
 
   private ICard card;
 
   /**
-   * Adapts a {@link ThreeTriosCell} to a {@link ICardCell}, if possible
+   * Adapts a {@link ThreeTriosCell} to a {@link ICardCell}, if possible.
    * @param cell The cell to adapt from
    * @param row The cell's row
    * @param col The cell's column.

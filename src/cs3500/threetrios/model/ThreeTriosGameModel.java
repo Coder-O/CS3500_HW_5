@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import cs3500.threetrios.controller.Move;
 import cs3500.threetrios.controller.PlayerController;
 
 /**

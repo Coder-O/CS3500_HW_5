@@ -3,6 +3,9 @@ package cs3500.threetrios.provider.view;
 
 import cs3500.threetrios.provider.controller.Features;
 
+/**
+ * Provider's Player View.
+ */
 public interface IPlayerView extends IThreeTriosViewGUI {
 
   void display(boolean show);
