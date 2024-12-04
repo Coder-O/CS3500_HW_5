@@ -1,0 +1,13 @@
+What do you wish you had done differently in your design/implementation?
+Did you learn any lessons from the code given to you, or the updates you had to make for your customers?
+After working with our provider’s code, we realized that our design was using a lot of classes,
+which can make it difficult to understand. However, we believe we kept them organized and
+well-documented, so it should not have been that much of an issue. Additionally, we realized
+some of our methods were taking in class implementations instead of their respective interfaces,
+but we replaced those with the interfaces and sent that to our customers.
+
+What was your experience like with your providers?
+Our experience was positive, they sent their initial interfaces on time and were very open
+to answering questions and sending us information when we needed. They also checked in multiple
+times to see if we were having any issues understanding their code or getting it to work.
+Additionally, when they made any improvements to the code they would send it to us.

@@ -1,0 +1,32 @@
+Design critique:
+Overall, the design of the provider’s code was decent. A few areas could be improved: namely
+using custom classes to represent internal objects such as the grid and players. More use of their
+Player enum as a return type in particular would be helpful. Additionally, the isLegalMove method
+in the controller passes information by throwing an exception. It seems more appropriate to return
+something, such as a boolean or the exception being thrown. Otherwise, their design was good, and
+wasn’t too difficult to adapt our code to.
+
+Implementation critique:
+We had no complaints with their view implementation that we worked with. It wasn’t entirely simple
+o get functional with our code, but that was not expected. The blur effect when it is not the
+represented player’s turn is a nice touch!
+
+Documentation critique:
+There are a few instances where the JavaDocs could be improved. One was on both the provider’s
+getGrid() and getGridCopy() methods that state that they both return a copy of the grid, when in
+reality their view requires that the getGrid method returns a mutating object that is kept
+up-to-date. Additionally, the setTurn() method in the Features interface has unclear documentation.
+Explicitly stating that the boolean parameter represents whether it is this specific object’s turn
+or not would be helpful. Furthermore, the isLegalMove() method in the model interface was not
+well-documented on how it communicated whether a move was legal. Finally, the Grid was represented
+through an ArrayList<ArrayList<Cell>>, however the comments did not specify which List was the rows
+and which was the columns. It would be helpful to include that in the javadocs. Overall, their code
+could use more through documentation in these cases.
+
+Design/code limitations:
+As previously mentioned, their view relied on having access to a 2d array list grid representation
+that kept itself up to date. This encourages design that allows for illegal mutation. While it was
+not impossible to work around this with a model that returns copies to disallow illegal mutation
+(by creating and managing a separate 2d array list in the model adapter, which the view is given
+access to), it would be better to have the view ask for a new reference to the grid whenever it
+updated. This would discourage models from providing access to mutable fields.
