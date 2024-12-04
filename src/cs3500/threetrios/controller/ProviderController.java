@@ -1,5 +1,7 @@
 package cs3500.threetrios.controller;
 
+import java.util.Objects;
+
 import cs3500.threetrios.model.ThreeTriosPlayer;
 import cs3500.threetrios.provider.controller.Features;
 import cs3500.threetrios.provider.model.IThreeTriosModel;
@@ -12,8 +14,9 @@ import cs3500.threetrios.provider.view.IPlayerView;
  */
 public class ProviderController implements Features, PlayerController  {
   private final IThreeTriosModel model;
-  private final ThreeTriosPlayer player;
   private final IPlayerView view;
+  private final Player player;
+  private final ThreeTriosPlayer playerColor;
   private Integer selectedCardIdx;
   private boolean isMyTurn;
 
@@ -21,17 +24,29 @@ public class ProviderController implements Features, PlayerController  {
   /**
    * Creates a new ProviderController that controls a view and model for a specific player.
    * @param model The model to use.
-   * @param player The player to control for.
+   * @param playerColor The player to control for.
    * @param view The view to use.
    */
-  public ProviderController(IThreeTriosModel model, ThreeTriosPlayer player, IPlayerView view) {
-    this.model = model;
-    this.player = player;
-    this.view = view;
-    isMyTurn = false;
-
-    this.view.addFeaturesListener(this);
+  public ProviderController(
+          IThreeTriosModel model,
+          IPlayerView view,
+          Player player,
+          ThreeTriosPlayer playerColor
+  ) {
+    this.model = Objects.requireNonNull(model);
     this.model.addFeaturesListener(this);
+
+    this.playerColor = Objects.requireNonNull(playerColor);
+
+    this.view = Objects.requireNonNull(view);
+    this.player = player;
+    if (this.player != null) {
+      this.player.addControllerListener(this);
+    } else {
+      view.addFeaturesListener(this);
+    }
+
+    isMyTurn = false;
   }
 
   // Methods from Features //
@@ -99,6 +114,10 @@ public class ProviderController implements Features, PlayerController  {
     isMyTurn = turn;
     view.blurScreen(!turn);
     view.refresh();
+
+    if (isMyTurn && player!=null) {
+      player.itsYourTurn();
+    }
   }
 
   /**
@@ -119,7 +138,7 @@ public class ProviderController implements Features, PlayerController  {
    */
   @Override
   public void handleCardSelection(Integer index, ThreeTriosPlayer player) {
-    if (player == this.player) {
+    if (player == this.playerColor) {
       this.selectCard(index);
     }
   }
@@ -142,8 +161,8 @@ public class ProviderController implements Features, PlayerController  {
   @Override
   public void update() {
     System.out.println("Provider updated with turn = " + model.getTurn());
-    System.out.println("Provider is " + player.getName());
-    this.setTurn(model.getTurn().equals(player.getName()));
+    System.out.println("Provider is " + playerColor.getName());
+    this.setTurn(model.getTurn().equals(playerColor.getName()));
     if (model.isGameOver()) {
       gameOver();
     }
@@ -165,6 +184,6 @@ public class ProviderController implements Features, PlayerController  {
    */
   @Override
   public ThreeTriosPlayer getPlayer() {
-    return player;
+    return playerColor;
   }
 }

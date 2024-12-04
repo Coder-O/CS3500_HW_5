@@ -86,6 +86,12 @@ public final class ThreeTrios {
             redPlayerType,
             redStrategyType
     );
+    Player bluePlayer = choosePlayer(
+            model,
+            ThreeTriosPlayer.BLUE,
+            bluePlayerType,
+            blueStrategyType
+    );
 
     // -- Creating views, which display information
     // (and potentially handel inputs for human players)--
@@ -104,7 +110,7 @@ public final class ThreeTrios {
     PlayerController redController = new PlayerControllerImpl(model,
             redView, redPlayer, ThreeTriosPlayer.RED);
     ProviderController blueController = new ProviderController(adaptedModel,
-            ThreeTriosPlayer.BLUE, blueView);
+            blueView, bluePlayer, ThreeTriosPlayer.BLUE);
 
     // -- Starting the game. --
     model.startGame();
