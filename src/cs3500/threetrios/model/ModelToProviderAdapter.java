@@ -55,39 +55,7 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
   @Override
   public ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> getGrid() {
 
-    //The outer ArrayList represents the columns, inner ArrayList the rows
-
-
-    // Initialize the 2D ArrayList to hold the grid copy
-    ArrayList<ArrayList<cs3500.threetrios.provider.model.Cell>> gridCopy = new ArrayList<>();
-
-    // Assuming the model provides the number of rows and columns
-    int numRows = model.getGrid().getNumRows();
-    int numCols = model.getGrid().getNumColumns();
-
-    // Iterate over columns first
-    for (int col = 0; col < numCols; col++) {
-      // Create a new column for the grid copy
-      ArrayList<cs3500.threetrios.provider.model.Cell> columnCopy = new ArrayList<>();
-
-      // Iterate over rows for the current column
-      for (int row = 0; row < numRows; row++) {
-        // Get the ThreeTriosCell from the model
-        ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
-
-        if (originalCell.isHole()) {
-          // Wrap it in the adapter and add to the column
-          columnCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
-        } else {
-          columnCopy.add(new CellToICardCellAdapter(originalCell, row, col));
-        }
-      }
-
-      // Add the column to the grid copy
-      gridCopy.add(columnCopy);
-    }
-
-    return gridCopy;
+    return getGridCopy();
   }
 
   /**
@@ -217,26 +185,26 @@ public class ModelToProviderAdapter implements IThreeTriosModel {
     int numRows = model.getGrid().getNumRows();
     int numCols = model.getGrid().getNumColumns();
 
-    // Iterate over columns first
-    for (int col = 0; col < numCols; col++) {
+    // Iterate over rows first!!!
+    for (int row = 0; row < numRows; row++) {
       // Create a new column for the grid copy
-      ArrayList<cs3500.threetrios.provider.model.Cell> columnCopy = new ArrayList<>();
+      ArrayList<cs3500.threetrios.provider.model.Cell> rowCopy = new ArrayList<>();
 
-      // Iterate over rows for the current column
-      for (int row = 0; row < numRows; row++) {
+      // Iterate over columns for the current row
+      for (int col = 0; col < numCols; col++) {
         // Get the ThreeTriosCell from the model
         ThreeTriosCell originalCell = model.getGrid().getCell(row, col);
 
         if (originalCell.isHole()) {
           // Wrap it in the adapter and add to the column
-          columnCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
+          rowCopy.add(new CellToCellAdapter(originalCell, row, col).toCell());
         } else {
-          columnCopy.add(new CellToICardCellAdapter(originalCell, row, col));
+          rowCopy.add(new CellToICardCellAdapter(originalCell, row, col));
         }
       }
 
       // Add the column to the grid copy
-      gridCopy.add(columnCopy);
+      gridCopy.add(rowCopy);
     }
 
     return gridCopy;
