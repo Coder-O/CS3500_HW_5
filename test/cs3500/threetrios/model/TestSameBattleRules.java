@@ -8,7 +8,6 @@ import org.junit.Test;
  * A testing class for {@link SameBattleRules}.
  */
 public class TestSameBattleRules {
-  // todo: think of test cases, test
 
   /* Test case brainstorm:
   - Test that only one same card doesn't flip CHECK
@@ -16,8 +15,8 @@ public class TestSameBattleRules {
   - test that cards flipped on the first special step combo as normal CHECK
   - test that doesn't flip same player. CHECK
   - Test that the returned numCardsFlipped is accurate. CHECK
-  - Test that special rules only apply to initial step.
-  - Test that special rules count the number of both allied and enemy same-numbered cards.
+  - Test that special rules only apply to initial step. CHECK
+  - Test that special rules count the number of both allied and enemy same-numbered cards. CHECK
    */
 
 
@@ -80,17 +79,17 @@ public class TestSameBattleRules {
   //   |__A__| |__2__| |__1__|
   private ThreeTriosGrid similarValuesGrid;
 
-  //   |--A--| |--A--| |--A--|
-  //   |A R 1| |A B A| |A B A|
-  //   |__2__| |__1__| |__A__|
+  //   |--A--| |--A--|
+  //   |A R 2| |2 R A|
+  //   |__2__| |__1__|
   //
-  //   |--2--| |--1--| |--A--|
-  //   |A R 3| |2 B 2| |2 B 9|
-  //   |__3__| |__3__| |__A__|
-  //
-  //   |--2--| |--3--| |--1--|
-  //   |A R A| |A B 1| |2 B 1|
-  //   |__A__| |__2__| |__1__|
+  //   |--2--| |--1--|
+  //   |A B 3| |3 B A|
+  //   |__A__| |__A__|
+
+  //   |--A--| |--_--|
+  //   |A R A| |_ H _|
+  //   |__A__| |__-__|
   private ThreeTriosGrid similarValuesGrid2;
 
 
@@ -327,6 +326,50 @@ public class TestSameBattleRules {
                     "similarValuesGrid 2, 2"
             )))
             .buildGrid();
+
+    similarValuesGrid2 = new GridBuilder(3, 2, new CellBuilder())
+            .setCell(0, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid2 0, 0"
+            )))
+            .setCell(0, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid2 0, 1"
+            )))
+            .setCell(1, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid2 1, 0"
+            )))
+            .setCell(1, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid2 1, 1"
+            )))
+            .setCell(2, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid2 2, 1"
+            )))
+            .setCell(2, 1, new Cell(true))
+            .buildGrid();
   }
 
 
@@ -464,6 +507,34 @@ public class TestSameBattleRules {
                     similarValuesGrid.getCell(1, 1).getCard(),
                     similarValuesGrid
             )
+    );
+  }
+
+  @Test
+  public void testNoSpecialFlipOnCombo() {
+    battleRules.battle(
+            similarValuesGrid2.getCell(0, 0).getCard(),
+            similarValuesGrid2
+    );
+
+    Assert.assertEquals(
+            "The corner card should not have been flipped in the combo!",
+            ThreeTriosPlayer.BLUE,
+            similarValuesGrid2.getCell(1, 1).getCard().getPlayer()
+    );
+  }
+
+  @Test
+  public void testBothAllyAndEnemyCounted() {
+    battleRules.battle(
+            similarValuesGrid2.getCell(0, 0).getCard(),
+            similarValuesGrid2
+    );
+
+    Assert.assertEquals(
+            "The card should have been special flipped!",
+            similarValuesGrid2.getCell(1, 0).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
     );
   }
 
