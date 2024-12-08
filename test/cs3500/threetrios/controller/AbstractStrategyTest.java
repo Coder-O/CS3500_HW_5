@@ -6,6 +6,7 @@ import org.junit.Before;
 import java.util.List;
 import java.util.Random;
 
+import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -67,7 +68,7 @@ abstract class AbstractStrategyTest {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             gridPath
     );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             deckPath
     );

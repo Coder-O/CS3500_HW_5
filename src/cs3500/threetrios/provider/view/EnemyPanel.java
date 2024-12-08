@@ -1,18 +1,15 @@
 package cs3500.threetrios.provider.view;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.*;
+
 import cs3500.threetrios.provider.controller.Features;
 import cs3500.threetrios.provider.controller.Player;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
-
-import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.BasicStroke;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class represents a panel that does not register mouse input/clicks.

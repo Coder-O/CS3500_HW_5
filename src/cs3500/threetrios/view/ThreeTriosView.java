@@ -3,8 +3,8 @@ package cs3500.threetrios.view;
 import java.io.IOException;
 import java.util.List;
 
-import cs3500.threetrios.model.ThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCard;
+import cs3500.threetrios.model.ThreeTriosModel;
 
 /**
  * A textual view of the ThreeTrios Game.

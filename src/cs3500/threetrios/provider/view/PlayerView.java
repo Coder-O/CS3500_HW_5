@@ -1,13 +1,12 @@
 package cs3500.threetrios.provider.view;
 
-import cs3500.threetrios.provider.controller.Features;
-import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
-import cs3500.threetrios.provider.controller.Player;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JOptionPane;
-import java.awt.BorderLayout;
+import javax.swing.*;
+
+import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.controller.Player;
+import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
 
 /**
  * A view representing the swing view for each player of ThreeTrios.

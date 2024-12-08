@@ -5,9 +5,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for SimpleRules.
+ * A testing class for {@link SameBattleRules}.
  */
-public class TestSimpleRules {
+public class TestPlusBattleRules {
+  // todo: think of test cases, test
+
+  /* Test case brainstorm:
+  - Test that only one same card doesn't flip
+  - test that 2, 3, and 4 same cards do flip and flip all said cards.
+  - test that cards slipped on the first special step work as normal
+   */
+
+
   private ThreeTriosBattleRules battleRules;
 
   //|--A--|
@@ -57,7 +66,7 @@ public class TestSimpleRules {
 
   @Before
   public void initCommonFields() {
-    battleRules = new SimpleRules(new SimpleBattleComparison());
+    battleRules = new PlusBattleRules(new SimpleBattleComparison());
     attackingPlayer = ThreeTriosPlayer.RED;
 
     // Specific cards:

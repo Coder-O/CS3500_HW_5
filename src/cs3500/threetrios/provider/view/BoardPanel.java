@@ -1,21 +1,18 @@
 package cs3500.threetrios.provider.view;
 
-import cs3500.threetrios.provider.controller.Features;
-import cs3500.threetrios.provider.model.Cell;
-import cs3500.threetrios.provider.model.ICard;
-import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
-import cs3500.threetrios.provider.model.ICardCell;
-
-import javax.swing.JPanel;
-import javax.swing.JOptionPane;
-import javax.swing.event.MouseInputAdapter;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.BasicStroke;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
+
+import cs3500.threetrios.provider.controller.Features;
+import cs3500.threetrios.provider.model.Cell;
+import cs3500.threetrios.provider.model.ICard;
+import cs3500.threetrios.provider.model.ICardCell;
+import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
 
 /**
  * JPanel that represents the game board in a GUI view.

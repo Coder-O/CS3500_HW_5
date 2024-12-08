@@ -17,8 +17,20 @@ public class SimpleRules implements ThreeTriosBattleRules {
   private List<ThreeTriosCard> flippedThisTurn;
   private int numFlippedThisTurn;
   private ThreeTriosGrid grid;
+  private final ThreeTriosBattleComparison comparisonStrategy;
 
-  public SimpleRules() {
+  /**
+   * A set of rules for when cards do battle in a game of Three Trios.
+   * By these rules, an attacker wins a battle if it's attack value in
+   * the direction of its opponent is greater than that of its opponent's
+   * in its direction, as determined by the provided comparisonStrategy. Otherwise, the defender wins.
+   *
+   *  <p>If the attacker wins, then the defender is flipped, and battles with its neighbors</p>
+   *
+   * @param comparisonStrategy The strategy to compare two attack values.
+   */
+  public SimpleRules(ThreeTriosBattleComparison comparisonStrategy) {
+    this.comparisonStrategy = comparisonStrategy;
     flippedThisTurn = new ArrayList<>();
   }
 
@@ -64,11 +76,11 @@ public class SimpleRules implements ThreeTriosBattleRules {
       ThreeTriosCard neighbor = neighbors.get(direction);
 
       // If the neighbor doesn't share a player
-      // And the neighbor's touching attack value is less...
-      if (attacker.getPlayer() != neighbor.getPlayer()
-              && (attacker.getAttackValue(direction).getValue()
-              > neighbor.getAttackValue(direction.getOpposite()).getValue())
-      ) {
+      // And the neighbor's touching attack value would lose...
+      if (attacker.getPlayer() != neighbor.getPlayer() && comparisonStrategy.compare(
+              attacker.getAttackValue(direction),
+              neighbor.getAttackValue(direction.getOpposite())
+      )) {
 
         // Flip the neighbor and combo off of it.
         neighbors.get(direction).changePlayer();
