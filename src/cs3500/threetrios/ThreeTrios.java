@@ -114,7 +114,6 @@ public final class ThreeTrios {
     }
 
     ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, true);
-    IThreeTriosModel adaptedModel = new ModelToProviderAdapter(model);
 
     // -- Creating players, which handle player inputs (mainly for ai implementations) --
 
@@ -124,6 +123,12 @@ public final class ThreeTrios {
             redPlayerType,
             redStrategyType
     );
+    Player bluePlayer = choosePlayer(
+            model,
+            ThreeTriosPlayer.BLUE,
+            bluePlayerType,
+            blueStrategyType
+    );
 
     // -- Creating views, which display information
     // (and potentially handel inputs for human players)--
@@ -131,24 +136,35 @@ public final class ThreeTrios {
     ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.RED);
     ViewFeatures redView = new ViewFeaturesImpl(model, redGuiView);
 
-    IPlayerView blueView = new PlayerView(
-            adaptedModel,
-            new PlayerColorAdapter(ThreeTriosPlayer.BLUE),
-            new PlayerColorAdapter(ThreeTriosPlayer.BLUE.getOpposingPlayer())
-    );
+
+    ThreeTriosGUIView blueGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.BLUE);
+    ViewFeatures blueView = new ViewFeaturesImpl(model, blueGuiView);
+
 
     // -- Creating controllers, which connect each player's components and the model. --
 
     PlayerController redController = new PlayerControllerImpl(model,
             redView, redPlayer, ThreeTriosPlayer.RED);
-    ProviderController blueController = new ProviderController(adaptedModel,
-            ThreeTriosPlayer.BLUE, blueView);
+    PlayerController blueController = new PlayerControllerImpl(model,
+            blueView, bluePlayer, ThreeTriosPlayer.BLUE);
+
+
+
 
     // -- Starting the game. --
     model.startGame();
     // This has the model call update() on it's subscribers for the first time.
     // Assumes the views set themselves to be visible when updated.
 
+    // Old HW8 code for provider view for blue player:
+    // IThreeTriosModel adaptedModel = new ModelToProviderAdapter(model);
+    //    IPlayerView blueView = new PlayerView(
+    ////            adaptedModel,
+    ////            new PlayerColorAdapter(ThreeTriosPlayer.BLUE),
+    ////            new PlayerColorAdapter(ThreeTriosPlayer.BLUE.getOpposingPlayer())
+    ////    );
+    ////    ProviderController blueController = new ProviderController(adaptedModel,
+    ////            ThreeTriosPlayer.BLUE, blueView);
   }
 
   /**
