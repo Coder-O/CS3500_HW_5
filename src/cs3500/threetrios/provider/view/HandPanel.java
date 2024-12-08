@@ -1,20 +1,17 @@
 package cs3500.threetrios.provider.view;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
+
 import cs3500.threetrios.provider.controller.Features;
 import cs3500.threetrios.provider.controller.Player;
 import cs3500.threetrios.provider.model.ICard;
 import cs3500.threetrios.provider.model.IReadOnlyThreeTriosModel;
-
-import javax.swing.JPanel;
-import javax.swing.event.MouseInputAdapter;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.BasicStroke;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * JPanel that represents a players hand in a GUI view.

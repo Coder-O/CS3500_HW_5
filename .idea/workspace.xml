@@ -10,10 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/PlusBattleRules.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/SameBattleRules.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestPlusBattleRules.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestSameBattleRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS3500_HW_5.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/ModelToProviderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BlurOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BlurOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/PlayerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +64,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.All human, plus rules.executor": "Run",
+    "Application.All human, reversed  fallen-ace simple rules.executor": "Run",
+    "Application.All human, same rules.executor": "Run",
     "Application.All human.executor": "Run",
     "Application.BothMinCanFlip.executor": "Run",
     "Application.BothMinOpponentMove.executor": "Debug",
@@ -59,6 +74,10 @@
     "Application.ThreeTrios.executor": "Run",
     "JAR Application.CS3500_HW_5.jar.executor": "Run",
     "JUnit.All in CS3500_HW_5.executor": "Run",
+    "JUnit.TestBattleComparison.executor": "Run",
+    "JUnit.TestBattleComparison.testFullComposition.executor": "Run",
+    "JUnit.TestBattleComparison.testReverseAttackerGreaterThanDefender.executor": "Run",
+    "JUnit.TestBattleComparison.testSimpleAttackerGreaterThanDefender.executor": "Run",
     "JUnit.TestCard.executor": "Run",
     "JUnit.TestCardBuilder.executor": "Run",
     "JUnit.TestCompleteStrategies.executor": "Run",
@@ -91,6 +110,7 @@
     "JUnit.TestMaximizeScoreStrategy.testNoFlipsPossible.executor": "Run",
     "JUnit.TestMaximizeScoreStrategy.testPartial3x3.executor": "Run",
     "JUnit.TestMinCanFlipStrategy.testEmpty3x3.executor": "Run",
+    "JUnit.TestSameBattleRules.executor": "Run",
     "JUnit.TestSimpleRules.executor": "Run",
     "JUnit.TestSimpleRules.testCorrectScoreAttackFails.executor": "Run",
     "JUnit.TestSimpleRules.testCorrectScoreBattleComboAll.executor": "Run",
@@ -133,11 +153,35 @@
       <recent name="cs3500.threetrios" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RedMaxBlueHuman">
+  <component name="RunManager" selected="JUnit.All in CS3500_HW_5">
     <configuration name="All human" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
       <option name="PROGRAM_PARAMETERS" value="human human" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All human, plus rules" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
+      <module name="CS3500_HW_5" />
+      <option name="PROGRAM_PARAMETERS" value="human human null null plus" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All human, reversed  fallen-ace simple rules" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
+      <module name="CS3500_HW_5" />
+      <option name="PROGRAM_PARAMETERS" value="human human null null simple reverse fallenAce" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All human, same rules" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
+      <module name="CS3500_HW_5" />
+      <option name="PROGRAM_PARAMETERS" value="human human null null same" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,20 +202,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreeTrios" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="human human" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <option name="PACKAGE_NAME" value="" />
@@ -180,34 +210,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPlayerController.testCellWithCardClicked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBattleComparison" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="PATTERN" value="cs3500.threetrios.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestPlayerController" />
-      <option name="METHOD_NAME" value="testCellWithCardClicked" />
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestBattleComparison" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBattleComparison.testFullComposition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestBattleComparison" />
+      <option name="METHOD_NAME" value="testFullComposition" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPlayerController.testNotYourTurn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBattleComparison.testReverseAttackerGreaterThanDefender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.controller.*" />
+          <option name="PATTERN" value="cs3500.threetrios.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.controller.TestPlayerController" />
-      <option name="METHOD_NAME" value="testNotYourTurn" />
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestBattleComparison" />
+      <option name="METHOD_NAME" value="testReverseAttackerGreaterThanDefender" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSameBattleRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS3500_HW_5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cs3500.threetrios.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestSameBattleRules" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -217,21 +278,26 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.All human, plus rules" />
       <item itemvalue="Application.All human" />
+      <item itemvalue="Application.All human, reversed  fallen-ace simple rules" />
+      <item itemvalue="Application.All human, same rules" />
       <item itemvalue="Application.RedMaxBlueHuman" />
       <item itemvalue="Application.BothMinCanFlip" />
-      <item itemvalue="Application.ThreeTrios" />
       <item itemvalue="JAR Application.CS3500_HW_5.jar" />
+      <item itemvalue="JUnit.TestSameBattleRules" />
+      <item itemvalue="JUnit.TestBattleComparison" />
+      <item itemvalue="JUnit.TestBattleComparison.testFullComposition" />
+      <item itemvalue="JUnit.TestBattleComparison.testReverseAttackerGreaterThanDefender" />
       <item itemvalue="JUnit.All in CS3500_HW_5" />
-      <item itemvalue="JUnit.TestPlayerController.testCellWithCardClicked" />
-      <item itemvalue="JUnit.TestPlayerController.testNotYourTurn" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in CS3500_HW_5" />
-        <item itemvalue="Application.ThreeTrios" />
-        <item itemvalue="JUnit.TestPlayerController.testCellWithCardClicked" />
-        <item itemvalue="JUnit.TestPlayerController.testNotYourTurn" />
+        <item itemvalue="JUnit.TestSameBattleRules" />
+        <item itemvalue="JUnit.TestBattleComparison" />
+        <item itemvalue="JUnit.TestBattleComparison.testFullComposition" />
+        <item itemvalue="JUnit.TestBattleComparison.testReverseAttackerGreaterThanDefender" />
       </list>
     </recent_temporary>
   </component>
@@ -253,6 +319,8 @@
       <workItem from="1730742440973" duration="9943000" />
       <workItem from="1732491136375" duration="7283000" />
       <workItem from="1733091087767" duration="11124000" />
+      <workItem from="1733428380380" duration="1493000" />
+      <workItem from="1733607681272" duration="13768000" />
     </task>
     <servers />
   </component>

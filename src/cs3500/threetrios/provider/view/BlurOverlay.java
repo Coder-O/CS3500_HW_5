@@ -1,9 +1,8 @@
 package cs3500.threetrios.provider.view;
 
-import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Color;
+import java.awt.*;
+
+import javax.swing.*;
 
 /**
  * Creates an overlay that blurs out the JFrame of the player whose turn it's not.

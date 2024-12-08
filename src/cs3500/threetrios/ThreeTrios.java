@@ -1,6 +1,5 @@
 package cs3500.threetrios;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,10 @@ import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.controller.ViewFeaturesImpl;
 import cs3500.threetrios.model.FallenAceBattleComparison;
 import cs3500.threetrios.model.ModelToProviderAdapter;
+import cs3500.threetrios.model.PlusBattleRules;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ReverseBattleComparison;
+import cs3500.threetrios.model.SameBattleRules;
 import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleComparison;
@@ -61,8 +62,8 @@ public final class ThreeTrios {
    *                'human'. Otherwise, arguments must be inputted, but will be ignored if their
    *                corresponding player is 'human'</li>
    *                <li>Applying the same decorator multiple times is allowed,
-   *                but effects may vary based on what decorator is repeated.
-   *                Generally, the decorations undo each other.</li>
+   *                but unintended, and effects may vary based on what decorator is repeated.
+   *                Generally, applying the same decoration twice would remove it.</li>
    *             </ul>
    *
    *             <p>Valid player strategies are: 'upperLeft', 'maxScore', 'cornerUpperLeft',
@@ -182,11 +183,11 @@ public final class ThreeTrios {
         toReturn = new SimpleRules(comparisonStrategy);
         break;
       case "same":
-//        toReturn = new SimpleRules(comparisonStrategy);
-//        break;
+        toReturn = new SameBattleRules(comparisonStrategy);
+        break;
       case "plus":
-//        toReturn = new SimpleRules(comparisonStrategy);
-//        break;
+        toReturn = new PlusBattleRules(comparisonStrategy);
+        break;
       default:
         throw new IllegalArgumentException(
                 "The provided base rule type '" + baseType + "' is invalid!"

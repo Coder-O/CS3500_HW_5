@@ -1,14 +1,10 @@
 package cs3500.threetrios.view;
 
-import javax.swing.JPanel;
-import javax.swing.JComponent;
-import javax.swing.BorderFactory;
-
-import java.awt.GridLayout;
-import java.awt.Color;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.*;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
