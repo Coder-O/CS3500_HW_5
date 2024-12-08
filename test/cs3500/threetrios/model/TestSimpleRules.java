@@ -57,7 +57,7 @@ public class TestSimpleRules {
 
   @Before
   public void initCommonFields() {
-    battleRules = new SimpleRules();
+    battleRules = new SimpleRules(new SimpleBattleComparison());
     attackingPlayer = ThreeTriosPlayer.RED;
 
     // Specific cards:

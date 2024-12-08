@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import cs3500.threetrios.model.Card;
 import cs3500.threetrios.controller.ConfigurationReader;
+import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosAttackValue;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
@@ -43,7 +44,7 @@ public class TestThreeTriosGameModel {
   private void setUp(String gridPath, String deckPath) {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             gridPath);
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     deck = ConfigurationReader.readDeck(
             deckPath
     );
@@ -72,7 +73,7 @@ public class TestThreeTriosGameModel {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             PATH_GRID_3X3
     );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
         PATH_DECK_10
     );
@@ -83,7 +84,7 @@ public class TestThreeTriosGameModel {
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorExc3() {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(PATH_GRID_3X3);
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = List.of(new Card(ThreeTriosAttackValue.ONE,
             ThreeTriosAttackValue.TWO,
             ThreeTriosAttackValue.THREE,
@@ -105,7 +106,7 @@ public class TestThreeTriosGameModel {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             PATH_GRID_3X3
     );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     deck = ConfigurationReader.readDeck(
             PATH_DECK_10
     );

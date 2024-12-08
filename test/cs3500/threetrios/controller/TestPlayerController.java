@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosGameModel;
+import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
@@ -35,7 +36,7 @@ public class TestPlayerController {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt"
     );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
     );
@@ -53,7 +54,7 @@ public class TestPlayerController {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3H.txt"
     );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
     );

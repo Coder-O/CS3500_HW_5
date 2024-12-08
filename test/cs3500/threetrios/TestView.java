@@ -3,6 +3,7 @@ package cs3500.threetrios;
 import org.junit.Test;
 
 import cs3500.threetrios.controller.ConfigurationReader;
+import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -29,7 +30,7 @@ public class TestView {
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
         "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt"
     );
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
         "src/cs3500/ThreeTrios/ConfigurationFiles/Card.10Cards.txt"
     );

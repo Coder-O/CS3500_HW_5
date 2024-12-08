@@ -14,6 +14,7 @@ import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.controller.ViewFeaturesImpl;
 import cs3500.threetrios.model.ModelToProviderAdapter;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
+import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.SimpleRules;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
@@ -70,7 +71,7 @@ public final class ThreeTrios {
     // Creating model, which controls the game state.
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt");
-    ThreeTriosBattleRules battleRules = new SimpleRules();
+    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
 
