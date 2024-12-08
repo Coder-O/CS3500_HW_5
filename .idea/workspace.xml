@@ -10,22 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/PlusBattleRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/SameBattleRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestPlusBattleRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/cs3500/threetrios/model/TestSameBattleRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BlurOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BlurOverlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/EnemyPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/HandPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/provider/view/PlayerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS3500_HW_5.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +56,7 @@
     "Application.All human.executor": "Run",
     "Application.BothMinCanFlip.executor": "Run",
     "Application.BothMinOpponentMove.executor": "Debug",
+    "Application.Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace).executor": "Run",
     "Application.RedMaxBlueHuman.executor": "Run",
     "Application.ThreeTrios.executor": "Run",
     "JAR Application.CS3500_HW_5.jar.executor": "Run",
@@ -152,8 +139,11 @@
       <recent name="cs3500.threetrios.controller.strategies" />
       <recent name="cs3500.threetrios" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cs3500.threetrios.model" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in CS3500_HW_5">
+  <component name="RunManager" selected="Application.Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace)">
     <configuration name="All human" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
@@ -194,6 +184,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
+      <module name="CS3500_HW_5" />
+      <option name="PROGRAM_PARAMETERS" value="machine human maxScore null plus reverse fallenAce" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RedMaxBlueHuman" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
@@ -205,6 +203,8 @@
     <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS3500_HW_5" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -278,6 +278,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace)" />
       <item itemvalue="Application.All human, plus rules" />
       <item itemvalue="Application.All human" />
       <item itemvalue="Application.All human, reversed  fallen-ace simple rules" />
@@ -320,7 +321,7 @@
       <workItem from="1732491136375" duration="7283000" />
       <workItem from="1733091087767" duration="11124000" />
       <workItem from="1733428380380" duration="1493000" />
-      <workItem from="1733607681272" duration="13768000" />
+      <workItem from="1733607681272" duration="14302000" />
     </task>
     <servers />
   </component>
