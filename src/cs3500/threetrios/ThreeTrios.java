@@ -1,5 +1,7 @@
 package cs3500.threetrios;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cs3500.threetrios.controller.ConfigurationReader;
@@ -12,10 +14,13 @@ import cs3500.threetrios.controller.StrategyFactory;
 import cs3500.threetrios.controller.StrategyPlayer;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.controller.ViewFeaturesImpl;
+import cs3500.threetrios.model.FallenAceBattleComparison;
 import cs3500.threetrios.model.ModelToProviderAdapter;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
+import cs3500.threetrios.model.ReverseBattleComparison;
 import cs3500.threetrios.model.SimpleBattleComparison;
 import cs3500.threetrios.model.SimpleRules;
+import cs3500.threetrios.model.ThreeTriosBattleComparison;
 import cs3500.threetrios.model.ThreeTriosBattleRules;
 import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
@@ -42,15 +47,36 @@ public final class ThreeTrios {
    *                <li>args[1]: The type of the blue player, 'machine' or 'human'.</li>
    *                <li>args[2]: The strategy of the red player. </li>
    *                <li>args[3]: The strategy of the blue player.</li>
+   *                <li>args[4]: The base rule type</li>
+   *                <li>args[5-6]: Any decorators to the base rules' comparisons.</li>
+   *
    *             </ul>
-   *             The strategy arguments are optional if and only if both players are 'human'.
-   *             Valid strategies are:
-   *             'upperLeft', 'maxScore', 'cornerUpperLeft', 'minCanFlip', and 'minOpponentMove'.
+   *
+   *             When inputting arguments, it is important to follow these rules:
+   *             <ul>
+   *                <li>In order for any argument to be properly read, all proceeding arguments must
+   *                be present. For instance, to change the base rule type, both strategy arguments
+   *                must be provided.</li>
+   *                <li>The player strategy arguments are optional if and only if both players are
+   *                'human'. Otherwise, arguments must be inputted, but will be ignored if their
+   *                corresponding player is 'human'</li>
+   *                <li>Applying the same decorator multiple times is allowed,
+   *                but effects may vary based on what decorator is repeated.
+   *                Generally, the decorations undo each other.</li>
+   *             </ul>
+   *
+   *             <p>Valid player strategies are: 'upperLeft', 'maxScore', 'cornerUpperLeft',
+   *             'minCanFlip', and 'minOpponentMove'.</p>
+   *
+   *             <p>Valid base rule types are 'simple' (default), 'same', and 'plus'</p>
+   *
+   *             <p>Valid decorations to the rules are 'reverse' and 'fallenAce'</p>
+   *
    */
   public static void main(String[] args) {
 
     // interpreting args
-    if (args.length != 4 && args.length != 2) {
+    if (args.length < 2 || args.length > 7 || args.length == 3) {
       throw new IllegalArgumentException("An incorrect number of parameters were given!");
     }
 
@@ -61,7 +87,7 @@ public final class ThreeTrios {
     String blueStrategyType = null;
 
     if (!(redPlayerType.equals("human") && bluePlayerType.equals("human"))) {
-      if (args.length != 4) {
+      if (args.length < 4) {
         throw new IllegalArgumentException("An incorrect number of parameters were given!");
       }
       redStrategyType = args[2];
@@ -71,9 +97,20 @@ public final class ThreeTrios {
     // Creating model, which controls the game state.
     ThreeTriosGrid grid = ConfigurationReader.readGrid(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Grid.3x3.txt");
-    ThreeTriosBattleRules battleRules = new SimpleRules(new SimpleBattleComparison());
     List<ThreeTriosCard> deck = ConfigurationReader.readDeck(
             "src/cs3500/ThreeTrios/ConfigurationFiles/Card.38Cards.txt");
+
+    // Creating the battleRules
+    ThreeTriosBattleRules battleRules;
+
+    if (args.length < 5) {
+      battleRules = new SimpleRules(new SimpleBattleComparison());
+    } else {
+      battleRules = makeBattleRules(
+              args[4],
+              Arrays.asList(args).subList(5, args.length)
+      );
+    }
 
     ThreeTriosGameModel model = new ThreeTriosGameModel(grid, deck, battleRules, true);
     IThreeTriosModel adaptedModel = new ModelToProviderAdapter(model);
@@ -111,6 +148,52 @@ public final class ThreeTrios {
     // This has the model call update() on it's subscribers for the first time.
     // Assumes the views set themselves to be visible when updated.
 
+  }
+
+  /**
+   * Creates a {@link ThreeTriosBattleRules} object based on input.
+   * @param baseType The base type of the rules, 'simple', 'same', or 'plus'
+   * @param decorators The decorators to apply to the rules, 'reverse' or 'fallenAce'
+   * @return A {@link ThreeTriosBattleRules} object of the desired type.
+   */
+  private static ThreeTriosBattleRules makeBattleRules(String baseType, List<String> decorators) {
+
+    // Creare the comparison strategy
+    ThreeTriosBattleComparison comparisonStrategy = new SimpleBattleComparison();
+    for (String decorator : decorators) {
+      switch (decorator) {
+        case "reverse":
+          comparisonStrategy = new ReverseBattleComparison(comparisonStrategy);
+          break;
+        case "fallenAce":
+          comparisonStrategy = new FallenAceBattleComparison(comparisonStrategy);
+          break;
+        default:
+          throw new IllegalArgumentException(
+                  "The comparison decorator '" + decorator + "' is invalid!"
+          );
+      }
+    }
+
+    // Create the full strategy
+    ThreeTriosBattleRules toReturn;
+    switch (baseType) {
+      case "simple":
+        toReturn = new SimpleRules(comparisonStrategy);
+        break;
+      case "same":
+//        toReturn = new SimpleRules(comparisonStrategy);
+//        break;
+      case "plus":
+//        toReturn = new SimpleRules(comparisonStrategy);
+//        break;
+      default:
+        throw new IllegalArgumentException(
+                "The provided base rule type '" + baseType + "' is invalid!"
+        );
+    }
+
+    return toReturn;
   }
 
   /**
