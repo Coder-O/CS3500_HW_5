@@ -22,8 +22,6 @@ public class HintDecorator extends GridDecorator {
   private final GridPanel gridPanel;
   private final ReadOnlyThreeTriosModel model;
   private boolean hintsEnabled;
-  private int selectedCardIdx;
-  private PlayerActionEvents features;
   private final JComponent gridContainer;
 
   /**
@@ -86,11 +84,11 @@ public class HintDecorator extends GridDecorator {
           if (!cell.isHole() && cell.getCard() == null) {
             int moveScore = -1;
             try {
-              moveScore = model.getMoveScore
-                      (model.getCurrentPlayer(),
-                              selectedCardIdx,
-                              row,
-                              col
+              moveScore = model.getMoveScore(
+                      model.getCurrentPlayer(),
+                      gridPanel.getFeatures().getSelectedCardIdx(),
+                      row,
+                      col
                       ) - 1;
             }
             catch (Exception e){
