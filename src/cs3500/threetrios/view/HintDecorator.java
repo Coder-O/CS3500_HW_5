@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosCell;
 import cs3500.threetrios.model.ThreeTriosGrid;
+import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * HintDecorator overlays hint values onto grid cells to display
@@ -21,16 +22,18 @@ public class HintDecorator extends GridDecorator {
   private final ReadOnlyThreeTriosModel model;
   private boolean hintsEnabled;
   private final JComponent gridContainer;
+  private final ThreeTriosPlayer player;
 
   /**
    * Constructor for the HintDecorator.
    * @param gridPanel The game's original GridPanel
    * @param model  The read-only model to calculate hints.
    */
-  public HintDecorator(GridPanel gridPanel, ReadOnlyThreeTriosModel model) {
+  public HintDecorator(GridPanel gridPanel, ReadOnlyThreeTriosModel model, ThreeTriosPlayer player) {
     super(gridPanel);
     this.gridPanel = gridPanel;
     this.model = model;
+    this.player = player;
     this.hintsEnabled = false;
     this.gridContainer = gridPanel.getGridContainer();
 
@@ -65,12 +68,11 @@ public class HintDecorator extends GridDecorator {
 
     System.out.println("no card selected yet");
 
-    if (hintsEnabled) {
-      System.out.println(gridPanel.getFeatures().getSelectedCardIdx());
-    }
-
     // Overlay hints only if enabled and a card is selected
-    if (hintsEnabled && gridPanel.getFeatures().getSelectedCardIdx() >= 0) {
+    if (hintsEnabled
+            && gridPanel.getFeatures() != null
+            && gridPanel.getFeatures().getSelectedCardIdx() >= 0
+    ) {
       System.out.println(gridPanel.getFeatures().getSelectedCardIdx());
 
       ThreeTriosGrid grid = model.getGrid();
@@ -83,7 +85,7 @@ public class HintDecorator extends GridDecorator {
             int moveScore = -1;
             try {
               moveScore = model.getMoveScore(
-                      model.getCurrentPlayer(),
+                      player,
                       gridPanel.getFeatures().getSelectedCardIdx(),
                       row,
                       col

@@ -305,7 +305,6 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
    * @return The projected score of such a move.
    * @throws IllegalStateException    If the game is over.
    * @throws IllegalArgumentException If player is null.
-   * @throws IllegalStateException    If it is not the specified player's turn.
    * @throws IndexOutOfBoundsException If the cardIdxInHand, row,
    *                                  or column parameters are out-of-bounds.
    * @throws IllegalArgumentException If the specified move is invalid
@@ -322,11 +321,7 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
       throw new IllegalArgumentException("Player should not be null!");
     }
 
-    if (!player.equals(getCurrentPlayer())) {
-      throw new IllegalStateException(
-              player.name() + " cannot play, it is " + getCurrentPlayer() + "'s turn."
-      );
-    }
+
     ThreeTriosCard copyPlayerCard = playerHands.get(player).get(cardIdxInHand).copy();
 
     ThreeTriosGrid copyGrid = grid.copy();
@@ -365,6 +360,11 @@ public class ReadOnlyThreeTriosGameModel implements ReadOnlyThreeTriosModel {
   public Optional<Exception> canPlayToGrid(ThreeTriosPlayer player,
                                            int cardIdxInHand, int row, int column) {
     try {
+      if (player != null && !player.equals(getCurrentPlayer())) {
+        throw new IllegalStateException(
+                player.name() + " cannot play, it is " + getCurrentPlayer() + "'s turn."
+        );
+      }
       getMoveScore(player, cardIdxInHand, row, column);
     } catch (Exception e) {
       return Optional.of(e);

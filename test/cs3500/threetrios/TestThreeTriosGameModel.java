@@ -618,15 +618,6 @@ public class TestThreeTriosGameModel {
   }
 
   @Test
-  public void testGetMoveScoreWrongPlayer() {
-    Assert.assertThrows(
-            "Should throw an IllegalStateException",
-            IllegalStateException.class,
-        () -> model.getMoveScore(ThreeTriosPlayer.BLUE,0,0, 0)
-    );
-  }
-
-  @Test
   public void testGetMoveScoreNullPlayer() {
     Assert.assertThrows(
             "Should throw an IllegalArgumentException",

@@ -47,7 +47,7 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
 
     //Build grid
     gridPanel = new GridPanel(model, this);
-    hintGrid = new HintDecorator(gridPanel, model); //new: wrap grid with HintDecorator
+    hintGrid = new HintDecorator(gridPanel, model, playerColor); //new: wrap grid with HintDecorator
     add(hintGrid.getComponent(), BorderLayout.CENTER);
 
     //Build hand panels
