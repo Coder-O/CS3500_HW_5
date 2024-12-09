@@ -5,17 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * A testing class for {@link SameBattleRules}.
+ * A testing class for {@link PlusBattleRules}.
  */
 public class TestPlusBattleRules {
-  // todo: think of test cases, test
-
-  /* Test case brainstorm:
-  - Test that only one same card doesn't flip
-  - test that 2, 3, and 4 same cards do flip and flip all said cards.
-  - test that cards slipped on the first special step work as normal
-   */
-
 
   private ThreeTriosBattleRules battleRules;
 
@@ -62,6 +54,32 @@ public class TestPlusBattleRules {
   //   |A R A| |_ H _| |1 B 1|
   //   |__A__| |__-__| |__1__|
   private ThreeTriosGrid holeGrid;
+
+  //   |--A--| |--A--| |--A--|
+  //   |A R 1| |A B A| |A B A|
+  //   |__3__| |__3__| |__A__|
+  //
+  //   |--1--| |--1--| |--A--|
+  //   |A B 2| |2 R 2| |2 B 9|
+  //   |__2__| |__3__| |__A__|
+  //
+  //   |--2--| |--1--| |--1--|
+  //   |A R A| |A B 3| |1 B 1|
+  //   |__A__| |__2__| |__1__|
+  private ThreeTriosGrid similarValuesGrid;
+
+  //   |--A--| |--A--|
+  //   |A R 1| |4 R A|
+  //   |__2__| |__1__|
+  //
+  //   |--3--| |--1--|
+  //   |A B 2| |3 B A|
+  //   |__A__| |__A__|
+
+  //   |--A--| |--_--|
+  //   |A R A| |_ H _|
+  //   |__A__| |__-__|
+  private ThreeTriosGrid similarValuesGrid2;
 
 
   @Before
@@ -222,6 +240,264 @@ public class TestPlusBattleRules {
                     "holeGrid 2, 2"
             )))
             .buildGrid();
+
+    similarValuesGrid = new GridBuilder(3, 3, new CellBuilder())
+            .setCell(0, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid 0, 0"
+            )))
+            .setCell(0, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid 0, 1"
+            )))
+            .setCell(0, 2, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid 0, 2"
+            )))
+            .setCell(1, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid 1, 0"
+            )))
+            .setCell(1, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid 1, 1"
+            )))
+            .setCell(1, 2, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.NINE,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid 1, 2"
+            )))
+            .setCell(2, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid 2, 0"
+            )))
+            .setCell(2, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid 2, 1"
+            )))
+            .setCell(2, 2, new Cell(new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid 2, 2"
+            )))
+            .buildGrid();
+
+    similarValuesGrid2 = new GridBuilder(3, 2, new CellBuilder())
+            .setCell(0, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid2 0, 0"
+            )))
+            .setCell(0, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.FOUR,
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid2 0, 1"
+            )))
+            .setCell(1, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.TWO,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid2 1, 0"
+            )))
+            .setCell(1, 1, new Cell(new Card(
+                    ThreeTriosAttackValue.ONE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.THREE,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.BLUE,
+                    "similarValuesGrid2 1, 1"
+            )))
+            .setCell(2, 0, new Cell(new Card(
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosAttackValue.A,
+                    ThreeTriosPlayer.RED,
+                    "similarValuesGrid2 2, 1"
+            )))
+            .setCell(2, 1, new Cell(true))
+            .buildGrid();
+  }
+
+  @Test
+  public void test2CardsMatchingSumFlip() {
+    battleRules.battle(similarValuesGrid.getCell(2, 1).getCard(), similarValuesGrid);
+
+    Assert.assertEquals(
+            "The attacker should remain",
+            similarValuesGrid.getCell(2, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(1, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+  }
+
+  @Test
+  public void test3CardsMatchingSumFlip() {
+    battleRules.battle(similarValuesGrid.getCell(1, 0).getCard(), similarValuesGrid);
+
+    Assert.assertEquals(
+            "The attacker should remain",
+            similarValuesGrid.getCell(1, 0).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(0, 0).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(1, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(2, 0).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+  }
+
+  @Test
+  public void test4CardsMatchingSumFlip() {
+    battleRules.battle(similarValuesGrid.getCell(1, 1).getCard(), similarValuesGrid);
+
+    Assert.assertEquals(
+            "The attacker should remain",
+            similarValuesGrid.getCell(1, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(0, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(1, 0).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(1, 2).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
+    Assert.assertEquals(
+            "Some cards should have been flipped!",
+            similarValuesGrid.getCell(2, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
+  }
+
+  @Test
+  public void testSpecialFlipCardsCombo() {
+    battleRules.battle(similarValuesGrid.getCell(1, 1).getCard(), similarValuesGrid);
+
+    Assert.assertEquals(
+            "Cards should combo regardless of how they were flipped.",
+            similarValuesGrid.getCell(2, 2).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
+  }
+
+  @Test
+  public void testSpecialFlipDoesntFlipSamePlayer() {
+    battleRules.battle(similarValuesGrid.getCell(0, 2).getCard(), similarValuesGrid);
+
+    Assert.assertEquals(
+            "A card of the same player should not be flipped.",
+            similarValuesGrid.getCell(0, 1).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+    Assert.assertEquals(
+            "A card of the same player should not be flipped.",
+            similarValuesGrid.getCell(1, 2).getCard().getPlayer(),
+            ThreeTriosPlayer.BLUE
+    );
+  }
+
+  @Test
+  public void testSpecialFlipCountsCorrectly() {
+    Assert.assertEquals("The battle step should count how many cards flip.",
+            6,
+            battleRules.battle(
+                    similarValuesGrid.getCell(1, 1).getCard(),
+                    similarValuesGrid
+            )
+    );
+  }
+
+  @Test
+  public void testNoSpecialFlipOnCombo() {
+    battleRules.battle(
+            similarValuesGrid2.getCell(0, 0).getCard(),
+            similarValuesGrid2
+    );
+
+    Assert.assertEquals(
+            "The corner card should not have been flipped in the combo!",
+            ThreeTriosPlayer.BLUE,
+            similarValuesGrid2.getCell(1, 1).getCard().getPlayer()
+    );
+  }
+
+  @Test
+  public void testBothAllyAndEnemyCounted() {
+    battleRules.battle(
+            similarValuesGrid2.getCell(0, 0).getCard(),
+            similarValuesGrid2
+    );
+
+    Assert.assertEquals(
+            "The card should have been special flipped!",
+            similarValuesGrid2.getCell(1, 0).getCard().getPlayer(),
+            ThreeTriosPlayer.RED
+    );
   }
 
   @Test
