@@ -19,4 +19,10 @@ public interface PlayerActionEvents {
    * @param col the column of the clicked cell.
    */
   void handleGridCellSelection(int row, int col);
+
+  /**
+   * Returns the selected card's index.
+   * @return the selected card's index.
+   */
+  public int getSelectedCardIdx();
 }

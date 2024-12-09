@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="CS3500_HW_5:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="">
+    <list default="true" id="110993f5-a96a-4533-95c1-9218b19c3400" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridDecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/HintDecorator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS3500_HW_5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/ThreeTrios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerActionEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerActionEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/PlayerControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ProviderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ViewFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ViewFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ViewFeaturesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/controller/ViewFeaturesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/CardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/GridPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/ThreeTriosGameGUIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/cs3500/threetrios/controller/MockPlayerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,333 +29,44 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="KubernetesApiProvider">{
-    &quot;isMigrated&quot;: true
-    }</component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-    &quot;associatedIndex&quot;: 7
-    }</component>
-  <component name="ProjectId" id="2oOZAW3bvCo8lryX9l33nat4sOB" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.All human, plus rules.executor": "Run",
-    "Application.All human, reversed  fallen-ace simple rules.executor": "Run",
-    "Application.All human, same rules.executor": "Run",
-    "Application.All human.executor": "Run",
-    "Application.BothMinCanFlip.executor": "Run",
-    "Application.BothMinOpponentMove.executor": "Debug",
-    "Application.Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace).executor": "Run",
-    "Application.RedMaxBlueHuman.executor": "Run",
-    "Application.ThreeTrios.executor": "Run",
-    "JAR Application.CS3500_HW_5.jar.executor": "Run",
-    "JUnit.All in CS3500_HW_5.executor": "Run",
-    "JUnit.TestBattleComparison.executor": "Run",
-    "JUnit.TestBattleComparison.testFullComposition.executor": "Run",
-    "JUnit.TestBattleComparison.testReverseAttackerGreaterThanDefender.executor": "Run",
-    "JUnit.TestBattleComparison.testSimpleAttackerGreaterThanDefender.executor": "Run",
-    "JUnit.TestCard.executor": "Run",
-    "JUnit.TestCardBuilder.executor": "Run",
-    "JUnit.TestCompleteStrategies.executor": "Run",
-    "JUnit.TestCompleteStrategies.testFullGames.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.testAllMovesLegal.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.testEmpty3x3Corner.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.testEmpty3x3Max.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.testFullGames.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.testPartial3x3Corner.executor": "Run",
-    "JUnit.TestCompleteStrategyAdapter.testPartial3x3Max.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.allCornersChecked.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.testAllMovesLegal.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.testEmpty3x3.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.testEmptySplit.executor": "Run",
-    "JUnit.TestGoForCornerStrategy.testPartial3x3.executor": "Run",
-    "JUnit.TestGridBuilder.executor": "Run",
-    "JUnit.TestGridBuilder.testBuildGridExceptions.executor": "Run",
-    "JUnit.TestGridBuilder.testSetCell.executor": "Debug",
-    "JUnit.TestGridBuilder.testSetCellExceptions.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.TODO_THIS_TEST_SHOULD_BE_REMOVED_BEFORE_SUBMISSION.executor": "Debug",
-    "JUnit.TestMaximizeScoreStrategy.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.testAllMovesLegal.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.testAllPositionsChecked.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.testBestMoveMade.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.testEmpty3x3.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.testNoFlipsPossible.executor": "Run",
-    "JUnit.TestMaximizeScoreStrategy.testPartial3x3.executor": "Run",
-    "JUnit.TestMinCanFlipStrategy.testEmpty3x3.executor": "Run",
-    "JUnit.TestSameBattleRules.executor": "Run",
-    "JUnit.TestSimpleRules.executor": "Run",
-    "JUnit.TestSimpleRules.testCorrectScoreAttackFails.executor": "Run",
-    "JUnit.TestSimpleRules.testCorrectScoreBattleComboAll.executor": "Run",
-    "JUnit.TestSimpleRules.testCorrectScoreBattleComboPartial.executor": "Run",
-    "JUnit.TestSimpleRules.testCorrectScoreBlue.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testCanPlayToGridGameOver.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testCanPlayToGridHole.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testCanPlayToGridNoMutation.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testCanPlayToGridOutOfBounds.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testGetMoveScoreGameOver.executor": "Run",
-    "JUnit.TestThreeTriosGameModel.testPlayToGridLegal.executor": "Run",
-    "JUnit.TestUpperLeftmostStrategy.executor": "Run",
-    "JUnit.TestUpperLeftmostStrategy.noMovesThrowsException.executor": "Run",
-    "JUnit.TestUpperLeftmostStrategy.testNoMutation.executor": "Run",
-    "JUnit.TestView.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/README and Reviews" />
-      <recent name="$PROJECT_DIR$/src/cs3500/threetrios/provider/model" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="cs3500.threetrios.controller" />
-      <recent name="cs3500.threetrios.controller.strategies" />
-      <recent name="cs3500.threetrios" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cs3500.threetrios.model" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace)">
-    <configuration name="All human" type="Application" factoryName="Application">
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ThreeTrios" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
       <module name="CS3500_HW_5" />
       <option name="PROGRAM_PARAMETERS" value="human human" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All human, plus rules" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="human human null null plus" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All human, reversed  fallen-ace simple rules" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="human human null null simple reverse fallenAce" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All human, same rules" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="human human null null same" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BothMinCanFlip" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="machine machine minCanFlip minCanFlip" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace)" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="machine human maxScore null plus reverse fallenAce" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RedMaxBlueHuman" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.ThreeTrios" />
-      <module name="CS3500_HW_5" />
-      <option name="PROGRAM_PARAMETERS" value="machine human maxScore null" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in CS3500_HW_5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBattleComparison" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
+          <option name="PATTERN" value="cs3500.threetrios.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestBattleComparison" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBattleComparison.testFullComposition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestBattleComparison" />
-      <option name="METHOD_NAME" value="testFullComposition" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBattleComparison.testReverseAttackerGreaterThanDefender" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestBattleComparison" />
-      <option name="METHOD_NAME" value="testReverseAttackerGreaterThanDefender" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSameBattleRules" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CS3500_HW_5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cs3500.threetrios.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cs3500.threetrios.model" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.threetrios.model.TestSameBattleRules" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CS3500_HW_5.jar" type="JarApplication">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/CS3500_HW_5.jar" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Application.Everything (Human, Machine, MaxScore, Plus, Reverse, Fallen Ace)" />
-      <item itemvalue="Application.All human, plus rules" />
-      <item itemvalue="Application.All human" />
-      <item itemvalue="Application.All human, reversed  fallen-ace simple rules" />
-      <item itemvalue="Application.All human, same rules" />
-      <item itemvalue="Application.RedMaxBlueHuman" />
-      <item itemvalue="Application.BothMinCanFlip" />
-      <item itemvalue="JAR Application.CS3500_HW_5.jar" />
-      <item itemvalue="JUnit.TestSameBattleRules" />
-      <item itemvalue="JUnit.TestBattleComparison" />
-      <item itemvalue="JUnit.TestBattleComparison.testFullComposition" />
-      <item itemvalue="JUnit.TestBattleComparison.testReverseAttackerGreaterThanDefender" />
-      <item itemvalue="JUnit.All in CS3500_HW_5" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in CS3500_HW_5" />
-        <item itemvalue="JUnit.TestSameBattleRules" />
-        <item itemvalue="JUnit.TestBattleComparison" />
-        <item itemvalue="JUnit.TestBattleComparison.testFullComposition" />
-        <item itemvalue="JUnit.TestBattleComparison.testReverseAttackerGreaterThanDefender" />
+        <item itemvalue="Application.ThreeTrios" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-11.0.22-corretto-11.0.22-f644763e9732-6ddbcd97" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="7d2f0c3e-049f-4ac2-93a1-ab105ec2697d" name="Changes" comment="" />
-      <created>1730742439832</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1730742439832</updated>
-      <workItem from="1730742440973" duration="9943000" />
-      <workItem from="1732491136375" duration="7283000" />
-      <workItem from="1733091087767" duration="11124000" />
-      <workItem from="1733428380380" duration="1493000" />
-      <workItem from="1733607681272" duration="14302000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="6" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -96,7 +96,6 @@ public class Grid implements ThreeTriosGrid {
 
     ++numCards;
 
-    System.out.println("cell.setcard called");
     grid[row][column].setCard(card);
   }
 

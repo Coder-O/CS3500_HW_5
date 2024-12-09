@@ -109,7 +109,6 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
     } else {
       view.showErrorMessage("Cannot select that card!");
     }
-
   }
 
   /**
@@ -187,4 +186,5 @@ public class CardPanel extends JPanel implements ThreeTriosPanel {
     this.features = features;
     this.player = player;
   }
+
 }

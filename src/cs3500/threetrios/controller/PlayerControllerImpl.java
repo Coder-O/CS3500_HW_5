@@ -17,6 +17,7 @@ public class PlayerControllerImpl implements PlayerController {
   private final Player player;
   private final ThreeTriosPlayer playerColor;
   private Integer indexSelected;
+  private int tempIndexSelected = -1;
 
   /**
    * Constructor for a machine PlayerControllerImpl.
@@ -123,11 +124,20 @@ public class PlayerControllerImpl implements PlayerController {
     // Play selected card to selected cell
     Optional<Exception> e = model.canPlayToGrid(playerColor, indexSelected, row, col);
     if (e.isEmpty()) {
-      int tempIndexSelected = indexSelected;
+      tempIndexSelected = indexSelected;
       indexSelected = null;
       model.playToGrid(playerColor, tempIndexSelected, row, col);
     } else {
       view.showError(e.get());
     }
+  }
+
+  /**
+   * Returns the selected card's index.
+   * @return the selected card's index.
+   */
+  @Override
+  public int getSelectedCardIdx() {
+    return tempIndexSelected;
   }
 }

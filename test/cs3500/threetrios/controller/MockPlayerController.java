@@ -98,4 +98,13 @@ public class MockPlayerController implements PlayerController {
     }
     return null;
   }
+
+  /**
+   * Returns the selected card's index.
+   * @return the selected card's index.
+   */
+  @Override
+  public int getSelectedCardIdx() {
+    return -1;
+  }
 }

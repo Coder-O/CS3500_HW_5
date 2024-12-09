@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
+import cs3500.threetrios.view.GridDecorator;
 import cs3500.threetrios.view.ThreeTriosGUIView;
 
 /**
@@ -48,8 +49,6 @@ public class ViewFeaturesImpl implements ViewFeatures {
    */
   @Override
   public void handleGridCellSelection(int row, int col) {
-    System.out.println("Calling viewfeaturesimpl.update() from: "
-            + Thread.currentThread().getStackTrace()[2]);
     update();
   }
 
@@ -70,5 +69,14 @@ public class ViewFeaturesImpl implements ViewFeatures {
   @Override
   public void showError(Exception e) {
     view.showErrorMessage(e.getMessage());
+  }
+
+  /**
+   * Returns the selected card's index.
+   * @return the selected card's index.
+   */
+  @Override
+  public int getSelectedCardIdx() {
+    return selectedCardIdx;
   }
 }

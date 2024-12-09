@@ -22,8 +22,9 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   private PlayerActionEvents features;
   private final ReadOnlyThreeTriosModel model;
   private ThreeTriosGrid grid;
-  private final JPanel gridContainer;
+  private final JComponent gridContainer;
   private final ThreeTriosGameGUIView view;
+  private JComponent cellPanel;
 
   /**
    * Constructor for GridPanel.
@@ -52,26 +53,22 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int col = 0; col < grid.getNumColumns(); col++) {
         ThreeTriosCell cell = grid.getCell(row, col);
-        JPanel cellPanel = new JPanel();
+        cellPanel = new JPanel();
         cellPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         cellPanel.setOpaque(true);
 
         if (cell.isHole()) {
           cellPanel.setBackground(Color.YELLOW);
-          System.out.println("holes drawn" + Thread.currentThread().getStackTrace()[2]);
         }
         else if (cell.getCard() != null) {
-          System.out.println("CARD DRAWN");
           // Generate a unique index based on the cell's position in the grid
           int cardIndex = row * grid.getNumColumns() + col;
           CardPanel cardPanel = new CardPanel(cell.getCard(), cardIndex, view, false);
           cellPanel.setLayout(new BorderLayout());
           cellPanel.add(cardPanel.getComponent(), BorderLayout.CENTER);
-          System.out.println("CARD DRAWN");
         }
         else if (cell.getCard() == null) {
           cellPanel.setBackground(Color.LIGHT_GRAY);
-          System.out.println("others drawn" + Thread.currentThread().getStackTrace()[2]);
         }
 
         int clickedRow = row;
@@ -80,10 +77,8 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
         cellPanel.addMouseListener(new MouseAdapter() {
           @Override
           public void mouseClicked(MouseEvent e) {
-            System.out.println("Clicked cell at: (" + clickedRow + ", " + clickedCol + ")");
             if (features != null) {
               features.handleGridCellSelection(clickedRow, clickedCol);
-              System.out.println("calling features");
             }
           }
         });
@@ -94,8 +89,6 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
 
     gridContainer.revalidate();
     gridContainer.repaint();
-    System.out.println("Grid updated and redrawn.");
-
   }
 
   /**
@@ -114,4 +107,28 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   public void addFeatures(PlayerActionEvents features) {
     this.features = features;
   }
+
+  /**
+   * Get features.
+   */
+  public PlayerActionEvents getFeatures() {
+    return this.features;
+  }
+
+  /**
+   * Returns the current grid.
+   * @return the current grid.
+   */
+  public JComponent getGridContainer() {
+    return gridContainer;
+  }
+
+  /**
+   * Returns the Cell.
+   * @return the Cell.
+   */
+  public JComponent getCellPanel() {
+    return cellPanel;
+  }
+
 }

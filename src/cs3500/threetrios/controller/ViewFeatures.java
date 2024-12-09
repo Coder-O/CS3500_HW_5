@@ -24,4 +24,5 @@ public interface ViewFeatures extends PlayerActionEvents {
    * @param features The object that should be called when a player action is performed.
    */
   void addFeatures(PlayerActionEvents features);
+
 }

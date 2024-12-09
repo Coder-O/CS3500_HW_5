@@ -167,4 +167,13 @@ public class ProviderController implements Features, PlayerController  {
   public ThreeTriosPlayer getPlayer() {
     return player;
   }
+
+  /**
+   * Returns the selected card's index.
+   * @return the selected card's index.
+   */
+  @Override
+  public int getSelectedCardIdx() {
+    return selectedCardIdx;
+  }
 }

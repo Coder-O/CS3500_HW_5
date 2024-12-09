@@ -126,7 +126,7 @@ public final class ThreeTrios {
     );
 
     // -- Creating views, which display information
-    // (and potentially handel inputs for human players)--
+    // (and potentially handle inputs for human players)--
 
     ThreeTriosGUIView redGuiView = new ThreeTriosGameGUIView(model, ThreeTriosPlayer.RED);
     ViewFeatures redView = new ViewFeaturesImpl(model, redGuiView);

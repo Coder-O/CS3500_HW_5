@@ -76,7 +76,6 @@ class Cell implements ThreeTriosCell {
    */
   @Override
   public void setCard(ThreeTriosCard card) throws IllegalStateException {
-    System.out.println("Calling setcard from: " + Thread.currentThread().getStackTrace()[2]);
     if (isHole || this.card != null) {
       throw new IllegalStateException("Cannot add a card to this cell!");
     }
