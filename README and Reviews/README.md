@@ -204,3 +204,4 @@ The full list of changes for HW 9 were as follows:
 - Added functionality to PlayerActionEvents interface and all implmentations.
 - Added functionality (handelCardSelection specific updating method) to ThreeTriosGUIView interface and implmentation.
 - Altered ViewFeatures to use the new handelCardSelection method in ThreeTriosGUIView.
+- Altered getMoveScore in the ReadOnlyThreeTriosModel interface, implmentations, and tests to allow for the finding of a move's score even when it is not that player's turn.
