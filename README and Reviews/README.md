@@ -162,7 +162,7 @@ We were able to get almost every feature of the assignment fully functional. How
 Note: Model tests were not included in this submission to comply with the 125 file limit. These tests were mostly from Part 1 of this assignment.
 
 Extra Credit:
-Level 0: A GridDecorator class that implements ThreeTriosPanel was made. A HintDecorator class that extends GridDecorator has also made. The hints are enabled if a player's screen is displayed and they click "h" or "H". This does not enable hints for the other player, and the one player cannot see the other player's hints. To disable hints, type "h" or "H" again.
+Level 0: A GridDecorator class that implements ThreeTriosPanel was made. A HintDecorator class that extends GridDecorator has also made. The hints are enabled if a player's screen is displayed and they click "h" or "H". This does not enable hints for the other player, and the one player cannot see the other player's hints. To disable hints, type "h" or "H" again. The rendering code was not changed, but the decorator was to the ThreeTriosGameGUIView by wrapping the gridPanel with the HintDecorator. 
 Level 1:
 Level 2:
 Level 3:
