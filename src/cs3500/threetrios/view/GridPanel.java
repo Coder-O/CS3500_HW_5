@@ -1,10 +1,14 @@
 package cs3500.threetrios.view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JComponent;
+import javax.swing.BorderFactory;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
@@ -24,7 +28,6 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   private ThreeTriosGrid grid;
   private final JComponent gridContainer;
   private final ThreeTriosGameGUIView view;
-  private JComponent cellPanel;
   private JComponent[][] cellPanels;
 
   /**

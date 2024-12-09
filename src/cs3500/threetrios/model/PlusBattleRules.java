@@ -10,6 +10,7 @@ import java.util.Map;
  * If at least two cards adjacent to the originally placed card have the same sum with said card in
  * their respective opposing directions, then any of those neighboring cards that belong to the
  * opponent are flipped.
+ *
  * <p>This change only applies on the initial card played.
  * When newly flipped cards do battle, this rule does not apply.
  */

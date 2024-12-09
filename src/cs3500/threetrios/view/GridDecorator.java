@@ -1,8 +1,6 @@
 package cs3500.threetrios.view;
 
-import javax.swing.*;
-
-import cs3500.threetrios.controller.PlayerActionEvents;
+import javax.swing.JComponent;
 
 /**
  * An abstract decorator for the grid.

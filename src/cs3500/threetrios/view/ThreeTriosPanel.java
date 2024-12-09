@@ -1,6 +1,6 @@
 package cs3500.threetrios.view;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 
 /**
  * Describes what the Panel is capable of.

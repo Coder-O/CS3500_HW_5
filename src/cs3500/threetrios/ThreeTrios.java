@@ -5,16 +5,13 @@ import java.util.List;
 
 import cs3500.threetrios.controller.ConfigurationReader;
 import cs3500.threetrios.controller.Player;
-import cs3500.threetrios.controller.PlayerColorAdapter;
 import cs3500.threetrios.controller.PlayerController;
 import cs3500.threetrios.controller.PlayerControllerImpl;
-import cs3500.threetrios.controller.ProviderController;
 import cs3500.threetrios.controller.StrategyFactory;
 import cs3500.threetrios.controller.StrategyPlayer;
 import cs3500.threetrios.controller.ViewFeatures;
 import cs3500.threetrios.controller.ViewFeaturesImpl;
 import cs3500.threetrios.model.FallenAceBattleComparison;
-import cs3500.threetrios.model.ModelToProviderAdapter;
 import cs3500.threetrios.model.PlusBattleRules;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ReverseBattleComparison;
@@ -27,9 +24,6 @@ import cs3500.threetrios.model.ThreeTriosCard;
 import cs3500.threetrios.model.ThreeTriosGameModel;
 import cs3500.threetrios.model.ThreeTriosGrid;
 import cs3500.threetrios.model.ThreeTriosPlayer;
-import cs3500.threetrios.provider.model.IThreeTriosModel;
-import cs3500.threetrios.provider.view.IPlayerView;
-import cs3500.threetrios.provider.view.PlayerView;
 import cs3500.threetrios.view.ThreeTriosGUIView;
 import cs3500.threetrios.view.ThreeTriosGameGUIView;
 

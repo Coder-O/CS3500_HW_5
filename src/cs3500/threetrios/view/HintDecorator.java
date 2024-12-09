@@ -23,7 +23,7 @@ public class HintDecorator extends GridDecorator {
   private final JComponent gridContainer;
 
   /**
-   * Constructor for the HintDecorator,
+   * Constructor for the HintDecorator.
    * @param gridPanel The game's original GridPanel
    * @param model  The read-only model to calculate hints.
    */
@@ -89,7 +89,7 @@ public class HintDecorator extends GridDecorator {
                       col
                       ) - 1;
             }
-            catch (Exception e){
+            catch (Exception e) {
               //no hint
             }
             cellPanel.removeAll();

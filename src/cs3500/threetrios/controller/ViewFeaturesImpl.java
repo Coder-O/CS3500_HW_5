@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
 import cs3500.threetrios.model.ThreeTriosPlayer;
-import cs3500.threetrios.view.GridDecorator;
 import cs3500.threetrios.view.ThreeTriosGUIView;
 
 /**

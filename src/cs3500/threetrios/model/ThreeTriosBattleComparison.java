@@ -1,7 +1,7 @@
 package cs3500.threetrios.model;
 
 /**
- * An interface for a comparison strategy for comparing two {@link ThreeTriosAttackValue}s
+ * An interface for a comparison strategy for comparing two {@link ThreeTriosAttackValue}.
  */
 public interface ThreeTriosBattleComparison {
   /**

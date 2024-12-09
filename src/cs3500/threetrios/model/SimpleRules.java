@@ -23,7 +23,8 @@ public class SimpleRules implements ThreeTriosBattleRules {
    * A set of rules for when cards do battle in a game of Three Trios.
    * By these rules, an attacker wins a battle if it's attack value in
    * the direction of its opponent is greater than that of its opponent's
-   * in its direction, as determined by the provided comparisonStrategy. Otherwise, the defender wins.
+   * in its direction, as determined by the provided comparisonStrategy.
+   * Otherwise, the defender wins.
    *
    *  <p>If the attacker wins, then the defender is flipped, and battles with its neighbors</p>
    *

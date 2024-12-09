@@ -9,6 +9,7 @@ import java.util.Map;
  * if at least two of the cards adjacent to the card being placed share the same value in the
  * opposing direction of said placed card,then any of those same value cards that belong to the
  * opponent are flipped.
+ *
  * <p>This change only applies on the initial card played.
  * When newly flipped cards do battle, this rule does not apply.
  */
