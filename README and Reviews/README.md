@@ -159,10 +159,48 @@ Changes for Part 4:
 What we were able to get working:
 We were able to get almost every feature of the assignment fully functional. However, our model adapter’s addFeatures method             does not actually work with every Features implementation. Instead, it only supports Features that are also                                 PlayerControllers. Alternative designs would require either changing several parts of our model implementation or making                    several assumptions on when and how a model would choose to call its controllers. As there was a drawback to every design, we               chose to only allow adaptation with compatible controller objects, which was the simplest solution to implement.                            Additionally, we were unable to get our strategies to work with the provider’s view. While this should be possible, it was                  explicitly not a requirement for this assignment, and thus we decided to focus more effort elsewhere.
 
-Note: Model tests were not included in this submission to comply with the 125 file limit. These tests were mostly from Part 1 of this assignment.
+Extra Credit HW 9:
 
-Extra Credit:
-Level 0: A GridDecorator class that implements ThreeTriosPanel was made. A HintDecorator class that extends GridDecorator has also made. The hints are enabled if a player's screen is displayed and they click "h" or "H". This does not enable hints for the other player, and the one player cannot see the other player's hints. To disable hints, type "h" or "H" again. The rendering code was not changed, but the decorator was to the ThreeTriosGameGUIView by wrapping the gridPanel with the HintDecorator. 
+Level 0:
+
+A GridDecorator class that implements ThreeTriosPanel was made. A HintDecorator class that extends GridDecorator has also made. The hints are enabled if a player's screen is displayed and they click "h" or "H". This does not enable hints for the other player, and the one player cannot see the other player's hints. To disable hints, type "h" or "H" again. The rendering code was not changed, but the decorator was to the ThreeTriosGameGUIView by wrapping the gridPanel with the HintDecorator. 
+
 Level 1:
+
+All changes were made in the model folder and corresponding test folder, except for the command line arguments in main.
+A new interface was made: ThreeTriosBattleComparison. This is a type of strategy for comparing different ThreeTriosAttackValues, with one method compare() that takes in two ThreeTriosAttackValues ad returns true if the first value wins. We refactored our SimpleRules implementation (our representation of the battle rules of the model) to take in an object of this type on construction and use that strategy to compare battling cards. We implemented three strategies:
+- SimpleBattleComparison, which follows the same logic as the original SimpleRules: an attacker wins only if it's attack value is higher than the opponent's
+- ReverseBattleComparision, which follows the Reverse logic from this assignment. This is a decorator, and relies on another ThreeTriosBattleComparison to delegate to.
+- FallenAceBattleComparison, which follows the Fallen Ace logic from this assignment. This is a decorator, and relies on another ThreeTriosBattleComparison to delegate to.
+All strategies were tested in TestBattleComparison in the model tests folder. Command line arguments were added to allow users to select which decorations they want to add to the base SimpleBattleComparison.
+
 Level 2:
+
+All changes were made in the model folder and corresponding test folder, except for the command line arguments in main.
+Two new implementations of ThreeTriosBattleRules were made:
+
+- SameBattleRules, whcih follows the Same logic from this assignment.
+- PlusBattleRules, which follows the Plus logic from this assignment.
+
+Both of these implmentations were made to use the comparision strategies from level 1 for normal comparisons outside of the special initial flip.
+Each of these implmentations have their own test class in the model tests folder. Command line arguments were added to allow the user to selct which ruleset to use.
+
 Level 3:
+
+Levels 1 and 2 were designed to work together, so nothing was needed for this level.
+
+
+Changes for HW 9:
+
+The full list of changes for HW 9 were as follows:
+- Added ThreeTriosComparisionStrategy and all implmentations (SimpleBattleComparison, ReverseBattleComparision, FallenAceBattleComparison)
+- Changed SimpleRules to take in a ThreeTriosComparisionStrategy
+- Added PlusBattleRules and SameBattleRules
+- Changed code in main to allow command line arguments for choosing rulesets.
+- Added tests for all new rules implmentations in model tests
+- Created a GridDecorator abstract class that decorates our view's grid representation (which displays the grid)
+- Created a HintDecorator class that extends GridDecorator and covers all functionality from Level 0.
+- Altered ThreeTriosGameGUIView to use HintDecorator.
+- Added functionality to PlayerActionEvents interface and all implmentations.
+- Added functionality (handelCardSelection specific updating method) to ThreeTriosGUIView interface and implmentation.
+- Altered ViewFeatures to use the new handelCardSelection method in ThreeTriosGUIView.
