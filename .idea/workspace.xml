@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="110993f5-a96a-4533-95c1-9218b19c3400" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/threetrios/view/HintDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/threetrios/view/HintDecorator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
