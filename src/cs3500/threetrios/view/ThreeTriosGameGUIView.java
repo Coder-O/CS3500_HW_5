@@ -26,8 +26,6 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
   private final GridPanel gridPanel;
   private final JPanel redHandPanel;
   private final JPanel blueHandPanel;
-  private CardPanel redCardPanel;
-  private CardPanel blueCardPanel;
   CardPanel selectedCardPanel = null;
   private final ThreeTriosPlayer playerColor;
   private final GridDecorator hintGrid; //new
@@ -61,14 +59,14 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     List<ThreeTriosCard> redHand = model.getHand(ThreeTriosPlayer.RED);
     for (int i = 0; i < redHand.size(); i++) {
       ThreeTriosCard card = redHand.get(i);
-      redCardPanel = new CardPanel(card, i, this, ThreeTriosPlayer.RED == playerColor);
+      CardPanel redCardPanel = new CardPanel(card, i, this, ThreeTriosPlayer.RED == playerColor);
       redHandPanel.add(redCardPanel);
     }
 
     List<ThreeTriosCard> blueHand = model.getHand(ThreeTriosPlayer.BLUE);
     for (int i = 0; i < blueHand.size(); i++) {
       ThreeTriosCard card = blueHand.get(i);
-      blueCardPanel = new CardPanel(card, i, this, ThreeTriosPlayer.BLUE == playerColor);
+      CardPanel blueCardPanel = new CardPanel(card, i, this, ThreeTriosPlayer.BLUE == playerColor);
       blueHandPanel.add(blueCardPanel);
     }
 
