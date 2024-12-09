@@ -6,9 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
 import cs3500.threetrios.model.ReadOnlyThreeTriosModel;
@@ -79,7 +77,7 @@ public class HintDecorator extends GridDecorator {
       for (int row = 0; row < grid.getNumRows(); row++) {
         for (int col = 0; col < grid.getNumColumns(); col++) {
           ThreeTriosCell cell = grid.getCell(row, col);
-          JComponent cellPanel = gridPanel.getCellPanel();
+          JComponent cellPanel = gridPanel.getCellPanel(row, col);
           if (!cell.isHole() && cell.getCard() == null) {
             int moveScore = -1;
             try {
@@ -91,16 +89,16 @@ public class HintDecorator extends GridDecorator {
             cellPanel.removeAll();
             JLabel hintLabel = new JLabel(String.valueOf(moveScore));
             cellPanel.add(hintLabel, BorderLayout.CENTER);
+            System.out.println("finish");
           }
         }
       }
     }
 
-    System.out.println("no card was selected");
-
     // Refresh the UI to show the hints
     gridContainer.repaint();
     gridContainer.revalidate();
+    System.out.println("finish 2");
   }
 
   /**
@@ -112,11 +110,4 @@ public class HintDecorator extends GridDecorator {
     return gridPanel.getComponent();
   }
 
-//  /**
-//   * Adds the features to enable communication with the controller.
-//   * @param features the controller's features interface.
-//   */
-//  public void addFeatures(PlayerActionEvents features) {
-//    this.features = features;
-//  }
 }

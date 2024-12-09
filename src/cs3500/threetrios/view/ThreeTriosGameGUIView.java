@@ -85,9 +85,9 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
             + ". Current player: " + model.getCurrentPlayer().getName());
 
     // Update the hand displays for both players
+    hintGrid.update();
     updateHandPanel(ThreeTriosPlayer.RED);
     updateHandPanel(ThreeTriosPlayer.BLUE);
-    hintGrid.update();
 
     //Display final message if game is over
     if (model.isGameOver()) {

@@ -25,6 +25,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
   private final JComponent gridContainer;
   private final ThreeTriosGameGUIView view;
   private JComponent cellPanel;
+  private JComponent[][] cellPanels;
 
   /**
    * Constructor for GridPanel.
@@ -34,6 +35,7 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
     this.grid = this.model.getGrid();
     this.gridContainer = new JPanel(new GridLayout(grid.getNumRows(), grid.getNumColumns()));
     this.view = view;
+    this.cellPanels = new JComponent[grid.getNumRows()][grid.getNumColumns()];
     setLayout(new BorderLayout());
     add(gridContainer, BorderLayout.CENTER);
     update();
@@ -53,7 +55,8 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int col = 0; col < grid.getNumColumns(); col++) {
         ThreeTriosCell cell = grid.getCell(row, col);
-        cellPanel = new JPanel();
+        cellPanels[row][col] = new JPanel();
+        JComponent cellPanel = cellPanels[row][col];
         cellPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         cellPanel.setOpaque(true);
 
@@ -127,8 +130,8 @@ public class GridPanel extends JPanel implements ThreeTriosPanel {
    * Returns the Cell.
    * @return the Cell.
    */
-  public JComponent getCellPanel() {
-    return cellPanel;
+  public JComponent getCellPanel(int row, int col) {
+    return cellPanels[row][col];
   }
 
 }

@@ -9,7 +9,6 @@ import cs3500.threetrios.controller.PlayerActionEvents;
  */
 public class GridDecorator implements ThreeTriosPanel {
   protected GridPanel gridPanel;
-  private PlayerActionEvents features;
 
   /**
    * Constructor for the decorator.
@@ -38,11 +37,4 @@ public class GridDecorator implements ThreeTriosPanel {
     return gridPanel.getComponent();
   }
 
-//  /**
-//   * Adds the features to enable communication with the controller.
-//   * @param features the controller's features interface.
-//   */
-//  public void addFeatures(PlayerActionEvents features) {
-//    this.features = features;
-//  }
 }
