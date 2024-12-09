@@ -187,4 +187,20 @@ public class ThreeTriosGameGUIView extends JFrame implements ThreeTriosGUIView {
     );
   }
 
+  /**
+   * Updates necessary parts of the view when a card is selected.
+   *
+   * @param index  the index of the clicked card in the player's hand.
+   * @param player the current player.
+   */
+  @Override
+  public void handleCardSelection(Integer index, ThreeTriosPlayer player) {
+    hintGrid.update();
+
+    // Repaint to apply updates
+    repaint();
+    revalidate();
+    setVisible(true);
+  }
+
 }

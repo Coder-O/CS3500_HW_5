@@ -12,7 +12,7 @@ import cs3500.threetrios.view.ThreeTriosGUIView;
  */
 public class ViewFeaturesImpl implements ViewFeatures {
 
-  private ThreeTriosGUIView view;
+  private final ThreeTriosGUIView view;
   private Integer selectedCardIdx;
   private PlayerActionEvents features;
 
@@ -40,6 +40,7 @@ public class ViewFeaturesImpl implements ViewFeatures {
     if (index != null) {
       selectedCardIdx = index;
     }
+    view.handleCardSelection(index, player);
   }
 
   /**

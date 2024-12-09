@@ -1,6 +1,7 @@
 package cs3500.threetrios.view;
 
 import cs3500.threetrios.controller.PlayerActionEvents;
+import cs3500.threetrios.model.ThreeTriosPlayer;
 
 /**
  * Represents the GUI view for the ThreeTrios Game.
@@ -35,5 +36,12 @@ public interface ThreeTriosGUIView {
    * If the game was a tie, will display that it was a tie.
    */
   void showResultsMessage();
+
+  /**
+   * Updates necessary parts of the view when a card is selected.
+   * @param index the index of the clicked card in the player's hand.
+   * @param player the current player.
+   */
+  void handleCardSelection(Integer index, ThreeTriosPlayer player);
 
 }

@@ -65,8 +65,13 @@ public class HintDecorator extends GridDecorator {
   public void update() {
     // Update the original grid first
     super.update();
+    System.out.println("Updated. Hints enabled: " + hintsEnabled);
 
     System.out.println("no card selected yet");
+
+    if (hintsEnabled) {
+      System.out.println(gridPanel.getFeatures().getSelectedCardIdx());
+    }
 
     // Overlay hints only if enabled and a card is selected
     if (hintsEnabled && gridPanel.getFeatures().getSelectedCardIdx() >= 0) {
@@ -81,7 +86,12 @@ public class HintDecorator extends GridDecorator {
           if (!cell.isHole() && cell.getCard() == null) {
             int moveScore = -1;
             try {
-              moveScore = model.getMoveScore(model.getCurrentPlayer(), selectedCardIdx, row, col);
+              moveScore = model.getMoveScore
+                      (model.getCurrentPlayer(),
+                              selectedCardIdx,
+                              row,
+                              col
+                      ) - 1;
             }
             catch (Exception e){
               //no hint

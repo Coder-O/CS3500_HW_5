@@ -9,17 +9,6 @@ import org.junit.Test;
  */
 public class TestSameBattleRules {
 
-  /* Test case brainstorm:
-  - Test that only one same card doesn't flip CHECK
-  - test that 2, 3, and 4 same cards do flip and flip all said cards. CHECK
-  - test that cards flipped on the first special step combo as normal CHECK
-  - test that doesn't flip same player. CHECK
-  - Test that the returned numCardsFlipped is accurate. CHECK
-  - Test that special rules only apply to initial step. CHECK
-  - Test that special rules count the number of both allied and enemy same-numbered cards. CHECK
-   */
-
-
   private ThreeTriosBattleRules battleRules;
 
   //|--A--|
