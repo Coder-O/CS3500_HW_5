@@ -160,3 +160,9 @@ What we were able to get working:
 We were able to get almost every feature of the assignment fully functional. However, our model adapter’s addFeatures method             does not actually work with every Features implementation. Instead, it only supports Features that are also                                 PlayerControllers. Alternative designs would require either changing several parts of our model implementation or making                    several assumptions on when and how a model would choose to call its controllers. As there was a drawback to every design, we               chose to only allow adaptation with compatible controller objects, which was the simplest solution to implement.                            Additionally, we were unable to get our strategies to work with the provider’s view. While this should be possible, it was                  explicitly not a requirement for this assignment, and thus we decided to focus more effort elsewhere.
 
 Note: Model tests were not included in this submission to comply with the 125 file limit. These tests were mostly from Part 1 of this assignment.
+
+Extra Credit:
+Level 0: A GridDecorator class that implements ThreeTriosPanel was made. A HintDecorator class that extends GridDecorator has also made. The hints are enabled if a player's screen is displayed and they click "h" or "H". This does not enable hints for the other player, and the one player cannot see the other player's hints. To disable hints, type "h" or "H" again.
+Level 1:
+Level 2:
+Level 3:
