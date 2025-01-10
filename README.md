@@ -1,4 +1,4 @@
-This program was created as part of Northeastern's Object Oriented Design course by Owen Marcotte and Anabella Vivias.
+This program was created as part of Northeastern's Object Oriented Design course by Owen Marcotte and Anabella Vivas Uzcategui.
 It is an implementation of the game ThreeTrios, written in Java.
 
 It was developed over several assigments to meet various requirements.
